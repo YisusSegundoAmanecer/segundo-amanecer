@@ -48,9 +48,9 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .timeline-track{display:flex;align-items:stretch;}
 .timeline-connector{position:absolute;top:28px;left:60px;right:60px;height:2px;background:linear-gradient(to right,var(--fire) 25%,var(--border) 25%);z-index:0;}
 .timeline-node{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;cursor:pointer;}
-.t-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;transition:all .3s;position:relative;}
-.t-circle.active{background:var(--fire);color:white;box-shadow:0 4px 20px rgba(252,75,8,.35);}
-.t-circle.locked{background:var(--cream-dark);border:2px solid var(--border);color:var(--text-soft);}
+.t-circle{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;transition:all .3s;position:relative;}
+.t-circle.active{background:var(--navy);box-shadow:0 4px 20px rgba(37,36,64,.4);}
+.t-circle.locked{background:var(--cream-dark);border:2px solid var(--border);color:var(--text-soft);font-size:18px;}
 .t-label{font-size:11px;font-weight:600;color:var(--navy);text-align:center;}
 .t-date{font-size:10px;color:var(--text-soft);text-align:center;}
 .t-score{font-size:12px;font-weight:700;color:var(--fire);}
@@ -201,7 +201,9 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
         <div class="timeline-connector"></div>
         <div class="timeline-track">
           <div class="timeline-node">
-            <div class="t-circle active">🌅</div>
+            <div class="t-circle active" style="background:var(--navy);padding:4px;">
+              <img src="mapa-vital.png" style="width:48px;height:48px;object-fit:contain;border-radius:50%;" alt="Mi Mapa Vital">
+            </div>
             <div class="t-label">Mi Mapa Vital</div>
             <div class="t-date">Día 0 · Mar 2026</div>
             <div class="t-score" id="tl-global">—%</div>
@@ -324,8 +326,13 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
     <div class="proximos-sub">Cada instrumento evoluciona los mismos comportamientos — el hilo nunca se rompe.</div>
     <div class="proximos-grid">
       <div class="prox-card">
-        <div class="prox-day">Día 0 · Activo ✅</div>
-        <div class="prox-name">Mi Mapa Vital</div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+          <img src="mapa-vital.png" style="width:52px;height:52px;object-fit:contain;" alt="Mi Mapa Vital">
+          <div>
+            <div class="prox-day">Día 0 · Activo ✅</div>
+            <div class="prox-name">Mi Mapa Vital</div>
+          </div>
+        </div>
         <div class="prox-fecha">📅 Marzo 2026</div>
         <div class="prox-focus">¿Dónde estás realmente hoy? La fotografía honesta de tu punto de partida.</div>
       </div>
