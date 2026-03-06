@@ -11,7 +11,7 @@
   --earth:#4A2C0F;--earth-mid:#7A4A1E;--earth-light:#C8A882;
   --fire:#FC4B08;--fire-light:#FE7A45;--fire-pale:#FDE8DF;
   --gold:#C8960C;--gold-pale:#FDF3D0;--forest:#2E7D50;--forest-pale:#E4F4EB;
-  --stone:#8B7355;--stone-pale:#F5EDE0;--purple:#6B4C9A;--purple-pale:#F0EAFA;
+  --stone:#8B7355;--purple:#6B4C9A;
   --white:#FFFFFF;--text-main:#252440;--text-mid:#4A2C0F;--text-soft:#8B7355;
   --border:rgba(74,44,15,0.15);--shadow:rgba(37,36,64,0.08);
 }
@@ -20,18 +20,16 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
   background-image:radial-gradient(ellipse at 10% 0%,rgba(252,75,8,0.04) 0%,transparent 60%),radial-gradient(ellipse at 90% 100%,rgba(37,36,64,0.05) 0%,transparent 60%);}
 .topbar{background:var(--navy);padding:12px 32px;display:flex;align-items:center;justify-content:space-between;}
 .topbar-logo{display:flex;align-items:center;gap:12px;}
-.logo-sun{width:36px;height:36px;background:linear-gradient(135deg,var(--fire),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
 .logo-text{font-family:'Playfair Display',serif;font-size:15px;color:var(--cream);letter-spacing:.5px;}
 .logo-sub{font-size:10px;color:var(--earth-light);letter-spacing:2px;text-transform:uppercase;font-weight:300;}
 .topbar-meta{font-size:11px;color:var(--earth-light);letter-spacing:1px;text-align:right;}
 .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);padding:48px 32px 40px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
 .hero-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;position:relative;z-index:1;}
 .hero-greeting{font-size:12px;color:var(--fire-light);letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;font-weight:500;}
 .hero-name{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--cream);line-height:1.1;margin-bottom:8px;}
-.hero-subtitle{font-size:14px;color:var(--earth-light);margin-bottom:20px;font-weight:300;letter-spacing:.3px;}
+.hero-subtitle{font-size:14px;color:var(--earth-light);margin-bottom:20px;font-weight:300;}
 .hero-fase{display:inline-flex;align-items:center;gap:8px;background:rgba(252,75,8,.2);border:1px solid rgba(252,75,8,.35);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--fire-light);font-weight:500;letter-spacing:1px;}
-.hero-fase .dot{width:6px;height:6px;border-radius:50%;background:var(--fire);animation:pulse 2s infinite;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--fire);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 .hero-score-box{text-align:center;background:rgba(255,253,208,.08);border:1px solid rgba(255,253,208,.15);border-radius:20px;padding:24px 32px;min-width:180px;}
 .score-label{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--earth-light);margin-bottom:8px;font-weight:500;}
@@ -44,18 +42,21 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .section-title h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--navy);}
 .section-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .section-divider{height:1px;background:var(--border);margin:36px 0;}
-.timeline-section{margin-bottom:36px;}
-.timeline-track{display:flex;align-items:stretch;gap:0;}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 2px 12px var(--shadow);}
+.mb-36{margin-bottom:36px;}
+/* TIMELINE */
+.timeline-track{display:flex;align-items:stretch;}
 .timeline-connector{position:absolute;top:28px;left:60px;right:60px;height:2px;background:linear-gradient(to right,var(--fire) 25%,var(--border) 25%);z-index:0;}
 .timeline-node{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:1;cursor:pointer;}
-.t-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;transition:all .3s;position:relative;}
-.t-circle.active{background:var(--fire);color:white;box-shadow:0 4px 20px rgba(252,75,8,.35);font-size:20px;}
-.t-circle.locked{background:var(--cream-dark);border:2px solid var(--border);color:var(--text-soft);font-size:18px;}
-.t-label{font-size:11px;font-weight:600;color:var(--navy);text-align:center;letter-spacing:.5px;}
+.t-circle{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;transition:all .3s;position:relative;}
+.t-circle.active{background:var(--fire);color:white;box-shadow:0 4px 20px rgba(252,75,8,.35);}
+.t-circle.locked{background:var(--cream-dark);border:2px solid var(--border);color:var(--text-soft);}
+.t-label{font-size:11px;font-weight:600;color:var(--navy);text-align:center;}
 .t-date{font-size:10px;color:var(--text-soft);text-align:center;}
 .t-score{font-size:12px;font-weight:700;color:var(--fire);}
 .t-lock-badge{position:absolute;bottom:-4px;right:-4px;width:18px;height:18px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;}
 .t-unlock-date{font-size:9px;color:var(--text-soft);text-align:center;font-style:italic;}
+/* NARRATIVA */
 .narrativa-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:32px 36px;position:relative;margin-bottom:36px;box-shadow:0 2px 20px var(--shadow);}
 .narrativa-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(to bottom,var(--fire),var(--gold));border-radius:20px 0 0 20px;}
 .narrativa-tag{display:inline-flex;align-items:center;gap:6px;background:var(--fire-pale);border-radius:12px;padding:4px 10px;font-size:10px;color:var(--fire);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;}
@@ -64,6 +65,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .narrativa-firma{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .firma-left{font-size:12px;color:var(--text-soft);}
 .firma-name{font-weight:600;color:var(--navy);}
+/* RADAR */
 .radar-section{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-bottom:36px;}
 .radar-legend{display:flex;flex-direction:column;gap:12px;}
 .legend-item{display:flex;align-items:center;gap:10px;}
@@ -71,9 +73,10 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .legend-label{font-size:12px;color:var(--text-mid);font-weight:500;}
 .legend-dash{width:18px;height:2px;flex-shrink:0;background:repeating-linear-gradient(90deg,var(--stone) 0,var(--stone) 4px,transparent 4px,transparent 8px);}
 .legend-dash2{width:18px;height:2px;flex-shrink:0;background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 4px,transparent 4px,transparent 8px);}
+/* ETAPAS */
 .etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px;}
 .etapa-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);text-align:center;}
-.etapa-icon{margin-bottom:12px;display:flex;align-items:center;justify-content:center;}
+.etapa-icon{display:flex;align-items:center;justify-content:center;margin-bottom:12px;height:100px;}
 .etapa-icon img{width:90px;height:90px;object-fit:contain;}
 .etapa-name{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px;}
 .etapa-score{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px;}
@@ -82,14 +85,15 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .etapa-bar-track{height:6px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
 .etapa-bar-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
 .etapa-peso{margin-top:8px;font-size:10px;color:var(--text-soft);}
-.riquezas-header{display:flex;align-items:center;gap:0;margin-bottom:16px;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
-.riq-tab{flex:1;padding:10px 6px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .2s;color:var(--text-soft);border-right:1px solid var(--border);}
+/* RIQUEZAS TABS */
+.riquezas-header{display:flex;align-items:stretch;margin-bottom:16px;background:var(--white);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.riq-tab{flex:1;padding:12px 6px;text-align:center;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text-soft);border-right:1px solid var(--border);}
 .riq-tab:last-child{border-right:none;}
 .riq-tab.active{background:var(--navy);color:var(--cream);}
-.riq-tab .riq-icon{display:flex;align-items:center;justify-content:center;margin-bottom:4px;height:44px;}
-.riq-tab .riq-icon img{width:36px;height:36px;object-fit:contain;}
+.riq-tab img{display:block;width:40px;height:40px;object-fit:contain;margin:0 auto 6px;}
 .riqueza-panel{display:none;}
 .riqueza-panel.active{display:block;}
+/* RIQ DETAIL */
 .riq-overview{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px var(--shadow);}
 .riq-overview-top{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:20px;}
 .riq-stat{text-align:center;}
@@ -99,33 +103,36 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .compare-row{display:grid;grid-template-columns:90px 1fr 40px;align-items:center;gap:12px;}
 .compare-label{font-size:11px;color:var(--text-mid);font-weight:500;}
 .compare-track{height:8px;background:var(--cream-dark);border-radius:4px;overflow:hidden;}
-.compare-fill{height:100%;border-radius:4px;transition:width 1.2s;}
+.compare-fill{height:100%;border-radius:4px;}
 .compare-pct{font-size:11px;font-weight:600;text-align:right;}
+/* BEHAVIORS */
 .behaviors-list{display:flex;flex-direction:column;gap:8px;}
-.behavior-row{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:16px;box-shadow:0 1px 6px var(--shadow);transition:all .2s;}
-.behavior-row:hover{box-shadow:0 4px 16px var(--shadow);transform:translateY(-1px);}
+.behavior-row{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto auto auto;align-items:center;gap:16px;box-shadow:0 1px 6px var(--shadow);}
 .beh-name{font-size:13px;color:var(--text-main);font-weight:500;}
 .beh-bar-wrap{width:120px;height:6px;background:var(--cream-dark);border-radius:3px;overflow:hidden;}
-.beh-bar{height:100%;border-radius:3px;transition:width 1.2s;}
+.beh-bar{height:100%;border-radius:3px;}
 .beh-pct{font-size:12px;font-weight:700;min-width:36px;text-align:right;}
 .beh-vs{font-size:10px;color:var(--text-soft);text-align:right;min-width:60px;}
 .beh-up{color:var(--forest);}
 .beh-down{color:var(--fire);}
+/* SHAROT */
 .sharot-card{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:28px 32px;margin-bottom:36px;box-shadow:0 2px 16px var(--shadow);}
 .sharot-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--navy);margin-bottom:6px;}
 .sharot-sub{font-size:12px;color:var(--text-soft);margin-bottom:24px;}
-.sharot-grid{display:flex;flex-direction:column;gap:18px;}
-.sharot-row{display:grid;grid-template-columns:100px 1fr 1fr 1fr;gap:16px;align-items:center;}
-.sharot-riq{font-size:12px;font-weight:600;color:var(--text-mid);display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;}
-.sharot-riq img{width:44px;height:44px;object-fit:contain;}
+.sharot-grid{display:flex;flex-direction:column;gap:20px;}
+.sharot-row{display:grid;grid-template-columns:110px 1fr 1fr 1fr;gap:16px;align-items:center;}
+.sharot-riq{display:flex;flex-direction:column;align-items:center;gap:5px;}
+.sharot-riq img{width:48px;height:48px;object-fit:contain;}
+.sharot-riq-label{font-size:11px;font-weight:600;color:var(--text-mid);text-align:center;}
 .sharot-col{display:flex;flex-direction:column;gap:4px;}
+.sharot-col-header{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);}
 .sharot-bar-track{height:10px;background:var(--cream-dark);border-radius:5px;overflow:hidden;}
-.sharot-bar-fill{height:100%;border-radius:5px;transition:width 1.2s;}
+.sharot-bar-fill{height:100%;border-radius:5px;}
 .sharot-val{font-size:11px;font-weight:600;}
-.sharot-col-header{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:4px;}
 .sharot-legend{display:flex;gap:20px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);}
 .sh-leg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-mid);}
 .sh-dot{width:10px;height:10px;border-radius:50%;}
+/* PROXIMOS */
 .proximos{background:var(--navy);border-radius:20px;padding:32px;color:var(--cream);}
 .proximos h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin-bottom:6px;}
 .proximos-sub{font-size:13px;color:var(--earth-light);margin-bottom:24px;}
@@ -137,28 +144,26 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .prox-fecha{font-size:11px;color:var(--earth-light);margin-bottom:10px;}
 .prox-focus{font-size:11px;color:rgba(200,168,130,.7);line-height:1.5;}
 .prox-lock{margin-top:10px;display:inline-flex;align-items:center;gap:5px;font-size:10px;color:var(--earth-light);background:rgba(255,255,255,.06);border-radius:8px;padding:4px 8px;}
+/* FOOTER */
 .footer{text-align:center;padding:32px 20px;font-size:11px;color:var(--text-soft);letter-spacing:.5px;}
 .footer strong{color:var(--navy);font-weight:600;}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 2px 12px var(--shadow);}
-.mt-16{margin-top:16px;}
-.mb-36{margin-bottom:36px;}
 @media(max-width:640px){
   .hero-inner{grid-template-columns:1fr;text-align:center;}
   .hero-score-box{max-width:200px;margin:0 auto;}
   .etapas-grid{grid-template-columns:1fr;}
-  .radar-section{grid-template-columns:1fr;text-align:center;}
-  .sharot-row{grid-template-columns:80px 1fr;grid-template-rows:auto auto auto;}
+  .radar-section{grid-template-columns:1fr;}
+  .sharot-row{grid-template-columns:80px 1fr;}
   .proximos-grid{grid-template-columns:1fr;}
   .behavior-row{grid-template-columns:1fr auto;}
   .beh-bar-wrap,.beh-vs{display:none;}
 }
 </style>
 </head>
-<body style="background:#FFFDD0!important;">
+<body>
 
 <div class="topbar">
   <div class="topbar-logo">
-    <img src="logo-conexion-vital.png" style="width:58px;height:58px;object-fit:contain;" alt="Conexión Vital">
+    <img src="logo-conexion-vital.png" style="width:58px;height:58px;object-fit:contain;" alt="Logo">
     <div>
       <div class="logo-text">Segundo Amanecer</div>
       <div class="logo-sub">Conexión Vital · La Senda Interior</div>
@@ -187,7 +192,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 <div class="main">
 
   <!-- TIMELINE -->
-  <div class="timeline-section mb-36">
+  <div class="mb-36">
     <div class="section-title">
       <div class="section-icon" style="background:var(--gold-pale);">🗺️</div>
       <h2>Tu Camino de 120 Días</h2>
@@ -231,9 +236,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
   <!-- NARRATIVA -->
   <div class="narrativa-card mb-36">
     <div class="narrativa-tag">🌟 Tu Narrativa Personal · IA del Arquitecto</div>
-    <div class="narrativa-text" id="narrativa-text">
-      <p>Cargando tu narrativa personalizada...</p>
-    </div>
+    <div class="narrativa-text" id="narrativa-text"><p>Cargando tu narrativa...</p></div>
     <div class="narrativa-firma">
       <div class="firma-left">Generado por el <span class="firma-name">Arquitecto de Sistemas de Transición</span></div>
       <div style="font-size:11px;color:var(--text-soft);" id="firma-fecha">Marzo 2026</div>
@@ -246,9 +249,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
     <h2>Tu Mapa de las 5 Riquezas Vitales</h2>
   </div>
   <div class="radar-section mb-36">
-    <div>
-      <canvas id="radar" width="280" height="280"></canvas>
-    </div>
+    <div><canvas id="radar" width="280" height="280"></canvas></div>
     <div class="radar-legend">
       <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">Leyenda</div>
       <div class="legend-item"><div class="legend-dot" style="background:var(--fire);"></div><div class="legend-label">Tú</div></div>
@@ -272,7 +273,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
   </div>
   <div class="etapas-grid">
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-despertar.png" style="width:90px;height:90px;object-fit:contain;display:block;" alt="Despertar" onerror="this.style.display='none'"></div>
+      <div class="etapa-icon"><img src="etapa-despertar.png" alt="Despertar"></div>
       <div class="etapa-name">Despertar</div>
       <div class="etapa-score" style="color:var(--fire);"><span id="etapa-des">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--fire);" id="nivel-des">—</div>
@@ -280,7 +281,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 25% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-reconciliacion.png" style="width:90px;height:90px;object-fit:contain;" alt="Reconciliación"></div>
+      <div class="etapa-icon"><img src="etapa-reconciliacion.png" alt="Reconciliación"></div>
       <div class="etapa-name">Reconciliación</div>
       <div class="etapa-score" style="color:var(--forest);"><span id="etapa-rec">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--forest);" id="nivel-rec">—</div>
@@ -288,7 +289,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 40% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-claridad.png" style="width:90px;height:90px;object-fit:contain;" alt="Claridad"></div>
+      <div class="etapa-icon"><img src="etapa-claridad.png" alt="Claridad"></div>
       <div class="etapa-name">Claridad</div>
       <div class="etapa-score" style="color:var(--purple);"><span id="etapa-cla">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--purple);" id="nivel-cla">—</div>
@@ -299,7 +300,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 
   <div class="section-divider"></div>
 
-  <!-- RIQUEZAS -->
+  <!-- RIQUEZAS DETALLE -->
   <div class="section-title">
     <div class="section-icon" style="background:var(--gold-pale);">💎</div>
     <h2>Tus 5 Riquezas Vitales — Detalle</h2>
@@ -336,7 +337,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
         <div class="prox-day">Día 45</div>
         <div class="prox-name">Mi Pulso</div>
         <div class="prox-fecha">📅 ~15 de mayo, 2026</div>
-        <div class="prox-focus">¿Qué se está moviendo? Los mismos comportamientos, en su siguiente nivel de evolución.</div>
+        <div class="prox-focus">¿Qué se está moviendo? Los mismos comportamientos en su siguiente nivel de evolución.</div>
         <div class="prox-lock">🔒 Se desbloquea en 45 días</div>
       </div>
       <div class="prox-card locked">
@@ -360,291 +361,169 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 </div>
 
 <script>
-// ─── LEER PARÁMETROS DE URL ───
-function getP(key, def='') {
-  const u = new URLSearchParams(window.location.search);
-  return u.get(key) || def;
-}
+function gP(k,d){return new URLSearchParams(window.location.search).get(k)||d;}
+function nv(v){if(v<20)return'Latente';if(v<40)return'Emergente';if(v<60)return'En Desarrollo';if(v<80)return'Integrado';return'Maestría';}
+function r1(v){return Math.round(v*10)/10;}
 
-function nivel(v) {
-  if(v<20) return 'Latente';
-  if(v<40) return 'Emergente';
-  if(v<60) return 'En Desarrollo';
-  if(v<80) return 'Integrado';
-  return 'Maestría';
-}
-
-function round1(v){ return Math.round(v*10)/10; }
-
-// ─── DATOS DESDE URL ───
-const D = {
-  nombre:   getP('n','Caminante'),
-  email:    getP('e',''),
-  fecha:    getP('f','Marzo 2026'),
-  global:   parseFloat(getP('g',0)),
-  nivel:    getP('nv',''),
-  // Despertar
-  df: parseFloat(getP('df',0)),
-  dm: parseFloat(getP('dm',0)),
-  ds: parseFloat(getP('ds',0)),
-  dt: parseFloat(getP('dt',0)),
-  dfi:parseFloat(getP('dfi',0)),
-  // Reconciliación
-  rf: parseFloat(getP('rf',0)),
-  rm: parseFloat(getP('rm',0)),
-  rs: parseFloat(getP('rs',0)),
-  rt: parseFloat(getP('rt',0)),
-  rfi:parseFloat(getP('rfi',0)),
-  // Claridad
-  cf: parseFloat(getP('cf',0)),
-  cm: parseFloat(getP('cm',0)),
-  cs: parseFloat(getP('cs',0)),
-  ct: parseFloat(getP('ct',0)),
-  cfi:parseFloat(getP('cfi',0)),
-  // Grupo promedio por Riqueza (5 Riquezas, no por etapa)
-  gdf:parseFloat(getP('gdf',50)), gdm:parseFloat(getP('gdm',50)),
-  gds:parseFloat(getP('gds',50)), gdt:parseFloat(getP('gdt',50)), gdfi:parseFloat(getP('gdfi',50)),
-  grf:parseFloat(getP('grf',50)), grm:parseFloat(getP('grm',50)),
-  grs:parseFloat(getP('grs',50)), grt:parseFloat(getP('grt',50)), grfi:parseFloat(getP('grfi',50)),
-  gcf:parseFloat(getP('gcf',50)), gcm:parseFloat(getP('gcm',50)),
-  gcs:parseFloat(getP('gcs',50)), gct:parseFloat(getP('gct',50)), gcfi:parseFloat(getP('gcfi',50)),
-  // Benchmark por Riqueza
-  bdf:parseFloat(getP('bdf',55)), bdm:parseFloat(getP('bdm',55)),
-  bds:parseFloat(getP('bds',55)), bdt:parseFloat(getP('bdt',55)), bdfi:parseFloat(getP('bdfi',55)),
-  brf:parseFloat(getP('brf',55)), brm:parseFloat(getP('brm',55)),
-  brs:parseFloat(getP('brs',55)), brt:parseFloat(getP('brt',55)), brfi:parseFloat(getP('brfi',55)),
-  bcf:parseFloat(getP('bcf',55)), bcm:parseFloat(getP('bcm',55)),
-  bcs:parseFloat(getP('bcs',55)), bct:parseFloat(getP('bct',55)), bcfi:parseFloat(getP('bcfi',55)),
-  narrativa: getP('na','Tu narrativa personalizada estará disponible en breve.'),
+var D={
+  nombre:gP('n','Caminante'),fecha:gP('f','Marzo 2026'),
+  global:parseFloat(gP('g',0)),nivel:gP('nv',''),na:gP('na','Tu narrativa estará disponible pronto.'),
+  df:parseFloat(gP('df',0)),dm:parseFloat(gP('dm',0)),ds:parseFloat(gP('ds',0)),dt:parseFloat(gP('dt',0)),dfi:parseFloat(gP('dfi',0)),
+  rf:parseFloat(gP('rf',0)),rm:parseFloat(gP('rm',0)),rs:parseFloat(gP('rs',0)),rt:parseFloat(gP('rt',0)),rfi:parseFloat(gP('rfi',0)),
+  cf:parseFloat(gP('cf',0)),cm:parseFloat(gP('cm',0)),cs:parseFloat(gP('cs',0)),ct:parseFloat(gP('ct',0)),cfi:parseFloat(gP('cfi',0)),
+  gdf:parseFloat(gP('gdf',50)),gdm:parseFloat(gP('gdm',50)),gds:parseFloat(gP('gds',50)),gdt:parseFloat(gP('gdt',50)),gdfi:parseFloat(gP('gdfi',50)),
+  grf:parseFloat(gP('grf',50)),grm:parseFloat(gP('grm',50)),grs:parseFloat(gP('grs',50)),grt:parseFloat(gP('grt',50)),grfi:parseFloat(gP('grfi',50)),
+  gcf:parseFloat(gP('gcf',50)),gcm:parseFloat(gP('gcm',50)),gcs:parseFloat(gP('gcs',50)),gct:parseFloat(gP('gct',50)),gcfi:parseFloat(gP('gcfi',50)),
+  bdf:parseFloat(gP('bdf',55)),bdm:parseFloat(gP('bdm',55)),bds:parseFloat(gP('bds',55)),bdt:parseFloat(gP('bdt',55)),bdfi:parseFloat(gP('bdfi',55)),
+  brf:parseFloat(gP('brf',55)),brm:parseFloat(gP('brm',55)),brs:parseFloat(gP('brs',55)),brt:parseFloat(gP('brt',55)),brfi:parseFloat(gP('brfi',55)),
+  bcf:parseFloat(gP('bcf',55)),bcm:parseFloat(gP('bcm',55)),bcs:parseFloat(gP('bcs',55)),bct:parseFloat(gP('bct',55)),bcfi:parseFloat(gP('bcfi',55))
 };
+D.avgDes=r1((D.df+D.dm+D.ds+D.dt+D.dfi)/5);
+D.avgRec=r1((D.rf+D.rm+D.rs+D.rt+D.rfi)/5);
+D.avgCla=r1((D.cf+D.cm+D.cs+D.ct+D.cfi)/5);
 
-// Promedios de etapa
-D.avgDes = round1((D.df+D.dm+D.ds+D.dt+D.dfi)/5);
-D.avgRec = round1((D.rf+D.rm+D.rs+D.rt+D.rfi)/5);
-D.avgCla = round1((D.cf+D.cm+D.cs+D.ct+D.cfi)/5);
+// Hero
+var parts=D.nombre.split(' ');
+document.getElementById('hero-nombre').innerHTML=parts.length>1?parts[0]+'<br>'+parts.slice(1).join(' '):D.nombre;
+document.getElementById('global-num').textContent=D.global;
+document.getElementById('score-nivel').textContent=D.nivel||nv(D.global);
+document.getElementById('tl-global').textContent=D.global+'%';
+document.getElementById('top-fecha').textContent=D.fecha;
+document.getElementById('firma-fecha').textContent=D.fecha;
+document.getElementById('avg-des').textContent=D.avgDes+'%';
+document.getElementById('avg-rec').textContent=D.avgRec+'%';
+document.getElementById('avg-cla').textContent=D.avgCla+'%';
+document.getElementById('etapa-des').textContent=D.avgDes;
+document.getElementById('etapa-rec').textContent=D.avgRec;
+document.getElementById('etapa-cla').textContent=D.avgCla;
+document.getElementById('nivel-des').textContent=nv(D.avgDes);
+document.getElementById('nivel-rec').textContent=nv(D.avgRec);
+document.getElementById('nivel-cla').textContent=nv(D.avgCla);
+setTimeout(function(){
+  document.getElementById('bar-des').style.width=D.avgDes+'%';
+  document.getElementById('bar-rec').style.width=D.avgRec+'%';
+  document.getElementById('bar-cla').style.width=D.avgCla+'%';
+},200);
+// Narrativa
+var pars=D.na.split(/\n\n+/);
+document.getElementById('narrativa-text').innerHTML=pars.map(function(p){return'<p>'+p+'</p>';}).join('');
 
-// Promedio de grupo por etapa (para radar)
-D.gAvgDes = round1((D.gdf+D.gdm+D.gds+D.gdt+D.gdfi)/5);
-D.gAvgRec = round1((D.grf+D.grm+D.grs+D.grt+D.grfi)/5);
-D.gAvgCla = round1((D.gcf+D.gcm+D.gcs+D.gct+D.gcfi)/5);
-D.bAvgDes = round1((D.bdf+D.bdm+D.bds+D.bdt+D.bdfi)/5);
-D.bAvgRec = round1((D.brf+D.brm+D.brs+D.brt+D.brfi)/5);
-D.bAvgCla = round1((D.bcf+D.bcm+D.bcs+D.bct+D.bcfi)/5);
-
-// ─── POBLAR DATOS BÁSICOS ───
-const nombreParts = D.nombre.split(' ');
-const nombreHero = nombreParts.length > 1 ? nombreParts[0]+'<br>'+nombreParts.slice(1).join(' ') : D.nombre;
-document.getElementById('hero-nombre').innerHTML = nombreHero;
-document.getElementById('global-num').textContent = D.global;
-document.getElementById('score-nivel').textContent = D.nivel || nivel(D.global);
-document.getElementById('tl-global').textContent = D.global+'%';
-document.getElementById('top-fecha').textContent = D.fecha;
-document.getElementById('firma-fecha').textContent = D.fecha;
-document.getElementById('footer-confidencial').textContent = 'Este Mapa Vital es confidencial y fue generado exclusivamente para '+D.nombre+' · '+D.fecha;
-document.getElementById('avg-des').textContent = D.avgDes+'%';
-document.getElementById('avg-rec').textContent = D.avgRec+'%';
-document.getElementById('avg-cla').textContent = D.avgCla+'%';
-
-// Etapas
-document.getElementById('etapa-des').textContent = D.avgDes;
-document.getElementById('etapa-rec').textContent = D.avgRec;
-document.getElementById('etapa-cla').textContent = D.avgCla;
-document.getElementById('nivel-des').textContent = nivel(D.avgDes);
-document.getElementById('nivel-rec').textContent = nivel(D.avgRec);
-document.getElementById('nivel-cla').textContent = nivel(D.avgCla);
-setTimeout(()=>{
-  document.getElementById('bar-des').style.width = D.avgDes+'%';
-  document.getElementById('bar-rec').style.width = D.avgRec+'%';
-  document.getElementById('bar-cla').style.width = D.avgCla+'%';
-},100);
-
-// Narrativa — convertir saltos de línea en párrafos
-const narParts = D.narrativa.split(/\n\n+/);
-document.getElementById('narrativa-text').innerHTML = narParts.map(p=>'<p>'+p.replace(/\n/g,' ')+'</p>').join('');
-
-// ─── RIQUEZAS DATA ───
-const RIQUEZAS = [
-  { key:'fisica',    label:'Física',      icon:'<img src="riqueza-fisica.png" style="width:44px;height:44px;object-fit:contain;" alt="Física">', color:'#FC4B08',
-    yo:D.df, grpDes:D.gdf, grpRec:D.grf, grpCla:D.gcf,
-    bnkDes:D.bdf, bnkRec:D.brf, bnkCla:D.bcf,
-    etapaYo:[D.df,D.rf,D.cf], etapaGrp:[D.gdf,D.grf,D.gcf], etapaBnk:[D.bdf,D.brf,D.bcf],
-    behaviors:['Conciencia corporal','Movimiento regular','Sueño y recuperación','Alimentación consciente','Gestión del dolor','Energía vital','Hábitos de salud']
-  },
-  { key:'mental',    label:'Mental',      icon:'<img src="riqueza-mental.png" style="width:44px;height:44px;object-fit:contain;" alt="Mental">', color:'#6B4C9A',
-    yo:D.dm, grpDes:D.gdm, grpRec:D.grm, grpCla:D.gcm,
-    bnkDes:D.bdm, bnkRec:D.brm, bnkCla:D.bcm,
-    etapaYo:[D.dm,D.rm,D.cm], etapaGrp:[D.gdm,D.grm,D.gcm], etapaBnk:[D.bdm,D.brm,D.bcm],
-    behaviors:['Conciencia emocional','Apertura al aprendizaje','Gestión de pensamientos','Tolerancia a incertidumbre','Acción elegida','Creencias limitantes','Mentalidad de crecimiento','Apertura al cambio']
-  },
-  { key:'social',    label:'Social',      icon:'<img src="riqueza-social.png" style="width:44px;height:44px;object-fit:contain;" alt="Social">', color:'#C8960C',
-    yo:D.ds, grpDes:D.gds, grpRec:D.grs, grpCla:D.gcs,
-    bnkDes:D.bds, bnkRec:D.brs, bnkCla:D.bcs,
-    etapaYo:[D.ds,D.rs,D.cs], etapaGrp:[D.gds,D.grs,D.gcs], etapaBnk:[D.bds,D.brs,D.bcs],
-    behaviors:['Escucha genuina','Patrones relacionales','Satisfacción en pareja','Roles familiares','Impacto en comunidad','Comunicación asertiva','Confianza en relaciones','Red de apoyo']
-  },
-  { key:'temporal',  label:'Temporal',    icon:'<img src="riqueza-temporal.png" style="width:44px;height:44px;object-fit:contain;" alt="Temporal">', color:'#2E7D50',
-    yo:D.dt, grpDes:D.gdt, grpRec:D.grt, grpCla:D.gct,
-    bnkDes:D.bdt, bnkRec:D.brt, bnkCla:D.bct,
-    etapaYo:[D.dt,D.rt,D.ct], etapaGrp:[D.gdt,D.grt,D.gct], etapaBnk:[D.bdt,D.brt,D.bct],
-    behaviors:['Autonomía sobre el tiempo','Consciencia del uso real','Gestión de postergación','Alineación tiempo-prioridades','Energía por actividad','Actividades con propósito','Productividad consciente']
-  },
-  { key:'financiera',label:'Financiera',  icon:'<img src="riqueza-financiera.png" style="width:44px;height:44px;object-fit:contain;" alt="Financiera">', color:'#7A4A1E',
-    yo:D.dfi, grpDes:D.gdfi, grpRec:D.grfi, grpCla:D.gcfi,
-    bnkDes:D.bdfi, bnkRec:D.brfi, bnkCla:D.bcfi,
-    etapaYo:[D.dfi,D.rfi,D.cfi], etapaGrp:[D.gdfi,D.grfi,D.gcfi], etapaBnk:[D.bdfi,D.brfi,D.bcfi],
-    behaviors:['Consciencia financiera real','Conocimiento de gastos','Clasificación de egresos','Deudas con propósito','Hábito de ahorro','Visión financiera familiar','Emociones y dinero']
-  },
+// Riquezas
+var RIQ=[
+  {key:'fisica',   label:'Física',    img:'riqueza-fisica.png',    color:'#FC4B08',
+   yo:[D.df,D.rf,D.cf],grp:[D.gdf,D.grf,D.gcf],bnk:[D.bdf,D.brf,D.bcf],
+   beh:['Conciencia corporal','Movimiento regular','Sueño y recuperación','Alimentación consciente','Gestión del dolor','Energía vital','Hábitos de salud']},
+  {key:'mental',   label:'Mental',    img:'riqueza-mental.png',    color:'#6B4C9A',
+   yo:[D.dm,D.rm,D.cm],grp:[D.gdm,D.grm,D.gcm],bnk:[D.bdm,D.brm,D.bcm],
+   beh:['Conciencia emocional','Apertura al aprendizaje','Gestión de pensamientos','Tolerancia a incertidumbre','Acción elegida','Creencias limitantes','Mentalidad de crecimiento','Apertura al cambio']},
+  {key:'social',   label:'Social',    img:'riqueza-social.png',    color:'#C8960C',
+   yo:[D.ds,D.rs,D.cs],grp:[D.gds,D.grs,D.gcs],bnk:[D.bds,D.brs,D.bcs],
+   beh:['Escucha genuina','Patrones relacionales','Satisfacción en pareja','Roles familiares','Impacto en comunidad','Comunicación asertiva','Confianza en relaciones','Red de apoyo']},
+  {key:'temporal', label:'Temporal',  img:'riqueza-temporal.png',  color:'#2E7D50',
+   yo:[D.dt,D.rt,D.ct],grp:[D.gdt,D.grt,D.gct],bnk:[D.bdt,D.brt,D.bct],
+   beh:['Autonomía sobre el tiempo','Consciencia del uso real','Gestión de postergación','Alineación tiempo-prioridades','Energía por actividad','Actividades con propósito','Productividad consciente']},
+  {key:'financiera',label:'Financiera',img:'riqueza-financiera.png',color:'#7A4A1E',
+   yo:[D.dfi,D.rfi,D.cfi],grp:[D.gdfi,D.grfi,D.gcfi],bnk:[D.bdfi,D.brfi,D.bcfi],
+   beh:['Consciencia financiera real','Conocimiento de gastos','Clasificación de egresos','Deudas con propósito','Hábito de ahorro','Visión financiera familiar','Emociones y dinero']}
 ];
 
-// ─── RADAR (promedio de las 3 etapas por Riqueza) ───
-const RADAR_EMOJIS = ['💪','🧠','🤝','⏳','💰'];
-const RADAR_DATA = RIQUEZAS.map((r,i)=>({
-  key:r.key, label:r.label, emoji:RADAR_EMOJIS[i], color:r.color,
-  yo: round1((r.etapaYo[0]+r.etapaYo[1]+r.etapaYo[2])/3),
-  grupo: round1((r.etapaGrp[0]+r.etapaGrp[1]+r.etapaGrp[2])/3),
-  bnk: round1((r.etapaBnk[0]+r.etapaBnk[1]+r.etapaBnk[2])/3),
-}));
-
+// Radar
+var RD=RIQ.map(function(r){return{label:r.label,color:r.color,yo:r1((r.yo[0]+r.yo[1]+r.yo[2])/3),grupo:r1((r.grp[0]+r.grp[1]+r.grp[2])/3),bnk:r1((r.bnk[0]+r.bnk[1]+r.bnk[2])/3)};});
 function drawRadar(){
-  const canvas=document.getElementById('radar');
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  const W=280,H=280,cx=W/2,cy=H/2,maxR=100,n=5;
-  const angles=RADAR_DATA.map((_,i)=>-Math.PI/2+(2*Math.PI/n)*i);
-  ctx.clearRect(0,0,W,H);
-  [20,40,60,80,100].forEach(lv=>{
-    ctx.beginPath();
-    angles.forEach((a,i)=>{const x=cx+Math.cos(a)*(lv/100)*maxR,y=cy+Math.sin(a)*(lv/100)*maxR;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-    ctx.closePath();ctx.strokeStyle='rgba(74,44,15,0.12)';ctx.lineWidth=lv===100?1.5:.5;ctx.stroke();
+  var c=document.getElementById('radar');if(!c)return;
+  var x=c.getContext('2d'),W=280,H=280,cx=140,cy=140,R=100,n=5;
+  var ang=RD.map(function(_,i){return -Math.PI/2+(2*Math.PI/n)*i;});
+  x.clearRect(0,0,W,H);
+  [20,40,60,80,100].forEach(function(lv){
+    x.beginPath();ang.forEach(function(a,i){var px=cx+Math.cos(a)*(lv/100)*R,py=cy+Math.sin(a)*(lv/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
+    x.closePath();x.strokeStyle='rgba(74,44,15,0.12)';x.lineWidth=lv===100?1.5:.5;x.stroke();
   });
-  angles.forEach(a=>{ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+Math.cos(a)*maxR,cy+Math.sin(a)*maxR);ctx.strokeStyle='rgba(74,44,15,0.1)';ctx.lineWidth=.5;ctx.stroke();});
-  // Benchmark
-  ctx.beginPath();
-  RADAR_DATA.forEach((r,i)=>{const x=cx+Math.cos(angles[i])*(r.bnk/100)*maxR,y=cy+Math.sin(angles[i])*(r.bnk/100)*maxR;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.closePath();ctx.strokeStyle='rgba(200,150,12,0.6)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.stroke();ctx.setLineDash([]);
-  // Grupo
-  ctx.beginPath();
-  RADAR_DATA.forEach((r,i)=>{const x=cx+Math.cos(angles[i])*(r.grupo/100)*maxR,y=cy+Math.sin(angles[i])*(r.grupo/100)*maxR;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.closePath();ctx.strokeStyle='rgba(139,115,85,0.5)';ctx.lineWidth=1.5;ctx.setLineDash([4,4]);ctx.stroke();ctx.setLineDash([]);
-  // Yo
-  ctx.beginPath();
-  RADAR_DATA.forEach((r,i)=>{const x=cx+Math.cos(angles[i])*(r.yo/100)*maxR,y=cy+Math.sin(angles[i])*(r.yo/100)*maxR;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.closePath();ctx.fillStyle='rgba(252,75,8,0.12)';ctx.fill();ctx.strokeStyle='#FC4B08';ctx.lineWidth=2.5;ctx.stroke();
-  // Dots + labels
-  RADAR_DATA.forEach((r,i)=>{
-    const x=cx+Math.cos(angles[i])*(r.yo/100)*maxR,y=cy+Math.sin(angles[i])*(r.yo/100)*maxR;
-    ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle=r.color;ctx.fill();ctx.strokeStyle='#FFFDD0';ctx.lineWidth=2;ctx.stroke();
-    const lx=cx+Math.cos(angles[i])*118,ly=cy+Math.sin(angles[i])*118;
-    ctx.font='bold 11px Inter';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillStyle='#252440';ctx.fillText(r.label.toUpperCase(),lx,ly);
+  ang.forEach(function(a){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.strokeStyle='rgba(74,44,15,0.1)';x.lineWidth=.5;x.stroke();});
+  x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.bnk/100)*R,py=cy+Math.sin(ang[i])*(r.bnk/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
+  x.closePath();x.strokeStyle='rgba(200,150,12,0.6)';x.lineWidth=1.5;x.setLineDash([5,4]);x.stroke();x.setLineDash([]);
+  x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.grupo/100)*R,py=cy+Math.sin(ang[i])*(r.grupo/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
+  x.closePath();x.strokeStyle='rgba(139,115,85,0.5)';x.lineWidth=1.5;x.setLineDash([4,4]);x.stroke();x.setLineDash([]);
+  x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.yo/100)*R,py=cy+Math.sin(ang[i])*(r.yo/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
+  x.closePath();x.fillStyle='rgba(252,75,8,0.12)';x.fill();x.strokeStyle='#FC4B08';x.lineWidth=2.5;x.stroke();
+  RD.forEach(function(r,i){
+    var px=cx+Math.cos(ang[i])*(r.yo/100)*R,py=cy+Math.sin(ang[i])*(r.yo/100)*R;
+    x.beginPath();x.arc(px,py,5,0,Math.PI*2);x.fillStyle=r.color;x.fill();x.strokeStyle='#FFFDD0';x.lineWidth=2;x.stroke();
+    var lx=cx+Math.cos(ang[i])*122,ly=cy+Math.sin(ang[i])*122;
+    x.font='bold 11px Inter';x.textAlign='center';x.textBaseline='middle';x.fillStyle='#252440';x.fillText(r.label,lx,ly);
   });
 }
 
-// ─── RIQUEZAS TABS + PANELS ───
+// Tabs + panels
 function buildRiquezas(){
-  const tabsEl=document.getElementById('riq-tabs');
-  const panelsEl=document.getElementById('riq-panels');
-  RIQUEZAS.forEach((r,i)=>{
-    // Tab
-    const tab=document.createElement('div');
+  var tabs=document.getElementById('riq-tabs'),panels=document.getElementById('riq-panels');
+  RIQ.forEach(function(r,i){
+    var tab=document.createElement('div');
     tab.className='riq-tab'+(i===0?' active':'');
-    tab.onclick=function(){showRiq(r.key,this);};
-    tab.innerHTML=`<span class="riq-icon">${r.icon}</span>${r.label}`;
-    tabsEl.appendChild(tab);
-    // Panel
-    const panel=document.createElement('div');
+    tab.innerHTML='<img src="'+r.img+'" alt="'+r.label+'">'+r.label;
+    (function(rr,t){t.onclick=function(){
+      document.querySelectorAll('.riqueza-panel').forEach(function(p){p.classList.remove('active');});
+      document.querySelectorAll('.riq-tab').forEach(function(tt){tt.classList.remove('active');});
+      document.getElementById('riq-'+rr.key).classList.add('active');t.classList.add('active');
+    };})(r,tab);
+    tabs.appendChild(tab);
+
+    var avg=r1((r.yo[0]+r.yo[1]+r.yo[2])/3);
+    var gavg=r1((r.grp[0]+r.grp[1]+r.grp[2])/3);
+    var bavg=r1((r.bnk[0]+r.bnk[1]+r.bnk[2])/3);
+    var diff=r1(avg-gavg);
+    var dstr=diff>0?'↑ vs grupo +'+diff+'%':diff<0?'↓ vs grupo '+diff+'%':'= grupo';
+    var dcol=diff>0?'var(--forest)':diff<0?'var(--fire)':'var(--text-soft)';
+    var rows=r.beh.map(function(b,bi){
+      var bp=Math.max(5,Math.min(95,Math.round(avg+(((avg*13+bi*37)%21)-10))));
+      var gp=Math.max(5,Math.min(95,Math.round(gavg+(((avg*7+bi*19)%11)-5))));
+      var bd=bp-gp;
+      var vs=bd>0?'↑ vs grupo +'+bd+'%':bd<0?'↓ vs grupo '+bd+'%':'= grupo';
+      var vc=bd>0?'beh-up':bd<0?'beh-down':'';
+      return '<div class="behavior-row"><div class="beh-name">'+b+'</div><div class="beh-bar-wrap"><div class="beh-bar" style="width:'+bp+'%;background:'+r.color+';"></div></div><div class="beh-pct" style="color:'+r.color+';">'+bp+'%</div><div class="beh-vs '+vc+'">'+vs+'</div></div>';
+    }).join('');
+
+    var panel=document.createElement('div');
     panel.className='riqueza-panel'+(i===0?' active':'');
     panel.id='riq-'+r.key;
-    // Scores por etapa para esta Riqueza
-    const desScore=r.etapaYo[0], recScore=r.etapaYo[1], claScore=r.etapaYo[2];
-    const avgScore=round1((desScore+recScore+claScore)/3);
-    const grpAvg=round1((r.etapaGrp[0]+r.etapaGrp[1]+r.etapaGrp[2])/3);
-    const bnkAvg=round1((r.etapaBnk[0]+r.etapaBnk[1]+r.etapaBnk[2])/3);
-    const diff=round1(avgScore-grpAvg);
-    const diffStr=diff>0?`↑ vs grupo +${diff}%`:diff<0?`↓ vs grupo ${diff}%`:`= grupo`;
-    const diffColor=diff>0?'var(--forest)':diff<0?'var(--fire)':'var(--text-soft)';
-    // Generar comportamientos con scores derivados del promedio
-    const seed=avgScore;
-    const behRows=r.behaviors.map((b,bi)=>{
-      const variation=(((seed*13+bi*37)%21)-10);
-      const behPct=Math.max(5,Math.min(95,Math.round(seed+variation)));
-      const grpBehPct=Math.max(5,Math.min(95,Math.round(grpAvg+(((seed*7+bi*19)%11)-5))));
-      const behDiff=behPct-grpBehPct;
-      const vStr=behDiff>0?`↑ vs grupo +${behDiff}%`:behDiff<0?`↓ vs grupo ${behDiff}%`:`= grupo`;
-      const vColor=behDiff>0?'beh-up':behDiff<0?'beh-down':'';
-      return `<div class="behavior-row">
-        <div class="beh-name">${b}</div>
-        <div class="beh-bar-wrap"><div class="beh-bar" style="width:${behPct}%;background:${r.color};"></div></div>
-        <div class="beh-pct" style="color:${r.color};">${behPct}%</div>
-        <div class="beh-vs ${vColor}">${vStr}</div>
-      </div>`;
-    }).join('');
-    panel.innerHTML=`
-      <div class="riq-overview">
-        <div class="riq-overview-top">
-          <div class="riq-stat"><div class="riq-stat-val" style="color:${r.color};">${avgScore}%</div><div class="riq-stat-label">Tu score</div></div>
-          <div class="riq-stat"><div class="riq-stat-val" style="color:var(--stone);">${grpAvg}%</div><div class="riq-stat-label">Promedio grupo</div></div>
-          <div class="riq-stat"><div class="riq-stat-val" style="color:var(--gold);">${bnkAvg}%</div><div class="riq-stat-label">Benchmark</div></div>
-        </div>
-        <div style="margin-bottom:12px;padding:10px 14px;background:var(--cream-dark);border-radius:10px;font-size:12px;">
-          <strong>Despertar:</strong> ${desScore}% &nbsp;·&nbsp; <strong>Reconciliación:</strong> ${recScore}% &nbsp;·&nbsp; <strong>Claridad:</strong> ${claScore}%
-          &nbsp;&nbsp;<span style="color:${diffColor};font-weight:600;">${diffStr}</span>
-        </div>
-        <div class="compare-bars">
-          <div class="compare-row"><div class="compare-label">Tú</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:${avgScore}%;background:${r.color};"></div></div><div class="compare-pct" style="color:${r.color};">${avgScore}%</div></div>
-          <div class="compare-row"><div class="compare-label">Tu grupo</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:${grpAvg}%;background:var(--stone);"></div></div><div class="compare-pct" style="color:var(--stone);">${grpAvg}%</div></div>
-          <div class="compare-row"><div class="compare-label">Benchmark</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:${bnkAvg}%;background:var(--gold);"></div></div><div class="compare-pct" style="color:var(--gold);">${bnkAvg}%</div></div>
-        </div>
-      </div>
-      <div class="behaviors-list">${behRows}</div>`;
-    panelsEl.appendChild(panel);
+    panel.innerHTML=
+      '<div class="riq-overview">'+
+        '<div class="riq-overview-top">'+
+          '<div class="riq-stat"><div class="riq-stat-val" style="color:'+r.color+';">'+avg+'%</div><div class="riq-stat-label">Tu score</div></div>'+
+          '<div class="riq-stat"><div class="riq-stat-val" style="color:var(--stone);">'+gavg+'%</div><div class="riq-stat-label">Promedio grupo</div></div>'+
+          '<div class="riq-stat"><div class="riq-stat-val" style="color:var(--gold);">'+bavg+'%</div><div class="riq-stat-label">Benchmark</div></div>'+
+        '</div>'+
+        '<div style="margin-bottom:12px;padding:10px 14px;background:var(--cream-dark);border-radius:10px;font-size:12px;"><strong>Despertar:</strong> '+r.yo[0]+'% &nbsp;·&nbsp; <strong>Reconciliación:</strong> '+r.yo[1]+'% &nbsp;·&nbsp; <strong>Claridad:</strong> '+r.yo[2]+'% &nbsp;&nbsp;<span style="color:'+dcol+';font-weight:600;">'+dstr+'</span></div>'+
+        '<div class="compare-bars">'+
+          '<div class="compare-row"><div class="compare-label">Tú</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:'+avg+'%;background:'+r.color+';"></div></div><div class="compare-pct" style="color:'+r.color+';">'+avg+'%</div></div>'+
+          '<div class="compare-row"><div class="compare-label">Tu grupo</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:'+gavg+'%;background:var(--stone);"></div></div><div class="compare-pct" style="color:var(--stone);">'+gavg+'%</div></div>'+
+          '<div class="compare-row"><div class="compare-label">Benchmark</div><div class="compare-track" style="flex:1"><div class="compare-fill" style="width:'+bavg+'%;background:var(--gold);"></div></div><div class="compare-pct" style="color:var(--gold);">'+bavg+'%</div></div>'+
+        '</div>'+
+      '</div>'+
+      '<div class="behaviors-list">'+rows+'</div>';
+    panels.appendChild(panel);
   });
 }
 
-// ─── SHAROT ───
+// Sharot
 function buildSharot(){
-  const grid=document.getElementById('sharot-grid');
-  RIQUEZAS.forEach(r=>{
-    const avgYo=round1((r.etapaYo[0]+r.etapaYo[1]+r.etapaYo[2])/3);
-    const avgGrp=round1((r.etapaGrp[0]+r.etapaGrp[1]+r.etapaGrp[2])/3);
-    const avgBnk=round1((r.etapaBnk[0]+r.etapaBnk[1]+r.etapaBnk[2])/3);
-    const row=document.createElement('div');
+  var grid=document.getElementById('sharot-grid');
+  RIQ.forEach(function(r){
+    var yo=r1((r.yo[0]+r.yo[1]+r.yo[2])/3);
+    var grp=r1((r.grp[0]+r.grp[1]+r.grp[2])/3);
+    var bnk=r1((r.bnk[0]+r.bnk[1]+r.bnk[2])/3);
+    var row=document.createElement('div');
     row.className='sharot-row';
-    row.innerHTML=`
-      <div class="sharot-riq">${r.icon} ${r.label}</div>
-      <div class="sharot-col">
-        <div class="sharot-col-header">Tú</div>
-        <div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:${avgYo}%;background:${r.color};"></div></div>
-        <div class="sharot-val" style="color:${r.color};">${avgYo}%</div>
-      </div>
-      <div class="sharot-col">
-        <div class="sharot-col-header">Tu grupo</div>
-        <div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:${avgGrp}%;background:#8B7355;"></div></div>
-        <div class="sharot-val" style="color:#8B7355;">${avgGrp}%</div>
-      </div>
-      <div class="sharot-col">
-        <div class="sharot-col-header">Benchmark</div>
-        <div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:${avgBnk}%;background:#C8960C;opacity:.7;"></div></div>
-        <div class="sharot-val" style="color:#C8960C;">${avgBnk}%</div>
-      </div>`;
+    row.innerHTML=
+      '<div class="sharot-riq"><img src="'+r.img+'" alt="'+r.label+'"><span class="sharot-riq-label">'+r.label+'</span></div>'+
+      '<div class="sharot-col"><div class="sharot-col-header">Tú</div><div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:'+yo+'%;background:'+r.color+';"></div></div><div class="sharot-val" style="color:'+r.color+';">'+yo+'%</div></div>'+
+      '<div class="sharot-col"><div class="sharot-col-header">Tu grupo</div><div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:'+grp+'%;background:#8B7355;"></div></div><div class="sharot-val" style="color:#8B7355;">'+grp+'%</div></div>'+
+      '<div class="sharot-col"><div class="sharot-col-header">Benchmark</div><div class="sharot-bar-track"><div class="sharot-bar-fill" style="width:'+bnk+'%;background:#C8960C;"></div></div><div class="sharot-val" style="color:#C8960C;">'+bnk+'%</div></div>';
     grid.appendChild(row);
   });
 }
 
-function showRiq(key,tab){
-  document.querySelectorAll('.riqueza-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.riq-tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('riq-'+key).classList.add('active');
-  tab.classList.add('active');
-}
+function tryUnlock(){var m=document.getElementById('locked-msg');m.style.display='block';setTimeout(function(){m.style.display='none';},4000);}
 
-function tryUnlock(){
-  const msg=document.getElementById('locked-msg');
-  msg.style.display='block';
-  setTimeout(()=>{msg.style.display='none';},4000);
-}
-
-// ─── INIT ───
 buildRiquezas();
 buildSharot();
 drawRadar();
