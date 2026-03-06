@@ -73,7 +73,8 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .legend-dash2{width:18px;height:2px;flex-shrink:0;background:repeating-linear-gradient(90deg,var(--gold) 0,var(--gold) 4px,transparent 4px,transparent 8px);}
 .etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px;}
 .etapa-card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:0 2px 12px var(--shadow);text-align:center;}
-.etapa-icon{font-size:24px;margin-bottom:8px;}
+.etapa-icon{margin-bottom:12px;display:flex;align-items:center;justify-content:center;}
+.etapa-icon img{width:90px;height:90px;object-fit:contain;}
 .etapa-name{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-soft);margin-bottom:12px;}
 .etapa-score{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1;margin-bottom:4px;}
 .etapa-pct{font-size:16px;}
@@ -85,7 +86,8 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .riq-tab{flex:1;padding:10px 6px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .2s;color:var(--text-soft);border-right:1px solid var(--border);}
 .riq-tab:last-child{border-right:none;}
 .riq-tab.active{background:var(--navy);color:var(--cream);}
-.riq-tab .riq-icon{display:block;font-size:18px;margin-bottom:3px;height:32px;display:flex;align-items:center;justify-content:center;}
+.riq-tab .riq-icon{display:flex;align-items:center;justify-content:center;margin-bottom:4px;height:44px;}
+.riq-tab .riq-icon img{width:36px;height:36px;object-fit:contain;}
 .riqueza-panel{display:none;}
 .riqueza-panel.active{display:block;}
 .riq-overview{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px var(--shadow);}
@@ -114,7 +116,8 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .sharot-sub{font-size:12px;color:var(--text-soft);margin-bottom:24px;}
 .sharot-grid{display:flex;flex-direction:column;gap:18px;}
 .sharot-row{display:grid;grid-template-columns:100px 1fr 1fr 1fr;gap:16px;align-items:center;}
-.sharot-riq{font-size:12px;font-weight:600;color:var(--text-mid);display:flex;align-items:center;gap:6px;}
+.sharot-riq{font-size:12px;font-weight:600;color:var(--text-mid);display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;}
+.sharot-riq img{width:44px;height:44px;object-fit:contain;}
 .sharot-col{display:flex;flex-direction:column;gap:4px;}
 .sharot-bar-track{height:10px;background:var(--cream-dark);border-radius:5px;overflow:hidden;}
 .sharot-bar-fill{height:100%;border-radius:5px;transition:width 1.2s;}
@@ -155,7 +158,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 
 <div class="topbar">
   <div class="topbar-logo">
-    <img src="logo-conexion-vital.png" style="width:42px;height:42px;object-fit:contain;border-radius:50%;" alt="Conexión Vital">
+    <img src="logo-conexion-vital.png" style="width:58px;height:58px;object-fit:contain;" alt="Conexión Vital">
     <div>
       <div class="logo-text">Segundo Amanecer</div>
       <div class="logo-sub">Conexión Vital · La Senda Interior</div>
@@ -269,7 +272,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
   </div>
   <div class="etapas-grid">
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-despertar.png" style="width:56px;height:56px;object-fit:contain;" alt="Despertar"></div>
+      <div class="etapa-icon"><img src="etapa-despertar.png" style="width:90px;height:90px;object-fit:contain;" alt="Despertar"></div>
       <div class="etapa-name">Despertar</div>
       <div class="etapa-score" style="color:var(--fire);"><span id="etapa-des">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--fire);" id="nivel-des">—</div>
@@ -277,7 +280,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 25% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-reconciliacion.png" style="width:56px;height:56px;object-fit:contain;" alt="Reconciliación"></div>
+      <div class="etapa-icon"><img src="etapa-reconciliacion.png" style="width:90px;height:90px;object-fit:contain;" alt="Reconciliación"></div>
       <div class="etapa-name">Reconciliación</div>
       <div class="etapa-score" style="color:var(--forest);"><span id="etapa-rec">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--forest);" id="nivel-rec">—</div>
@@ -285,7 +288,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 40% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon"><img src="etapa-claridad.png" style="width:56px;height:56px;object-fit:contain;" alt="Claridad"></div>
+      <div class="etapa-icon"><img src="etapa-claridad.png" style="width:90px;height:90px;object-fit:contain;" alt="Claridad"></div>
       <div class="etapa-name">Claridad</div>
       <div class="etapa-score" style="color:var(--purple);"><span id="etapa-cla">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--purple);" id="nivel-cla">—</div>
@@ -353,8 +356,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 
 <div class="footer">
   <strong>Conexión Vital – Segundo Amanecer</strong> · La Senda Interior · Programa de 90 días<br>
-  Jesús Trejo Álvarez · Arquitecto de Sistemas de Transición<br>
-  <span style="font-size:10px;margin-top:4px;display:block;" id="footer-confidencial">Este Mapa Vital es confidencial y fue generado exclusivamente para ti · Marzo 2026</span>
+  <span style="margin-top:6px;display:block;" id="footer-confidencial">Este Mapa Vital es confidencial · Marzo 2026</span>
 </div>
 
 <script>
@@ -462,31 +464,31 @@ document.getElementById('narrativa-text').innerHTML = narParts.map(p=>'<p>'+p.re
 
 // ─── RIQUEZAS DATA ───
 const RIQUEZAS = [
-  { key:'fisica',    label:'Física',      icon:'<img src="riqueza-fisica.png" style="width:28px;height:28px;object-fit:contain;" alt="Física">', color:'#FC4B08',
+  { key:'fisica',    label:'Física',      icon:'<img src="riqueza-fisica.png" style="width:44px;height:44px;object-fit:contain;" alt="Física">', color:'#FC4B08',
     yo:D.df, grpDes:D.gdf, grpRec:D.grf, grpCla:D.gcf,
     bnkDes:D.bdf, bnkRec:D.brf, bnkCla:D.bcf,
     etapaYo:[D.df,D.rf,D.cf], etapaGrp:[D.gdf,D.grf,D.gcf], etapaBnk:[D.bdf,D.brf,D.bcf],
     behaviors:['Conciencia corporal','Movimiento regular','Sueño y recuperación','Alimentación consciente','Gestión del dolor','Energía vital','Hábitos de salud']
   },
-  { key:'mental',    label:'Mental',      icon:'<img src="riqueza-mental.png" style="width:28px;height:28px;object-fit:contain;" alt="Mental">', color:'#6B4C9A',
+  { key:'mental',    label:'Mental',      icon:'<img src="riqueza-mental.png" style="width:44px;height:44px;object-fit:contain;" alt="Mental">', color:'#6B4C9A',
     yo:D.dm, grpDes:D.gdm, grpRec:D.grm, grpCla:D.gcm,
     bnkDes:D.bdm, bnkRec:D.brm, bnkCla:D.bcm,
     etapaYo:[D.dm,D.rm,D.cm], etapaGrp:[D.gdm,D.grm,D.gcm], etapaBnk:[D.bdm,D.brm,D.bcm],
     behaviors:['Conciencia emocional','Apertura al aprendizaje','Gestión de pensamientos','Tolerancia a incertidumbre','Acción elegida','Creencias limitantes','Mentalidad de crecimiento','Apertura al cambio']
   },
-  { key:'social',    label:'Social',      icon:'<img src="riqueza-social.png" style="width:28px;height:28px;object-fit:contain;" alt="Social">', color:'#C8960C',
+  { key:'social',    label:'Social',      icon:'<img src="riqueza-social.png" style="width:44px;height:44px;object-fit:contain;" alt="Social">', color:'#C8960C',
     yo:D.ds, grpDes:D.gds, grpRec:D.grs, grpCla:D.gcs,
     bnkDes:D.bds, bnkRec:D.brs, bnkCla:D.bcs,
     etapaYo:[D.ds,D.rs,D.cs], etapaGrp:[D.gds,D.grs,D.gcs], etapaBnk:[D.bds,D.brs,D.bcs],
     behaviors:['Escucha genuina','Patrones relacionales','Satisfacción en pareja','Roles familiares','Impacto en comunidad','Comunicación asertiva','Confianza en relaciones','Red de apoyo']
   },
-  { key:'temporal',  label:'Temporal',    icon:'<img src="riqueza-temporal.png" style="width:28px;height:28px;object-fit:contain;" alt="Temporal">', color:'#2E7D50',
+  { key:'temporal',  label:'Temporal',    icon:'<img src="riqueza-temporal.png" style="width:44px;height:44px;object-fit:contain;" alt="Temporal">', color:'#2E7D50',
     yo:D.dt, grpDes:D.gdt, grpRec:D.grt, grpCla:D.gct,
     bnkDes:D.bdt, bnkRec:D.brt, bnkCla:D.bct,
     etapaYo:[D.dt,D.rt,D.ct], etapaGrp:[D.gdt,D.grt,D.gct], etapaBnk:[D.bdt,D.brt,D.bct],
     behaviors:['Autonomía sobre el tiempo','Consciencia del uso real','Gestión de postergación','Alineación tiempo-prioridades','Energía por actividad','Actividades con propósito','Productividad consciente']
   },
-  { key:'financiera',label:'Financiera',  icon:'<img src="riqueza-financiera.png" style="width:28px;height:28px;object-fit:contain;" alt="Financiera">', color:'#7A4A1E',
+  { key:'financiera',label:'Financiera',  icon:'<img src="riqueza-financiera.png" style="width:44px;height:44px;object-fit:contain;" alt="Financiera">', color:'#7A4A1E',
     yo:D.dfi, grpDes:D.gdfi, grpRec:D.grfi, grpCla:D.gcfi,
     bnkDes:D.bdfi, bnkRec:D.brfi, bnkCla:D.bcfi,
     etapaYo:[D.dfi,D.rfi,D.cfi], etapaGrp:[D.gdfi,D.grfi,D.gcfi], etapaBnk:[D.bdfi,D.brfi,D.bcfi],
@@ -495,8 +497,9 @@ const RIQUEZAS = [
 ];
 
 // ─── RADAR (promedio de las 3 etapas por Riqueza) ───
-const RADAR_DATA = RIQUEZAS.map(r=>({
-  key:r.key, label:r.label, icon:r.icon, color:r.color,
+const RADAR_EMOJIS = ['💪','🧠','🤝','⏳','💰'];
+const RADAR_DATA = RIQUEZAS.map((r,i)=>({
+  key:r.key, label:r.label, emoji:RADAR_EMOJIS[i], color:r.color,
   yo: round1((r.etapaYo[0]+r.etapaYo[1]+r.etapaYo[2])/3),
   grupo: round1((r.etapaGrp[0]+r.etapaGrp[1]+r.etapaGrp[2])/3),
   bnk: round1((r.etapaBnk[0]+r.etapaBnk[1]+r.etapaBnk[2])/3),
@@ -532,7 +535,7 @@ function drawRadar(){
     const x=cx+Math.cos(angles[i])*(r.yo/100)*maxR,y=cy+Math.sin(angles[i])*(r.yo/100)*maxR;
     ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle=r.color;ctx.fill();ctx.strokeStyle='#FFFDD0';ctx.lineWidth=2;ctx.stroke();
     const lx=cx+Math.cos(angles[i])*118,ly=cy+Math.sin(angles[i])*118;
-    ctx.font='14px Inter';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(r.icon,lx,ly-8);
+    ctx.font='14px Inter';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(r.emoji,lx,ly-8);
     ctx.font='bold 9px Inter';ctx.fillStyle='#252440';ctx.fillText(r.label.toUpperCase(),lx,ly+8);
   });
 }
