@@ -250,9 +250,9 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
     <div><canvas id="radar" width="280" height="280"></canvas></div>
     <div class="radar-legend">
       <div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:8px;">Leyenda</div>
-      <div class="legend-item"><div class="legend-dot" style="background:var(--fire);"></div><div class="legend-label">Tú</div></div>
-      <div class="legend-item"><div class="legend-dash"></div><div class="legend-label">Tu grupo</div></div>
-      <div class="legend-item"><div class="legend-dash2"></div><div class="legend-label">Benchmark</div></div>
+      <div class="legend-item"><div style="width:28px;height:4px;background:#FC4B08;border-radius:2px;flex-shrink:0;"></div><div class="legend-label">Tú</div></div>
+      <div class="legend-item"><div style="width:28px;height:3px;flex-shrink:0;background:repeating-linear-gradient(90deg,#1A6FD4 0,#1A6FD4 5px,transparent 5px,transparent 9px);"></div><div class="legend-label">Tu grupo</div></div>
+      <div class="legend-item"><div style="width:28px;height:3px;flex-shrink:0;background:repeating-linear-gradient(90deg,#16A34A 0,#16A34A 5px,transparent 5px,transparent 9px);"></div><div class="legend-label">Benchmark</div></div>
       <div style="margin-top:16px;padding:14px;background:var(--cream-dark);border-radius:12px;">
         <div style="font-size:11px;font-weight:600;color:var(--navy);margin-bottom:8px;">Promedio por Etapa</div>
         <div style="font-size:12px;color:var(--text-mid);display:flex;flex-direction:column;gap:6px;">
@@ -436,9 +436,9 @@ function drawRadar(){
   });
   ang.forEach(function(a){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(a)*R,cy+Math.sin(a)*R);x.strokeStyle='rgba(74,44,15,0.1)';x.lineWidth=.5;x.stroke();});
   x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.bnk/100)*R,py=cy+Math.sin(ang[i])*(r.bnk/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
-  x.closePath();x.strokeStyle='rgba(200,150,12,0.6)';x.lineWidth=1.5;x.setLineDash([5,4]);x.stroke();x.setLineDash([]);
+  x.closePath();x.strokeStyle='#16A34A';x.lineWidth=2;x.setLineDash([5,4]);x.stroke();x.setLineDash([]);
   x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.grupo/100)*R,py=cy+Math.sin(ang[i])*(r.grupo/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
-  x.closePath();x.strokeStyle='rgba(139,115,85,0.5)';x.lineWidth=1.5;x.setLineDash([4,4]);x.stroke();x.setLineDash([]);
+  x.closePath();x.strokeStyle='#1A6FD4';x.lineWidth=2;x.setLineDash([4,4]);x.stroke();x.setLineDash([]);
   x.beginPath();RD.forEach(function(r,i){var px=cx+Math.cos(ang[i])*(r.yo/100)*R,py=cy+Math.sin(ang[i])*(r.yo/100)*R;i===0?x.moveTo(px,py):x.lineTo(px,py);});
   x.closePath();x.fillStyle='rgba(252,75,8,0.12)';x.fill();x.strokeStyle='#FC4B08';x.lineWidth=2.5;x.stroke();
   RD.forEach(function(r,i){
