@@ -85,7 +85,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 .riq-tab{flex:1;padding:10px 6px;text-align:center;font-size:11px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .2s;color:var(--text-soft);border-right:1px solid var(--border);}
 .riq-tab:last-child{border-right:none;}
 .riq-tab.active{background:var(--navy);color:var(--cream);}
-.riq-tab .riq-icon{display:block;font-size:18px;margin-bottom:3px;}
+.riq-tab .riq-icon{display:block;font-size:18px;margin-bottom:3px;height:32px;display:flex;align-items:center;justify-content:center;}
 .riqueza-panel{display:none;}
 .riqueza-panel.active{display:block;}
 .riq-overview{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px var(--shadow);}
@@ -155,7 +155,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 
 <div class="topbar">
   <div class="topbar-logo">
-    <div class="logo-sun">🌅</div>
+    <img src="logo-conexion-vital.png" style="width:42px;height:42px;object-fit:contain;border-radius:50%;" alt="Conexión Vital">
     <div>
       <div class="logo-text">Segundo Amanecer</div>
       <div class="logo-sub">Conexión Vital · La Senda Interior</div>
@@ -269,7 +269,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
   </div>
   <div class="etapas-grid">
     <div class="etapa-card">
-      <div class="etapa-icon">🌱</div>
+      <div class="etapa-icon"><img src="etapa-despertar.png" style="width:56px;height:56px;object-fit:contain;" alt="Despertar"></div>
       <div class="etapa-name">Despertar</div>
       <div class="etapa-score" style="color:var(--fire);"><span id="etapa-des">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--fire);" id="nivel-des">—</div>
@@ -277,7 +277,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 25% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon">🤝</div>
+      <div class="etapa-icon"><img src="etapa-reconciliacion.png" style="width:56px;height:56px;object-fit:contain;" alt="Reconciliación"></div>
       <div class="etapa-name">Reconciliación</div>
       <div class="etapa-score" style="color:var(--forest);"><span id="etapa-rec">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--forest);" id="nivel-rec">—</div>
@@ -285,7 +285,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
       <div class="etapa-peso">Peso: 40% del Score Global</div>
     </div>
     <div class="etapa-card">
-      <div class="etapa-icon">✨</div>
+      <div class="etapa-icon"><img src="etapa-claridad.png" style="width:56px;height:56px;object-fit:contain;" alt="Claridad"></div>
       <div class="etapa-name">Claridad</div>
       <div class="etapa-score" style="color:var(--purple);"><span id="etapa-cla">—</span><span class="etapa-pct">%</span></div>
       <div class="etapa-nivel" style="color:var(--purple);" id="nivel-cla">—</div>
@@ -462,31 +462,31 @@ document.getElementById('narrativa-text').innerHTML = narParts.map(p=>'<p>'+p.re
 
 // ─── RIQUEZAS DATA ───
 const RIQUEZAS = [
-  { key:'fisica',    label:'Física',      icon:'🌿', color:'#FC4B08',
+  { key:'fisica',    label:'Física',      icon:'<img src="riqueza-fisica.png" style="width:28px;height:28px;object-fit:contain;" alt="Física">', color:'#FC4B08',
     yo:D.df, grpDes:D.gdf, grpRec:D.grf, grpCla:D.gcf,
     bnkDes:D.bdf, bnkRec:D.brf, bnkCla:D.bcf,
     etapaYo:[D.df,D.rf,D.cf], etapaGrp:[D.gdf,D.grf,D.gcf], etapaBnk:[D.bdf,D.brf,D.bcf],
     behaviors:['Conciencia corporal','Movimiento regular','Sueño y recuperación','Alimentación consciente','Gestión del dolor','Energía vital','Hábitos de salud']
   },
-  { key:'mental',    label:'Mental',      icon:'🧠', color:'#6B4C9A',
+  { key:'mental',    label:'Mental',      icon:'<img src="riqueza-mental.png" style="width:28px;height:28px;object-fit:contain;" alt="Mental">', color:'#6B4C9A',
     yo:D.dm, grpDes:D.gdm, grpRec:D.grm, grpCla:D.gcm,
     bnkDes:D.bdm, bnkRec:D.brm, bnkCla:D.bcm,
     etapaYo:[D.dm,D.rm,D.cm], etapaGrp:[D.gdm,D.grm,D.gcm], etapaBnk:[D.bdm,D.brm,D.bcm],
     behaviors:['Conciencia emocional','Apertura al aprendizaje','Gestión de pensamientos','Tolerancia a incertidumbre','Acción elegida','Creencias limitantes','Mentalidad de crecimiento','Apertura al cambio']
   },
-  { key:'social',    label:'Social',      icon:'🤝', color:'#C8960C',
+  { key:'social',    label:'Social',      icon:'<img src="riqueza-social.png" style="width:28px;height:28px;object-fit:contain;" alt="Social">', color:'#C8960C',
     yo:D.ds, grpDes:D.gds, grpRec:D.grs, grpCla:D.gcs,
     bnkDes:D.bds, bnkRec:D.brs, bnkCla:D.bcs,
     etapaYo:[D.ds,D.rs,D.cs], etapaGrp:[D.gds,D.grs,D.gcs], etapaBnk:[D.bds,D.brs,D.bcs],
     behaviors:['Escucha genuina','Patrones relacionales','Satisfacción en pareja','Roles familiares','Impacto en comunidad','Comunicación asertiva','Confianza en relaciones','Red de apoyo']
   },
-  { key:'temporal',  label:'Temporal',    icon:'⏳', color:'#2E7D50',
+  { key:'temporal',  label:'Temporal',    icon:'<img src="riqueza-temporal.png" style="width:28px;height:28px;object-fit:contain;" alt="Temporal">', color:'#2E7D50',
     yo:D.dt, grpDes:D.gdt, grpRec:D.grt, grpCla:D.gct,
     bnkDes:D.bdt, bnkRec:D.brt, bnkCla:D.bct,
     etapaYo:[D.dt,D.rt,D.ct], etapaGrp:[D.gdt,D.grt,D.gct], etapaBnk:[D.bdt,D.brt,D.bct],
     behaviors:['Autonomía sobre el tiempo','Consciencia del uso real','Gestión de postergación','Alineación tiempo-prioridades','Energía por actividad','Actividades con propósito','Productividad consciente']
   },
-  { key:'financiera',label:'Financiera',  icon:'💎', color:'#7A4A1E',
+  { key:'financiera',label:'Financiera',  icon:'<img src="riqueza-financiera.png" style="width:28px;height:28px;object-fit:contain;" alt="Financiera">', color:'#7A4A1E',
     yo:D.dfi, grpDes:D.gdfi, grpRec:D.grfi, grpCla:D.gcfi,
     bnkDes:D.bdfi, bnkRec:D.brfi, bnkCla:D.bcfi,
     etapaYo:[D.dfi,D.rfi,D.cfi], etapaGrp:[D.gdfi,D.grfi,D.gcfi], etapaBnk:[D.bdfi,D.brfi,D.bcfi],
