@@ -366,7 +366,7 @@ body{background:#FFFDD0!important;font-family:'Inter',sans-serif;color:var(--tex
 <script>
 function gP(k,d){return new URLSearchParams(window.location.search).get(k)||d;}
 function nv(v){if(v<20)return'Latente';if(v<40)return'Emergente';if(v<60)return'En Desarrollo';if(v<80)return'Integrado';return'Maestría';}
-function r1(v){return Math.round(v*10)/10;}
+function r1(v){return Math.round(v);}
 
 var D={
   nombre:gP('n','Caminante'),fecha:gP('f','Marzo 2026'),
