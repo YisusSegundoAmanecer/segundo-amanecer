@@ -27,7 +27,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
 
 /* ══ HEADER ══ */
 .header{display:flex;align-items:center;gap:20px;padding:36px 0 0;animation:fadeUp .5s ease both;}
-.header-logo{width:70px;height:70px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(201,146,42,0.3));}
+.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(201,146,42,0.3));}
 .header-marca{font-family:"Playfair Display",serif;font-size:20px;font-weight:600;color:var(--texto);line-height:1.2;}
 .header-sub{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:5px;}
 
@@ -69,7 +69,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .ec-des::after{background:var(--des);}
 .ec-rec::after{background:var(--rec);}
 .ec-cla::after{background:var(--cla);}
-.ec-icon{width:64px;height:64px;object-fit:contain;}
+.ec-icon{width:100px;height:100px;object-fit:contain;}
 .ec-pct{font-family:"Playfair Display",serif;font-size:36px;font-weight:400;line-height:1;}
 .ec-des .ec-pct{color:var(--des);}
 .ec-rec .ec-pct{color:var(--rec);}
@@ -86,7 +86,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
 .riqueza-row{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
 .riqueza-row:hover{border-color:var(--borde-l);}
 .riqueza-header{display:flex;align-items:center;gap:16px;padding:18px 22px;}
-.riqueza-icon-big{width:52px;height:52px;object-fit:contain;flex-shrink:0;}
+.riqueza-icon-big{width:80px;height:80px;object-fit:contain;flex-shrink:0;}
 .riqueza-info{flex:1;}
 .riqueza-nombre{font-size:18px;font-weight:600;color:var(--texto);}
 .riqueza-pct{font-family:"Playfair Display",serif;font-size:28px;font-weight:400;}
@@ -334,11 +334,7 @@ document.getElementById("fecha-display").textContent=
 // ZONA B: Narrativa
 (function(){
   if(!P.na||P.na.length<20)return;
-  const parts=P.na.split(/
-
-+|
-(?=[A-ZÁÉÍÓÚÑ])/).map(t=>t.replace(/
-/g," ").trim()).filter(t=>t.length>15);
+  const parts=P.na.split("\n\n").map(t=>t.replace(/\n/g," ").trim()).filter(t=>t.length>15);
   if(!parts.length)return;
   document.getElementById("narrativa-body").innerHTML=parts.map(p=>`<p class="narrativa-p">${p}</p>`).join("");
   document.getElementById("narrativa-firma").style.display="block";
