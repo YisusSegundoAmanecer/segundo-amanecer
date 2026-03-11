@@ -13,207 +13,214 @@
   --texto:#F0EBE2;--texto-2:#C8C0B4;--texto-3:#948C84;
   --borde:#222235;--borde-l:#2E2E48;
   --des:#5BC4F0;--rec:#F0A860;--cla:#6ED49A;
-  --verde:#4DB87A;--naranja:#E07040;--rojo:#D85858;--azul:#7AACF0;
+  --verde:#4DB87A;--naranja:#E07040;--azul:#7AACF0;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--texto);font-family:"Outfit",sans-serif;font-size:18px;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(201,146,42,0.06) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 90% 100%,rgba(91,196,240,0.04) 0%,transparent 60%);}
+body{background:var(--bg);color:var(--texto);font-family:"Outfit",sans-serif;font-size:19px;font-weight:400;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(201,146,42,0.07) 0%,transparent 60%),
+  radial-gradient(ellipse 50% 50% at 90% 100%,rgba(91,196,240,0.04) 0%,transparent 60%);}
 .wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 28px 120px;}
 
-/* ── EYEBROW ── */
-.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+/* EYEBROW */
+.eyebrow{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:28px;}
 .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.4),transparent);}
 
-/* ══ HEADER ══ */
-.header{display:flex;align-items:center;gap:20px;padding:36px 0 0;animation:fadeUp .5s ease both;}
-.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(201,146,42,0.3));}
-.header-marca{font-family:"Playfair Display",serif;font-size:20px;font-weight:600;color:var(--texto);line-height:1.2;}
-.header-sub{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:5px;}
+/* HEADER */
+.header{display:flex;align-items:center;gap:22px;padding:36px 0 0;animation:fadeUp .5s ease both;}
+.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
+.header-marca{font-family:"Playfair Display",serif;font-size:22px;font-weight:600;color:var(--texto);line-height:1.2;}
+.header-sub{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:6px;}
 
-/* ══ ZONA A: IDENTIDAD ══ */
+/* ZONA A: IDENTIDAD */
 .zona-a{padding:52px 0 0;animation:fadeUp .6s ease .08s both;}
-.mapa-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:24px;padding:8px 20px 8px 14px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);margin-bottom:22px;}
-.mapa-badge-dot{width:8px;height:8px;background:var(--oro);border-radius:50%;flex-shrink:0;}
-.nombre-h{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,58px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:10px;}
-.fecha-sub{font-size:15px;color:var(--texto-3);}
+.mapa-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:28px;padding:10px 24px 10px 14px;margin-bottom:26px;}
+.mapa-badge-ico{width:44px;height:44px;object-fit:contain;}
+.mapa-badge-txt{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);}
+.nombre-h{font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,62px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:12px;}
+.fecha-sub{font-size:16px;color:var(--texto-3);}
 
-/* ══ ZONA B: NARRATIVA ══ */
-.zona-b{margin-top:52px;animation:fadeUp .6s ease .16s both;}
-.narrativa-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:48px 52px;position:relative;overflow:hidden;}
-.narrativa-card::before{content:"C";position:absolute;top:-10px;left:28px;font-family:"Playfair Display",serif;font-size:140px;line-height:1;color:rgba(201,146,42,0.08);pointer-events:none;}
+/* ZONA B: NARRATIVA */
+.zona-b{margin-top:56px;animation:fadeUp .6s ease .16s both;}
+.narrativa-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:52px 56px;position:relative;overflow:hidden;}
+.narrativa-card::before{content:"C";position:absolute;top:-10px;left:28px;font-family:"Playfair Display",serif;font-size:160px;line-height:1;color:rgba(201,146,42,0.07);pointer-events:none;}
 .narrativa-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
-.narrativa-p{font-family:"Outfit",sans-serif;font-size:19px;font-weight:400;line-height:2;color:var(--texto);margin-bottom:28px;}
+.narrativa-p{font-size:20px;font-weight:400;line-height:2.1;color:var(--texto);margin-bottom:30px;}
 .narrativa-p:last-child{margin-bottom:0;}
-.narrativa-firma{margin-top:32px;padding-top:20px;border-top:1px solid var(--borde);font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);text-transform:uppercase;}
+.narrativa-firma{margin-top:34px;padding-top:22px;border-top:1px solid var(--borde);font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);text-transform:uppercase;}
 
-/* ══ ZONA C: SCORE ══ */
-.zona-c{margin-top:64px;animation:fadeUp .6s ease .24s both;}
-.score-card{background:linear-gradient(135deg,rgba(201,146,42,0.12),rgba(201,146,42,0.04));border:1px solid rgba(201,146,42,0.25);border-radius:24px;padding:40px 44px;position:relative;overflow:hidden;}
+/* ZONA C: SCORE */
+.zona-c{margin-top:68px;animation:fadeUp .6s ease .24s both;}
+.score-card{background:linear-gradient(135deg,rgba(201,146,42,0.12),rgba(201,146,42,0.04));border:1px solid rgba(201,146,42,0.25);border-radius:24px;padding:44px 48px;position:relative;overflow:hidden;}
 .score-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.6),transparent);}
-.score-layout{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;}
-.score-bloque{text-align:center;}
-.score-num{font-family:"Playfair Display",serif;font-size:90px;font-weight:400;line-height:1;color:var(--oro-l);letter-spacing:-3px;}
-.score-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);margin:6px 0 16px;text-transform:uppercase;}
-.nivel-pill{display:inline-block;padding:8px 18px;border-radius:24px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
+.score-layout{display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:start;}
+.score-bloque{text-align:center;padding-top:8px;}
+.score-num{font-family:"Playfair Display",serif;font-size:96px;font-weight:400;line-height:1;color:var(--oro-l);letter-spacing:-3px;}
+.score-lbl{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);margin:8px 0 18px;text-transform:uppercase;}
+.nivel-pill{display:inline-block;padding:10px 22px;border-radius:28px;font-family:"DM Mono",monospace;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
 .nv-EXCELENCIA{background:rgba(78,184,120,0.18);color:#80E0B0;border:1px solid rgba(78,184,120,0.4);}
 .nv-DOMINIO_AVANZADO{background:rgba(201,146,42,0.18);color:var(--oro-l);border:1px solid rgba(201,146,42,0.4);}
 .nv-DOMINIO_INICIAL{background:rgba(122,172,240,0.15);color:var(--azul);border:1px solid rgba(122,172,240,0.35);}
 .nv-MINIMO_ACTIVO{background:rgba(224,112,64,0.15);color:var(--naranja);border:1px solid rgba(224,112,64,0.35);}
-.nv-MINIMO_INCIPIENTE{background:rgba(216,88,88,0.12);color:var(--rojo);border:1px solid rgba(216,88,88,0.3);}
-.score-desc{font-size:17px;color:var(--texto-2);line-height:1.7;margin-bottom:28px;}
-/* Etapas chips */
-.etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.etapa-chip{background:var(--bg3);border:1px solid var(--borde);border-radius:18px;padding:20px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+.nv-MINIMO_INCIPIENTE{background:rgba(216,88,88,0.12);color:#D85858;border:1px solid rgba(216,88,88,0.3);}
+.score-desc{font-size:18px;color:var(--texto-2);line-height:1.8;margin-bottom:32px;}
+.score-desc-extra{font-size:16px;color:var(--texto-3);line-height:1.75;margin-bottom:32px;font-style:italic;padding:16px 20px;background:var(--bg3);border-left:3px solid rgba(201,146,42,0.3);border-radius:0 12px 12px 0;}
+.etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.etapa-chip{background:var(--bg3);border:1px solid var(--borde);border-radius:18px;padding:24px 18px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;transition:border-color .2s;}
 .etapa-chip::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 18px 18px;}
-.ec-des::after{background:var(--des);}
-.ec-rec::after{background:var(--rec);}
-.ec-cla::after{background:var(--cla);}
-.ec-icon{width:100px;height:100px;object-fit:contain;}
-.ec-pct{font-family:"Playfair Display",serif;font-size:36px;font-weight:400;line-height:1;}
-.ec-des .ec-pct{color:var(--des);}
-.ec-rec .ec-pct{color:var(--rec);}
-.ec-cla .ec-pct{color:var(--cla);}
-.ec-nombre{font-size:15px;color:var(--texto-2);font-weight:500;}
+.ec-des::after{background:var(--des);} .ec-rec::after{background:var(--rec);} .ec-cla::after{background:var(--cla);}
+.ec-icon{width:110px;height:110px;object-fit:contain;}
+.ec-pct{font-family:"Playfair Display",serif;font-size:40px;font-weight:400;line-height:1;}
+.ec-des .ec-pct{color:var(--des);} .ec-rec .ec-pct{color:var(--rec);} .ec-cla .ec-pct{color:var(--cla);}
+.ec-nombre{font-size:16px;color:var(--texto-2);font-weight:600;}
 
-/* ══ ZONA D: RADAR + DRILL-DOWN ══ */
-.zona-d{margin-top:64px;animation:fadeUp .6s ease .32s both;}
-.radar-card{background:var(--bg2);border:1px solid var(--borde);border-radius:24px;padding:36px 40px;}
-.radar-wrap{height:480px;width:100%;margin-bottom:32px;}
-/* Riquezas drill-down */
-.riquezas-titulo{font-size:17px;color:var(--texto-2);line-height:1.65;margin-bottom:24px;padding:14px 20px;background:var(--bg3);border-left:3px solid rgba(201,146,42,0.5);border-radius:0 12px 12px 0;}
-.riqueza-grid{display:flex;flex-direction:column;gap:12px;}
-.riqueza-row{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+/* ZONA D: RADAR + DRILL */
+.zona-d{margin-top:68px;animation:fadeUp .6s ease .32s both;}
+.radar-card{background:var(--bg2);border:1px solid var(--borde);border-radius:24px;padding:40px 44px;}
+.radar-wrap{height:500px;width:100%;margin-bottom:36px;}
+.instruccion-drill{font-size:18px;color:var(--texto-2);line-height:1.75;margin-bottom:28px;padding:18px 22px;background:var(--bg3);border-left:3px solid rgba(201,146,42,0.5);border-radius:0 14px 14px 0;}
+.instruccion-drill strong{color:var(--oro-l);font-weight:600;}
+.riqueza-grid{display:flex;flex-direction:column;gap:14px;}
+.riqueza-row{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;overflow:hidden;transition:border-color .2s;}
 .riqueza-row:hover{border-color:var(--borde-l);}
-.riqueza-header{display:flex;align-items:center;gap:16px;padding:18px 22px;}
-.riqueza-icon-big{width:80px;height:80px;object-fit:contain;flex-shrink:0;}
+.riqueza-header{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;}
+.riqueza-icon-big{width:86px;height:86px;object-fit:contain;flex-shrink:0;}
 .riqueza-info{flex:1;}
-.riqueza-nombre{font-size:18px;font-weight:600;color:var(--texto);}
-.riqueza-pct{font-family:"Playfair Display",serif;font-size:28px;font-weight:400;}
-.riqueza-vs-grupo{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--texto-3);text-transform:uppercase;margin-top:2px;}
-.riqueza-toggle{font-family:"DM Mono",monospace;font-size:11px;color:var(--oro);letter-spacing:1px;flex-shrink:0;padding:6px 14px;border-radius:10px;border:1px solid rgba(201,146,42,0.25);background:rgba(201,146,42,0.08);}
-/* Drill-down panel */
-.drill-panel{display:none;padding:0 22px 22px;}
+.riqueza-nombre{font-size:20px;font-weight:700;color:var(--texto);margin-bottom:4px;}
+.riqueza-chip{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.riqueza-pct{font-family:"Playfair Display",serif;font-size:32px;font-weight:400;margin-right:8px;}
+.riqueza-toggle{font-family:"DM Mono",monospace;font-size:11px;color:var(--oro);letter-spacing:1px;flex-shrink:0;padding:8px 16px;border-radius:10px;border:1px solid rgba(201,146,42,0.25);background:rgba(201,146,42,0.08);white-space:nowrap;}
+/* Drill panel */
+.drill-panel{display:none;padding:0 24px 24px;}
 .drill-panel.open{display:block;}
-.drill-divider{height:1px;background:var(--borde);margin-bottom:20px;}
-.drill-barras{margin-bottom:20px;}
-.drill-barra-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
-.drill-barra-lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;width:80px;flex-shrink:0;color:var(--texto-2);}
-.drill-barra-track{flex:1;height:10px;background:var(--bg4);border-radius:5px;position:relative;overflow:visible;}
-.drill-barra-fill{height:100%;border-radius:5px;}
-.drill-barra-bench{position:absolute;top:-4px;width:3px;height:18px;background:rgba(255,255,255,0.4);border-radius:2px;transform:translateX(-50%);}
-.drill-barra-pct{font-family:"DM Mono",monospace;font-size:12px;font-weight:500;width:40px;text-align:right;flex-shrink:0;}
-/* Comportamientos en drill */
-.drill-behs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
-.drill-beh-card{background:var(--bg4);border-radius:12px;padding:14px 16px;border:1px solid var(--borde);}
-.drill-beh-tipo{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.drill-divider{height:1px;background:var(--borde);margin-bottom:22px;}
+.drill-barras{margin-bottom:22px;}
+.drill-barra-row{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.drill-barra-lbl{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;width:88px;flex-shrink:0;color:var(--texto-2);}
+.drill-barra-track{flex:1;height:12px;background:var(--bg4);border-radius:6px;overflow:hidden;}
+.drill-barra-fill{height:100%;border-radius:6px;transition:width .6s ease;}
+.drill-barra-pct{font-family:"DM Mono",monospace;font-size:13px;font-weight:600;width:44px;text-align:right;flex-shrink:0;}
+.drill-behs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
+.drill-beh-card{background:var(--bg4);border-radius:14px;padding:16px 18px;border:1px solid var(--borde);}
+.drill-beh-tipo{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
 .drill-beh-alto .drill-beh-tipo{color:var(--verde);}
 .drill-beh-bajo .drill-beh-tipo{color:var(--naranja);}
-.drill-beh-item{font-size:14px;color:var(--texto);margin-bottom:4px;display:flex;align-items:flex-start;gap:8px;}
-.drill-beh-item::before{content:"";width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
-.drill-beh-alto .drill-beh-item::before{background:var(--verde);}
-.drill-beh-bajo .drill-beh-item::before{background:var(--naranja);}
-.drill-beh-delta{font-family:"DM Mono",monospace;font-size:11px;font-weight:600;margin-left:auto;flex-shrink:0;}
+.drill-beh-item{font-size:15px;color:var(--texto);margin-bottom:6px;display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
+.drill-beh-bullet{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.drill-beh-alto .drill-beh-bullet{background:var(--verde);}
+.drill-beh-bajo .drill-beh-bullet{background:var(--naranja);}
+.drill-beh-delta{font-family:"DM Mono",monospace;font-size:12px;font-weight:700;margin-left:auto;flex-shrink:0;}
 .drill-beh-alto .drill-beh-delta{color:var(--verde);}
 .drill-beh-bajo .drill-beh-delta{color:var(--naranja);}
+/* Tali card por riqueza */
+.drill-tali{background:linear-gradient(135deg,rgba(201,146,42,0.07),rgba(201,146,42,0.03));border:1px solid rgba(201,146,42,0.2);border-radius:14px;padding:22px 24px;position:relative;}
+.drill-tali::before{content:"C";position:absolute;top:2px;left:14px;font-family:"Playfair Display",serif;font-size:60px;line-height:1;color:rgba(201,146,42,0.15);}
+.drill-tali-p{font-size:16px;color:var(--texto-2);line-height:1.85;padding-left:8px;}
+.drill-tali-firma{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1.5px;color:var(--texto-3);text-transform:uppercase;margin-top:12px;}
 
-/* ══ ZONA E: SEMANA ══ */
-.zona-e{margin-top:64px;animation:fadeUp .6s ease .40s both;}
-.semana-card{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--borde-l);border-radius:24px;padding:40px 44px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;position:relative;overflow:hidden;}
+/* ZONA E: SEMANA */
+.zona-e{margin-top:68px;animation:fadeUp .6s ease .40s both;}
+.semana-card{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--borde-l);border-radius:24px;padding:44px 48px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;position:relative;overflow:hidden;}
 .semana-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--oro),transparent 80%);}
-.sem-num-bloque{text-align:center;min-width:80px;padding-top:4px;}
-.sem-num-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin-bottom:4px;}
-.sem-numero{font-family:"Playfair Display",serif;font-size:72px;font-weight:400;line-height:1;color:var(--oro-l);}
-.sem-fase{display:inline-block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:12px;margin-bottom:14px;}
+.sem-num-bloque{text-align:center;min-width:88px;}
+.sem-num-label{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin-bottom:6px;}
+.sem-numero{font-family:"Playfair Display",serif;font-size:80px;font-weight:400;line-height:1;color:var(--oro-l);}
+.sem-fase{display:inline-block;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:14px;margin-bottom:16px;}
 .sf-DES{background:rgba(91,196,240,0.12);color:var(--des);border:1px solid rgba(91,196,240,0.3);}
 .sf-REC{background:rgba(240,168,96,0.12);color:var(--rec);border:1px solid rgba(240,168,96,0.3);}
 .sf-CLA{background:rgba(110,212,154,0.12);color:var(--cla);border:1px solid rgba(110,212,154,0.3);}
 .sf-INT{background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.3);}
-.sem-nombre{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--texto);margin-bottom:14px;line-height:1.3;}
-.sem-frase{font-size:17px;line-height:1.8;color:var(--texto-2);}
+.sem-nombre{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;color:var(--texto);margin-bottom:16px;line-height:1.3;}
+.sem-frase{font-size:18px;line-height:1.85;color:var(--texto-2);}
 
-/* ══ ZONA F: MEDICIONES ══ */
-.zona-f{margin-top:64px;animation:fadeUp .6s ease .48s both;}
-.mediciones-intro{font-size:17px;color:var(--texto-2);line-height:1.7;margin-bottom:28px;}
-.mediciones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.med-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:28px 24px 22px;position:relative;overflow:hidden;}
+/* ZONA F: MEDICIONES */
+.zona-f{margin-top:68px;animation:fadeUp .6s ease .48s both;}
+.mediciones-intro{font-size:18px;color:var(--texto-2);line-height:1.8;margin-bottom:30px;}
+.mediciones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.med-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:30px 24px 24px;position:relative;overflow:hidden;}
 .med-card.locked{opacity:0.55;cursor:pointer;transition:opacity .2s;}
-.med-card.locked:hover{opacity:0.80;}
-.med-icon-big{font-size:40px;margin-bottom:14px;display:block;}
-.med-nombre{font-family:"Playfair Display",serif;font-size:20px;font-weight:400;color:var(--texto);margin-bottom:6px;}
-.med-dia{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--oro);text-transform:uppercase;margin-bottom:12px;}
-.med-desc{font-size:15px;color:var(--texto-2);line-height:1.6;margin-bottom:14px;}
-.med-lock{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--texto-3);background:var(--bg3);border:1px solid var(--borde);border-radius:12px;padding:6px 14px;}
-.med-activo{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--verde);background:rgba(77,184,122,0.10);border:1px solid rgba(77,184,122,0.28);border-radius:12px;padding:6px 14px;}
-#locked-msg{display:none;margin-top:18px;padding:16px 20px;background:var(--bg3);border:1px solid var(--borde-l);border-radius:14px;font-size:15px;color:var(--texto-2);line-height:1.65;text-align:center;}
+.med-card.locked:hover{opacity:0.82;}
+.med-icon-img{width:70px;height:70px;object-fit:contain;margin-bottom:16px;display:block;}
+.med-nombre{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--texto);margin-bottom:6px;}
+.med-dia{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--oro);text-transform:uppercase;margin-bottom:14px;}
+.med-desc{font-size:16px;color:var(--texto-2);line-height:1.65;margin-bottom:16px;}
+.med-lock{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--texto-3);background:var(--bg3);border:1px solid var(--borde);border-radius:12px;padding:7px 14px;}
+.med-activo{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--verde);background:rgba(77,184,122,0.10);border:1px solid rgba(77,184,122,0.28);border-radius:12px;padding:7px 14px;}
+#locked-msg{display:none;margin-top:20px;padding:18px 22px;background:var(--bg3);border:1px solid var(--borde-l);border-radius:14px;font-size:16px;color:var(--texto-2);line-height:1.7;text-align:center;}
 
 /* FOOTER */
-.footer{margin-top:72px;padding-top:28px;border-top:1px solid var(--borde);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
-.footer-marca{font-family:"Playfair Display",serif;font-size:15px;color:var(--oro);}
+.footer{margin-top:72px;padding-top:28px;border-top:1px solid var(--borde);}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:12px;}
+.footer-marca{font-family:"Playfair Display",serif;font-size:16px;color:var(--oro);}
 .footer-v{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);text-transform:uppercase;}
+.footer-legal{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1.5px;color:var(--texto-3);text-transform:uppercase;text-align:center;opacity:0.6;}
 
 /* RESPONSIVE */
-@media(max-width:680px){
+@media(max-width:700px){
   body{font-size:17px;}
   .narrativa-card{padding:32px 24px;}
-  .narrativa-p{font-size:17px;}
-  .score-layout{grid-template-columns:1fr;}
-  .etapas-grid{grid-template-columns:1fr;gap:10px;}
+  .narrativa-p{font-size:18px;}
+  .score-layout{grid-template-columns:1fr;text-align:center;}
+  .etapas-grid{grid-template-columns:1fr;gap:12px;}
   .semana-card{grid-template-columns:1fr;text-align:center;}
   .mediciones-grid{grid-template-columns:1fr;}
   .drill-behs{grid-template-columns:1fr;}
-  .radar-wrap{height:340px;}
+  .radar-wrap{height:360px;}
 }
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
 <!-- HEADER -->
-<div class="header">
-  <img src="logo-conexion-vital.png" class="header-logo" alt="Conexión Vital">
+<header class="header">
+  <img src="logo-conexion-vital.png" class="header-logo" alt="Conexion Vital">
   <div>
     <div class="header-marca">Conexión Vital · Segundo Amanecer</div>
     <div class="header-sub">La Senda Interior · 90 Días de Claridad y Vitalidad</div>
   </div>
-</div>
+</header>
 
-<!-- ZONA A: IDENTIDAD -->
-<div class="zona-a">
-  <div class="mapa-badge"><span class="mapa-badge-dot"></span>Mi Mapa Vital · Línea Base</div>
+<!-- ZONA A -->
+<section class="zona-a">
+  <div class="mapa-badge">
+    <img src="mapa-vital.png" class="mapa-badge-ico" alt="Mi Mapa Vital">
+    <span class="mapa-badge-txt">Mi Mapa Vital · Línea Base</span>
+  </div>
   <div class="nombre-h" id="nombre-display">Caminante</div>
   <div class="fecha-sub" id="fecha-display">Cargando...</div>
-</div>
+</section>
 
 <!-- ZONA B: NARRATIVA -->
-<div class="zona-b">
-  <div class="eyebrow">Tu Mapa · Lo que revela de ti</div>
+<section class="zona-b">
+  <div class="eyebrow">Tu Mapa · Lo que Revela de Ti</div>
   <div class="narrativa-card">
     <div id="narrativa-body">
-      <p class="narrativa-p" style="color:var(--texto-2);font-size:17px;font-weight:300;">
+      <p class="narrativa-p" style="color:var(--texto-2);font-weight:300;">
         Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
       </p>
     </div>
     <div class="narrativa-firma" id="narrativa-firma" style="display:none">
-      Generado por el Arquitecto de Sistemas de Transición · Conexión Vital
+      Generado por el Sistema de Arquitectura de Transición · Conexión Vital · Segundo Amanecer
     </div>
   </div>
-</div>
+</section>
 
 <!-- ZONA C: SCORE -->
-<div class="zona-c">
+<section class="zona-c">
   <div class="eyebrow">Tu Nivel de Consciencia Activa Hoy</div>
   <div class="score-card">
     <div class="score-layout">
       <div class="score-bloque">
         <div class="score-num" id="score-num">--</div>
-        <div class="score-label">integración actual</div>
+        <div class="score-lbl">integración actual</div>
         <div class="nivel-pill" id="nivel-pill">—</div>
       </div>
       <div>
-        <p class="score-desc" id="score-desc">Este número refleja qué tan integrados están tus comportamientos en las 5 Riquezas Vitales en tu vida hoy.</p>
+        <p class="score-desc" id="score-desc">...</p>
+        <p class="score-desc-extra" id="score-extra">...</p>
         <div class="etapas-grid">
           <div class="etapa-chip ec-des">
             <img src="etapa-despertar.png" class="ec-icon" alt="Despertar">
@@ -221,7 +228,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
             <div class="ec-nombre">Despertar</div>
           </div>
           <div class="etapa-chip ec-rec">
-            <img src="etapa-reconciliacion.png" class="ec-icon" alt="Reconciliación">
+            <img src="etapa-reconciliacion.png" class="ec-icon" alt="Reconciliacion">
             <div class="ec-pct" id="pct-rec">--</div>
             <div class="ec-nombre">Reconciliación</div>
           </div>
@@ -234,22 +241,22 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ZONA D: RADAR + RIQUEZAS DRILL-DOWN -->
-<div class="zona-d">
+<!-- ZONA D: RADAR + RIQUEZAS -->
+<section class="zona-d">
   <div class="eyebrow">Tus 5 Riquezas Vitales · Explora tu Mapa</div>
   <div class="radar-card">
     <div class="radar-wrap"><canvas id="radarChart"></canvas></div>
-    <p class="riquezas-titulo">
-      Toca cada Riqueza para ver tu resultado detallado — cómo estás tú, cómo está el grupo y cuál es el punto de referencia. Sin comparaciones que juzguen: solo información que ilumina.
+    <p class="instruccion-drill">
+      <strong>Toca el nombre de cada Riqueza</strong> para ver tu resultado detallado: cómo estás tú, cómo está el grupo y cuál es el punto de referencia. No hay comparaciones que juzguen — solo información que ilumina tu camino.
     </p>
     <div class="riqueza-grid" id="riqueza-grid"></div>
   </div>
-</div>
+</section>
 
 <!-- ZONA E: SEMANA -->
-<div class="zona-e">
+<section class="zona-e">
   <div class="eyebrow">Tu Siguiente Paso · La Senda Interior</div>
   <div class="semana-card">
     <div class="sem-num-bloque">
@@ -262,284 +269,381 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="sem-frase" id="sem-frase">...</div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ZONA F: MEDICIONES -->
-<div class="zona-f">
+<section class="zona-f">
   <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
   <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
   <div class="mediciones-grid">
     <div class="med-card">
-      <span class="med-icon-big">🗺️</span>
+      <img src="mapa-vital.png" class="med-icon-img" alt="Mi Mapa Vital">
       <div class="med-nombre">Mi Mapa Vital</div>
       <div class="med-dia">Día 1 · Línea Base</div>
       <div class="med-desc">Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.</div>
       <div class="med-activo">● Activo ahora</div>
     </div>
     <div class="med-card locked" onclick="showLocked()">
-      <span class="med-icon-big">🔒</span>
+      <img src="mapa-vital.png" class="med-icon-img" alt="Mi Pulso" style="opacity:0.4;filter:grayscale(1)">
       <div class="med-nombre">Mi Pulso</div>
       <div class="med-dia">Día 45 · Revisión Intermedia</div>
       <div class="med-desc">¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.</div>
       <div class="med-lock">🔒 Se desbloquea en Día 45</div>
     </div>
     <div class="med-card locked" onclick="showLocked()">
-      <span class="med-icon-big">🔒</span>
+      <img src="mapa-vital.png" class="med-icon-img" alt="Mi Cosecha" style="opacity:0.4;filter:grayscale(1)">
       <div class="med-nombre">Mi Cosecha</div>
       <div class="med-dia">Día 90 · Cierre del Programa</div>
       <div class="med-desc">¿Qué se integró? El antes y después de tu transformación en un solo mapa.</div>
       <div class="med-lock">🔒 Se desbloquea en Día 90</div>
     </div>
   </div>
-  <div id="locked-msg">🔒 Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
-</div>
+  <div id="locked-msg">Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
+</section>
 
-<div class="footer">
-  <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
-  <div class="footer-v">Mi Mapa Vital V5.0 · Jesús Trejo Álvarez</div>
-</div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
+    <div class="footer-v">Mi Mapa Vital V6.0</div>
+  </div>
+  <div class="footer-legal">© 2026 Conexión Vital · Todos los derechos reservados · Documento confidencial · Uso personal exclusivo</div>
+</footer>
 
-</div><!-- /wrap -->
+</div>
 
 <script>
-// ═══════════════════════════════════════════════
-// MI MAPA VITAL V5.0
-// Conexión Vital – Segundo Amanecer
-// ═══════════════════════════════════════════════
-const UP=new URLSearchParams(window.location.search);
-const nv=k=>{const v=UP.get(k);return v!==null?parseFloat(v):0;};
-const sv=(k,d)=>UP.get(k)?decodeURIComponent(UP.get(k)):d;
+// ══════════════════════════════════════════
+// MI MAPA VITAL V6.0
+// Conexión Vital — Segundo Amanecer
+// ══════════════════════════════════════════
 
-const P={
-  nombre:sv("n","Caminante"), nivel:sv("nv","DOMINIO_INICIAL"),
-  global:nv("g"), pdes:nv("pdes"), prec:nv("prec"), pcla:nv("pcla"),
-  pfis:nv("pfis"), pmen:nv("pmen"), psoc:nv("psoc"), ptem:nv("ptem"), pfin:nv("pfin"),
+const UP = new URLSearchParams(window.location.search);
+const nv = k => { const v = UP.get(k); return v !== null ? parseFloat(v) : 0; };
+const sv = (k, d) => UP.get(k) ? decodeURIComponent(UP.get(k)) : d;
+
+const P = {
+  nombre: sv("n","Caminante"), nivel: sv("nv","DOMINIO_INICIAL"),
+  global: nv("g"),
+  pdes: nv("pdes"), prec: nv("prec"), pcla: nv("pcla"),
+  pfis: nv("pfis"), pmen: nv("pmen"), psoc: nv("psoc"), ptem: nv("ptem"), pfin: nv("pfin"),
   df:nv("df"),dm:nv("dm"),ds:nv("ds"),dt:nv("dt"),dfi:nv("dfi"),
   rf:nv("rf"),rm:nv("rm"),rs:nv("rs"),rt:nv("rt"),rfi:nv("rfi"),
   cf:nv("cf"),cm:nv("cm"),cs:nv("cs"),ct:nv("ct"),cfi:nv("cfi"),
-  bdf:nv("bdf"),bdm:nv("bdm"),bds:nv("bds"),bdt:nv("bdt"),bdfi:nv("bdfi"),
-  brf:nv("brf"),brm:nv("brm"),brs:nv("brs"),brt:nv("brt"),brfi:nv("brfi"),
-  bcf:nv("bcf"),bcm:nv("bcm"),bcs:nv("bcs"),bct:nv("bct"),bcfi:nv("bcfi"),
   gdf:nv("gdf"),gdm:nv("gdm"),gds:nv("gds"),gdt:nv("gdt"),gdfi:nv("gdfi"),
   grf:nv("grf"),grm:nv("grm"),grs:nv("grs"),grt:nv("grt"),grfi:nv("grfi"),
   gcf:nv("gcf"),gcm:nv("gcm"),gcs:nv("gcs"),gct:nv("gct"),gcfi:nv("gcfi"),
-  na:sv("na",""), semana:Math.min(Math.max(Math.round(nv("semana"))||1,1),13),
+  bdf:nv("bdf"),bdm:nv("bdm"),bds:nv("bds"),bdt:nv("bdt"),bdfi:nv("bdfi"),
+  brf:nv("brf"),brm:nv("brm"),brs:nv("brs"),brt:nv("brt"),brfi:nv("brfi"),
+  bcf:nv("bcf"),bcm:nv("bcm"),bcs:nv("bcs"),bct:nv("bct"),bcfi:nv("bcfi"),
+  na: sv("na",""),
+  semana: Math.min(Math.max(Math.round(nv("semana")) || 1, 1), 13),
 };
 
-// ZONA A
-document.getElementById("nombre-display").textContent=P.nombre;
-document.getElementById("fecha-display").textContent=
-  new Date().toLocaleDateString("es-MX",{year:"numeric",month:"long",day:"numeric"})+" · Mi Mapa Vital · Línea Base";
+// ── ZONA A ──
+document.getElementById("nombre-display").textContent = P.nombre;
+document.getElementById("fecha-display").textContent =
+  new Date().toLocaleDateString("es-MX",{year:"numeric",month:"long",day:"numeric"}) +
+  " · Mi Mapa Vital · Línea Base";
 
-// ZONA B: Narrativa
+// ── ZONA B: Narrativa ──
 (function(){
-  if(!P.na||P.na.length<20)return;
-  const parts=P.na.split("\n\n").map(t=>t.replace(/\n/g," ").trim()).filter(t=>t.length>15);
-  if(!parts.length)return;
-  document.getElementById("narrativa-body").innerHTML=parts.map(p=>`<p class="narrativa-p">${p}</p>`).join("");
-  document.getElementById("narrativa-firma").style.display="block";
+  if (!P.na || P.na.length < 20) return;
+  const parts = P.na.split("
+
+")
+    .map(t => t.replace(/
+/g," ").trim())
+    .filter(t => t.length > 15);
+  if (!parts.length) return;
+  document.getElementById("narrativa-body").innerHTML =
+    parts.map(p => "<p class='narrativa-p'>" + p + "</p>").join("");
+  document.getElementById("narrativa-firma").style.display = "block";
 })();
 
-// ZONA C: Score
-document.getElementById("score-num").textContent=Math.round(P.global)+"%";
-const NH={
-  EXCELENCIA:{l:"Excelencia",d:"El comportamiento es identidad, no esfuerzo. Tus hábitos fluyen de manera natural en cada área de tu vida."},
-  DOMINIO_AVANZADO:{l:"Dominio Avanzado",d:"Los comportamientos forman parte de tu rutina diaria. Aparecen sin necesidad de recordatorios."},
-  DOMINIO_INICIAL:{l:"Consciencia Activa",d:"Los comportamientos emergen con frecuencia y se están consolidando. Estás construyendo desde una base real."},
-  MINIMO_ACTIVO:{l:"Consciencia en Inicio",d:"La consciencia está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó."},
-  MINIMO_INCIPIENTE:{l:"Primer Umbral",d:"El proceso de despertar está comenzando. Este es el punto de partida que hace posible todo lo que sigue."},
+// ── ZONA C: Score ──
+document.getElementById("score-num").textContent = Math.round(P.global) + "%";
+
+const NH = {
+  EXCELENCIA:{
+    l:"Excelencia",
+    d:"Tus comportamientos ya son identidad. No requieren esfuerzo consciente — fluyen de manera natural en cada una de tus 5 Riquezas.",
+    e:"Estás en el nivel más alto del proceso. Significa que los comportamientos que medimos no solo aparecen — forman parte de quién eres. La Senda Interior en este punto es de refinamiento y de transmisión: tu experiencia tiene el poder de iluminar a otros Caminantes."
+  },
+  DOMINIO_AVANZADO:{
+    l:"Dominio Avanzado",
+    d:"Los comportamientos forman parte de tu rutina diaria. Aparecen con consistencia y sin necesidad de recordatorios externos.",
+    e:"Este nivel significa que la mayoría de tus comportamientos ya están integrados — están operando en piloto automático positivo. La Senda Interior aquí trabaja los pocos territorios que aún están en construcción, para que toda tu arquitectura sea sólida en las 5 Riquezas."
+  },
+  DOMINIO_INICIAL:{
+    l:"Consciencia Activa",
+    d:"Los comportamientos emergen con frecuencia y se están consolidando en tu vida. Estás construyendo desde una base real.",
+    e:"Este es el nivel más común entre Caminantes que comienzan La Senda Interior — y es exactamente el punto de partida correcto. No estás empezando de cero: tienes comportamientos que ya funcionan. El programa va a trabajar con lo que ya tienes para fortalecer lo que aún está en proceso."
+  },
+  MINIMO_ACTIVO:{
+    l:"Consciencia en Inicio",
+    d:"La consciencia ya está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó.",
+    e:"Que estés aquí no habla de falta de capacidad — habla de que la vida te trajo a este momento preciso. El Despertar ya ocurrió: te reconociste en el Mapa. La Senda Interior empieza exactamente donde estás, con comportamientos pequeños y sostenibles que van construyendo tu nueva arquitectura de vida."
+  },
+  MINIMO_INCIPIENTE:{
+    l:"Primer Umbral",
+    d:"El proceso de despertar está comenzando. Este punto de partida es lo que hace posible todo lo que sigue.",
+    e:"Estar en el Primer Umbral es el inicio más honesto que existe. Significa que respondiste con verdad absoluta — sin maquillaje. Ese nivel de honestidad es exactamente la materia prima que La Senda Interior necesita para construir algo real y duradero contigo."
+  },
 };
-const nd=NH[P.nivel]||NH["DOMINIO_INICIAL"];
-const pe=document.getElementById("nivel-pill");
-pe.textContent=nd.l; pe.className="nivel-pill nv-"+P.nivel;
-document.getElementById("score-desc").textContent=nd.d;
-document.getElementById("pct-des").textContent=Math.round(P.pdes)+"%";
-document.getElementById("pct-rec").textContent=Math.round(P.prec)+"%";
-document.getElementById("pct-cla").textContent=Math.round(P.pcla)+"%";
 
-// Definición completa 15 celdas con nombres humanos
-const CELDAS=[
-  {id:"DES_FIS",e:"DES",riq:"fisica", nombre:"Escuchas las señales de tu cuerpo",       pct:P.df, gp:P.gdf,b:P.bdf},
-  {id:"DES_MEN",e:"DES",riq:"mental", nombre:"Observas tus pensamientos y emociones",    pct:P.dm, gp:P.gdm,b:P.bdm},
-  {id:"DES_SOC",e:"DES",riq:"social", nombre:"Reconoces el estado de tus vínculos",       pct:P.ds, gp:P.gds,b:P.bds},
-  {id:"DES_TEM",e:"DES",riq:"temporal",nombre:"Eres consciente de cómo usas tu tiempo",  pct:P.dt, gp:P.gdt,b:P.bdt},
-  {id:"DES_FIN",e:"DES",riq:"financiera",nombre:"Tienes claridad de tu realidad financiera",pct:P.dfi,gp:P.gdfi,b:P.bdfi},
-  {id:"REC_FIS",e:"REC",riq:"fisica", nombre:"Haces las paces con tu historia física",    pct:P.rf, gp:P.grf,b:P.brf},
-  {id:"REC_MEN",e:"REC",riq:"mental", nombre:"Integras tus narrativas mentales pasadas",  pct:P.rm, gp:P.grm,b:P.brm},
-  {id:"REC_SOC",e:"REC",riq:"social", nombre:"Sanas vínculos y liberas cargas relacionales",pct:P.rs,gp:P.grs,b:P.brs},
-  {id:"REC_TEM",e:"REC",riq:"temporal",nombre:"Reconcilias la vida que viviste con la que tienes",pct:P.rt,gp:P.grt,b:P.brt},
-  {id:"REC_FIN",e:"REC",riq:"financiera",nombre:"Integras tu historia financiera sin peso",pct:P.rfi,gp:P.grfi,b:P.brfi},
-  {id:"CLA_FIS",e:"CLA",riq:"fisica", nombre:"Diseñas tu vitalidad con intención",        pct:P.cf, gp:P.gcf,b:P.bcf},
-  {id:"CLA_MEN",e:"CLA",riq:"mental", nombre:"Tienes claridad sobre tu mundo interior",   pct:P.cm, gp:P.gcm,b:P.bcm},
-  {id:"CLA_SOC",e:"CLA",riq:"social", nombre:"Eliges conscientemente tus relaciones",     pct:P.cs, gp:P.gcs,b:P.bcs},
-  {id:"CLA_TEM",e:"CLA",riq:"temporal",nombre:"Habitas tu tiempo con propósito real",     pct:P.ct, gp:P.gct,b:P.bct},
-  {id:"CLA_FIN",e:"CLA",riq:"financiera",nombre:"Diseñas tu legado financiero conscientemente",pct:P.cfi,gp:P.gcfi,b:P.bcfi},
+const nd = NH[P.nivel] || NH["DOMINIO_INICIAL"];
+const pe = document.getElementById("nivel-pill");
+pe.textContent = nd.l;
+pe.className = "nivel-pill nv-" + P.nivel;
+document.getElementById("score-desc").textContent = nd.d;
+document.getElementById("score-extra").textContent = nd.e;
+document.getElementById("pct-des").textContent = Math.round(P.pdes) + "%";
+document.getElementById("pct-rec").textContent = Math.round(P.prec) + "%";
+document.getElementById("pct-cla").textContent = Math.round(P.pcla) + "%";
+
+// ── CELDAS 15 ──
+const CELDAS = [
+  {id:"DES_FIS",e:"DES",riq:"fisica",    nombre:"Escuchas las señales de tu cuerpo",              pct:P.df, gp:P.gdf, b:P.bdf},
+  {id:"DES_MEN",e:"DES",riq:"mental",    nombre:"Observas tus pensamientos y emociones",           pct:P.dm, gp:P.gdm, b:P.bdm},
+  {id:"DES_SOC",e:"DES",riq:"social",    nombre:"Reconoces el estado de tus vínculos",              pct:P.ds, gp:P.gds, b:P.bds},
+  {id:"DES_TEM",e:"DES",riq:"temporal",  nombre:"Eres consciente de cómo usas tu tiempo",           pct:P.dt, gp:P.gdt, b:P.bdt},
+  {id:"DES_FIN",e:"DES",riq:"financiera",nombre:"Tienes claridad de tu realidad financiera",        pct:P.dfi,gp:P.gdfi,b:P.bdfi},
+  {id:"REC_FIS",e:"REC",riq:"fisica",    nombre:"Haces las paces con tu historia física",           pct:P.rf, gp:P.grf, b:P.brf},
+  {id:"REC_MEN",e:"REC",riq:"mental",    nombre:"Integras tus narrativas mentales pasadas",         pct:P.rm, gp:P.grm, b:P.brm},
+  {id:"REC_SOC",e:"REC",riq:"social",    nombre:"Sanas vínculos y liberas cargas relacionales",     pct:P.rs, gp:P.grs, b:P.brs},
+  {id:"REC_TEM",e:"REC",riq:"temporal",  nombre:"Reconcilias la vida vivida con la que tienes",     pct:P.rt, gp:P.grt, b:P.brt},
+  {id:"REC_FIN",e:"REC",riq:"financiera",nombre:"Integras tu historia financiera sin peso",          pct:P.rfi,gp:P.grfi,b:P.brfi},
+  {id:"CLA_FIS",e:"CLA",riq:"fisica",    nombre:"Diseñas tu vitalidad con intención",               pct:P.cf, gp:P.gcf, b:P.bcf},
+  {id:"CLA_MEN",e:"CLA",riq:"mental",    nombre:"Tienes claridad sobre tu mundo interior",          pct:P.cm, gp:P.gcm, b:P.bcm},
+  {id:"CLA_SOC",e:"CLA",riq:"social",    nombre:"Eliges conscientemente tus relaciones",            pct:P.cs, gp:P.gcs, b:P.bcs},
+  {id:"CLA_TEM",e:"CLA",riq:"temporal",  nombre:"Habitas tu tiempo con propósito real",             pct:P.ct, gp:P.gct, b:P.bct},
+  {id:"CLA_FIN",e:"CLA",riq:"financiera",nombre:"Diseñas tu legado financiero conscientemente",     pct:P.cfi,gp:P.gcfi,b:P.bcfi},
 ];
 
-// Datos por riqueza
-const gpFis=(P.gdf*.25+P.grf*.40+P.gcf*.35)||45;
-const gpMen=(P.gdm*.25+P.grm*.40+P.gcm*.35)||45;
-const gpSoc=(P.gds*.25+P.grs*.40+P.gcs*.35)||44;
-const gpTem=(P.gdt*.25+P.grt*.40+P.gct*.35)||43;
-const gpFin=(P.gdfi*.25+P.grfi*.40+P.gcfi*.35)||41;
-const bkFis=(P.bdf*.25+P.brf*.40+P.bcf*.35)||55;
-const bkMen=(P.bdm*.25+P.brm*.40+P.bcm*.35)||55;
-const bkSoc=(P.bds*.25+P.brs*.40+P.bcs*.35)||53;
-const bkTem=(P.bdt*.25+P.brt*.40+P.bct*.35)||52;
-const bkFin=(P.bdfi*.25+P.brfi*.40+P.bcfi*.35)||50;
+// ── Promedios por riqueza ──
+const gpFis = (P.gdf*.25+P.grf*.40+P.gcf*.35) || 45;
+const gpMen = (P.gdm*.25+P.grm*.40+P.gcm*.35) || 45;
+const gpSoc = (P.gds*.25+P.grs*.40+P.gcs*.35) || 44;
+const gpTem = (P.gdt*.25+P.grt*.40+P.gct*.35) || 43;
+const gpFin = (P.gdfi*.25+P.grfi*.40+P.gcfi*.35) || 41;
+const bkFis = (P.bdf*.25+P.brf*.40+P.bcf*.35) || 55;
+const bkMen = (P.bdm*.25+P.brm*.40+P.bcm*.35) || 55;
+const bkSoc = (P.bds*.25+P.brs*.40+P.bcs*.35) || 53;
+const bkTem = (P.bdt*.25+P.brt*.40+P.bct*.35) || 52;
+const bkFin = (P.bdfi*.25+P.brfi*.40+P.bcfi*.35) || 50;
 
-const RIQS=[
-  {key:"fisica",   nombre:"Riqueza Física",    ico:"riqueza-fisica.png",    mi:P.pfis,gp:gpFis,bk:bkFis,color:"#F06060"},
-  {key:"mental",   nombre:"Riqueza Mental",    ico:"riqueza-mental.png",    mi:P.pmen,gp:gpMen,bk:bkMen,color:"#7A8CF0"},
-  {key:"social",   nombre:"Riqueza Social",    ico:"riqueza-social.png",    mi:P.psoc,gp:gpSoc,bk:bkSoc,color:"#F0C040"},
-  {key:"temporal", nombre:"Riqueza Temporal",  ico:"riqueza-temporal.png",  mi:P.ptem,gp:gpTem,bk:bkTem,color:"#60D4A0"},
-  {key:"financiera",nombre:"Riqueza Financiera",ico:"riqueza-financiera.png",mi:P.pfin,gp:gpFin,bk:bkFin,color:"#C9922A"},
-];
+// ── Textos Tali Sharot por riqueza ──
+const TALI = {
+  fisica: function(mi, gp, bk) {
+    const d = mi - gp;
+    if (d > 8) return "Tu cuerpo ya recibe atención real. Los comportamientos físicos que tienes integrados son una base sólida — el programa va a profundizar en ellos para que no solo estén presentes, sino que sean fuente de energía y vitalidad sostenida durante el resto de tu recorrido.";
+    if (d < -8) return "Tu cuerpo lleva tiempo esperando ser escuchado con más atención. Este no es un diagnóstico — es una invitación. La Riqueza Física en La Senda Interior no trabaja con disciplina forzada: trabaja con reconexión. Cada semana dedicada a esta riqueza va a construir un puente entre tú y tu cuerpo, uno que dure.";
+    return "Tu relación con tu cuerpo está en un punto de transición real. Los comportamientos físicos aparecen, pero aún no son constantes. El programa va a trabajar exactamente en ese espacio intermedio — no para exigirte más, sino para que lo que ya tienes se consolide de forma natural.";
+  },
+  mental: function(mi, gp, bk) {
+    const d = mi - gp;
+    if (d > 8) return "Tu vida interior ya tiene estructura. La capacidad de observar tus pensamientos y emociones es una de las habilidades más valiosas de la segunda mitad de la vida — y tú ya la tienes. El programa va a acompañarte a usar esa claridad mental para diseñar, no solo para procesar.";
+    if (d < -8) return "El mundo interior puede ser el territorio más desafiante de toda la transición. No porque estés fallando — sino porque nadie nos enseñó a habitarlo con consciencia. La Senda Interior tiene semanas dedicadas específicamente a este trabajo: sin juicio, sin análisis interminable, con herramientas concretas para que tu mente sea tu aliada.";
+    return "Tu mundo mental está en movimiento — hay consciencia, hay momentos de claridad, y también hay momentos donde el ruido interno gana terreno. El programa va a darte ritmos y herramientas para que los momentos de claridad sean cada vez más frecuentes y los de ruido, cada vez más cortos.";
+  },
+  social: function(mi, gp, bk) {
+    const d = mi - gp;
+    if (d > 8) return "Tus vínculos y relaciones ya son un activo en tu vida. La consciencia social que tienes integrada es señal de alguien que ya entendió que las relaciones no se sostienen solas — se cultivan. El programa va a acompañarte a profundizar en esos vínculos y a identificar cuáles están listos para el siguiente capítulo contigo.";
+    if (d < -8) return "Las relaciones de la segunda mitad de la vida necesitan una revisión honesta. No para juzgar el pasado — sino para elegir el futuro. La Senda Interior tiene espacio para explorar qué vínculos nutren, qué vínculos drenan y qué nuevas conexiones estás listo para construir. Este trabajo no se hace solo — se hace caminando.";
+    return "Tus relaciones están en un momento de transición. Hay vínculos importantes, y también hay espacios relacionales que todavía no han encontrado su forma definitiva. El programa va a acompañarte a darle nombre a ese mapa social y a tomar decisiones conscientes sobre él.";
+  },
+  temporal: function(mi, gp, bk) {
+    const d = mi - gp;
+    if (d > 8) return "Tu relación con el tiempo es una fortaleza real. Tienes consciencia de cómo lo habitas — y eso no es menor. En la segunda mitad de la vida, el tiempo deja de ser un recurso infinito y se convierte en el material con el que construyes tu legado. Tú ya estás parado en ese entendimiento.";
+    if (d < -8) return "El tiempo en la segunda mitad de la vida tiene un peso diferente. No es urgencia — es significado. El trabajo en esta riqueza en La Senda Interior no es sobre productividad ni sobre hacer más: es sobre habitar cada semana con mayor intención, para que el tiempo que tienes sea tuyo de verdad.";
+    return "Tu consciencia del tiempo está despertando. Hay momentos donde lo habitas con propósito, y otros donde la inercia toma el control. El programa va a ayudarte a diseñar ritmos que le devuelvan el sentido a tu tiempo — no desde la exigencia, sino desde lo que realmente importa.";
+  },
+  financiera: function(mi, gp, bk) {
+    const d = mi - gp;
+    if (d > 8) return "Tu relación con lo financiero ya tiene claridad y estructura. Eso es inusual y valioso — la mayoría de las personas llegan a la mitad de la vida cargando el peso de decisiones no examinadas. Tú ya empezaste ese proceso. La Senda Interior va a acompañarte a convertir esa claridad en un legado financiero concreto.";
+    if (d < -8) return "La Riqueza Financiera es la que más emociones carga: vergüenza, miedo, orgullo, culpa. Antes de hablar de dinero, La Senda Interior trabaja las emociones que lo rodean. Cuando eso se procesa, la claridad financiera llega de forma natural — y desde ahí se puede diseñar un legado real.";
+    return "Tu mapa financiero está en proceso de construcción. Hay consciencia, pero también hay territorios sin explorar. El programa va a acompañarte a examinar tu historia financiera sin juicio, a entender los patrones que has traído hasta aquí, y a diseñar desde ese entendimiento los próximos capítulos.";
+  }
+};
 
-// ZONA D: Radar
-new Chart(document.getElementById("radarChart").getContext("2d"),{
-  type:"radar",
-  data:{
-    labels:["Física","Mental","Social","Temporal","Financiera"],
-    datasets:[
-      {label:"Tú",data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],
-       fill:true,backgroundColor:"rgba(234,201,124,0.12)",borderColor:"#EAC97C",
-       pointBackgroundColor:"#EAC97C",pointBorderColor:"#08080F",pointBorderWidth:2,
-       pointRadius:7,pointHoverRadius:9,borderWidth:3},
-      {label:"Tu Grupo",data:[gpFis,gpMen,gpSoc,gpTem,gpFin],
-       fill:false,borderColor:"#5BC4F0",borderDash:[7,4],borderWidth:2.5,
-       pointRadius:6,pointBackgroundColor:"#5BC4F0",pointBorderColor:"#08080F",pointBorderWidth:2},
-      {label:"Benchmark",data:[bkFis,bkMen,bkSoc,bkTem,bkFin],
-       fill:false,borderColor:"#6ED49A",borderDash:[2,5],borderWidth:2,
-       pointRadius:5,pointBackgroundColor:"#6ED49A",pointBorderColor:"#08080F",pointBorderWidth:2}
+// ── RADAR ──
+new Chart(document.getElementById("radarChart").getContext("2d"), {
+  type: "radar",
+  data: {
+    labels: ["Física","Mental","Social","Temporal","Financiera"],
+    datasets: [
+      {label:"Tú", data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],
+       fill:true, backgroundColor:"rgba(234,201,124,0.12)", borderColor:"#EAC97C",
+       pointBackgroundColor:"#EAC97C", pointBorderColor:"#08080F", pointBorderWidth:2,
+       pointRadius:8, pointHoverRadius:10, borderWidth:3},
+      {label:"Tu Grupo", data:[gpFis,gpMen,gpSoc,gpTem,gpFin],
+       fill:false, borderColor:"#5BC4F0", borderDash:[7,4], borderWidth:2.5,
+       pointRadius:6, pointBackgroundColor:"#5BC4F0", pointBorderColor:"#08080F", pointBorderWidth:2},
+      {label:"Benchmark", data:[bkFis,bkMen,bkSoc,bkTem,bkFin],
+       fill:false, borderColor:"#6ED49A", borderDash:[2,5], borderWidth:2,
+       pointRadius:5, pointBackgroundColor:"#6ED49A", pointBorderColor:"#08080F", pointBorderWidth:2}
     ]
   },
-  options:{
-    responsive:true,maintainAspectRatio:false,
+  options: {
+    responsive:true, maintainAspectRatio:false,
     scales:{r:{min:0,max:100,ticks:{display:false},
       grid:{color:"rgba(255,255,255,0.07)"},
       angleLines:{color:"rgba(255,255,255,0.07)"},
-      pointLabels:{color:"#F0EBE2",font:{family:"Outfit",size:14,weight:"600"}}}},
+      pointLabels:{color:"#F0EBE2",font:{family:"Outfit",size:15,weight:"600"}}}},
     plugins:{legend:{position:"bottom",labels:{
-      color:"#C8C0B4",font:{family:"Outfit",size:14},
-      boxWidth:20,boxHeight:3,padding:24}}}
+      color:"#C8C0B4",font:{family:"Outfit",size:15},
+      boxWidth:22,boxHeight:3,padding:28}}}
   }
 });
 
-// ZONA D: Drill-down por riqueza
-(function(){
-  const grid=document.getElementById("riqueza-grid");
-  RIQS.forEach(r=>{
-    // Celdas de esta riqueza
-    const celdas=CELDAS.filter(c=>c.riq===r.key);
-    const conDelta=celdas.map(c=>({...c,delta:c.pct-c.gp}));
-    const ord=[...conDelta].sort((a,b)=>b.delta-a.delta);
-    const top2=ord.slice(0,2), bot2=ord.slice(-2).reverse();
-    const d=Math.round(r.mi-r.gp);
-    const chipTxt=d>5?"↑ Por encima de tu grupo":d<-5?"◦ Espacio de crecimiento":"→ Similar al grupo";
-    const chipCol=d>5?"color:#6ED49A":d<-5?"color:#E07040":"color:#7AACF0";
+// ── RIQUEZAS DRILL-DOWN ──
+const RIQS = [
+  {key:"fisica",    nombre:"Riqueza Física",     ico:"riqueza-fisica.png",    mi:P.pfis,gp:gpFis,bk:bkFis,color:"#F06060"},
+  {key:"mental",    nombre:"Riqueza Mental",     ico:"riqueza-mental.png",    mi:P.pmen,gp:gpMen,bk:bkMen,color:"#7A8CF0"},
+  {key:"social",    nombre:"Riqueza Social",     ico:"riqueza-social.png",    mi:P.psoc,gp:gpSoc,bk:bkSoc,color:"#F0C040"},
+  {key:"temporal",  nombre:"Riqueza Temporal",   ico:"riqueza-temporal.png",  mi:P.ptem,gp:gpTem,bk:bkTem,color:"#60D4A0"},
+  {key:"financiera",nombre:"Riqueza Financiera", ico:"riqueza-financiera.png",mi:P.pfin,gp:gpFin,bk:bkFin,color:"#C9922A"},
+];
 
-    const row=document.createElement("div");
-    row.className="riqueza-row";
-    row.innerHTML=`
-      <div class="riqueza-header" onclick="toggleDrill('drill-${r.key}',this)">
-        <img src="${r.ico}" class="riqueza-icon-big" alt="${r.nombre}">
-        <div class="riqueza-info">
-          <div class="riqueza-nombre">${r.nombre}</div>
-          <div class="riqueza-vs-grupo" style="${chipCol}">${chipTxt}</div>
-        </div>
-        <div class="riqueza-pct" style="color:${r.color}">${Math.round(r.mi)}%</div>
-        <div class="riqueza-toggle" id="toggle-${r.key}">Ver detalle ▾</div>
-      </div>
-      <div class="drill-panel" id="drill-${r.key}">
-        <div class="drill-divider"></div>
-        <div class="drill-barras">
-          <div class="drill-barra-row">
-            <span class="drill-barra-lbl" style="color:#EAC97C">Tú</span>
-            <div class="drill-barra-track">
-              <div class="drill-barra-fill" style="width:${Math.round(r.mi)}%;background:${r.color}"></div>
-            </div>
-            <span class="drill-barra-pct" style="color:#EAC97C">${Math.round(r.mi)}%</span>
-          </div>
-          <div class="drill-barra-row">
-            <span class="drill-barra-lbl" style="color:#5BC4F0">Grupo</span>
-            <div class="drill-barra-track">
-              <div class="drill-barra-fill" style="width:${Math.round(r.gp)}%;background:#5BC4F0"></div>
-            </div>
-            <span class="drill-barra-pct" style="color:#5BC4F0">${Math.round(r.gp)}%</span>
-          </div>
-          <div class="drill-barra-row">
-            <span class="drill-barra-lbl" style="color:#6ED49A">Referencia</span>
-            <div class="drill-barra-track">
-              <div class="drill-barra-fill" style="width:${Math.round(r.bk)}%;background:#6ED49A"></div>
-            </div>
-            <span class="drill-barra-pct" style="color:#6ED49A">${Math.round(r.bk)}%</span>
-          </div>
-        </div>
-        <div class="drill-behs">
-          <div class="drill-beh-card drill-beh-alto">
-            <div class="drill-beh-tipo">↑ Tus 2 comportamientos más integrados</div>
-            ${top2.map(c=>`<div class="drill-beh-item">${c.nombre}<span class="drill-beh-delta">+${Math.round(c.delta)}%</span></div>`).join("")}
-          </div>
-          <div class="drill-beh-card drill-beh-bajo">
-            <div class="drill-beh-tipo">◦ Tus 2 territorios con mayor potencial</div>
-            ${bot2.map(c=>`<div class="drill-beh-item">${c.nombre}<span class="drill-beh-delta">${Math.round(c.delta)}%</span></div>`).join("")}
-          </div>
-        </div>
-      </div>`;
+(function(){
+  const grid = document.getElementById("riqueza-grid");
+  RIQS.forEach(function(r) {
+    const celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
+    const conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
+    const ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
+    const top2 = ord.slice(0,2);
+    const bot2 = ord.slice(-2).reverse();
+    const d = Math.round(r.mi - r.gp);
+    const chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
+    const chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
+    const taliTxt = TALI[r.key](r.mi, r.gp, r.bk);
+
+    const topBehs = top2.map(function(c){
+      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>+" + Math.round(c.delta) + "%</span></div>";
+    }).join("");
+    const botBehs = bot2.map(function(c){
+      const val = Math.round(c.delta);
+      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + (val >= 0 ? "+" : "") + val + "%</span></div>";
+    }).join("");
+
+    const row = document.createElement("div");
+    row.className = "riqueza-row";
+    row.innerHTML =
+      "<div class='riqueza-header' onclick='toggleDrill("drill-" + r.key + "","toggle-" + r.key + "")'>" +
+        "<img src='" + r.ico + "' class='riqueza-icon-big' alt='" + r.nombre + "'>" +
+        "<div class='riqueza-info'>" +
+          "<div class='riqueza-nombre'>" + r.nombre + "</div>" +
+          "<div class='riqueza-chip' style='" + chipCol + "'>" + chipTxt + "</div>" +
+        "</div>" +
+        "<div class='riqueza-pct' style='color:" + r.color + "'>" + Math.round(r.mi) + "%</div>" +
+        "<div class='riqueza-toggle' id='toggle-" + r.key + "'>Ver detalle ▾</div>" +
+      "</div>" +
+      "<div class='drill-panel' id='drill-" + r.key + "'>" +
+        "<div class='drill-divider'></div>" +
+        "<div class='drill-barras'>" +
+          "<div class='drill-barra-row'>" +
+            "<span class='drill-barra-lbl' style='color:#EAC97C'>Tú</span>" +
+            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.mi) + "%;background:" + r.color + "'></div></div>" +
+            "<span class='drill-barra-pct' style='color:#EAC97C'>" + Math.round(r.mi) + "%</span>" +
+          "</div>" +
+          "<div class='drill-barra-row'>" +
+            "<span class='drill-barra-lbl' style='color:#5BC4F0'>Grupo</span>" +
+            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.gp) + "%;background:#5BC4F0'></div></div>" +
+            "<span class='drill-barra-pct' style='color:#5BC4F0'>" + Math.round(r.gp) + "%</span>" +
+          "</div>" +
+          "<div class='drill-barra-row'>" +
+            "<span class='drill-barra-lbl' style='color:#6ED49A'>Referencia</span>" +
+            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.bk) + "%;background:#6ED49A'></div></div>" +
+            "<span class='drill-barra-pct' style='color:#6ED49A'>" + Math.round(r.bk) + "%</span>" +
+          "</div>" +
+        "</div>" +
+        "<div class='drill-behs'>" +
+          "<div class='drill-beh-card drill-beh-alto'>" +
+            "<div class='drill-beh-tipo'>↑ Tus 2 comportamientos más integrados</div>" +
+            topBehs +
+          "</div>" +
+          "<div class='drill-beh-card drill-beh-bajo'>" +
+            "<div class='drill-beh-tipo'>◦ Tus 2 territorios con mayor potencial</div>" +
+            botBehs +
+          "</div>" +
+        "</div>" +
+        "<div class='drill-tali'>" +
+          "<p class='drill-tali-p'>" + taliTxt + "</p>" +
+          "<div class='drill-tali-firma'>Tu Caminante en La Senda Interior</div>" +
+        "</div>" +
+      "</div>";
     grid.appendChild(row);
   });
 })();
 
-function toggleDrill(id,header){
-  const panel=document.getElementById(id);
-  const riq=id.replace("drill-","");
-  const toggle=document.getElementById("toggle-"+riq);
-  const isOpen=panel.classList.contains("open");
+function toggleDrill(panelId, toggleId) {
+  const panel = document.getElementById(panelId);
+  const toggle = document.getElementById(toggleId);
+  const isOpen = panel.classList.contains("open");
   panel.classList.toggle("open");
-  toggle.textContent=isOpen?"Ver detalle ▾":"Cerrar ▴";
+  toggle.textContent = isOpen ? "Ver detalle ▾" : "Cerrar ▴";
 }
 
-// ZONA E: Semana
-const SEMS=[null,
-  {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa construirá desde ahí, no contra eso."},
-  {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio."},
-  {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",fr:"Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella."},
-  {n:"Reconciliación · Riqueza Mental",f:"REC",c:"REC_MEN",fr:"El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad."},
-  {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura."},
-  {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre."},
-  {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo es arquitectura."},
-  {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa."},
-  {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo."},
-  {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana se procesan antes de planear."},
-  {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",fr:"Más allá del ahorro: diseñar un legado financiero alineado con quién estás eligiendo ser."},
-  {n:"Repaso Integral · Parte 1",f:"INT",c:null,fr:"Ver el patrón completo que tu Mapa dibujó desde el principio. Mi Pulso se acerca — llegas con claridad."},
-  {n:"Repaso Integral · Comunidad + Retiro 1",f:"INT",c:null,fr:"El programa no termina aquí — se transforma. La comunidad y el primer Retiro son el siguiente capítulo."},
+// ── ZONA E: SEMANA ──
+const SEMS = [null,
+  {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,
+   fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa va a construir desde ahí, no contra eso. El Despertar no es un diagnóstico, es el primer acto de consciencia: reconocerte en el espejo sin juzgar lo que ves."},
+  {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",
+   fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio. No se trata de cambiar el cuerpo — se trata de volver a habitarlo."},
+  {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",
+   fr:"Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella. La claridad física no es un plan de ejercicio — es saber qué tipo de vitalidad quieres vivir en la segunda mitad."},
+  {n:"Reconciliación · Riqueza Mental",f:"REC",c:"REC_MEN",
+   fr:"El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad. Esta semana no buscamos respuestas — buscamos preguntas honestas."},
+  {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",
+   fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura. Tu mente pasa de ser un territorio de ruido a ser un lugar donde puedes vivir con claridad."},
+  {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",
+   fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre — no para terminar vínculos, sino para entender qué lugar ocupa cada persona en tu mapa de vida."},
+  {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",
+   fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo no es accidental — es arquitectura. Esta semana la diseñas con intención."},
+  {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",
+   fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa. Reconciliarse con el tiempo pasado es el primer paso para habitar el presente con plenitud."},
+  {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",
+   fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo — cómo quieres que se sienta tu día a día cuando estás viviendo desde tu mapa, no contra él."},
+  {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",
+   fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana esas emociones se procesan antes de planear cualquier número. Sin ese paso, cualquier plan financiero es construir sobre arena."},
+  {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",
+   fr:"Más allá del ahorro y la inversión: diseñar un legado financiero alineado con quién estás eligiendo ser. El dinero en la segunda mitad de la vida es herramienta de legado — esta semana empieza a tomar esa forma."},
+  {n:"Repaso Integral · La Mirada Completa",f:"INT",c:null,
+   fr:"El mapa completo de tu transformación empieza a ser visible. Esta semana integras lo trabajado en las 5 Riquezas y te preparas para Mi Pulso — tu segunda fotografía. Llegas a ese momento con claridad."},
+  {n:"Integración · Comunidad y Retiro",f:"INT",c:null,
+   fr:"La Senda Interior no termina — se transforma. La comunidad de Caminantes y el primer Retiro son el siguiente capítulo de tu arquitectura de vida. Lo que construiste aquí es la base de todo lo que sigue."},
 ];
-const FL={DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración"};
+
+const FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración"};
+
 (function(){
-  const sem=SEMS[P.semana]; if(!sem)return;
-  document.getElementById("sem-num").textContent=P.semana;
-  const fe=document.getElementById("sem-fase");
-  fe.textContent=FL[sem.f]; fe.className="sem-fase sf-"+sem.f;
-  document.getElementById("sem-nombre").textContent=sem.n;
-  let fr=sem.fr;
-  if(sem.c){
-    const cd=CELDAS.find(x=>x.id===sem.c);
-    if(cd){
-      const pct=Math.round(cd.pct);
-      if(pct>=60) fr="Tu Mapa muestra una base sólida aquí ("+pct+"%). Esta semana vas a profundizar sobre terreno real. "+fr;
-      else if(pct>=35) fr="Tu Mapa señala un territorio en desarrollo ("+pct+"%). Esta semana llega en el momento preciso. "+fr;
-      else fr="Tu Mapa señala aquí uno de los espacios de mayor transformación posible ("+pct+"%). El trabajo de esta semana está diseñado exactamente para esto. "+fr;
+  const sem = SEMS[P.semana];
+  if (!sem) return;
+  document.getElementById("sem-num").textContent = P.semana;
+  const fe = document.getElementById("sem-fase");
+  fe.textContent = FL[sem.f];
+  fe.className = "sem-fase sf-" + sem.f;
+  document.getElementById("sem-nombre").textContent = sem.n;
+  let fr = sem.fr;
+  if (sem.c) {
+    const cd = CELDAS.find(function(x){ return x.id === sem.c; });
+    if (cd) {
+      const pct = Math.round(cd.pct);
+      if (pct >= 60)
+        fr = "Tu Mapa muestra una base sólida en este territorio (" + pct + "%). Esta semana vas a profundizar sobre terreno real — lo que construiste hasta aquí se va a consolidar con lo que el programa tiene preparado para ti. " + fr;
+      else if (pct >= 35)
+        fr = "Tu Mapa señala este territorio en pleno desarrollo (" + pct + "%). Esta semana llega en el momento preciso — cuando hay suficiente consciencia para trabajar, y suficiente espacio para crecer. " + fr;
+      else
+        fr = "Tu Mapa revela que este es uno de tus espacios de mayor transformación posible (" + pct + "%). El trabajo de esta semana fue diseñado exactamente para este tipo de punto de partida. Lo más importante: no estás atrasado — estás en el lugar exacto donde el programa puede hacer su trabajo más profundo. " + fr;
     }
   }
-  document.getElementById("sem-frase").textContent=fr;
+  document.getElementById("sem-frase").textContent = fr;
 })();
 
-function showLocked(){
-  const el=document.getElementById("locked-msg");
-  el.style.display="block";
-  setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"nearest"}),100);
+function showLocked() {
+  const el = document.getElementById("locked-msg");
+  el.style.display = "block";
+  setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
 }
 </script>
 </body>
