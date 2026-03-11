@@ -507,7 +507,8 @@ const RIQS = [
     const conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     const ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
     const top2 = ord.slice(0,2);
-    const bot2 = ord.slice(-2).reverse();
+    const topNombres = top2.map(function(c){ return c.nombre; });
+    const bot2 = ord.filter(function(c){ return topNombres.indexOf(c.nombre) === -1; }).reverse().slice(0,2);
     const d = Math.round(r.mi - r.gp);
     const chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
     const chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
