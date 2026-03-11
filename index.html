@@ -348,12 +348,7 @@ document.getElementById("fecha-display").textContent =
 // ── ZONA B: Narrativa ──
 (function(){
   if (!P.na || P.na.length < 20) return;
-  const parts = P.na.split("
-
-")
-    .map(t => t.replace(/
-/g," ").trim())
-    .filter(t => t.length > 15);
+  const parts = P.na.split("\\n\\n").map(t => t.replace(/\n/g," ").trim()).filter(t => t.length > 15);
   if (!parts.length) return;
   document.getElementById("narrativa-body").innerHTML =
     parts.map(p => "<p class='narrativa-p'>" + p + "</p>").join("");
@@ -529,7 +524,7 @@ const RIQS = [
     const row = document.createElement("div");
     row.className = "riqueza-row";
     row.innerHTML =
-      "<div class='riqueza-header' onclick='toggleDrill("drill-" + r.key + "","toggle-" + r.key + "")'>" +
+      "<div class='riqueza-header' onclick='toggleDrill(\"drill-" + r.key + "\",\"toggle-" + r.key + "\")'>" +
         "<img src='" + r.ico + "' class='riqueza-icon-big' alt='" + r.nombre + "'>" +
         "<div class='riqueza-info'>" +
           "<div class='riqueza-nombre'>" + r.nombre + "</div>" +
