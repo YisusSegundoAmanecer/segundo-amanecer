@@ -4,170 +4,208 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mi Mapa Vital — Conexión Vital</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
-:root{--bg:#090910;--bg2:#10101A;--bg3:#18182A;--bg4:#20203A;--oro:#C9922A;--oro-l:#EAC97C;--texto:#EDE8DF;--texto-2:#BAB2A6;--texto-3:#8C8680;--borde:#252535;--borde-l:#32324A;--des:#72C8F2;--rec:#F2B07A;--cla:#80D6A0;--azul-l:#92BCFF;--verde:#56B98A;--naranja:#E07B3A;--rojo:#E06060;}
-*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--texto);font-family:'Outfit',sans-serif;font-weight:400;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 40% at 5% 5%,rgba(201,146,42,0.07) 0%,transparent 60%),radial-gradient(ellipse 60% 60% at 95% 95%,rgba(72,200,242,0.04) 0%,transparent 60%);}
-.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 24px 100px;}
-.eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:14px;margin-bottom:22px;}
-.eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.35),transparent);}
-.topbar{display:flex;align-items:center;gap:14px;padding:28px 0 0;animation:fadeUp 0.5s ease both;}
-.topbar img{width:48px;height:48px;border-radius:50%;object-fit:contain;flex-shrink:0;}
-.topbar-marca{font-family:'Playfair Display',serif;font-size:15px;font-weight:500;color:var(--texto);line-height:1.2;}
-.topbar-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-top:3px;}
-.zona-a{padding:44px 0 0;animation:fadeUp 0.6s ease 0.08s both;}
-.mapa-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.25);border-radius:20px;padding:5px 14px 5px 10px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--oro-l);margin-bottom:18px;}
-.mapa-badge-dot{width:6px;height:6px;background:var(--oro);border-radius:50%;display:block;}
-.nombre-h{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,50px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:8px;}
-.fecha-sub{font-size:13px;color:var(--texto-3);}
-.zona-b{margin-top:44px;animation:fadeUp 0.6s ease 0.16s both;}
-.narrativa-card{background:linear-gradient(135deg,var(--bg2) 0%,var(--bg3) 100%);border:1px solid var(--borde-l);border-radius:22px;padding:38px 42px;position:relative;overflow:hidden;}
-.narrativa-card::before{content:'"';position:absolute;top:8px;left:26px;font-family:'Playfair Display',serif;font-size:110px;line-height:1;color:rgba(201,146,42,0.09);pointer-events:none;user-select:none;}
-.narrativa-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.45),transparent);}
-.narrativa-p{font-family:'Playfair Display',serif;font-size:16.5px;font-weight:400;line-height:1.9;color:var(--texto);margin-bottom:22px;}
-.narrativa-p:last-child{margin-bottom:0;}
-.narrativa-firma{margin-top:26px;padding-top:18px;border-top:1px solid var(--borde);font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;color:var(--texto-3);text-transform:uppercase;}
-.zona-c{margin-top:56px;animation:fadeUp 0.6s ease 0.24s both;}
-.score-layout{display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center;background:linear-gradient(135deg,rgba(201,146,42,0.10) 0%,rgba(201,146,42,0.03) 100%);border:1px solid rgba(201,146,42,0.22);border-radius:22px;padding:30px 34px;position:relative;overflow:hidden;}
-.score-layout::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
-.score-bloque{text-align:center;min-width:105px;}
-.score-num{font-family:'Playfair Display',serif;font-size:66px;font-weight:400;line-height:1;color:var(--oro-l);letter-spacing:-2px;}
-.score-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--texto-3);margin:4px 0 13px;text-transform:uppercase;}
-.nivel-pill{display:inline-block;padding:5px 13px;border-radius:20px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:500;}
-.nv-EXCELENCIA{background:rgba(86,185,138,0.18);color:#80E0B0;border:1px solid rgba(86,185,138,0.35);}
-.nv-DOMINIO_AVANZADO{background:rgba(201,146,42,0.18);color:var(--oro-l);border:1px solid rgba(201,146,42,0.35);}
-.nv-DOMINIO_INICIAL{background:rgba(146,188,255,0.15);color:var(--azul-l);border:1px solid rgba(146,188,255,0.30);}
-.nv-MINIMO_ACTIVO{background:rgba(224,123,58,0.15);color:var(--naranja);border:1px solid rgba(224,123,58,0.30);}
-.nv-MINIMO_INCIPIENTE{background:rgba(224,96,96,0.12);color:var(--rojo);border:1px solid rgba(224,96,96,0.25);}
-.score-desc{font-size:13.5px;color:var(--texto-2);line-height:1.65;margin-bottom:20px;}
-.etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
-.etapa-chip{background:var(--bg3);border:1px solid var(--borde);border-radius:14px;padding:12px 14px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;gap:6px;}
-.etapa-chip::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;border-radius:0 0 14px 14px;}
-.ec-des::after{background:var(--des);}.ec-rec::after{background:var(--rec);}.ec-cla::after{background:var(--cla);}
-.ec-icon{width:28px;height:28px;object-fit:contain;}
-.ec-pct{font-family:'Playfair Display',serif;font-size:24px;font-weight:400;line-height:1;}
-.ec-des .ec-pct{color:var(--des);}.ec-rec .ec-pct{color:var(--rec);}.ec-cla .ec-pct{color:var(--cla);}
-.ec-nombre{font-size:11.5px;color:var(--texto-2);}
-.zona-d{margin-top:56px;animation:fadeUp 0.6s ease 0.32s both;}
-.highlights-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.highlight-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:26px 28px;position:relative;overflow:hidden;}
-.highlight-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
-.hc-alto::before{background:linear-gradient(180deg,var(--verde),transparent 80%);}
-.hc-espacio::before{background:linear-gradient(180deg,var(--naranja),transparent 80%);}
-.hc-titulo{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
-.hc-alto .hc-titulo{color:var(--verde);}.hc-espacio .hc-titulo{color:var(--naranja);}
-.hc-intro{font-size:12px;color:var(--texto-2);line-height:1.6;margin-bottom:16px;font-style:italic;}
-.beh-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-.beh-item:last-child{border-bottom:none;}
-.beh-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.beh-dot-alto{background:var(--verde);}.beh-dot-espacio{background:var(--naranja);}
-.beh-info{flex:1;min-width:0;}
-.beh-nombre{font-size:12.5px;color:var(--texto);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.beh-riqueza{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--texto-3);text-transform:uppercase;}
-.beh-delta{font-family:'DM Mono',monospace;font-size:10.5px;font-weight:500;flex-shrink:0;}
-.beh-delta-up{color:var(--verde);}.beh-delta-down{color:var(--naranja);}
-.zona-e{margin-top:56px;animation:fadeUp 0.6s ease 0.40s both;}
-.barras-intro{font-size:13px;color:var(--texto-2);line-height:1.65;margin-bottom:22px;padding:13px 18px;background:var(--bg2);border-left:2px solid rgba(201,146,42,0.40);border-radius:0 10px 10px 0;}
-.mapas-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
-.mapa-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:26px;}
-.card-titulo{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:20px;}
-.riq-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
-.riq-tab{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:10px;font-size:11px;color:var(--texto-2);border:1px solid var(--borde);}
-.riq-tab img{width:14px;height:14px;object-fit:contain;}
-.radar-wrap{height:380px;}
-.etapa-bloque{margin-bottom:18px;}.etapa-bloque:last-child{margin-bottom:0;}
-.etapa-bloque-titulo{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding-bottom:7px;margin-bottom:9px;border-bottom:1px solid;display:flex;align-items:center;gap:6px;}
-.etapa-bloque-titulo img{width:14px;height:14px;object-fit:contain;}
-.ebt-des{color:var(--des);border-color:rgba(114,200,242,0.2);}.ebt-rec{color:var(--rec);border-color:rgba(242,176,122,0.2);}.ebt-cla{color:var(--cla);border-color:rgba(128,214,160,0.2);}
-.bar-row{display:flex;align-items:center;gap:9px;margin-bottom:6px;}
-.bar-lbl{font-family:'DM Mono',monospace;font-size:9px;color:var(--texto-2);width:24px;flex-shrink:0;text-transform:uppercase;}
-.bar-track{flex:1;height:6px;background:var(--bg4);border-radius:3px;position:relative;overflow:visible;}
-.bar-fill{height:100%;border-radius:3px;min-width:2px;}
-.bar-bench{position:absolute;top:-3px;width:2px;height:12px;background:rgba(255,255,255,0.28);border-radius:1px;transform:translateX(-50%);}
-.bar-pct{font-family:'DM Mono',monospace;font-size:10px;color:var(--texto-2);width:32px;text-align:right;flex-shrink:0;}
-.comunidad-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:26px 30px;margin-top:18px;}
-.comunidad-intro{font-size:13px;color:var(--texto-2);margin-bottom:18px;line-height:1.6;}
-.com-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-.com-row:last-child{border-bottom:none;}
-.com-riq-cell{display:flex;align-items:center;gap:9px;}
-.com-riq-icon{width:20px;height:20px;object-fit:contain;}
-.com-riq-nombre{font-size:13.5px;color:var(--texto);}
-.com-derecha{display:flex;align-items:center;gap:12px;}
-.com-pct{font-family:'Playfair Display',serif;font-size:22px;color:var(--oro-l);}
-.com-chip{font-family:'DM Mono',monospace;font-size:8.5px;letter-spacing:0.8px;padding:4px 10px;border-radius:10px;text-transform:uppercase;}
-.cc-alto{background:rgba(86,185,138,0.12);color:#80E0B0;border:1px solid rgba(86,185,138,0.25);}
-.cc-medio{background:rgba(146,188,255,0.12);color:var(--azul-l);border:1px solid rgba(146,188,255,0.25);}
-.cc-espacio{background:rgba(224,123,58,0.12);color:var(--naranja);border:1px solid rgba(224,123,58,0.25);}
-.zona-f{margin-top:56px;animation:fadeUp 0.6s ease 0.48s both;}
-.semana-card{background:linear-gradient(135deg,var(--bg3) 0%,var(--bg2) 100%);border:1px solid var(--borde-l);border-radius:22px;padding:32px 36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;position:relative;overflow:hidden;}
-.semana-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--oro),transparent 80%);}
-.sem-num-bloque{text-align:center;min-width:64px;padding-top:4px;}
-.sem-num-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:4px;}
-.sem-numero{font-family:'Playfair Display',serif;font-size:52px;font-weight:400;line-height:1;color:var(--oro-l);}
-.sem-fase{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:10px;margin-bottom:12px;}
-.sf-DES{background:rgba(114,200,242,0.12);color:var(--des);border:1px solid rgba(114,200,242,0.25);}
-.sf-REC{background:rgba(242,176,122,0.12);color:var(--rec);border:1px solid rgba(242,176,122,0.25);}
-.sf-CLA{background:rgba(128,214,160,0.12);color:var(--cla);border:1px solid rgba(128,214,160,0.25);}
-.sf-INT{background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.25);}
-.sem-nombre{font-family:'Playfair Display',serif;font-size:18px;font-weight:400;color:var(--texto);margin-bottom:12px;line-height:1.3;}
-.sem-frase{font-size:13.5px;line-height:1.75;color:var(--texto-2);}
-.zona-g{margin-top:56px;animation:fadeUp 0.6s ease 0.56s both;}
-.mediciones-intro{font-size:13.5px;color:var(--texto-2);line-height:1.65;margin-bottom:24px;}
-.mediciones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.med-card{background:var(--bg2);border:1px solid var(--borde);border-radius:16px;padding:22px 22px 18px;position:relative;overflow:hidden;}
-.med-card.locked{opacity:0.6;cursor:pointer;transition:opacity 0.2s;}
-.med-card.locked:hover{opacity:0.82;}
-.med-icon{font-size:26px;margin-bottom:10px;display:block;}
-.med-nombre{font-family:'Playfair Display',serif;font-size:15px;font-weight:400;color:var(--texto);margin-bottom:4px;line-height:1.25;}
-.med-dia{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;color:var(--oro);text-transform:uppercase;margin-bottom:10px;}
-.med-desc{font-size:11.5px;color:var(--texto-2);line-height:1.55;margin-bottom:12px;}
-.med-lock{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--texto-3);background:var(--bg3);border:1px solid var(--borde);border-radius:10px;padding:4px 10px;}
-.med-activo{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--verde);background:rgba(86,185,138,0.10);border:1px solid rgba(86,185,138,0.25);border-radius:10px;padding:4px 10px;}
-#locked-msg{display:none;margin-top:16px;padding:14px 18px;background:var(--bg3);border:1px solid var(--borde-l);border-radius:12px;font-size:13px;color:var(--texto-2);line-height:1.65;text-align:center;}
-.footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--borde);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-.footer-marca{font-family:'Playfair Display',serif;font-size:13px;color:var(--oro);}
-.footer-v{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:1.5px;color:var(--texto-3);text-transform:uppercase;}
-@media(max-width:640px){
-  .narrativa-card{padding:28px 22px;}.narrativa-p{font-size:15.5px;}
-  .score-layout{grid-template-columns:1fr;}.etapas-grid{grid-template-columns:1fr;gap:8px;}
-  .highlights-grid{grid-template-columns:1fr;}.mapas-grid{grid-template-columns:1fr;}
-  .semana-card{grid-template-columns:1fr;text-align:center;}.mediciones-grid{grid-template-columns:1fr;}
+:root{
+  --bg:#08080F;--bg2:#0F0F1C;--bg3:#16162A;--bg4:#1E1E35;
+  --oro:#C9922A;--oro-l:#EAC97C;--oro-xl:#F5E5B5;
+  --texto:#F0EBE2;--texto-2:#C8C0B4;--texto-3:#948C84;
+  --borde:#222235;--borde-l:#2E2E48;
+  --des:#5BC4F0;--rec:#F0A860;--cla:#6ED49A;
+  --verde:#4DB87A;--naranja:#E07040;--rojo:#D85858;--azul:#7AACF0;
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--texto);font-family:"Outfit",sans-serif;font-size:18px;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(201,146,42,0.06) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 90% 100%,rgba(91,196,240,0.04) 0%,transparent 60%);}
+.wrap{position:relative;z-index:1;max-width:1000px;margin:0 auto;padding:0 28px 120px;}
+
+/* ── EYEBROW ── */
+.eyebrow{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.4),transparent);}
+
+/* ══ HEADER ══ */
+.header{display:flex;align-items:center;gap:20px;padding:36px 0 0;animation:fadeUp .5s ease both;}
+.header-logo{width:70px;height:70px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(201,146,42,0.3));}
+.header-marca{font-family:"Playfair Display",serif;font-size:20px;font-weight:600;color:var(--texto);line-height:1.2;}
+.header-sub{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:5px;}
+
+/* ══ ZONA A: IDENTIDAD ══ */
+.zona-a{padding:52px 0 0;animation:fadeUp .6s ease .08s both;}
+.mapa-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:24px;padding:8px 20px 8px 14px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);margin-bottom:22px;}
+.mapa-badge-dot{width:8px;height:8px;background:var(--oro);border-radius:50%;flex-shrink:0;}
+.nombre-h{font-family:"Playfair Display",serif;font-size:clamp(38px,6vw,58px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:10px;}
+.fecha-sub{font-size:15px;color:var(--texto-3);}
+
+/* ══ ZONA B: NARRATIVA ══ */
+.zona-b{margin-top:52px;animation:fadeUp .6s ease .16s both;}
+.narrativa-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:48px 52px;position:relative;overflow:hidden;}
+.narrativa-card::before{content:"C";position:absolute;top:-10px;left:28px;font-family:"Playfair Display",serif;font-size:140px;line-height:1;color:rgba(201,146,42,0.08);pointer-events:none;}
+.narrativa-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
+.narrativa-p{font-family:"Outfit",sans-serif;font-size:19px;font-weight:400;line-height:2;color:var(--texto);margin-bottom:28px;}
+.narrativa-p:last-child{margin-bottom:0;}
+.narrativa-firma{margin-top:32px;padding-top:20px;border-top:1px solid var(--borde);font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);text-transform:uppercase;}
+
+/* ══ ZONA C: SCORE ══ */
+.zona-c{margin-top:64px;animation:fadeUp .6s ease .24s both;}
+.score-card{background:linear-gradient(135deg,rgba(201,146,42,0.12),rgba(201,146,42,0.04));border:1px solid rgba(201,146,42,0.25);border-radius:24px;padding:40px 44px;position:relative;overflow:hidden;}
+.score-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.6),transparent);}
+.score-layout{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;}
+.score-bloque{text-align:center;}
+.score-num{font-family:"Playfair Display",serif;font-size:90px;font-weight:400;line-height:1;color:var(--oro-l);letter-spacing:-3px;}
+.score-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);margin:6px 0 16px;text-transform:uppercase;}
+.nivel-pill{display:inline-block;padding:8px 18px;border-radius:24px;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
+.nv-EXCELENCIA{background:rgba(78,184,120,0.18);color:#80E0B0;border:1px solid rgba(78,184,120,0.4);}
+.nv-DOMINIO_AVANZADO{background:rgba(201,146,42,0.18);color:var(--oro-l);border:1px solid rgba(201,146,42,0.4);}
+.nv-DOMINIO_INICIAL{background:rgba(122,172,240,0.15);color:var(--azul);border:1px solid rgba(122,172,240,0.35);}
+.nv-MINIMO_ACTIVO{background:rgba(224,112,64,0.15);color:var(--naranja);border:1px solid rgba(224,112,64,0.35);}
+.nv-MINIMO_INCIPIENTE{background:rgba(216,88,88,0.12);color:var(--rojo);border:1px solid rgba(216,88,88,0.3);}
+.score-desc{font-size:17px;color:var(--texto-2);line-height:1.7;margin-bottom:28px;}
+/* Etapas chips */
+.etapas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.etapa-chip{background:var(--bg3);border:1px solid var(--borde);border-radius:18px;padding:20px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+.etapa-chip::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 18px 18px;}
+.ec-des::after{background:var(--des);}
+.ec-rec::after{background:var(--rec);}
+.ec-cla::after{background:var(--cla);}
+.ec-icon{width:64px;height:64px;object-fit:contain;}
+.ec-pct{font-family:"Playfair Display",serif;font-size:36px;font-weight:400;line-height:1;}
+.ec-des .ec-pct{color:var(--des);}
+.ec-rec .ec-pct{color:var(--rec);}
+.ec-cla .ec-pct{color:var(--cla);}
+.ec-nombre{font-size:15px;color:var(--texto-2);font-weight:500;}
+
+/* ══ ZONA D: RADAR + DRILL-DOWN ══ */
+.zona-d{margin-top:64px;animation:fadeUp .6s ease .32s both;}
+.radar-card{background:var(--bg2);border:1px solid var(--borde);border-radius:24px;padding:36px 40px;}
+.radar-wrap{height:480px;width:100%;margin-bottom:32px;}
+/* Riquezas drill-down */
+.riquezas-titulo{font-size:17px;color:var(--texto-2);line-height:1.65;margin-bottom:24px;padding:14px 20px;background:var(--bg3);border-left:3px solid rgba(201,146,42,0.5);border-radius:0 12px 12px 0;}
+.riqueza-grid{display:flex;flex-direction:column;gap:12px;}
+.riqueza-row{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
+.riqueza-row:hover{border-color:var(--borde-l);}
+.riqueza-header{display:flex;align-items:center;gap:16px;padding:18px 22px;}
+.riqueza-icon-big{width:52px;height:52px;object-fit:contain;flex-shrink:0;}
+.riqueza-info{flex:1;}
+.riqueza-nombre{font-size:18px;font-weight:600;color:var(--texto);}
+.riqueza-pct{font-family:"Playfair Display",serif;font-size:28px;font-weight:400;}
+.riqueza-vs-grupo{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--texto-3);text-transform:uppercase;margin-top:2px;}
+.riqueza-toggle{font-family:"DM Mono",monospace;font-size:11px;color:var(--oro);letter-spacing:1px;flex-shrink:0;padding:6px 14px;border-radius:10px;border:1px solid rgba(201,146,42,0.25);background:rgba(201,146,42,0.08);}
+/* Drill-down panel */
+.drill-panel{display:none;padding:0 22px 22px;}
+.drill-panel.open{display:block;}
+.drill-divider{height:1px;background:var(--borde);margin-bottom:20px;}
+.drill-barras{margin-bottom:20px;}
+.drill-barra-row{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.drill-barra-lbl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;width:80px;flex-shrink:0;color:var(--texto-2);}
+.drill-barra-track{flex:1;height:10px;background:var(--bg4);border-radius:5px;position:relative;overflow:visible;}
+.drill-barra-fill{height:100%;border-radius:5px;}
+.drill-barra-bench{position:absolute;top:-4px;width:3px;height:18px;background:rgba(255,255,255,0.4);border-radius:2px;transform:translateX(-50%);}
+.drill-barra-pct{font-family:"DM Mono",monospace;font-size:12px;font-weight:500;width:40px;text-align:right;flex-shrink:0;}
+/* Comportamientos en drill */
+.drill-behs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;}
+.drill-beh-card{background:var(--bg4);border-radius:12px;padding:14px 16px;border:1px solid var(--borde);}
+.drill-beh-tipo{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.drill-beh-alto .drill-beh-tipo{color:var(--verde);}
+.drill-beh-bajo .drill-beh-tipo{color:var(--naranja);}
+.drill-beh-item{font-size:14px;color:var(--texto);margin-bottom:4px;display:flex;align-items:flex-start;gap:8px;}
+.drill-beh-item::before{content:"";width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.drill-beh-alto .drill-beh-item::before{background:var(--verde);}
+.drill-beh-bajo .drill-beh-item::before{background:var(--naranja);}
+.drill-beh-delta{font-family:"DM Mono",monospace;font-size:11px;font-weight:600;margin-left:auto;flex-shrink:0;}
+.drill-beh-alto .drill-beh-delta{color:var(--verde);}
+.drill-beh-bajo .drill-beh-delta{color:var(--naranja);}
+
+/* ══ ZONA E: SEMANA ══ */
+.zona-e{margin-top:64px;animation:fadeUp .6s ease .40s both;}
+.semana-card{background:linear-gradient(135deg,var(--bg3),var(--bg2));border:1px solid var(--borde-l);border-radius:24px;padding:40px 44px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;position:relative;overflow:hidden;}
+.semana-card::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--oro),transparent 80%);}
+.sem-num-bloque{text-align:center;min-width:80px;padding-top:4px;}
+.sem-num-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin-bottom:4px;}
+.sem-numero{font-family:"Playfair Display",serif;font-size:72px;font-weight:400;line-height:1;color:var(--oro-l);}
+.sem-fase{display:inline-block;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:12px;margin-bottom:14px;}
+.sf-DES{background:rgba(91,196,240,0.12);color:var(--des);border:1px solid rgba(91,196,240,0.3);}
+.sf-REC{background:rgba(240,168,96,0.12);color:var(--rec);border:1px solid rgba(240,168,96,0.3);}
+.sf-CLA{background:rgba(110,212,154,0.12);color:var(--cla);border:1px solid rgba(110,212,154,0.3);}
+.sf-INT{background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.3);}
+.sem-nombre{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--texto);margin-bottom:14px;line-height:1.3;}
+.sem-frase{font-size:17px;line-height:1.8;color:var(--texto-2);}
+
+/* ══ ZONA F: MEDICIONES ══ */
+.zona-f{margin-top:64px;animation:fadeUp .6s ease .48s both;}
+.mediciones-intro{font-size:17px;color:var(--texto-2);line-height:1.7;margin-bottom:28px;}
+.mediciones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.med-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:28px 24px 22px;position:relative;overflow:hidden;}
+.med-card.locked{opacity:0.55;cursor:pointer;transition:opacity .2s;}
+.med-card.locked:hover{opacity:0.80;}
+.med-icon-big{font-size:40px;margin-bottom:14px;display:block;}
+.med-nombre{font-family:"Playfair Display",serif;font-size:20px;font-weight:400;color:var(--texto);margin-bottom:6px;}
+.med-dia{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--oro);text-transform:uppercase;margin-bottom:12px;}
+.med-desc{font-size:15px;color:var(--texto-2);line-height:1.6;margin-bottom:14px;}
+.med-lock{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--texto-3);background:var(--bg3);border:1px solid var(--borde);border-radius:12px;padding:6px 14px;}
+.med-activo{display:inline-flex;align-items:center;gap:6px;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1px;color:var(--verde);background:rgba(77,184,122,0.10);border:1px solid rgba(77,184,122,0.28);border-radius:12px;padding:6px 14px;}
+#locked-msg{display:none;margin-top:18px;padding:16px 20px;background:var(--bg3);border:1px solid var(--borde-l);border-radius:14px;font-size:15px;color:var(--texto-2);line-height:1.65;text-align:center;}
+
+/* FOOTER */
+.footer{margin-top:72px;padding-top:28px;border-top:1px solid var(--borde);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-marca{font-family:"Playfair Display",serif;font-size:15px;color:var(--oro);}
+.footer-v{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--texto-3);text-transform:uppercase;}
+
+/* RESPONSIVE */
+@media(max-width:680px){
+  body{font-size:17px;}
+  .narrativa-card{padding:32px 24px;}
+  .narrativa-p{font-size:17px;}
+  .score-layout{grid-template-columns:1fr;}
+  .etapas-grid{grid-template-columns:1fr;gap:10px;}
+  .semana-card{grid-template-columns:1fr;text-align:center;}
+  .mediciones-grid{grid-template-columns:1fr;}
+  .drill-behs{grid-template-columns:1fr;}
+  .radar-wrap{height:340px;}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <div class="topbar">
-    <img src="logo-conexion-vital.png" alt="Conexión Vital">
-    <div>
-      <div class="topbar-marca">Conexión Vital · Segundo Amanecer</div>
-      <div class="topbar-sub">La Senda Interior · 90 Días de Claridad y Vitalidad</div>
+<!-- HEADER -->
+<div class="header">
+  <img src="logo-conexion-vital.png" class="header-logo" alt="Conexión Vital">
+  <div>
+    <div class="header-marca">Conexión Vital · Segundo Amanecer</div>
+    <div class="header-sub">La Senda Interior · 90 Días de Claridad y Vitalidad</div>
+  </div>
+</div>
+
+<!-- ZONA A: IDENTIDAD -->
+<div class="zona-a">
+  <div class="mapa-badge"><span class="mapa-badge-dot"></span>Mi Mapa Vital · Línea Base</div>
+  <div class="nombre-h" id="nombre-display">Caminante</div>
+  <div class="fecha-sub" id="fecha-display">Cargando...</div>
+</div>
+
+<!-- ZONA B: NARRATIVA -->
+<div class="zona-b">
+  <div class="eyebrow">Tu Mapa · Lo que revela de ti</div>
+  <div class="narrativa-card">
+    <div id="narrativa-body">
+      <p class="narrativa-p" style="color:var(--texto-2);font-size:17px;font-weight:300;">
+        Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
+      </p>
+    </div>
+    <div class="narrativa-firma" id="narrativa-firma" style="display:none">
+      Generado por el Arquitecto de Sistemas de Transición · Conexión Vital
     </div>
   </div>
+</div>
 
-  <div class="zona-a">
-    <div class="mapa-badge"><span class="mapa-badge-dot"></span>Mi Mapa Vital · Línea Base</div>
-    <div class="nombre-h" id="nombre-display">Caminante</div>
-    <div class="fecha-sub" id="fecha-display">Cargando...</div>
-  </div>
-
-  <div class="zona-b">
-    <div class="eyebrow">Tu Mapa · Lo que revela de ti</div>
-    <div class="narrativa-card">
-      <div id="narrativa-body">
-        <p class="narrativa-p" style="color:var(--texto-2);font-family:'Outfit';font-size:14px;font-weight:300;">Tu lectura personalizada aparecerá aquí una vez que el sistema procese tu Mapa Vital.</p>
-      </div>
-      <div class="narrativa-firma" id="narrativa-firma" style="display:none">Generado por el Arquitecto de Sistemas de Transición · Conexión Vital</div>
-    </div>
-  </div>
-
-  <div class="zona-c">
-    <div class="eyebrow">Tu Nivel de Consciencia Activa Hoy</div>
+<!-- ZONA C: SCORE -->
+<div class="zona-c">
+  <div class="eyebrow">Tu Nivel de Consciencia Activa Hoy</div>
+  <div class="score-card">
     <div class="score-layout">
       <div class="score-bloque">
         <div class="score-num" id="score-num">--</div>
@@ -175,7 +213,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <div class="nivel-pill" id="nivel-pill">—</div>
       </div>
       <div>
-        <p class="score-desc" id="score-desc">Este número refleja el nivel al que tus comportamientos en las 5 Riquezas Vitales están integrados en tu vida hoy.</p>
+        <p class="score-desc" id="score-desc">Este número refleja qué tan integrados están tus comportamientos en las 5 Riquezas Vitales en tu vida hoy.</p>
         <div class="etapas-grid">
           <div class="etapa-chip ec-des">
             <img src="etapa-despertar.png" class="ec-icon" alt="Despertar">
@@ -196,151 +234,317 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       </div>
     </div>
   </div>
-
-  <div class="zona-d">
-    <div class="eyebrow">Tus Comportamientos · El Detalle que Importa</div>
-    <div class="highlights-grid">
-      <div class="highlight-card hc-alto">
-        <div class="hc-titulo">↑ Tus 3 territorios más integrados</div>
-        <p class="hc-intro">Las áreas donde tu comportamiento cotidiano está más por encima del grupo — tu base de fortaleza real para este proceso.</p>
-        <div id="top3-list"></div>
-      </div>
-      <div class="highlight-card hc-espacio">
-        <div class="hc-titulo">◦ Tus 3 territorios con mayor potencial</div>
-        <p class="hc-intro">No son debilidades — son los espacios que el programa va a cartografiar con mayor profundidad en las próximas semanas.</p>
-        <div id="bottom3-list"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="zona-e">
-    <div class="eyebrow">Tus 5 Riquezas Vitales · Mapa Detallado</div>
-    <div class="barras-intro">Cada barra muestra qué tan integrado está ese territorio en tu vida hoy. La línea blanca es el punto de referencia de la comunidad — no un ideal, sino un espejo de dónde están los demás Caminantes.</div>
-    <div class="mapas-grid">
-      <div class="mapa-card">
-        <div class="card-titulo">Radar de Riquezas</div>
-        <div class="riq-tabs">
-          <div class="riq-tab"><img src="riqueza-fisica.png" alt="">Física</div>
-          <div class="riq-tab"><img src="riqueza-mental.png" alt="">Mental</div>
-          <div class="riq-tab"><img src="riqueza-social.png" alt="">Social</div>
-          <div class="riq-tab"><img src="riqueza-temporal.png" alt="">Temporal</div>
-          <div class="riq-tab"><img src="riqueza-financiera.png" alt="">Financiera</div>
-        </div>
-        <div class="radar-wrap"><canvas id="radarChart"></canvas></div>
-      </div>
-      <div class="mapa-card">
-        <div class="card-titulo">Integración por Etapa · Riqueza</div>
-        <div id="barras-container"></div>
-      </div>
-    </div>
-    <div class="comunidad-card">
-      <div class="card-titulo" style="margin-bottom:10px">Tu Perfil en la Comunidad</div>
-      <p class="comunidad-intro">Cómo se distribuye tu energía en las 5 Riquezas comparada con el perfil promedio de los Caminantes de este grupo. No hay posición buena ni mala — hay un mapa único.</p>
-      <div id="comunidad-rows"></div>
-    </div>
-  </div>
-
-  <div class="zona-f">
-    <div class="eyebrow">Tu Siguiente Paso · La Senda Interior</div>
-    <div class="semana-card">
-      <div class="sem-num-bloque">
-        <div class="sem-num-label">Semana</div>
-        <div class="sem-numero" id="sem-num">—</div>
-      </div>
-      <div>
-        <div class="sem-fase" id="sem-fase">—</div>
-        <div class="sem-nombre" id="sem-nombre">Cargando...</div>
-        <div class="sem-frase" id="sem-frase">...</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="zona-g">
-    <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
-    <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
-    <div class="mediciones-grid">
-      <div class="med-card">
-        <span class="med-icon">🗺️</span>
-        <div class="med-nombre">Mi Mapa Vital</div>
-        <div class="med-dia">Día 1 · Línea Base</div>
-        <div class="med-desc">Tu punto de partida. Captura dónde vives hoy en las 5 Riquezas Vitales — la arquitectura de tu segunda mitad comienza aquí.</div>
-        <div class="med-activo">● Activo ahora</div>
-      </div>
-      <div class="med-card locked" onclick="showLocked()">
-        <span class="med-icon">🔒</span>
-        <div class="med-nombre">Mi Pulso</div>
-        <div class="med-dia">Día 45 · Revisión Intermedia</div>
-        <div class="med-desc">¿Qué se está moviendo? Los mismos comportamientos medidos en su siguiente nivel de evolución — a la mitad del camino.</div>
-        <div class="med-lock">🔒 Se desbloquea en Día 45</div>
-      </div>
-      <div class="med-card locked" onclick="showLocked()">
-        <span class="med-icon">🔒</span>
-        <div class="med-nombre">Mi Cosecha</div>
-        <div class="med-dia">Día 90 · Cierre del Programa</div>
-        <div class="med-desc">¿Qué se integró? Tu transformación medida con los comportamientos del Día 90 — el antes y después en un solo mapa.</div>
-        <div class="med-lock">🔒 Se desbloquea en Día 90</div>
-      </div>
-    </div>
-    <div id="locked-msg">🔒 Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
-  </div>
-
-  <div class="footer">
-    <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
-    <div class="footer-v">Mi Mapa Vital V4.1 · Jesús Trejo Álvarez</div>
-  </div>
-
 </div>
+
+<!-- ZONA D: RADAR + RIQUEZAS DRILL-DOWN -->
+<div class="zona-d">
+  <div class="eyebrow">Tus 5 Riquezas Vitales · Explora tu Mapa</div>
+  <div class="radar-card">
+    <div class="radar-wrap"><canvas id="radarChart"></canvas></div>
+    <p class="riquezas-titulo">
+      Toca cada Riqueza para ver tu resultado detallado — cómo estás tú, cómo está el grupo y cuál es el punto de referencia. Sin comparaciones que juzguen: solo información que ilumina.
+    </p>
+    <div class="riqueza-grid" id="riqueza-grid"></div>
+  </div>
+</div>
+
+<!-- ZONA E: SEMANA -->
+<div class="zona-e">
+  <div class="eyebrow">Tu Siguiente Paso · La Senda Interior</div>
+  <div class="semana-card">
+    <div class="sem-num-bloque">
+      <div class="sem-num-label">Semana</div>
+      <div class="sem-numero" id="sem-num">—</div>
+    </div>
+    <div>
+      <div class="sem-fase" id="sem-fase">—</div>
+      <div class="sem-nombre" id="sem-nombre">Cargando...</div>
+      <div class="sem-frase" id="sem-frase">...</div>
+    </div>
+  </div>
+</div>
+
+<!-- ZONA F: MEDICIONES -->
+<div class="zona-f">
+  <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
+  <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
+  <div class="mediciones-grid">
+    <div class="med-card">
+      <span class="med-icon-big">🗺️</span>
+      <div class="med-nombre">Mi Mapa Vital</div>
+      <div class="med-dia">Día 1 · Línea Base</div>
+      <div class="med-desc">Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.</div>
+      <div class="med-activo">● Activo ahora</div>
+    </div>
+    <div class="med-card locked" onclick="showLocked()">
+      <span class="med-icon-big">🔒</span>
+      <div class="med-nombre">Mi Pulso</div>
+      <div class="med-dia">Día 45 · Revisión Intermedia</div>
+      <div class="med-desc">¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.</div>
+      <div class="med-lock">🔒 Se desbloquea en Día 45</div>
+    </div>
+    <div class="med-card locked" onclick="showLocked()">
+      <span class="med-icon-big">🔒</span>
+      <div class="med-nombre">Mi Cosecha</div>
+      <div class="med-dia">Día 90 · Cierre del Programa</div>
+      <div class="med-desc">¿Qué se integró? El antes y después de tu transformación en un solo mapa.</div>
+      <div class="med-lock">🔒 Se desbloquea en Día 90</div>
+    </div>
+  </div>
+  <div id="locked-msg">🔒 Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
+</div>
+
+<div class="footer">
+  <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
+  <div class="footer-v">Mi Mapa Vital V5.0 · Jesús Trejo Álvarez</div>
+</div>
+
+</div><!-- /wrap -->
+
 <script>
+// ═══════════════════════════════════════════════
+// MI MAPA VITAL V5.0
+// Conexión Vital – Segundo Amanecer
+// ═══════════════════════════════════════════════
 const UP=new URLSearchParams(window.location.search);
 const nv=k=>{const v=UP.get(k);return v!==null?parseFloat(v):0;};
-const sv=(k,d='')=>UP.get(k)?decodeURIComponent(UP.get(k)):d;
-const P={nombre:sv('n','Caminante'),nivel:sv('nv','DOMINIO_INICIAL'),global:nv('g'),pdes:nv('pdes'),prec:nv('prec'),pcla:nv('pcla'),pfis:nv('pfis'),pmen:nv('pmen'),psoc:nv('psoc'),ptem:nv('ptem'),pfin:nv('pfin'),df:nv('df'),dm:nv('dm'),ds:nv('ds'),dt:nv('dt'),dfi:nv('dfi'),rf:nv('rf'),rm:nv('rm'),rs:nv('rs'),rt:nv('rt'),rfi:nv('rfi'),cf:nv('cf'),cm:nv('cm'),cs:nv('cs'),ct:nv('ct'),cfi:nv('cfi'),bdf:nv('bdf'),bdm:nv('bdm'),bds:nv('bds'),bdt:nv('bdt'),bdfi:nv('bdfi'),brf:nv('brf'),brm:nv('brm'),brs:nv('brs'),brt:nv('brt'),brfi:nv('brfi'),bcf:nv('bcf'),bcm:nv('bcm'),bcs:nv('bcs'),bct:nv('bct'),bcfi:nv('bcfi'),gdf:nv('gdf'),gdm:nv('gdm'),gds:nv('gds'),gdt:nv('gdt'),gdfi:nv('gdfi'),grf:nv('grf'),grm:nv('grm'),grs:nv('grs'),grt:nv('grt'),grfi:nv('grfi'),gcf:nv('gcf'),gcm:nv('gcm'),gcs:nv('gcs'),gct:nv('gct'),gcfi:nv('gcfi'),na:sv('na',''),semana:Math.min(Math.max(Math.round(nv('semana'))||1,1),13)};
-document.getElementById('nombre-display').textContent=P.nombre;
-document.getElementById('fecha-display').textContent=new Date().toLocaleDateString('es-MX',{year:'numeric',month:'long',day:'numeric'})+' · Mi Mapa Vital · Línea Base';
-(function(){if(!P.na||P.na.length<20)return;const p=P.na.split(/\n\n+|\n(?=[A-ZÁÉÍÓÚÑ])/).map(t=>t.replace(/\n/g,' ').trim()).filter(t=>t.length>15);if(!p.length)return;document.getElementById('narrativa-body').innerHTML=p.map(x=>`<p class="narrativa-p">${x}</p>`).join('');document.getElementById('narrativa-firma').style.display='block';})();
-document.getElementById('score-num').textContent=Math.round(P.global)+'%';
-const NH={EXCELENCIA:{l:'Excelencia',d:'El comportamiento es identidad, no esfuerzo. Se modela a otros naturalmente.'},DOMINIO_AVANZADO:{l:'Dominio Avanzado',d:'Los comportamientos son parte de tu rutina. Se activan sin recordatorio.'},DOMINIO_INICIAL:{l:'Consciencia Activa',d:'Los comportamientos aparecen con frecuencia. Se están consolidando en tu vida.'},MINIMO_ACTIVO:{l:'Consciencia en Inicio',d:'Hay consciencia presente. Los comportamientos aparecen esporádicamente.'},MINIMO_INCIPIENTE:{l:'Primer Umbral',d:'El despertar comienza. La consciencia está emergiendo — ese es el punto de partida.'}};
-const nd=NH[P.nivel]||NH['DOMINIO_INICIAL'];
-const pe=document.getElementById('nivel-pill');pe.textContent=nd.l;pe.className='nivel-pill nv-'+P.nivel;
-document.getElementById('score-desc').textContent=nd.d;
-document.getElementById('pct-des').textContent=Math.round(P.pdes)+'%';
-document.getElementById('pct-rec').textContent=Math.round(P.prec)+'%';
-document.getElementById('pct-cla').textContent=Math.round(P.pcla)+'%';
-const CELDAS=[{id:'DES_FIS',lbl:'Fís',e:'DES',riq:'Física',nombre:'Consciencia de tu energía física',pct:P.df,gp:P.gdf,b:P.bdf},{id:'DES_MEN',lbl:'Men',e:'DES',riq:'Mental',nombre:'Apertura y consciencia mental',pct:P.dm,gp:P.gdm,b:P.bdm},{id:'DES_SOC',lbl:'Soc',e:'DES',riq:'Social',nombre:'Consciencia de tus vínculos',pct:P.ds,gp:P.gds,b:P.bds},{id:'DES_TEM',lbl:'Tem',e:'DES',riq:'Temporal',nombre:'Consciencia de tu relación con el tiempo',pct:P.dt,gp:P.gdt,b:P.bdt},{id:'DES_FIN',lbl:'Fin',e:'DES',riq:'Financiera',nombre:'Consciencia de tu mundo financiero',pct:P.dfi,gp:P.gdfi,b:P.bdfi},{id:'REC_FIS',lbl:'Fís',e:'REC',riq:'Física',nombre:'Reconciliación con tu historia física',pct:P.rf,gp:P.grf,b:P.brf},{id:'REC_MEN',lbl:'Men',e:'REC',riq:'Mental',nombre:'Reconciliación con tus narrativas mentales',pct:P.rm,gp:P.grm,b:P.brm},{id:'REC_SOC',lbl:'Soc',e:'REC',riq:'Social',nombre:'Reconciliación con tus relaciones',pct:P.rs,gp:P.grs,b:P.brs},{id:'REC_TEM',lbl:'Tem',e:'REC',riq:'Temporal',nombre:'Reconciliación con el tiempo vivido',pct:P.rt,gp:P.grt,b:P.brt},{id:'REC_FIN',lbl:'Fin',e:'REC',riq:'Financiera',nombre:'Reconciliación con tu historia financiera',pct:P.rfi,gp:P.grfi,b:P.brfi},{id:'CLA_FIS',lbl:'Fís',e:'CLA',riq:'Física',nombre:'Claridad sobre tu vitalidad y cuerpo',pct:P.cf,gp:P.gcf,b:P.bcf},{id:'CLA_MEN',lbl:'Men',e:'CLA',riq:'Mental',nombre:'Claridad mental y emocional',pct:P.cm,gp:P.gcm,b:P.bcm},{id:'CLA_SOC',lbl:'Soc',e:'CLA',riq:'Social',nombre:'Claridad en tus relaciones futuras',pct:P.cs,gp:P.gcs,b:P.bcs},{id:'CLA_TEM',lbl:'Tem',e:'CLA',riq:'Temporal',nombre:'Claridad sobre cómo habitas el tiempo',pct:P.ct,gp:P.gct,b:P.bct},{id:'CLA_FIN',lbl:'Fin',e:'CLA',riq:'Financiera',nombre:'Claridad y diseño de legado financiero',pct:P.cfi,gp:P.gcfi,b:P.bcfi}];
-(function(){const cd=CELDAS.map(c=>({...c,delta:c.pct-c.gp}));const o=[...cd].sort((a,b)=>b.delta-a.delta);const t3=o.slice(0,3),b3=o.slice(-3).reverse();const mi=(c,t)=>{const s=t==='top'?'+':'';const dc=t==='top'?'beh-delta-up':'beh-delta-down';const dot=t==='top'?'beh-dot beh-dot-alto':'beh-dot beh-dot-espacio';const d=Math.round(c.delta);return `<div class="beh-item"><div class="${dot}"></div><div class="beh-info"><div class="beh-nombre">${c.nombre}</div><div class="beh-riqueza">${c.e} · ${c.riq}</div></div><div class="beh-delta ${dc}">${s}${d}%</div></div>`;};document.getElementById('top3-list').innerHTML=t3.map(c=>mi(c,'top')).join('');document.getElementById('bottom3-list').innerHTML=b3.map(c=>mi(c,'bottom')).join('');})();
-const gpFis=(P.gdf*0.25+P.grf*0.40+P.gcf*0.35)||45,gpMen=(P.gdm*0.25+P.grm*0.40+P.gcm*0.35)||45,gpSoc=(P.gds*0.25+P.grs*0.40+P.gcs*0.35)||44,gpTem=(P.gdt*0.25+P.grt*0.40+P.gct*0.35)||43,gpFin=(P.gdfi*0.25+P.grfi*0.40+P.gcfi*0.35)||41;
-// Benchmark por riqueza (pesos etapa: DES 0.25, REC 0.40, CLA 0.35)
-const bkFis=(P.bdf*0.25+P.brf*0.40+P.bcf*0.35)||50;
-const bkMen=(P.bdm*0.25+P.brm*0.40+P.bcm*0.35)||50;
-const bkSoc=(P.bds*0.25+P.brs*0.40+P.bcs*0.35)||50;
-const bkTem=(P.bdt*0.25+P.brt*0.40+P.bct*0.35)||50;
-const bkFin=(P.bdfi*0.25+P.brfi*0.40+P.bcfi*0.35)||50;
-new Chart(document.getElementById('radarChart').getContext('2d'),{type:'radar',data:{labels:['Física','Mental','Social','Temporal','Financiera'],datasets:[
-  {label:P.nombre.split(' ')[0]||'Tú',data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],fill:true,
-   backgroundColor:'rgba(234,201,124,0.13)',borderColor:'#EAC97C',
-   pointBackgroundColor:'#EAC97C',pointBorderColor:'#090910',pointBorderWidth:2,
-   pointRadius:6,pointHoverRadius:8,borderWidth:2.5},
-  {label:'Grupo',data:[gpFis,gpMen,gpSoc,gpTem,gpFin],fill:false,
-   borderColor:'#72C8F2',borderDash:[6,4],borderWidth:2,
-   pointRadius:5,pointBackgroundColor:'#72C8F2',pointBorderColor:'#090910',pointBorderWidth:2},
-  {label:'Benchmark',data:[bkFis,bkMen,bkSoc,bkTem,bkFin],fill:false,
-   borderColor:'#80D6A0',borderDash:[2,4],borderWidth:2,
-   pointRadius:4,pointBackgroundColor:'#80D6A0',pointBorderColor:'#090910',pointBorderWidth:2}
-]},options:{responsive:true,maintainAspectRatio:false,
-scales:{r:{min:0,max:100,ticks:{display:false},
-  grid:{color:'rgba(255,255,255,0.08)'},
-  angleLines:{color:'rgba(255,255,255,0.08)'},
-  pointLabels:{color:'#EDE8DF',font:{family:'Outfit',size:13,weight:'500'}}}},
-plugins:{legend:{position:'bottom',labels:{color:'#BAB2A6',font:{family:'Outfit',size:12},
-  boxWidth:16,boxHeight:3,padding:20}}}}});
-const ECOL={DES:'var(--des)',REC:'var(--rec)',CLA:'var(--cla)'},ELBL={DES:'Despertar',REC:'Reconciliación',CLA:'Claridad'},EICN={DES:'etapa-despertar.png',REC:'etapa-reconciliacion.png',CLA:'etapa-claridad.png'},ECLS={DES:'ebt-des',REC:'ebt-rec',CLA:'ebt-cla'};
-let bH='',lE=null;CELDAS.forEach(c=>{if(c.e!==lE){if(lE)bH+='</div>';lE=c.e;bH+=`<div class="etapa-bloque"><div class="etapa-bloque-titulo ${ECLS[c.e]}"><img src="${EICN[c.e]}" alt="${ELBL[c.e]}">${ELBL[c.e]}</div>`;}const pct=Math.round(c.pct),b=Math.round(c.b);bH+=`<div class="bar-row"><span class="bar-lbl">${c.lbl}</span><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${ECOL[c.e]}"></div><div class="bar-bench" style="left:${b}%"></div></div><span class="bar-pct">${pct}%</span></div>`;});if(lE)bH+='</div>';document.getElementById('barras-container').innerHTML=bH;
-const RIQS=[{n:'Física',ico:'riqueza-fisica.png',mi:P.pfis,gp:gpFis},{n:'Mental',ico:'riqueza-mental.png',mi:P.pmen,gp:gpMen},{n:'Social',ico:'riqueza-social.png',mi:P.psoc,gp:gpSoc},{n:'Temporal',ico:'riqueza-temporal.png',mi:P.ptem,gp:gpTem},{n:'Financiera',ico:'riqueza-financiera.png',mi:P.pfin,gp:gpFin}];
-document.getElementById('comunidad-rows').innerHTML=RIQS.map(r=>{const d=r.mi-r.gp;let cls,txt;if(d>7){cls='cc-alto';txt='↑ Fortaleza presente';}else if(d<-7){cls='cc-espacio';txt='◦ Territorio a explorar';}else{cls='cc-medio';txt='→ Integración similar';}return `<div class="com-row"><div class="com-riq-cell"><img src="${r.ico}" class="com-riq-icon" alt="${r.n}"><span class="com-riq-nombre">${r.n}</span></div><div class="com-derecha"><span class="com-pct">${Math.round(r.mi)}%</span><span class="com-chip ${cls}">${txt}</span></div></div>`;}).join('');
-const SEMS=[null,{n:'Despertar de las 5 Riquezas Vitales',f:'DES',c:null,fr:'Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa construirá desde ahí, no contra eso.'},{n:'Reconciliación · Riqueza Física',f:'REC',c:'REC_FIS',fr:'El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio.'},{n:'Claridad · Riqueza Física',f:'CLA',c:'CLA_FIS',fr:'Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella.'},{n:'Reconciliación · Riqueza Mental',f:'REC',c:'REC_MEN',fr:'El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad.'},{n:'Claridad · Riqueza Mental',f:'CLA',c:'CLA_MEN',fr:'Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura.'},{n:'Reconciliación · Riqueza Social',f:'REC',c:'REC_SOC',fr:'Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre.'},{n:'Claridad · Riqueza Social',f:'CLA',c:'CLA_SOC',fr:'Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo es arquitectura.'},{n:'Reconciliación · Riqueza Temporal',f:'REC',c:'REC_TEM',fr:'El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa.'},{n:'Claridad · Riqueza Temporal',f:'CLA',c:'CLA_TEM',fr:'Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo.'},{n:'Reconciliación · Riqueza Financiera',f:'REC',c:'REC_FIN',fr:'El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana se procesan antes de planear.'},{n:'Claridad · Riqueza Financiera',f:'CLA',c:'CLA_FIN',fr:'Más allá del ahorro: diseñar un legado financiero alineado con quién estás eligiendo ser.'},{n:'Repaso Integral · Parte 1',f:'INT',c:null,fr:'Ver el patrón completo que tu Mapa dibujó desde el principio. Mi Pulso se acerca — llegas con claridad.'},{n:'Repaso Integral · Comunidad + Retiro 1',f:'INT',c:null,fr:'El programa no termina aquí — se transforma. La comunidad Skool y el primer Retiro son el siguiente capítulo.'}];
-const FL={DES:'Despertar',REC:'Reconciliación',CLA:'Claridad',INT:'Integración'};
-(function(){const sem=SEMS[P.semana];if(!sem)return;document.getElementById('sem-num').textContent=P.semana;const fe=document.getElementById('sem-fase');fe.textContent=FL[sem.f];fe.className='sem-fase sf-'+sem.f;document.getElementById('sem-nombre').textContent=sem.n;let fr=sem.fr;if(sem.c){const cd=CELDAS.find(x=>x.id===sem.c);if(cd){const pct=Math.round(cd.pct);if(pct>=60)fr=`Tu Mapa muestra integración sólida aquí (${pct}%). Esta semana vas a profundizar sobre una base real. `+fr;else if(pct>=35)fr=`Tu Mapa señala un territorio en desarrollo (${pct}%). Esta semana llega en el momento exacto. `+fr;else fr=`Tu Mapa señala aquí uno de los mayores espacios de transformación (${pct}%). Llegas con el mapa que muestra exactamente dónde está el trabajo más importante. `+fr;}}document.getElementById('sem-frase').textContent=fr;})();
-function showLocked(){const el=document.getElementById('locked-msg');el.style.display='block';setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'nearest'}),100);}
+const sv=(k,d)=>UP.get(k)?decodeURIComponent(UP.get(k)):d;
+
+const P={
+  nombre:sv("n","Caminante"), nivel:sv("nv","DOMINIO_INICIAL"),
+  global:nv("g"), pdes:nv("pdes"), prec:nv("prec"), pcla:nv("pcla"),
+  pfis:nv("pfis"), pmen:nv("pmen"), psoc:nv("psoc"), ptem:nv("ptem"), pfin:nv("pfin"),
+  df:nv("df"),dm:nv("dm"),ds:nv("ds"),dt:nv("dt"),dfi:nv("dfi"),
+  rf:nv("rf"),rm:nv("rm"),rs:nv("rs"),rt:nv("rt"),rfi:nv("rfi"),
+  cf:nv("cf"),cm:nv("cm"),cs:nv("cs"),ct:nv("ct"),cfi:nv("cfi"),
+  bdf:nv("bdf"),bdm:nv("bdm"),bds:nv("bds"),bdt:nv("bdt"),bdfi:nv("bdfi"),
+  brf:nv("brf"),brm:nv("brm"),brs:nv("brs"),brt:nv("brt"),brfi:nv("brfi"),
+  bcf:nv("bcf"),bcm:nv("bcm"),bcs:nv("bcs"),bct:nv("bct"),bcfi:nv("bcfi"),
+  gdf:nv("gdf"),gdm:nv("gdm"),gds:nv("gds"),gdt:nv("gdt"),gdfi:nv("gdfi"),
+  grf:nv("grf"),grm:nv("grm"),grs:nv("grs"),grt:nv("grt"),grfi:nv("grfi"),
+  gcf:nv("gcf"),gcm:nv("gcm"),gcs:nv("gcs"),gct:nv("gct"),gcfi:nv("gcfi"),
+  na:sv("na",""), semana:Math.min(Math.max(Math.round(nv("semana"))||1,1),13),
+};
+
+// ZONA A
+document.getElementById("nombre-display").textContent=P.nombre;
+document.getElementById("fecha-display").textContent=
+  new Date().toLocaleDateString("es-MX",{year:"numeric",month:"long",day:"numeric"})+" · Mi Mapa Vital · Línea Base";
+
+// ZONA B: Narrativa
+(function(){
+  if(!P.na||P.na.length<20)return;
+  const parts=P.na.split(/
+
++|
+(?=[A-ZÁÉÍÓÚÑ])/).map(t=>t.replace(/
+/g," ").trim()).filter(t=>t.length>15);
+  if(!parts.length)return;
+  document.getElementById("narrativa-body").innerHTML=parts.map(p=>`<p class="narrativa-p">${p}</p>`).join("");
+  document.getElementById("narrativa-firma").style.display="block";
+})();
+
+// ZONA C: Score
+document.getElementById("score-num").textContent=Math.round(P.global)+"%";
+const NH={
+  EXCELENCIA:{l:"Excelencia",d:"El comportamiento es identidad, no esfuerzo. Tus hábitos fluyen de manera natural en cada área de tu vida."},
+  DOMINIO_AVANZADO:{l:"Dominio Avanzado",d:"Los comportamientos forman parte de tu rutina diaria. Aparecen sin necesidad de recordatorios."},
+  DOMINIO_INICIAL:{l:"Consciencia Activa",d:"Los comportamientos emergen con frecuencia y se están consolidando. Estás construyendo desde una base real."},
+  MINIMO_ACTIVO:{l:"Consciencia en Inicio",d:"La consciencia está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó."},
+  MINIMO_INCIPIENTE:{l:"Primer Umbral",d:"El proceso de despertar está comenzando. Este es el punto de partida que hace posible todo lo que sigue."},
+};
+const nd=NH[P.nivel]||NH["DOMINIO_INICIAL"];
+const pe=document.getElementById("nivel-pill");
+pe.textContent=nd.l; pe.className="nivel-pill nv-"+P.nivel;
+document.getElementById("score-desc").textContent=nd.d;
+document.getElementById("pct-des").textContent=Math.round(P.pdes)+"%";
+document.getElementById("pct-rec").textContent=Math.round(P.prec)+"%";
+document.getElementById("pct-cla").textContent=Math.round(P.pcla)+"%";
+
+// Definición completa 15 celdas con nombres humanos
+const CELDAS=[
+  {id:"DES_FIS",e:"DES",riq:"fisica", nombre:"Escuchas las señales de tu cuerpo",       pct:P.df, gp:P.gdf,b:P.bdf},
+  {id:"DES_MEN",e:"DES",riq:"mental", nombre:"Observas tus pensamientos y emociones",    pct:P.dm, gp:P.gdm,b:P.bdm},
+  {id:"DES_SOC",e:"DES",riq:"social", nombre:"Reconoces el estado de tus vínculos",       pct:P.ds, gp:P.gds,b:P.bds},
+  {id:"DES_TEM",e:"DES",riq:"temporal",nombre:"Eres consciente de cómo usas tu tiempo",  pct:P.dt, gp:P.gdt,b:P.bdt},
+  {id:"DES_FIN",e:"DES",riq:"financiera",nombre:"Tienes claridad de tu realidad financiera",pct:P.dfi,gp:P.gdfi,b:P.bdfi},
+  {id:"REC_FIS",e:"REC",riq:"fisica", nombre:"Haces las paces con tu historia física",    pct:P.rf, gp:P.grf,b:P.brf},
+  {id:"REC_MEN",e:"REC",riq:"mental", nombre:"Integras tus narrativas mentales pasadas",  pct:P.rm, gp:P.grm,b:P.brm},
+  {id:"REC_SOC",e:"REC",riq:"social", nombre:"Sanas vínculos y liberas cargas relacionales",pct:P.rs,gp:P.grs,b:P.brs},
+  {id:"REC_TEM",e:"REC",riq:"temporal",nombre:"Reconcilias la vida que viviste con la que tienes",pct:P.rt,gp:P.grt,b:P.brt},
+  {id:"REC_FIN",e:"REC",riq:"financiera",nombre:"Integras tu historia financiera sin peso",pct:P.rfi,gp:P.grfi,b:P.brfi},
+  {id:"CLA_FIS",e:"CLA",riq:"fisica", nombre:"Diseñas tu vitalidad con intención",        pct:P.cf, gp:P.gcf,b:P.bcf},
+  {id:"CLA_MEN",e:"CLA",riq:"mental", nombre:"Tienes claridad sobre tu mundo interior",   pct:P.cm, gp:P.gcm,b:P.bcm},
+  {id:"CLA_SOC",e:"CLA",riq:"social", nombre:"Eliges conscientemente tus relaciones",     pct:P.cs, gp:P.gcs,b:P.bcs},
+  {id:"CLA_TEM",e:"CLA",riq:"temporal",nombre:"Habitas tu tiempo con propósito real",     pct:P.ct, gp:P.gct,b:P.bct},
+  {id:"CLA_FIN",e:"CLA",riq:"financiera",nombre:"Diseñas tu legado financiero conscientemente",pct:P.cfi,gp:P.gcfi,b:P.bcfi},
+];
+
+// Datos por riqueza
+const gpFis=(P.gdf*.25+P.grf*.40+P.gcf*.35)||45;
+const gpMen=(P.gdm*.25+P.grm*.40+P.gcm*.35)||45;
+const gpSoc=(P.gds*.25+P.grs*.40+P.gcs*.35)||44;
+const gpTem=(P.gdt*.25+P.grt*.40+P.gct*.35)||43;
+const gpFin=(P.gdfi*.25+P.grfi*.40+P.gcfi*.35)||41;
+const bkFis=(P.bdf*.25+P.brf*.40+P.bcf*.35)||55;
+const bkMen=(P.bdm*.25+P.brm*.40+P.bcm*.35)||55;
+const bkSoc=(P.bds*.25+P.brs*.40+P.bcs*.35)||53;
+const bkTem=(P.bdt*.25+P.brt*.40+P.bct*.35)||52;
+const bkFin=(P.bdfi*.25+P.brfi*.40+P.bcfi*.35)||50;
+
+const RIQS=[
+  {key:"fisica",   nombre:"Riqueza Física",    ico:"riqueza-fisica.png",    mi:P.pfis,gp:gpFis,bk:bkFis,color:"#F06060"},
+  {key:"mental",   nombre:"Riqueza Mental",    ico:"riqueza-mental.png",    mi:P.pmen,gp:gpMen,bk:bkMen,color:"#7A8CF0"},
+  {key:"social",   nombre:"Riqueza Social",    ico:"riqueza-social.png",    mi:P.psoc,gp:gpSoc,bk:bkSoc,color:"#F0C040"},
+  {key:"temporal", nombre:"Riqueza Temporal",  ico:"riqueza-temporal.png",  mi:P.ptem,gp:gpTem,bk:bkTem,color:"#60D4A0"},
+  {key:"financiera",nombre:"Riqueza Financiera",ico:"riqueza-financiera.png",mi:P.pfin,gp:gpFin,bk:bkFin,color:"#C9922A"},
+];
+
+// ZONA D: Radar
+new Chart(document.getElementById("radarChart").getContext("2d"),{
+  type:"radar",
+  data:{
+    labels:["Física","Mental","Social","Temporal","Financiera"],
+    datasets:[
+      {label:"Tú",data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],
+       fill:true,backgroundColor:"rgba(234,201,124,0.12)",borderColor:"#EAC97C",
+       pointBackgroundColor:"#EAC97C",pointBorderColor:"#08080F",pointBorderWidth:2,
+       pointRadius:7,pointHoverRadius:9,borderWidth:3},
+      {label:"Tu Grupo",data:[gpFis,gpMen,gpSoc,gpTem,gpFin],
+       fill:false,borderColor:"#5BC4F0",borderDash:[7,4],borderWidth:2.5,
+       pointRadius:6,pointBackgroundColor:"#5BC4F0",pointBorderColor:"#08080F",pointBorderWidth:2},
+      {label:"Benchmark",data:[bkFis,bkMen,bkSoc,bkTem,bkFin],
+       fill:false,borderColor:"#6ED49A",borderDash:[2,5],borderWidth:2,
+       pointRadius:5,pointBackgroundColor:"#6ED49A",pointBorderColor:"#08080F",pointBorderWidth:2}
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:100,ticks:{display:false},
+      grid:{color:"rgba(255,255,255,0.07)"},
+      angleLines:{color:"rgba(255,255,255,0.07)"},
+      pointLabels:{color:"#F0EBE2",font:{family:"Outfit",size:14,weight:"600"}}}},
+    plugins:{legend:{position:"bottom",labels:{
+      color:"#C8C0B4",font:{family:"Outfit",size:14},
+      boxWidth:20,boxHeight:3,padding:24}}}
+  }
+});
+
+// ZONA D: Drill-down por riqueza
+(function(){
+  const grid=document.getElementById("riqueza-grid");
+  RIQS.forEach(r=>{
+    // Celdas de esta riqueza
+    const celdas=CELDAS.filter(c=>c.riq===r.key);
+    const conDelta=celdas.map(c=>({...c,delta:c.pct-c.gp}));
+    const ord=[...conDelta].sort((a,b)=>b.delta-a.delta);
+    const top2=ord.slice(0,2), bot2=ord.slice(-2).reverse();
+    const d=Math.round(r.mi-r.gp);
+    const chipTxt=d>5?"↑ Por encima de tu grupo":d<-5?"◦ Espacio de crecimiento":"→ Similar al grupo";
+    const chipCol=d>5?"color:#6ED49A":d<-5?"color:#E07040":"color:#7AACF0";
+
+    const row=document.createElement("div");
+    row.className="riqueza-row";
+    row.innerHTML=`
+      <div class="riqueza-header" onclick="toggleDrill('drill-${r.key}',this)">
+        <img src="${r.ico}" class="riqueza-icon-big" alt="${r.nombre}">
+        <div class="riqueza-info">
+          <div class="riqueza-nombre">${r.nombre}</div>
+          <div class="riqueza-vs-grupo" style="${chipCol}">${chipTxt}</div>
+        </div>
+        <div class="riqueza-pct" style="color:${r.color}">${Math.round(r.mi)}%</div>
+        <div class="riqueza-toggle" id="toggle-${r.key}">Ver detalle ▾</div>
+      </div>
+      <div class="drill-panel" id="drill-${r.key}">
+        <div class="drill-divider"></div>
+        <div class="drill-barras">
+          <div class="drill-barra-row">
+            <span class="drill-barra-lbl" style="color:#EAC97C">Tú</span>
+            <div class="drill-barra-track">
+              <div class="drill-barra-fill" style="width:${Math.round(r.mi)}%;background:${r.color}"></div>
+            </div>
+            <span class="drill-barra-pct" style="color:#EAC97C">${Math.round(r.mi)}%</span>
+          </div>
+          <div class="drill-barra-row">
+            <span class="drill-barra-lbl" style="color:#5BC4F0">Grupo</span>
+            <div class="drill-barra-track">
+              <div class="drill-barra-fill" style="width:${Math.round(r.gp)}%;background:#5BC4F0"></div>
+            </div>
+            <span class="drill-barra-pct" style="color:#5BC4F0">${Math.round(r.gp)}%</span>
+          </div>
+          <div class="drill-barra-row">
+            <span class="drill-barra-lbl" style="color:#6ED49A">Referencia</span>
+            <div class="drill-barra-track">
+              <div class="drill-barra-fill" style="width:${Math.round(r.bk)}%;background:#6ED49A"></div>
+            </div>
+            <span class="drill-barra-pct" style="color:#6ED49A">${Math.round(r.bk)}%</span>
+          </div>
+        </div>
+        <div class="drill-behs">
+          <div class="drill-beh-card drill-beh-alto">
+            <div class="drill-beh-tipo">↑ Tus 2 comportamientos más integrados</div>
+            ${top2.map(c=>`<div class="drill-beh-item">${c.nombre}<span class="drill-beh-delta">+${Math.round(c.delta)}%</span></div>`).join("")}
+          </div>
+          <div class="drill-beh-card drill-beh-bajo">
+            <div class="drill-beh-tipo">◦ Tus 2 territorios con mayor potencial</div>
+            ${bot2.map(c=>`<div class="drill-beh-item">${c.nombre}<span class="drill-beh-delta">${Math.round(c.delta)}%</span></div>`).join("")}
+          </div>
+        </div>
+      </div>`;
+    grid.appendChild(row);
+  });
+})();
+
+function toggleDrill(id,header){
+  const panel=document.getElementById(id);
+  const riq=id.replace("drill-","");
+  const toggle=document.getElementById("toggle-"+riq);
+  const isOpen=panel.classList.contains("open");
+  panel.classList.toggle("open");
+  toggle.textContent=isOpen?"Ver detalle ▾":"Cerrar ▴";
+}
+
+// ZONA E: Semana
+const SEMS=[null,
+  {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa construirá desde ahí, no contra eso."},
+  {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio."},
+  {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",fr:"Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella."},
+  {n:"Reconciliación · Riqueza Mental",f:"REC",c:"REC_MEN",fr:"El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad."},
+  {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura."},
+  {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre."},
+  {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo es arquitectura."},
+  {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa."},
+  {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo."},
+  {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana se procesan antes de planear."},
+  {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",fr:"Más allá del ahorro: diseñar un legado financiero alineado con quién estás eligiendo ser."},
+  {n:"Repaso Integral · Parte 1",f:"INT",c:null,fr:"Ver el patrón completo que tu Mapa dibujó desde el principio. Mi Pulso se acerca — llegas con claridad."},
+  {n:"Repaso Integral · Comunidad + Retiro 1",f:"INT",c:null,fr:"El programa no termina aquí — se transforma. La comunidad y el primer Retiro son el siguiente capítulo."},
+];
+const FL={DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración"};
+(function(){
+  const sem=SEMS[P.semana]; if(!sem)return;
+  document.getElementById("sem-num").textContent=P.semana;
+  const fe=document.getElementById("sem-fase");
+  fe.textContent=FL[sem.f]; fe.className="sem-fase sf-"+sem.f;
+  document.getElementById("sem-nombre").textContent=sem.n;
+  let fr=sem.fr;
+  if(sem.c){
+    const cd=CELDAS.find(x=>x.id===sem.c);
+    if(cd){
+      const pct=Math.round(cd.pct);
+      if(pct>=60) fr="Tu Mapa muestra una base sólida aquí ("+pct+"%). Esta semana vas a profundizar sobre terreno real. "+fr;
+      else if(pct>=35) fr="Tu Mapa señala un territorio en desarrollo ("+pct+"%). Esta semana llega en el momento preciso. "+fr;
+      else fr="Tu Mapa señala aquí uno de los espacios de mayor transformación posible ("+pct+"%). El trabajo de esta semana está diseñado exactamente para esto. "+fr;
+    }
+  }
+  document.getElementById("sem-frase").textContent=fr;
+})();
+
+function showLocked(){
+  const el=document.getElementById("locked-msg");
+  el.style.display="block";
+  setTimeout(()=>el.scrollIntoView({behavior:"smooth",block:"nearest"}),100);
+}
 </script>
 </body>
 </html>
