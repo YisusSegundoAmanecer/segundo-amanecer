@@ -506,16 +506,17 @@ const RIQS = [
     const celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
     const conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     const ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
-    const top2 = ord.slice(0,2);
+    const top2 = ord.slice(0,1);
     const topNombres = top2.map(function(c){ return c.nombre; });
-    const bot2 = ord.filter(function(c){ return topNombres.indexOf(c.nombre) === -1; }).reverse().slice(0,2);
+    const bot2 = ord.filter(function(c){ return topNombres.indexOf(c.nombre) === -1; }).reverse().slice(0,1);
     const d = Math.round(r.mi - r.gp);
     const chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
     const chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
     const taliTxt = TALI[r.key](r.mi, r.gp, r.bk);
 
     const topBehs = top2.map(function(c){
-      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>+" + Math.round(c.delta) + "%</span></div>";
+      const val = Math.round(c.delta);
+      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + (val >= 0 ? "+" : "") + val + "%</span></div>";
     }).join("");
     const botBehs = bot2.map(function(c){
       const val = Math.round(c.delta);
@@ -555,11 +556,11 @@ const RIQS = [
         "</div>" +
         "<div class='drill-behs'>" +
           "<div class='drill-beh-card drill-beh-alto'>" +
-            "<div class='drill-beh-tipo'>↑ Tus 2 comportamientos más integrados</div>" +
+            "<div class='drill-beh-tipo'>↑ Tu comportamiento más integrado</div>" +
             topBehs +
           "</div>" +
           "<div class='drill-beh-card drill-beh-bajo'>" +
-            "<div class='drill-beh-tipo'>◦ Tus 2 territorios con mayor potencial</div>" +
+            "<div class='drill-beh-tipo'>◦ Tu territorio con mayor potencial</div>" +
             botBehs +
           "</div>" +
         "</div>" +
