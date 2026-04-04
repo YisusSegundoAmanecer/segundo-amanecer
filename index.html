@@ -147,6 +147,35 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .drill-behs{grid-template-columns:1fr;}
   .radar-wrap{height:360px;}
 }
+/* ZONA BRUJULA */
+.zona-brujula{margin-top:68px;animation:fadeUp .6s ease .44s both;}
+.brujula-loading{text-align:center;padding:40px;color:var(--texto-3);font-size:16px;}
+.brujula-current{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:44px 48px;margin-bottom:24px;position:relative;overflow:hidden;}
+.brujula-current::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
+.brujula-meta{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+.brujula-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:14px;background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.3);}
+.brujula-etapa{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto-3);}
+.brujula-fecha{font-family:"DM Mono",monospace;font-size:11px;color:var(--texto-3);margin-left:auto;}
+.brujula-narrativa{font-size:18px;line-height:1.9;color:var(--texto-2);margin-bottom:28px;}
+.brujula-scores{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:8px;}
+.brujula-score-item{background:var(--bg4);border:1px solid var(--borde);border-radius:14px;padding:16px 12px;text-align:center;}
+.brujula-score-ico{width:36px;height:36px;object-fit:contain;margin:0 auto 8px;display:block;}
+.brujula-score-val{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;line-height:1;margin-bottom:4px;}
+.brujula-score-lbl{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--texto-3);}
+.brujula-history-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin:32px 0 16px;}
+.brujula-history-grid{display:flex;flex-direction:column;gap:12px;}
+.brujula-hist-card{background:var(--bg3);border:1px solid var(--borde);border-radius:14px;padding:20px 24px;cursor:pointer;transition:border-color .2s;}
+.brujula-hist-card:hover{border-color:var(--borde-l);}
+.brujula-hist-header{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.brujula-hist-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;color:var(--oro-l);background:rgba(201,146,42,0.10);padding:4px 12px;border-radius:8px;}
+.brujula-hist-etapa{font-size:14px;color:var(--texto-2);font-weight:500;}
+.brujula-hist-fecha{font-family:"DM Mono",monospace;font-size:10px;color:var(--texto-3);margin-left:auto;}
+.brujula-hist-narrativa{font-size:15px;color:var(--texto-3);line-height:1.7;display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--borde);}
+.brujula-hist-card.open .brujula-hist-narrativa{display:block;}
+.brujula-hist-scores{display:flex;gap:16px;flex-wrap:wrap;}
+.brujula-hist-score{font-family:"DM Mono",monospace;font-size:11px;color:var(--texto-3);}
+.brujula-empty{text-align:center;padding:40px;color:var(--texto-3);font-size:16px;background:var(--bg2);border:1px solid var(--borde);border-radius:24px;}
+@media(max-width:700px){.brujula-scores{grid-template-columns:repeat(3,1fr);}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
@@ -244,6 +273,14 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   </div>
 </section>
 
+<!-- ZONA BRUJULA -->
+<section class="zona-brujula" id="zona-brujula">
+  <div class="eyebrow">Tu Brújula Semanal · Tu Guía en La Senda</div>
+  <div id="brujula-container">
+    <div class="brujula-loading" id="brujula-loading">Cargando tu brújula...</div>
+  </div>
+</section>
+
 <section class="zona-f">
   <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
   <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
@@ -289,6 +326,7 @@ var P = {
   na: sv("na",""),
   semana: Math.min(Math.max(Math.round(nv("semana")) || 1, 1), 13),
   fase: sv("fase", "MAPA_VITAL"),
+  em: sv("em", ""),
 };
 
 // ── FASE CONFIG ──
@@ -669,6 +707,148 @@ function showLocked() {
   var el = document.getElementById("locked-msg");
   el.style.display = "block";
   setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
+}
+
+// ── ZONA BRÚJULA: Fetch from Google Sheets ──
+(function(){
+  var BRUJULA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=704104905&single=true&output=csv";
+  var container = document.getElementById("brujula-container");
+  var loading = document.getElementById("brujula-loading");
+  var email = P.em;
+  
+  if (!email) {
+    container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales.</div>";
+    return;
+  }
+  
+  var RIQ_ICONS = {
+    fisica: "riqueza-fisica.png", mental: "riqueza-mental.png",
+    social: "riqueza-social.png", temporal: "riqueza-temporal.png",
+    financiera: "riqueza-financiera.png"
+  };
+  var RIQ_COLORS = {
+    fisica: "#F06060", mental: "#7A8CF0", social: "#F0C040",
+    temporal: "#60D4A0", financiera: "#C9922A"
+  };
+  
+  fetch(BRUJULA_CSV)
+    .then(function(r){ return r.text(); })
+    .then(function(csv){
+      var rows = parseCSV(csv);
+      if (rows.length < 2) { showEmpty(); return; }
+      var headers = rows[0];
+      var data = rows.slice(1).map(function(row){
+        var obj = {};
+        headers.forEach(function(h, i){ obj[h.trim()] = (row[i] || "").trim(); });
+        return obj;
+      }).filter(function(r){
+        return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase();
+      });
+      
+      if (!data.length) { showEmpty(); return; }
+      
+      data.sort(function(a, b){ return parseInt(b.SEM_ || b.SEMANA || 0) - parseInt(a.SEM_ || a.SEMANA || 0); });
+      
+      var latest = data[0];
+      var history = data.slice(1);
+      var html = "";
+      
+      // Current week card
+      html += "<div class='brujula-current'>";
+      html += "<div class='brujula-meta'>";
+      html += "<span class='brujula-sem'>Semana " + (latest.SEM_ || latest.SEMANA || "—") + "</span>";
+      html += "<span class='brujula-etapa'>" + (latest.ETAPA || "") + " · " + (latest.NOMBRE_NIVEL || "") + "</span>";
+      html += "<span class='brujula-fecha'>" + (latest.FECHA_ || latest.FECHA || "") + "</span>";
+      html += "</div>";
+      
+      if (latest.NARRATIVA) {
+        var narrParts = latest.NARRATIVA.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 10; });
+        if (!narrParts.length) narrParts = [latest.NARRATIVA];
+        html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p style='margin-bottom:16px;'>" + p.trim() + "</p>"; }).join("") + "</div>";
+      }
+      
+      // 5 Riqueza scores
+      html += "<div class='brujula-scores'>";
+      var riqs = [
+        {key:"fisica", lbl:"Física", col:"SCORE_FISICA"},
+        {key:"mental", lbl:"Mental", col:"SCORE_MENTAL"},
+        {key:"social", lbl:"Social", col:"SCORE_SOCIAL"},
+        {key:"temporal", lbl:"Temporal", col:"SCORE_TEMPORAL"},
+        {key:"financiera", lbl:"Financiera", col:"SCORE_FINANCIERA"}
+      ];
+      riqs.forEach(function(riq){
+        var val = latest[riq.col] || "—";
+        html += "<div class='brujula-score-item'>";
+        html += "<img src='" + RIQ_ICONS[riq.key] + "' class='brujula-score-ico' alt='" + riq.lbl + "'>";
+        html += "<div class='brujula-score-val' style='color:" + RIQ_COLORS[riq.key] + "'>" + val + "%</div>";
+        html += "<div class='brujula-score-lbl'>" + riq.lbl + "</div>";
+        html += "</div>";
+      });
+      html += "</div>";
+      html += "</div>";
+      
+      // History
+      if (history.length > 0) {
+        html += "<div class='brujula-history-title'>Semanas Anteriores</div>";
+        html += "<div class='brujula-history-grid'>";
+        history.forEach(function(h, idx){
+          var sem = h.SEM_ || h.SEMANA || "—";
+          html += "<div class='brujula-hist-card' onclick='toggleBrujulaHist(\"bh-" + idx + "\")'>";
+          html += "<div class='brujula-hist-header'>";
+          html += "<span class='brujula-hist-sem'>Sem " + sem + "</span>";
+          html += "<span class='brujula-hist-etapa'>" + (h.ETAPA || "") + " · " + (h.NOMBRE_NIVEL || "") + "</span>";
+          html += "<span class='brujula-hist-fecha'>" + (h.FECHA_ || h.FECHA || "") + "</span>";
+          html += "</div>";
+          html += "<div class='brujula-hist-scores'>";
+          riqs.forEach(function(riq){
+            var val = h[riq.col] || "—";
+            html += "<span class='brujula-hist-score' style='color:" + RIQ_COLORS[riq.key] + "'>" + riq.lbl + ": " + val + "%</span>";
+          });
+          html += "</div>";
+          if (h.NARRATIVA) {
+            var shortNarr = h.NARRATIVA.substring(0, 300) + (h.NARRATIVA.length > 300 ? "..." : "");
+            html += "<div class='brujula-hist-narrativa' id='bh-" + idx + "'>" + shortNarr + "</div>";
+          }
+          html += "</div>";
+        });
+        html += "</div>";
+      }
+      
+      container.innerHTML = html;
+    })
+    .catch(function(err){
+      console.error("Brújula fetch error:", err);
+      showEmpty();
+    });
+  
+  function showEmpty(){
+    container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales. Cada lunes recibirás una nueva lectura personalizada.</div>";
+  }
+  
+  function parseCSV(text){
+    var rows = []; var row = []; var field = ""; var inQuotes = false;
+    for (var i = 0; i < text.length; i++){
+      var c = text[i]; var next = text[i+1];
+      if (inQuotes){
+        if (c === '"' && next === '"'){ field += '"'; i++; }
+        else if (c === '"'){ inQuotes = false; }
+        else { field += c; }
+      } else {
+        if (c === '"'){ inQuotes = true; }
+        else if (c === ','){ row.push(field); field = ""; }
+        else if (c === '\n' || (c === '\r' && next === '\n')){ row.push(field); field = ""; rows.push(row); row = []; if (c === '\r') i++; }
+        else if (c === '\r'){ row.push(field); field = ""; rows.push(row); row = []; }
+        else { field += c; }
+      }
+    }
+    if (field || row.length) { row.push(field); rows.push(row); }
+    return rows;
+  }
+})();
+
+function toggleBrujulaHist(id){
+  var el = document.getElementById(id);
+  if (el) el.parentElement.classList.toggle("open");
 }
 </script>
 </body>
