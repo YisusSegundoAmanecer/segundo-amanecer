@@ -359,9 +359,10 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.0 — MULTI-FASE
+// COCKPIT V7.2.1 — FIX BIBLIOTECA + SATÉLITES
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
+// Fix: Event delegation reemplaza onclick inline (CSP-safe)
 // ══════════════════════════════════════════
 
 var UP = new URLSearchParams(window.location.search);
@@ -594,12 +595,10 @@ var RIQS = [
     var celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
     var conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     var ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
-    // V7: 3 top behaviors
     var top3 = ord.slice(0,3);
     var topNombres = top3.map(function(c){ return c.nombre; });
     var remaining = ord.filter(function(c){ return topNombres.indexOf(c.nombre) === -1; });
     var belowGroup = remaining.filter(function(c){ return c.delta < 0; }).sort(function(a,b){ return a.delta-b.delta; });
-    // V7: 3 bottom behaviors
     var bot3 = belowGroup.length >= 3 ? belowGroup.slice(0,3) : 
                belowGroup.length > 0 ? belowGroup.concat(remaining.filter(function(c){ return belowGroup.indexOf(c)===-1; }).slice(-(3-belowGroup.length))) :
                remaining.slice(-3);
@@ -880,7 +879,7 @@ function showLocked() {
         html += "</div>";
       }
       
-      // ── SATELLITE CARDS (Tarjetas 2-5) ──
+      // ── TARJETAS SATÉLITE (Tarjetas 2-5) — sin onclick inline ──
       var hasSatellites = false;
       for (var s = 2; s <= 5; s++) {
         if (latest["T" + s + "_RIQUEZA"]) { hasSatellites = true; break; }
@@ -901,7 +900,7 @@ function showLocked() {
           var sMicro = latest["T" + t + "_MICRO"] || "";
           var sInt = intensidadBadge(latest["T" + t + "_INTENSIDAD"] || "");
           
-          html += "<div class='brujula-sat' onclick='toggleSat(this)'>";
+          html += "<div class='brujula-sat'>";
           html += "<div class='brujula-sat-header'>";
           html += "<img src='" + sIco + "' class='brujula-sat-ico' alt='" + satRiq + "'>";
           html += "<div class='brujula-sat-info'>";
@@ -941,13 +940,13 @@ function showLocked() {
       
       html += "</div>"; // close brujula-stash
       
-      // ═══ HISTORIAL — Biblioteca de Stashes ═══
+      // ═══ HISTORIAL — Biblioteca de Stashes — sin onclick inline ═══
       if (history.length > 0) {
         html += "<div class='brujula-hist-title'>Tu Biblioteca · Semanas Anteriores</div>";
         html += "<div class='brujula-hist-grid'>";
         history.forEach(function(h, idx){
           var sem = h.SEM_ || h.SEMANA || "—";
-          html += "<div class='brujula-hist-card' onclick='toggleHistCard(this)'>";
+          html += "<div class='brujula-hist-card'>";
           html += "<div class='brujula-hist-header'>";
           html += "<span class='brujula-hist-sem'>Semana " + sem + "</span>";
           html += "<span class='brujula-hist-nivel'>" + (h.ETAPA || "") + " · " + (h.NOMBRE_NIVEL || "") + "</span>";
@@ -957,7 +956,6 @@ function showLocked() {
             var shortNarr = h.NARRATIVA.substring(0, 400) + (h.NARRATIVA.length > 400 ? "..." : "");
             html += "<div class='brujula-hist-narrativa'>" + shortNarr + "</div>";
           }
-          // Show tarjeta riquezas as chips
           html += "<div class='brujula-hist-tarjetas'>";
           for (var c = 1; c <= 5; c++) {
             var cRiq = h["T" + c + "_RIQUEZA"] || "";
@@ -975,6 +973,24 @@ function showLocked() {
       }
       
       container.innerHTML = html;
+      
+      // ══ DELEGACIÓN DE EVENTOS — reemplaza onclick inline (CSP-safe) ══
+      container.addEventListener("click", function(e) {
+        // Satélites: clic en header → toggle .open en .brujula-sat
+        var satH = e.target.closest(".brujula-sat-header");
+        if (satH) {
+          var sat = satH.closest(".brujula-sat");
+          if (sat) sat.classList.toggle("open");
+          return;
+        }
+        // Biblioteca: clic en header → toggle .open en .brujula-hist-card
+        var histH = e.target.closest(".brujula-hist-header");
+        if (histH) {
+          var hist = histH.closest(".brujula-hist-card");
+          if (hist) hist.classList.toggle("open");
+          return;
+        }
+      });
     })
     .catch(function(err){
       console.error("Brújula fetch error:", err);
@@ -1005,9 +1021,6 @@ function showLocked() {
     return rows;
   }
 })();
-
-function toggleSat(el){ el.classList.toggle("open"); }
-function toggleHistCard(el){ el.classList.toggle("open"); }
 </script>
 </body>
 </html>
