@@ -147,35 +147,94 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .drill-behs{grid-template-columns:1fr;}
   .radar-wrap{height:360px;}
 }
-/* ZONA BRUJULA */
+/* ═══ ZONA BRÚJULA — Deepstash + Tali Sharot ═══ */
 .zona-brujula{margin-top:68px;animation:fadeUp .6s ease .44s both;}
 .brujula-loading{text-align:center;padding:40px;color:var(--texto-3);font-size:16px;}
-.brujula-current{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:44px 48px;margin-bottom:24px;position:relative;overflow:hidden;}
-.brujula-current::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
-.brujula-meta{display:flex;align-items:center;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+.brujula-empty{text-align:center;padding:48px;color:var(--texto-3);font-size:17px;background:var(--bg2);border:1px solid var(--borde);border-radius:24px;line-height:1.8;}
+
+/* Container */
+.brujula-stash{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:28px;padding:48px 52px;margin-bottom:28px;position:relative;overflow:hidden;}
+.brujula-stash::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
+
+/* Meta header */
+.brujula-meta{display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap;}
 .brujula-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:14px;background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.3);}
-.brujula-etapa{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto-3);}
-.brujula-fecha{font-family:"DM Mono",monospace;font-size:11px;color:var(--texto-3);margin-left:auto;}
-.brujula-narrativa{font-size:18px;line-height:1.9;color:var(--texto-2);margin-bottom:28px;}
-.brujula-scores{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:8px;}
-.brujula-score-item{background:var(--bg4);border:1px solid var(--borde);border-radius:14px;padding:16px 12px;text-align:center;}
-.brujula-score-ico{width:36px;height:36px;object-fit:contain;margin:0 auto 8px;display:block;}
-.brujula-score-val{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;line-height:1;margin-bottom:4px;}
-.brujula-score-lbl{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--texto-3);}
-.brujula-history-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin:32px 0 16px;}
-.brujula-history-grid{display:flex;flex-direction:column;gap:12px;}
-.brujula-hist-card{background:var(--bg3);border:1px solid var(--borde);border-radius:14px;padding:20px 24px;cursor:pointer;transition:border-color .2s;}
+.brujula-nivel{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto-3);}
+
+/* Narrativa */
+.brujula-narrativa{font-size:19px;line-height:2;color:var(--texto-2);margin-bottom:40px;}
+.brujula-narrativa p{margin-bottom:18px;}
+.brujula-narrativa p:last-child{margin-bottom:0;}
+
+/* ── HERO CARD (Tarjeta Maestra — mayor brecha) ── */
+.brujula-hero{border-radius:22px;padding:36px 40px;margin-bottom:32px;position:relative;overflow:hidden;}
+.brujula-hero::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,var(--hero-color,var(--oro)),transparent 60%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
+.brujula-hero-inner{background:linear-gradient(135deg,rgba(var(--hero-rgb,201,146,42),0.06),transparent);border-radius:20px;}
+.brujula-hero-top{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+.brujula-hero-ico{width:56px;height:56px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(var(--hero-rgb,201,146,42),0.3));}
+.brujula-hero-label{flex:1;}
+.brujula-hero-riqueza{font-family:"Playfair Display",serif;font-size:26px;font-weight:400;line-height:1.2;}
+.brujula-hero-badge{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px;display:inline-block;padding:4px 12px;border-radius:8px;}
+.badge-potencial{background:rgba(240,96,96,0.10);color:#F09070;border:1px solid rgba(240,96,96,0.25);}
+.badge-expansion{background:rgba(201,146,42,0.10);color:var(--oro-l);border:1px solid rgba(201,146,42,0.25);}
+.badge-ancla{background:rgba(77,184,122,0.10);color:#70D0A0;border:1px solid rgba(77,184,122,0.25);}
+
+/* Hero discovery */
+.brujula-hero-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:12px;}
+.brujula-hero-frase{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;font-style:italic;line-height:1.6;color:var(--texto);margin-bottom:24px;}
+.brujula-hero-verdad{font-size:17px;line-height:1.85;color:var(--texto-2);margin-bottom:28px;}
+.brujula-hero-micro{background:linear-gradient(135deg,rgba(201,146,42,0.08),rgba(201,146,42,0.02));border:1px solid rgba(201,146,42,0.2);border-radius:16px;padding:22px 26px;position:relative;}
+.brujula-hero-micro::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;background:var(--oro);border-radius:3px;}
+.brujula-micro-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-bottom:10px;}
+.brujula-micro-text{font-size:17px;line-height:1.75;color:var(--texto);font-weight:500;}
+
+/* ── SATELLITE CARDS (Explora tus otras Riquezas) ── */
+.brujula-sat-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin:8px 0 18px;}
+.brujula-sat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.brujula-sat{background:var(--bg4);border:1px solid var(--borde);border-radius:18px;overflow:hidden;transition:border-color .25s,box-shadow .25s;cursor:pointer;}
+.brujula-sat:hover{border-color:var(--borde-l);}
+.brujula-sat.open{border-color:rgba(201,146,42,0.3);box-shadow:0 4px 24px rgba(0,0,0,0.2);}
+.brujula-sat-header{display:flex;align-items:center;gap:14px;padding:20px 22px;}
+.brujula-sat-ico{width:40px;height:40px;object-fit:contain;flex-shrink:0;}
+.brujula-sat-info{flex:1;min-width:0;}
+.brujula-sat-riqueza{font-size:16px;font-weight:700;margin-bottom:2px;}
+.brujula-sat-preview{font-size:13px;color:var(--texto-3);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.brujula-sat.open .brujula-sat-preview{display:none;}
+.brujula-sat-badge{font-family:"DM Mono",monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:6px;flex-shrink:0;}
+.brujula-sat-toggle{font-size:14px;color:var(--texto-3);transition:transform .25s;flex-shrink:0;}
+.brujula-sat.open .brujula-sat-toggle{transform:rotate(180deg);}
+.brujula-sat-body{display:none;padding:0 22px 22px;border-top:1px solid var(--borde);}
+.brujula-sat.open .brujula-sat-body{display:block;}
+.brujula-sat-section{margin-top:18px;}
+.brujula-sat-section-title{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-bottom:8px;}
+.brujula-sat-section p{font-size:15px;color:var(--texto-2);line-height:1.75;}
+.brujula-sat-micro{background:rgba(201,146,42,0.06);border:1px solid rgba(201,146,42,0.15);border-radius:12px;padding:16px 18px;margin-top:10px;}
+.brujula-sat-micro p{font-size:15px;color:var(--texto);line-height:1.65;font-weight:500;}
+
+/* ── HISTORIAL (Biblioteca de Stashes) ── */
+.brujula-hist-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin:40px 0 18px;}
+.brujula-hist-grid{display:flex;flex-direction:column;gap:12px;}
+.brujula-hist-card{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;padding:22px 26px;cursor:pointer;transition:border-color .2s;}
 .brujula-hist-card:hover{border-color:var(--borde-l);}
-.brujula-hist-header{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+.brujula-hist-header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .brujula-hist-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;color:var(--oro-l);background:rgba(201,146,42,0.10);padding:4px 12px;border-radius:8px;}
-.brujula-hist-etapa{font-size:14px;color:var(--texto-2);font-weight:500;}
-.brujula-hist-fecha{font-family:"DM Mono",monospace;font-size:10px;color:var(--texto-3);margin-left:auto;}
-.brujula-hist-narrativa{font-size:15px;color:var(--texto-3);line-height:1.7;display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--borde);}
-.brujula-hist-card.open .brujula-hist-narrativa{display:block;}
-.brujula-hist-scores{display:flex;gap:16px;flex-wrap:wrap;}
-.brujula-hist-score{font-family:"DM Mono",monospace;font-size:11px;color:var(--texto-3);}
-.brujula-empty{text-align:center;padding:40px;color:var(--texto-3);font-size:16px;background:var(--bg2);border:1px solid var(--borde);border-radius:24px;}
-@media(max-width:700px){.brujula-scores{grid-template-columns:repeat(3,1fr);}}
+.brujula-hist-nivel{font-size:14px;color:var(--texto-2);font-weight:500;}
+.brujula-hist-body{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--borde);}
+.brujula-hist-card.open .brujula-hist-body{display:block;}
+.brujula-hist-narrativa{font-size:15px;color:var(--texto-3);line-height:1.75;margin-bottom:16px;}
+.brujula-hist-tarjetas{display:flex;flex-wrap:wrap;gap:8px;}
+.brujula-hist-chip{font-family:"DM Mono",monospace;font-size:10px;padding:4px 12px;border-radius:8px;background:var(--bg4);border:1px solid var(--borde);color:var(--texto-3);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .brujula-stash{padding:28px 22px;border-radius:20px;}
+  .brujula-hero{padding:28px 24px;}
+  .brujula-hero-riqueza{font-size:22px;}
+  .brujula-hero-frase{font-size:19px;}
+  .brujula-sat-grid{grid-template-columns:1fr;}
+  .brujula-sat-header{padding:16px 18px;}
+  .brujula-narrativa{font-size:17px;}
+}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
@@ -709,7 +768,7 @@ function showLocked() {
   setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
 }
 
-// ── ZONA BRÚJULA: Fetch from Google Sheets ──
+// ── ZONA BRÚJULA: Deepstash + Tali Sharot Experience ──
 (function(){
   var BRUJULA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=704104905&single=true&output=csv";
   var container = document.getElementById("brujula-container");
@@ -730,6 +789,21 @@ function showLocked() {
     fisica: "#F06060", mental: "#7A8CF0", social: "#F0C040",
     temporal: "#60D4A0", financiera: "#C9922A"
   };
+  var RIQ_RGB = {
+    fisica: "240,96,96", mental: "122,140,240", social: "240,192,64",
+    temporal: "96,212,160", financiera: "201,146,42"
+  };
+  
+  function riqKey(name) {
+    return (name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  
+  function intensidadBadge(raw) {
+    var t = (raw || "").toUpperCase();
+    if (t.indexOf("DESPERTAR") >= 0) return {cls:"badge-potencial", label:"Territorio de Descubrimiento"};
+    if (t.indexOf("FORTALEZA") >= 0) return {cls:"badge-ancla", label:"Tu Fortaleza"};
+    return {cls:"badge-expansion", label:"En Expansión"};
+  }
   
   fetch(BRUJULA_CSV)
     .then(function(r){ return r.text(); })
@@ -753,62 +827,148 @@ function showLocked() {
       var history = data.slice(1);
       var html = "";
       
-      // Current week card
-      html += "<div class='brujula-current'>";
+      // ═══ STASH DE LA SEMANA ═══
+      html += "<div class='brujula-stash'>";
+      
+      // Meta
       html += "<div class='brujula-meta'>";
-      html += "<span class='brujula-sem'>Semana " + (latest.SEM_ || latest.SEMANA || "—") + "</span>";
-      html += "<span class='brujula-etapa'>" + (latest.ETAPA || "") + " · " + (latest.NOMBRE_NIVEL || "") + "</span>";
-      html += "<span class='brujula-fecha'>" + (latest.FECHA_ || latest.FECHA || "") + "</span>";
+      html += "<span class='brujula-sem'>Semana " + (latest.SEM_ || latest.SEMANA || "—") + " de 13</span>";
+      html += "<span class='brujula-nivel'>" + (latest.ETAPA || "") + " · " + (latest.NOMBRE_NIVEL || "") + "</span>";
       html += "</div>";
       
+      // Narrativa
       if (latest.NARRATIVA) {
         var narrParts = latest.NARRATIVA.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 10; });
         if (!narrParts.length) narrParts = [latest.NARRATIVA];
-        html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p style='margin-bottom:16px;'>" + p.trim() + "</p>"; }).join("") + "</div>";
+        html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
       }
       
-      // 5 Riqueza scores
-      html += "<div class='brujula-scores'>";
-      var riqs = [
-        {key:"fisica", lbl:"Física", col:"SCORE_FISICA"},
-        {key:"mental", lbl:"Mental", col:"SCORE_MENTAL"},
-        {key:"social", lbl:"Social", col:"SCORE_SOCIAL"},
-        {key:"temporal", lbl:"Temporal", col:"SCORE_TEMPORAL"},
-        {key:"financiera", lbl:"Financiera", col:"SCORE_FINANCIERA"}
-      ];
-      riqs.forEach(function(riq){
-        var val = latest[riq.col] || "—";
-        html += "<div class='brujula-score-item'>";
-        html += "<img src='" + RIQ_ICONS[riq.key] + "' class='brujula-score-ico' alt='" + riq.lbl + "'>";
-        html += "<div class='brujula-score-val' style='color:" + RIQ_COLORS[riq.key] + "'>" + val + "%</div>";
-        html += "<div class='brujula-score-lbl'>" + riq.lbl + "</div>";
-        html += "</div>";
-      });
-      html += "</div>";
-      html += "</div>";
+      // ── HERO CARD (Tarjeta 1 = Mayor Brecha) ──
+      var heroRiq = latest.T1_RIQUEZA || "";
+      var heroKey = riqKey(heroRiq);
+      var heroColor = RIQ_COLORS[heroKey] || "var(--oro)";
+      var heroRgb = RIQ_RGB[heroKey] || "201,146,42";
+      var heroIco = RIQ_ICONS[heroKey] || "riqueza-fisica.png";
+      var heroFrase = latest.T1_FRASE || "";
+      var heroVerdad = latest.T1_VERDAD || "";
+      var heroMicro = latest.T1_MICRO || "";
+      var heroInt = intensidadBadge(latest.T1_INTENSIDAD || "");
       
-      // History
+      if (heroRiq) {
+        html += "<div class='brujula-hero' style='--hero-color:" + heroColor + ";--hero-rgb:" + heroRgb + ";background:linear-gradient(135deg,rgba(" + heroRgb + ",0.06),transparent);'>";
+        html += "<div class='brujula-hero-top'>";
+        html += "<img src='" + heroIco + "' class='brujula-hero-ico' alt='" + heroRiq + "'>";
+        html += "<div class='brujula-hero-label'>";
+        html += "<div class='brujula-hero-riqueza' style='color:" + heroColor + "'>Riqueza " + heroRiq + "</div>";
+        html += "<span class='brujula-hero-badge " + heroInt.cls + "'>" + heroInt.label + "</span>";
+        html += "</div>";
+        html += "</div>";
+        
+        if (heroFrase) {
+          html += "<div class='brujula-hero-eyebrow'>Tu Descubrimiento de esta Semana</div>";
+          html += "<div class='brujula-hero-frase'>\"" + heroFrase + "\"</div>";
+        }
+        if (heroVerdad) {
+          html += "<div class='brujula-hero-verdad'>" + heroVerdad + "</div>";
+        }
+        if (heroMicro) {
+          html += "<div class='brujula-hero-micro'>";
+          html += "<div class='brujula-micro-eyebrow'>Tu Micro-Acción</div>";
+          html += "<div class='brujula-micro-text'>" + heroMicro + "</div>";
+          html += "</div>";
+        }
+        html += "</div>";
+      }
+      
+      // ── SATELLITE CARDS (Tarjetas 2-5) ──
+      var hasSatellites = false;
+      for (var s = 2; s <= 5; s++) {
+        if (latest["T" + s + "_RIQUEZA"]) { hasSatellites = true; break; }
+      }
+      
+      if (hasSatellites) {
+        html += "<div class='brujula-sat-title'>Explora tus otras Riquezas</div>";
+        html += "<div class='brujula-sat-grid'>";
+        
+        for (var t = 2; t <= 5; t++) {
+          var satRiq = latest["T" + t + "_RIQUEZA"] || "";
+          if (!satRiq) continue;
+          var sKey = riqKey(satRiq);
+          var sColor = RIQ_COLORS[sKey] || "var(--oro)";
+          var sIco = RIQ_ICONS[sKey] || "riqueza-fisica.png";
+          var sFrase = latest["T" + t + "_FRASE"] || "";
+          var sVerdad = latest["T" + t + "_VERDAD"] || "";
+          var sMicro = latest["T" + t + "_MICRO"] || "";
+          var sInt = intensidadBadge(latest["T" + t + "_INTENSIDAD"] || "");
+          
+          html += "<div class='brujula-sat' onclick='toggleSat(this)'>";
+          html += "<div class='brujula-sat-header'>";
+          html += "<img src='" + sIco + "' class='brujula-sat-ico' alt='" + satRiq + "'>";
+          html += "<div class='brujula-sat-info'>";
+          html += "<div class='brujula-sat-riqueza' style='color:" + sColor + "'>" + satRiq + "</div>";
+          if (sFrase) html += "<div class='brujula-sat-preview'>" + sFrase + "</div>";
+          html += "</div>";
+          html += "<span class='brujula-sat-badge " + sInt.cls + "'>" + sInt.label + "</span>";
+          html += "<span class='brujula-sat-toggle'>▼</span>";
+          html += "</div>";
+          
+          if (sVerdad || sMicro) {
+            html += "<div class='brujula-sat-body'>";
+            if (sFrase) {
+              html += "<div class='brujula-sat-section'>";
+              html += "<div class='brujula-sat-section-title'>Tu Descubrimiento</div>";
+              html += "<p style='font-style:italic;color:var(--texto);'>\"" + sFrase + "\"</p>";
+              html += "</div>";
+            }
+            if (sVerdad) {
+              html += "<div class='brujula-sat-section'>";
+              html += "<div class='brujula-sat-section-title'>Tu Verdad de Hoy</div>";
+              html += "<p>" + sVerdad + "</p>";
+              html += "</div>";
+            }
+            if (sMicro) {
+              html += "<div class='brujula-sat-section'>";
+              html += "<div class='brujula-sat-section-title'>Tu Micro-Acción</div>";
+              html += "<div class='brujula-sat-micro'><p>" + sMicro + "</p></div>";
+              html += "</div>";
+            }
+            html += "</div>";
+          }
+          html += "</div>";
+        }
+        html += "</div>";
+      }
+      
+      html += "</div>"; // close brujula-stash
+      
+      // ═══ HISTORIAL — Biblioteca de Stashes ═══
       if (history.length > 0) {
-        html += "<div class='brujula-history-title'>Semanas Anteriores</div>";
-        html += "<div class='brujula-history-grid'>";
+        html += "<div class='brujula-hist-title'>Tu Biblioteca · Semanas Anteriores</div>";
+        html += "<div class='brujula-hist-grid'>";
         history.forEach(function(h, idx){
           var sem = h.SEM_ || h.SEMANA || "—";
-          html += "<div class='brujula-hist-card' onclick='toggleBrujulaHist(\"bh-" + idx + "\")'>";
+          html += "<div class='brujula-hist-card' onclick='toggleHistCard(this)'>";
           html += "<div class='brujula-hist-header'>";
-          html += "<span class='brujula-hist-sem'>Sem " + sem + "</span>";
-          html += "<span class='brujula-hist-etapa'>" + (h.ETAPA || "") + " · " + (h.NOMBRE_NIVEL || "") + "</span>";
-          html += "<span class='brujula-hist-fecha'>" + (h.FECHA_ || h.FECHA || "") + "</span>";
+          html += "<span class='brujula-hist-sem'>Semana " + sem + "</span>";
+          html += "<span class='brujula-hist-nivel'>" + (h.ETAPA || "") + " · " + (h.NOMBRE_NIVEL || "") + "</span>";
           html += "</div>";
-          html += "<div class='brujula-hist-scores'>";
-          riqs.forEach(function(riq){
-            var val = h[riq.col] || "—";
-            html += "<span class='brujula-hist-score' style='color:" + RIQ_COLORS[riq.key] + "'>" + riq.lbl + ": " + val + "%</span>";
-          });
-          html += "</div>";
+          html += "<div class='brujula-hist-body'>";
           if (h.NARRATIVA) {
-            var shortNarr = h.NARRATIVA.substring(0, 300) + (h.NARRATIVA.length > 300 ? "..." : "");
-            html += "<div class='brujula-hist-narrativa' id='bh-" + idx + "'>" + shortNarr + "</div>";
+            var shortNarr = h.NARRATIVA.substring(0, 400) + (h.NARRATIVA.length > 400 ? "..." : "");
+            html += "<div class='brujula-hist-narrativa'>" + shortNarr + "</div>";
           }
+          // Show tarjeta riquezas as chips
+          html += "<div class='brujula-hist-tarjetas'>";
+          for (var c = 1; c <= 5; c++) {
+            var cRiq = h["T" + c + "_RIQUEZA"] || "";
+            if (cRiq) {
+              var cKey = riqKey(cRiq);
+              var cColor = RIQ_COLORS[cKey] || "var(--texto-3)";
+              html += "<span class='brujula-hist-chip' style='color:" + cColor + ";border-color:" + cColor + "'>" + cRiq + "</span>";
+            }
+          }
+          html += "</div>";
+          html += "</div>";
           html += "</div>";
         });
         html += "</div>";
@@ -846,10 +1006,8 @@ function showLocked() {
   }
 })();
 
-function toggleBrujulaHist(id){
-  var el = document.getElementById(id);
-  if (el) el.parentElement.classList.toggle("open");
-}
+function toggleSat(el){ el.classList.toggle("open"); }
+function toggleHistCard(el){ el.classList.toggle("open"); }
 </script>
 </body>
 </html>
