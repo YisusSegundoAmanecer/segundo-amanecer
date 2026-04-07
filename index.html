@@ -359,10 +359,10 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.2.1 — FIX BIBLIOTECA + SATÉLITES
+// COCKPIT V7.2.2 — FIX SPLIT COMPORTAMIENTOS + BIBLIOTECA
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
-// Fix: Event delegation reemplaza onclick inline (CSP-safe)
+// Fix: Split dinámico integrados/enfoque + event delegation CSP-safe
 // ══════════════════════════════════════════
 
 var UP = new URLSearchParams(window.location.search);
@@ -595,13 +595,22 @@ var RIQS = [
     var celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
     var conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     var ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
-    var top3 = ord.slice(0,3);
-    var topNombres = top3.map(function(c){ return c.nombre; });
-    var remaining = ord.filter(function(c){ return topNombres.indexOf(c.nombre) === -1; });
-    var belowGroup = remaining.filter(function(c){ return c.delta < 0; }).sort(function(a,b){ return a.delta-b.delta; });
-    var bot3 = belowGroup.length >= 3 ? belowGroup.slice(0,3) : 
-               belowGroup.length > 0 ? belowGroup.concat(remaining.filter(function(c){ return belowGroup.indexOf(c)===-1; }).slice(-(3-belowGroup.length))) :
-               remaining.slice(-3);
+    // Split dinámico: positivos = integrados, negativos = enfoque
+    var positivos = ord.filter(function(c){ return c.delta >= 0; });
+    var negativos = ord.filter(function(c){ return c.delta < 0; });
+    var top3, bot3;
+    if (positivos.length === 0) {
+      // Todos negativos: el mejor va a integrados, el resto a enfoque
+      top3 = [ord[0]];
+      bot3 = ord.slice(1);
+    } else if (negativos.length === 0) {
+      // Todos positivos: el peor va a enfoque, el resto a integrados
+      bot3 = [ord[ord.length - 1]];
+      top3 = ord.slice(0, ord.length - 1);
+    } else {
+      top3 = positivos;
+      bot3 = negativos;
+    }
     var d = Math.round(r.mi - r.gp);
     var chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
     var chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
