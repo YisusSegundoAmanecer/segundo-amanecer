@@ -93,13 +93,16 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .drill-beh-tipo{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
 .drill-beh-alto .drill-beh-tipo{color:var(--verde);}
 .drill-beh-bajo .drill-beh-tipo{color:var(--naranja);}
+.drill-beh-neutro .drill-beh-tipo{color:var(--azul);}
 .drill-beh-item{font-size:15px;color:var(--texto);margin-bottom:6px;display:flex;align-items:flex-start;gap:10px;line-height:1.5;}
 .drill-beh-bullet{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;}
 .drill-beh-alto .drill-beh-bullet{background:var(--verde);}
 .drill-beh-bajo .drill-beh-bullet{background:var(--naranja);}
+.drill-beh-neutro .drill-beh-bullet{background:var(--azul);}
 .drill-beh-delta{font-family:"DM Mono",monospace;font-size:12px;font-weight:700;margin-left:auto;flex-shrink:0;}
 .drill-beh-alto .drill-beh-delta{color:var(--verde);}
 .drill-beh-bajo .drill-beh-delta{color:var(--naranja);}
+.drill-beh-neutro .drill-beh-delta{color:var(--azul);}
 .drill-tali{background:linear-gradient(135deg,rgba(201,146,42,0.07),rgba(201,146,42,0.03));border:1px solid rgba(201,146,42,0.2);border-radius:14px;padding:22px 24px;position:relative;}
 .drill-tali::before{content:"C";position:absolute;top:2px;left:14px;font-family:"Playfair Display",serif;font-size:60px;line-height:1;color:rgba(201,146,42,0.15);}
 .drill-tali-p{font-size:16px;color:var(--texto-2);line-height:1.85;padding-left:8px;}
@@ -359,7 +362,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.2.2 — FIX SPLIT COMPORTAMIENTOS + BIBLIOTECA
+// COCKPIT V7.2.3 — FIX SPLIT + TÍTULOS DINÁMICOS
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
 // Fix: Split dinámico integrados/enfoque + event delegation CSP-safe
@@ -598,18 +601,27 @@ var RIQS = [
     // Split dinámico: positivos = integrados, negativos = enfoque
     var positivos = ord.filter(function(c){ return c.delta >= 0; });
     var negativos = ord.filter(function(c){ return c.delta < 0; });
-    var top3, bot3;
+    var top3, bot3, topTitle, topClass, botTitle;
     if (positivos.length === 0) {
-      // Todos negativos: el mejor va a integrados, el resto a enfoque
+      // Todos negativos: mejor relativo va arriba con título y color diferenciado
       top3 = [ord[0]];
       bot3 = ord.slice(1);
+      topTitle = "→ Menor brecha vs tu grupo";
+      topClass = "drill-beh-neutro";
+      botTitle = "◦ Tus territorios de mayor enfoque";
     } else if (negativos.length === 0) {
-      // Todos positivos: el peor va a enfoque, el resto a integrados
-      bot3 = [ord[ord.length - 1]];
+      // Todos positivos: menor avance va a enfoque con título diferenciado
       top3 = ord.slice(0, ord.length - 1);
+      bot3 = [ord[ord.length - 1]];
+      topTitle = "↑ Tus comportamientos más integrados";
+      topClass = "drill-beh-alto";
+      botTitle = "→ Tu siguiente territorio de consolidación";
     } else {
       top3 = positivos;
       bot3 = negativos;
+      topTitle = "↑ Tus comportamientos más integrados";
+      topClass = "drill-beh-alto";
+      botTitle = "◦ Tus territorios de mayor enfoque";
     }
     var d = Math.round(r.mi - r.gp);
     var chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
@@ -657,12 +669,12 @@ var RIQS = [
           "</div>" +
         "</div>" +
         "<div class='drill-behs'>" +
-          "<div class='drill-beh-card drill-beh-alto'>" +
-            "<div class='drill-beh-tipo'>↑ Tus 3 comportamientos más integrados</div>" +
+          "<div class='drill-beh-card " + topClass + "'>" +
+            "<div class='drill-beh-tipo'>" + topTitle + "</div>" +
             topBehs +
           "</div>" +
           "<div class='drill-beh-card drill-beh-bajo'>" +
-            "<div class='drill-beh-tipo'>◦ Tus 3 territorios de mayor enfoque</div>" +
+            "<div class='drill-beh-tipo'>" + botTitle + "</div>" +
             botBehs +
           "</div>" +
         "</div>" +
