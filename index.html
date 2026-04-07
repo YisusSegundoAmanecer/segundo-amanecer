@@ -362,7 +362,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.2.3 — FIX SPLIT + TÍTULOS DINÁMICOS
+// COCKPIT V7.2.4 — PANELES CONDICIONALES
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
 // Fix: Split dinámico integrados/enfoque + event delegation CSP-safe
@@ -598,44 +598,39 @@ var RIQS = [
     var celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
     var conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     var ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
-    // Split dinámico: positivos = integrados, negativos = enfoque
-    var positivos = ord.filter(function(c){ return c.delta >= 0; });
-    var negativos = ord.filter(function(c){ return c.delta < 0; });
-    var top3, bot3, topTitle, topClass, botTitle;
-    if (positivos.length === 0) {
-      // Todos negativos: mejor relativo va arriba con título y color diferenciado
-      top3 = [ord[0]];
-      bot3 = ord.slice(1);
-      topTitle = "→ Menor brecha vs tu grupo";
-      topClass = "drill-beh-neutro";
-      botTitle = "◦ Tus territorios de mayor enfoque";
-    } else if (negativos.length === 0) {
-      // Todos positivos: menor avance va a enfoque con título diferenciado
-      top3 = ord.slice(0, ord.length - 1);
-      bot3 = [ord[ord.length - 1]];
-      topTitle = "↑ Tus comportamientos más integrados";
-      topClass = "drill-beh-alto";
-      botTitle = "→ Tu siguiente territorio de consolidación";
-    } else {
-      top3 = positivos;
-      bot3 = negativos;
-      topTitle = "↑ Tus comportamientos más integrados";
-      topClass = "drill-beh-alto";
-      botTitle = "◦ Tus territorios de mayor enfoque";
-    }
+    // Split limpio: >= 0 integrados (verde), < 0 enfoque (naranja)
+    var integrados = ord.filter(function(c){ return c.delta >= 0; });
+    var enfoque = ord.filter(function(c){ return c.delta < 0; });
     var d = Math.round(r.mi - r.gp);
     var chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
     var chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
     var taliTxt = TALI[r.key](r.mi, r.gp, r.bk);
 
-    var topBehs = top3.map(function(c){
-      var val = Math.round(c.delta);
-      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + (val >= 0 ? "+" : "") + val + "%</span></div>";
-    }).join("");
-    var botBehs = bot3.map(function(c){
-      var val = Math.round(c.delta);
-      return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + (val >= 0 ? "+" : "") + val + "%</span></div>";
-    }).join("");
+    // Generar HTML de cada panel solo si tiene datos
+    var panelIzq = "";
+    if (integrados.length > 0) {
+      var topBehs = integrados.map(function(c){
+        var val = Math.round(c.delta);
+        return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>+" + val + "%</span></div>";
+      }).join("");
+      panelIzq = "<div class='drill-beh-card drill-beh-alto'>" +
+        "<div class='drill-beh-tipo'>↑ Tus comportamientos más integrados</div>" +
+        topBehs + "</div>";
+    }
+    var panelDer = "";
+    if (enfoque.length > 0) {
+      var botBehs = enfoque.map(function(c){
+        var val = Math.round(c.delta);
+        return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + val + "%</span></div>";
+      }).join("");
+      panelDer = "<div class='drill-beh-card drill-beh-bajo'>" +
+        "<div class='drill-beh-tipo'>◦ Tus territorios de mayor enfoque</div>" +
+        botBehs + "</div>";
+    }
+    // Grid: 2 columnas si hay ambos, 1 columna si solo hay uno
+    var behsGrid = (panelIzq && panelDer) ?
+      "<div class='drill-behs'>" + panelIzq + panelDer + "</div>" :
+      "<div class='drill-behs' style='grid-template-columns:1fr'>" + (panelIzq || panelDer) + "</div>";
 
     var row = document.createElement("div");
     row.className = "riqueza-row";
@@ -668,16 +663,7 @@ var RIQS = [
             "<span class='drill-barra-pct' style='color:#6ED49A'>" + Math.round(r.bk) + "%</span>" +
           "</div>" +
         "</div>" +
-        "<div class='drill-behs'>" +
-          "<div class='drill-beh-card " + topClass + "'>" +
-            "<div class='drill-beh-tipo'>" + topTitle + "</div>" +
-            topBehs +
-          "</div>" +
-          "<div class='drill-beh-card drill-beh-bajo'>" +
-            "<div class='drill-beh-tipo'>" + botTitle + "</div>" +
-            botBehs +
-          "</div>" +
-        "</div>" +
+        behsGrid +
         "<div class='drill-tali'>" +
           "<p class='drill-tali-p'>" + taliTxt + "</p>" +
           "<div class='drill-tali-firma'>Tu Caminante en La Senda Interior</div>" +
