@@ -950,7 +950,7 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
 (function(){
   var medGrid = document.getElementById("mediciones-grid");
   var meds = [
-    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-comp"},
+    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-comp", extUrl:P.mapa_url},
     {nombre:"Mi Pulso", dia:"Día 45 · Revisión Intermedia", desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.", ico:"mapa-vital.png", scrollTo:"zona-comp"},
     {nombre:"Mi Cosecha", dia:"Día 90 · Cierre del Programa", desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.", ico:"mapa-vital.png", scrollTo:null},
   ];
@@ -963,6 +963,11 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
     card.className = "med-card" + (isLocked ? " locked" : "") + ((isActive || isCompleted) ? " clickable" : "");
     if (isLocked) { card.onclick = function(){ showLocked(); }; }
     else if (isActive) { card.onclick = function(){ document.querySelector(".zona-b").scrollIntoView({behavior:"smooth"}); }; }
+    else if (isCompleted && m.extUrl) {
+      card.onclick = (function(url){
+        return function(){ window.open(url, "_blank"); };
+      })(m.extUrl);
+    }
     else if (isCompleted && m.scrollTo) {
       card.onclick = (function(target){
         return function(){
