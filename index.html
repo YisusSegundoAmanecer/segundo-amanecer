@@ -25,12 +25,12 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .eyebrow{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:28px;}
 .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.4),transparent);}
 .header{display:flex;align-items:center;gap:22px;padding:36px 0 0;animation:fadeUp .5s ease both;}
-.header-logo{width:250px;height:250px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
+.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
 .header-marca{font-family:"Playfair Display",serif;font-size:22px;font-weight:600;color:var(--texto);line-height:1.2;}
 .header-sub{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:6px;}
 .zona-a{padding:52px 0 0;animation:fadeUp .6s ease .08s both;}
 .mapa-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:28px;padding:10px 24px 10px 14px;margin-bottom:26px;}
-.mapa-badge-ico{width:150px;height:150px;object-fit:contain;}
+.mapa-badge-ico{width:44px;height:44px;object-fit:contain;}
 .mapa-badge-txt{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);}
 .nombre-h{font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,62px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:12px;}
 .fecha-sub{font-size:16px;color:var(--texto-3);}
@@ -220,10 +220,13 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-hist-card{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;padding:22px 26px;cursor:pointer;transition:border-color .2s;}
 .brujula-hist-card:hover{border-color:var(--borde-l);}
 .brujula-hist-header{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.brujula-hist-header::after{content:"▾";margin-left:auto;font-size:14px;color:var(--texto-3);transition:transform .2s;}
+.brujula-hist-card.open .brujula-hist-header::after{transform:rotate(180deg);color:var(--oro-l);}
 .brujula-hist-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;color:var(--oro-l);background:rgba(201,146,42,0.10);padding:4px 12px;border-radius:8px;}
 .brujula-hist-nivel{font-size:14px;color:var(--texto-2);font-weight:500;}
 .brujula-hist-body{display:none;margin-top:16px;padding-top:16px;border-top:1px solid var(--borde);}
 .brujula-hist-card.open .brujula-hist-body{display:block;}
+.brujula-hist-card.open{border-color:rgba(201,146,42,0.3);}
 .brujula-hist-narrativa{font-size:15px;color:var(--texto-3);line-height:1.75;margin-bottom:16px;}
 .brujula-hist-tarjetas{display:flex;flex-wrap:wrap;gap:8px;}
 .brujula-hist-chip{font-family:"DM Mono",monospace;font-size:10px;padding:4px 12px;border-radius:8px;background:var(--bg4);border:1px solid var(--borde);color:var(--texto-3);}
@@ -239,6 +242,37 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .brujula-narrativa{font-size:17px;}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+/* ── ZONA COMPARATIVO ── */
+.zona-comp{margin-top:68px;animation:fadeUp .6s ease .28s both;}
+.comp-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:44px 48px;position:relative;overflow:hidden;}
+.comp-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(109,212,154,0.5),transparent);}
+.comp-global{display:flex;align-items:center;justify-content:center;gap:36px;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--borde);}
+.comp-col{text-align:center;}
+.comp-label{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:8px;}
+.comp-big{font-family:"Playfair Display",serif;font-size:64px;font-weight:400;color:var(--texto-3);line-height:1;letter-spacing:-2px;}
+.comp-big-now{color:var(--oro-l);}
+.comp-sub{font-size:13px;color:var(--texto-3);margin-top:6px;}
+.comp-arrow{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--texto-3);}
+.comp-delta-pill{font-family:"DM Mono",monospace;font-size:16px;font-weight:700;padding:6px 16px;border-radius:20px;letter-spacing:1px;}
+.comp-delta-up{background:rgba(77,184,122,0.15);color:var(--verde);border:1px solid rgba(77,184,122,0.3);}
+.comp-delta-down{background:rgba(224,112,64,0.15);color:var(--naranja);border:1px solid rgba(224,112,64,0.3);}
+.comp-delta-flat{background:rgba(122,172,240,0.15);color:var(--azul);border:1px solid rgba(122,172,240,0.3);}
+.comp-riquezas{display:flex;flex-direction:column;gap:20px;}
+.comp-riq{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:16px;}
+.comp-riq-name{font-size:15px;font-weight:500;color:var(--texto-2);}
+.comp-riq-bars{position:relative;height:32px;background:var(--bg4);border-radius:10px;overflow:hidden;}
+.comp-riq-bar-base{position:absolute;top:0;left:0;height:50%;border-radius:10px 10px 0 0;opacity:0.35;transition:width .8s ease;}
+.comp-riq-bar-now{position:absolute;bottom:0;left:0;height:50%;border-radius:0 0 10px 10px;transition:width .8s ease;}
+.comp-riq-delta{font-family:"DM Mono",monospace;font-size:14px;font-weight:700;min-width:60px;text-align:right;}
+.comp-riq-legend{display:flex;gap:20px;justify-content:center;margin-bottom:24px;font-size:13px;color:var(--texto-3);}
+.comp-riq-legend span{display:flex;align-items:center;gap:6px;}
+.comp-riq-legend-dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+@media(max-width:640px){
+  .comp-global{gap:20px;}
+  .comp-big{font-size:44px;}
+  .comp-riq{grid-template-columns:80px 1fr auto;}
+  .comp-card{padding:32px 24px;}
+}
 </style>
 </head>
 <body>
@@ -306,6 +340,30 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ZONA COMPARATIVO — solo visible en MI_PULSO / MI_COSECHA -->
+<section class="zona-comp" id="zona-comp" style="display:none;">
+  <div class="eyebrow">Tu Evolución · Lo que se Movió</div>
+  <div class="comp-card">
+    <div class="comp-global">
+      <div class="comp-col">
+        <div class="comp-label">Día 1</div>
+        <div class="comp-big" id="comp-dia1">--</div>
+        <div class="comp-sub">Línea Base</div>
+      </div>
+      <div class="comp-arrow">
+        <div class="comp-delta-pill" id="comp-delta-pill">--</div>
+        <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h34M28 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="comp-col">
+        <div class="comp-label" id="comp-label-hoy">Día 45</div>
+        <div class="comp-big comp-big-now" id="comp-hoy">--</div>
+        <div class="comp-sub">Ahora</div>
+      </div>
+    </div>
+    <div class="comp-riquezas" id="comp-riquezas"></div>
   </div>
 </section>
 
@@ -390,6 +448,9 @@ var P = {
   semana: Math.min(Math.max(Math.round(nv("semana")) || 1, 1), 13),
   fase: sv("fase", "MAPA_VITAL"),
   em: sv("em", ""),
+  // Baseline Día 1 (para comparativo MI_PULSO / MI_COSECHA)
+  m1g:nv("m1g"), m1pfis:nv("m1pfis"), m1pmen:nv("m1pmen"), m1psoc:nv("m1psoc"), m1ptem:nv("m1ptem"), m1pfin:nv("m1pfin"),
+  m1pdes:nv("m1pdes"), m1prec:nv("m1prec"), m1pcla:nv("m1pcla"),
 };
 
 // ── FASE CONFIG ──
@@ -552,6 +613,44 @@ var TALI = {
     return "Tu mapa financiero está en proceso de construcción. Hay consciencia, pero también hay territorios sin explorar. El programa va a acompañarte a examinar tu historia financiera sin juicio, a entender los patrones que has traído hasta aquí, y a diseñar desde ese entendimiento los próximos capítulos.";
   }
 };
+
+// ── ZONA COMPARATIVO (solo MI_PULSO / MI_COSECHA) ──
+(function(){
+  if (P.fase === "MAPA_VITAL" || !P.m1g) return;
+  document.getElementById("zona-comp").style.display = "";
+  var d1 = Math.round(P.m1g), hoy = Math.round(P.global), delta = hoy - d1;
+  document.getElementById("comp-dia1").textContent = d1 + "%";
+  document.getElementById("comp-hoy").textContent = hoy + "%";
+  var pill = document.getElementById("comp-delta-pill");
+  pill.textContent = (delta >= 0 ? "+" : "") + delta + "%";
+  pill.className = "comp-delta-pill " + (delta > 0 ? "comp-delta-up" : delta < 0 ? "comp-delta-down" : "comp-delta-flat");
+  if (P.fase === "MI_COSECHA") document.getElementById("comp-label-hoy").textContent = "Día 90";
+
+  var RIQ = [
+    {nombre:"Física",     color:"#F06060", base:P.m1pfis, now:P.pfis},
+    {nombre:"Mental",     color:"#7A8CF0", base:P.m1pmen, now:P.pmen},
+    {nombre:"Social",     color:"#F0C040", base:P.m1psoc, now:P.psoc},
+    {nombre:"Temporal",   color:"#60D4A0", base:P.m1ptem, now:P.ptem},
+    {nombre:"Financiera", color:"#C9922A", base:P.m1pfin, now:P.pfin}
+  ];
+  var cont = document.getElementById("comp-riquezas");
+  var legend = "<div class='comp-riq-legend'><span><span class='comp-riq-legend-dot' style='background:var(--texto-3);opacity:0.35'></span> Día 1</span><span><span class='comp-riq-legend-dot' style='background:var(--oro-l)'></span> Ahora</span></div>";
+  var html = legend;
+  RIQ.forEach(function(r){
+    var b = Math.round(r.base), n = Math.round(r.now), d = n - b;
+    var dTxt = (d >= 0 ? "+" : "") + d + "%";
+    var dCol = d > 0 ? "var(--verde)" : d < 0 ? "var(--naranja)" : "var(--azul)";
+    html += "<div class='comp-riq'>";
+    html += "<div class='comp-riq-name'>" + r.nombre + "</div>";
+    html += "<div class='comp-riq-bars'>";
+    html += "<div class='comp-riq-bar-base' style='width:" + b + "%;background:" + r.color + "'></div>";
+    html += "<div class='comp-riq-bar-now' style='width:" + n + "%;background:" + r.color + "'></div>";
+    html += "</div>";
+    html += "<div class='comp-riq-delta' style='color:" + dCol + "'>" + dTxt + "</div>";
+    html += "</div>";
+  });
+  cont.innerHTML = html;
+})();
 
 // ── RADAR ──
 new Chart(document.getElementById("radarChart").getContext("2d"), {
