@@ -469,7 +469,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 var UP = new URLSearchParams(window.location.search);
 var nv = function(k) { var v = UP.get(k); return v !== null ? parseFloat(v) : 0; };
-var sv = function(k, d) { return UP.get(k) ? decodeURIComponent(UP.get(k)) : d; };
+var sv = function(k, d) { return UP.get(k) || d; };
 
 var P = {
   nombre: sv("n","Caminante"), nivel: sv("nv","DOMINIO_INICIAL"),
