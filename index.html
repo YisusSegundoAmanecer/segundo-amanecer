@@ -347,7 +347,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <section class="zona-a">
   <div class="mapa-badge">
-    <img src="mapa-vital.png" class="mapa-badge-ico" alt="Instrumento">
+    <img src="mapa-vital.png" class="mapa-badge-ico" alt="Instrumento" id="badge-ico">
     <span class="mapa-badge-txt" id="badge-txt">Mi Mapa Vital · Línea Base</span>
   </div>
   <div class="nombre-h" id="nombre-display">Caminante</div>
@@ -359,7 +359,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   <div class="narrativa-card">
     <div id="narrativa-body">
       <p class="narrativa-p" style="color:var(--texto-2);font-weight:300;">
-        Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
+        Este es tu espejo, no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
       </p>
     </div>
     <div class="narrativa-firma" id="narrativa-firma" style="display:none">
@@ -525,6 +525,8 @@ var fc = FC[P.fase] || FC.MAPA_VITAL;
 
 // ── ZONA A: Dynamic labels ──
 document.getElementById("badge-txt").textContent = fc.badge;
+  var BADGE_ICOS = {MAPA_VITAL:"mapa-vital.png", MI_PULSO:"mi-pulso.png", MI_COSECHA:"mi-cosecha.png"};
+document.getElementById("badge-ico").src = BADGE_ICOS[P.fase] || "mapa-vital.png";
 document.getElementById("nombre-display").textContent = P.nombre;
 document.getElementById("fecha-display").textContent =
   new Date().toLocaleDateString("es-MX",{year:"numeric",month:"long",day:"numeric"}) +
