@@ -242,37 +242,96 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .brujula-narrativa{font-size:17px;}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-/* ── ZONA COMPARATIVO ── */
+/* ═══ EL ESPEJO EN MOVIMIENTO — Comparison V3 ═══ */
 .zona-comp{margin-top:68px;animation:fadeUp .6s ease .28s both;}
-.comp-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:24px;padding:44px 48px;position:relative;overflow:hidden;}
-.comp-card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(109,212,154,0.5),transparent);}
-.comp-global{display:flex;align-items:center;justify-content:center;gap:36px;margin-bottom:40px;padding-bottom:36px;border-bottom:1px solid var(--borde);}
-.comp-col{text-align:center;}
-.comp-label{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:8px;}
-.comp-big{font-family:"Playfair Display",serif;font-size:64px;font-weight:400;color:var(--texto-3);line-height:1;letter-spacing:-2px;}
-.comp-big-now{color:var(--oro-l);}
-.comp-sub{font-size:13px;color:var(--texto-3);margin-top:6px;}
-.comp-arrow{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--texto-3);}
-.comp-delta-pill{font-family:"DM Mono",monospace;font-size:16px;font-weight:700;padding:6px 16px;border-radius:20px;letter-spacing:1px;}
-.comp-delta-up{background:rgba(77,184,122,0.15);color:var(--verde);border:1px solid rgba(77,184,122,0.3);}
-.comp-delta-down{background:rgba(224,112,64,0.15);color:var(--naranja);border:1px solid rgba(224,112,64,0.3);}
-.comp-delta-flat{background:rgba(122,172,240,0.15);color:var(--azul);border:1px solid rgba(122,172,240,0.3);}
-.comp-riquezas{display:flex;flex-direction:column;gap:20px;}
-.comp-riq{display:grid;grid-template-columns:120px 1fr auto;align-items:center;gap:16px;}
-.comp-riq-name{font-size:15px;font-weight:500;color:var(--texto-2);}
-.comp-riq-bars{position:relative;height:32px;background:var(--bg4);border-radius:10px;overflow:hidden;}
-.comp-riq-bar-base{position:absolute;top:0;left:0;height:50%;border-radius:10px 10px 0 0;opacity:0.35;transition:width .8s ease;}
-.comp-riq-bar-now{position:absolute;bottom:0;left:0;height:50%;border-radius:0 0 10px 10px;transition:width .8s ease;}
-.comp-riq-delta{font-family:"DM Mono",monospace;font-size:14px;font-weight:700;min-width:60px;text-align:right;}
-.comp-riq-legend{display:flex;gap:20px;justify-content:center;margin-bottom:24px;font-size:13px;color:var(--texto-3);}
-.comp-riq-legend span{display:flex;align-items:center;gap:6px;}
-.comp-riq-legend-dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
-@media(max-width:640px){
-  .comp-global{gap:20px;}
-  .comp-big{font-size:44px;}
-  .comp-riq{grid-template-columns:80px 1fr auto;}
-  .comp-card{padding:32px 24px;}
-}
+
+/* CH1: Tu Arco */
+.ch1{background:linear-gradient(160deg,var(--bg2) 0%,#0D0D1F 50%,var(--bg3) 100%);border:1px solid var(--borde-l);border-radius:32px;padding:0;position:relative;overflow:hidden;margin-bottom:24px;}
+.ch1::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 35% at 50% 20%,rgba(201,146,42,0.05),transparent 70%);pointer-events:none;}
+.ch1::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 15%,var(--oro) 50%,transparent 85%);}
+.ch1-inner{padding:60px 48px 48px;text-align:center;}
+.ch1-pretitle{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--oro);margin-bottom:8px;opacity:0.7;}
+.ch1-title{font-family:"Playfair Display",serif;font-size:clamp(28px,4vw,38px);font-weight:400;color:var(--texto);line-height:1.2;margin-bottom:36px;}
+.ch1-ring-zone{display:flex;align-items:center;justify-content:center;gap:48px;margin-bottom:36px;}
+.ch1-ring{position:relative;width:200px;height:200px;flex-shrink:0;}
+.ch1-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.ch1-delta{font-family:"Playfair Display",serif;font-size:52px;font-weight:400;line-height:1;}
+.ch1-delta-word{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--texto-3);margin-top:4px;}
+.ch1-stats{display:flex;flex-direction:column;gap:20px;text-align:left;}
+.ch1-stat{display:flex;align-items:center;gap:14px;}
+.ch1-stat-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.ch1-stat-val{font-family:"Playfair Display",serif;font-size:28px;font-weight:400;line-height:1;}
+.ch1-stat-lbl{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-top:2px;}
+.ch1-phase{display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border-radius:24px;margin-bottom:24px;}
+.ch1-phase-dot{width:8px;height:8px;border-radius:50%;animation:phasePulse 2s ease infinite;}
+.ch1-phase-text{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500;}
+@keyframes phasePulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.ch1-narr{font-size:17px;color:var(--texto-2);line-height:1.85;max-width:560px;margin:0 auto;font-style:italic;}
+
+/* CH2: 5 Riquezas */
+.ch2{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px;}
+.ch2-card{background:linear-gradient(180deg,var(--bg2),var(--bg3));border:1px solid var(--borde);border-radius:24px;padding:28px 16px 24px;text-align:center;position:relative;overflow:hidden;transition:border-color .3s,transform .2s;}
+.ch2-card:hover{border-color:var(--borde-l);transform:translateY(-2px);}
+.ch2-ico{width:40px;height:40px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(0 0 8px rgba(var(--riq-rgb),0.25));}
+.ch2-name{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:14px;}
+.ch2-ring{position:relative;width:90px;height:90px;margin:0 auto 12px;}
+.ch2-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.ch2-ring-pct{font-family:"Playfair Display",serif;font-size:24px;font-weight:400;line-height:1;}
+.ch2-ring-sub{font-family:"DM Mono",monospace;font-size:7px;letter-spacing:1.5px;color:var(--texto-3);margin-top:2px;}
+.ch2-delta{font-family:"DM Mono",monospace;font-size:12px;font-weight:700;padding:4px 14px;border-radius:14px;display:inline-block;margin-bottom:10px;}
+.ch2-row{display:flex;justify-content:center;gap:18px;margin-bottom:14px;}
+.ch2-val-n{font-size:13px;font-weight:600;line-height:1;}
+.ch2-val-l{font-family:"DM Mono",monospace;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--texto-3);margin-top:2px;}
+.ch2-narr{font-size:11px;color:var(--texto-3);line-height:1.55;text-align:left;font-style:italic;padding-top:12px;border-top:1px solid var(--borde);}
+
+/* CH3: Floreció + Territorios */
+.ch3{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+.ch3-panel{background:var(--bg2);border:1px solid var(--borde);border-radius:24px;padding:32px;position:relative;overflow:hidden;}
+.ch3-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px;}
+.ch3-panel.bloom::before{background:linear-gradient(90deg,transparent,var(--verde),transparent);}
+.ch3-panel.grow::before{background:linear-gradient(90deg,transparent,var(--oro),transparent);}
+.ch3-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.ch3-panel.bloom .ch3-label{color:var(--verde);}
+.ch3-panel.grow .ch3-label{color:var(--oro);}
+.ch3-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde);}
+.ch3-item:last-child{border-bottom:none;}
+.ch3-item-ico{width:32px;height:32px;object-fit:contain;flex-shrink:0;opacity:0.8;}
+.ch3-item-name{font-size:15px;font-weight:600;margin-bottom:2px;}
+.ch3-item-desc{font-size:12px;color:var(--texto-3);line-height:1.5;}
+.ch3-item-delta{font-family:"DM Mono",monospace;font-size:14px;font-weight:700;flex-shrink:0;}
+
+/* CH4: Timeline */
+.ch4{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:28px;padding:40px 48px;position:relative;overflow:hidden;}
+.ch4::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--oro),transparent);}
+.ch4-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:28px;text-align:center;}
+.ch4-timeline{display:flex;align-items:center;justify-content:center;gap:0;position:relative;padding:20px 0;}
+.ch4-node{text-align:center;position:relative;z-index:2;flex:0 0 auto;}
+.ch4-node-circle{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:"Playfair Display",serif;font-size:22px;font-weight:400;}
+.ch4-node.past .ch4-node-circle{background:var(--bg4);border:2px solid var(--texto-3);color:var(--texto-3);}
+.ch4-node.active .ch4-node-circle{background:linear-gradient(135deg,rgba(201,146,42,0.2),rgba(110,212,154,0.15));border:2px solid var(--oro-l);color:var(--oro-l);box-shadow:0 0 24px rgba(201,146,42,0.2);}
+.ch4-node.future .ch4-node-circle{background:var(--bg4);border:2px dashed var(--borde-l);color:var(--texto-3);opacity:0.5;}
+.ch4-node-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto-3);}
+.ch4-node.active .ch4-node-label{color:var(--oro-l);}
+.ch4-node-name{font-size:13px;color:var(--texto-2);margin-top:4px;}
+.ch4-node.active .ch4-node-name{color:var(--texto);font-weight:600;}
+.ch4-node.future .ch4-node-name{opacity:0.4;}
+.ch4-line{flex:1;height:2px;background:var(--borde);margin:0 -8px;margin-top:-44px;}
+.ch4-line.done .ch4-line-fill{background:linear-gradient(90deg,var(--texto-3),var(--oro-l));width:100%;height:100%;border-radius:2px;}
+.ch4-line.pending .ch4-line-fill{background:linear-gradient(90deg,var(--oro-l),var(--borde-l));width:30%;height:100%;opacity:0.4;}
+.ch4-cta{text-align:center;margin-top:28px;font-size:16px;color:var(--texto-2);font-style:italic;line-height:1.7;}
+
+/* Mediciones clickeables */
+.med-card.clickable{cursor:pointer;transition:border-color .2s,transform .2s;}
+.med-card.clickable:hover{border-color:var(--oro);transform:translateY(-3px);}
+
+/* Animations */
+@keyframes ringGrow{from{stroke-dashoffset:var(--ring-full)}to{stroke-dashoffset:var(--ring-target)}}
+.anim-ring{animation:ringGrow 1.2s cubic-bezier(0.4,0,0.2,1) forwards;}
+.anim-ring-d{animation:ringGrow 1s cubic-bezier(0.4,0,0.2,1) forwards;}
+.ch1{animation:fadeUp .6s ease both;}.ch2{animation:fadeUp .6s ease .15s both;}.ch3{animation:fadeUp .6s ease .25s both;}.ch4{animation:fadeUp .6s ease .35s both;}
+
+@media(max-width:900px){.ch2{grid-template-columns:repeat(3,1fr);}.ch1-ring-zone{flex-direction:column;gap:24px;}.ch1-stats{flex-direction:row;gap:28px;}}
+@media(max-width:640px){.ch2{grid-template-columns:1fr 1fr;}.ch3{grid-template-columns:1fr;}.ch1-inner{padding:40px 24px 36px;}.ch1-ring{width:160px;height:160px;}.ch1-delta{font-size:40px;}.ch4{padding:32px 20px;}.ch4-node-circle{width:48px;height:48px;font-size:16px;}}
 </style>
 </head>
 <body>
@@ -343,28 +402,10 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   </div>
 </section>
 
-<!-- ZONA COMPARATIVO — solo visible en MI_PULSO / MI_COSECHA -->
+<!-- EL ESPEJO EN MOVIMIENTO — solo MI_PULSO / MI_COSECHA -->
 <section class="zona-comp" id="zona-comp" style="display:none;">
-  <div class="eyebrow">Tu Evolución · Lo que se Movió</div>
-  <div class="comp-card">
-    <div class="comp-global">
-      <div class="comp-col">
-        <div class="comp-label">Día 1</div>
-        <div class="comp-big" id="comp-dia1">--</div>
-        <div class="comp-sub">Línea Base</div>
-      </div>
-      <div class="comp-arrow">
-        <div class="comp-delta-pill" id="comp-delta-pill">--</div>
-        <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8h34M28 2l8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div class="comp-col">
-        <div class="comp-label" id="comp-label-hoy">Día 45</div>
-        <div class="comp-big comp-big-now" id="comp-hoy">--</div>
-        <div class="comp-sub">Ahora</div>
-      </div>
-    </div>
-    <div class="comp-riquezas" id="comp-riquezas"></div>
-  </div>
+  <div class="eyebrow" id="comp-eyebrow">Tu Evolución · Día 1 → Día 45</div>
+  <div id="espejo-container"></div>
 </section>
 
 <section class="zona-d">
@@ -420,7 +461,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.2.4 — PANELES CONDICIONALES
+// COCKPIT V7.4 — PREMIUM EVOLUTION DASHBOARD
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
 // Fix: Split dinámico integrados/enfoque + event delegation CSP-safe
@@ -614,44 +655,110 @@ var TALI = {
   }
 };
 
-// ── ZONA COMPARATIVO (solo MI_PULSO / MI_COSECHA) ──
+// ═══ EL ESPEJO EN MOVIMIENTO — V3 Premium Evolution ═══
 (function(){
   if (P.fase === "MAPA_VITAL" || !P.m1g) return;
   document.getElementById("zona-comp").style.display = "";
-  var d1 = Math.round(P.m1g), hoy = Math.round(P.global), delta = hoy - d1;
-  document.getElementById("comp-dia1").textContent = d1 + "%";
-  document.getElementById("comp-hoy").textContent = hoy + "%";
-  var pill = document.getElementById("comp-delta-pill");
-  pill.textContent = (delta >= 0 ? "+" : "") + delta + "%";
-  pill.className = "comp-delta-pill " + (delta > 0 ? "comp-delta-up" : delta < 0 ? "comp-delta-down" : "comp-delta-flat");
-  if (P.fase === "MI_COSECHA") document.getElementById("comp-label-hoy").textContent = "Día 90";
+  var compDayLabel = P.fase === "MI_COSECHA" ? "Día 90" : "Día 45";
+  document.getElementById("comp-eyebrow").textContent = "Tu Evolución · Día 1 → " + compDayLabel;
+  var D1 = Math.round(P.m1g), HOY = Math.round(P.global), DELTA = HOY - D1;
+  var dSign = DELTA >= 0 ? "+" : "";
+  var dColor = DELTA > 0 ? "var(--verde)" : DELTA < 0 ? "var(--naranja)" : "var(--azul)";
 
-  var RIQ = [
-    {nombre:"Física",     color:"#F06060", base:P.m1pfis, now:P.pfis},
-    {nombre:"Mental",     color:"#7A8CF0", base:P.m1pmen, now:P.pmen},
-    {nombre:"Social",     color:"#F0C040", base:P.m1psoc, now:P.psoc},
-    {nombre:"Temporal",   color:"#60D4A0", base:P.m1ptem, now:P.ptem},
-    {nombre:"Financiera", color:"#C9922A", base:P.m1pfin, now:P.pfin}
+  var RDATA = [
+    {key:"fisica",nombre:"Física",ico:"riqueza-fisica.png",color:"#F06060",rgb:"240,96,96",b:Math.round(P.m1pfis),n:Math.round(P.pfis)},
+    {key:"mental",nombre:"Mental",ico:"riqueza-mental.png",color:"#7A8CF0",rgb:"122,140,240",b:Math.round(P.m1pmen),n:Math.round(P.pmen)},
+    {key:"social",nombre:"Social",ico:"riqueza-social.png",color:"#F0C040",rgb:"240,192,64",b:Math.round(P.m1psoc),n:Math.round(P.psoc)},
+    {key:"temporal",nombre:"Temporal",ico:"riqueza-temporal.png",color:"#60D4A0",rgb:"96,212,160",b:Math.round(P.m1ptem),n:Math.round(P.ptem)},
+    {key:"financiera",nombre:"Financiera",ico:"riqueza-financiera.png",color:"#C9922A",rgb:"201,146,42",b:Math.round(P.m1pfin),n:Math.round(P.pfin)}
   ];
-  var cont = document.getElementById("comp-riquezas");
-  var legend = "<div class='comp-riq-legend'><span><span class='comp-riq-legend-dot' style='background:var(--texto-3);opacity:0.35'></span> Día 1</span><span><span class='comp-riq-legend-dot' style='background:var(--oro-l)'></span> Ahora</span></div>";
-  var html = legend;
-  RIQ.forEach(function(r){
-    var b = Math.round(r.base), n = Math.round(r.now), d = n - b;
-    var dTxt = (d >= 0 ? "+" : "") + d + "%";
-    var dCol = d > 0 ? "var(--verde)" : d < 0 ? "var(--naranja)" : "var(--azul)";
-    html += "<div class='comp-riq'>";
-    html += "<div class='comp-riq-name'>" + r.nombre + "</div>";
-    html += "<div class='comp-riq-bars'>";
-    html += "<div class='comp-riq-bar-base' style='width:" + b + "%;background:" + r.color + "'></div>";
-    html += "<div class='comp-riq-bar-now' style='width:" + n + "%;background:" + r.color + "'></div>";
-    html += "</div>";
-    html += "<div class='comp-riq-delta' style='color:" + dCol + "'>" + dTxt + "</div>";
-    html += "</div>";
-  });
-  cont.innerHTML = html;
-})();
 
+  var ups=RDATA.filter(function(r){return r.n>r.b}).length;
+  var phase;
+  if(DELTA>5) phase={name:"Expansión Consciente",color:"var(--verde)",bg:"rgba(77,184,122,0.10)",border:"rgba(77,184,122,0.3)"};
+  else if(DELTA>0&&ups>=3) phase={name:"Crecimiento Orgánico",color:"var(--verde)",bg:"rgba(77,184,122,0.08)",border:"rgba(77,184,122,0.25)"};
+  else if(DELTA>=0) phase={name:"Consolidación Activa",color:"var(--oro-l)",bg:"rgba(201,146,42,0.10)",border:"rgba(201,146,42,0.3)"};
+  else if(DELTA>=-3&&ups>=2) phase={name:"Reorganización Profunda",color:"var(--azul)",bg:"rgba(122,172,240,0.12)",border:"rgba(122,172,240,0.3)"};
+  else phase={name:"Integración Silenciosa",color:"var(--rec)",bg:"rgba(240,168,96,0.10)",border:"rgba(240,168,96,0.3)"};
+
+  var gNarr=DELTA>5?"Tu evolución habla por sí misma. Lo que ves aquí no es esfuerzo — es el resultado de miles de micro-decisiones conscientes que tomaste durante 45 días. Eso no se finge, no se fuerza, y no se pierde.":DELTA>0?"El movimiento existe — sutil pero innegable. Los cambios más duraderos en la segunda mitad de la vida son los que avanzan sin prisa. Tu proceso está trabajando desde dentro hacia afuera.":DELTA===0?"Tu nivel se mantiene estable — y la estabilidad es también evolución. Consolidar lo construido es tan valioso como avanzar. Tu arquitectura de vida se está fortaleciendo desde los cimientos.":DELTA>-5?"Tu mapa se reorganizó profundamente. Cuando la consciencia se profundiza, los números a veces se ajustan antes de crecer — como un río que se ensancha antes de fluir con más fuerza.":"Tu proceso entró en una fase de deconstrucción creativa. Los cambios más significativos de la segunda mitad comienzan así: soltando para reconstruir.";
+
+  var RNARR={
+    fisica:{up:"Tu cuerpo está respondiendo. Cada punto de avance es un hábito que dejó de ser decisión y se convirtió en identidad.",flat:"Tu relación con el cuerpo se consolida. La estabilidad física es el terreno desde el cual se construye la vitalidad duradera.",down:"Tu cuerpo está en plena reorganización. Los descensos físicos suelen preceder a los avances más profundos — como soltar tensión antes de expandir."},
+    mental:{up:"Tu claridad mental se expandió. La capacidad de observar tus pensamientos con menos reactividad es una de las señales más poderosas de evolución.",flat:"Tu mundo interior se sostiene. Mantener la claridad mental en la mitad de la vida no es inercia — es fortaleza invisible.",down:"Tu mente está haciendo trabajo profundo. Los reacomodos mentales se sienten como descenso — pero son la preparación para una claridad nueva."},
+    social:{up:"Tus vínculos se fortalecieron. El crecimiento social refleja que estás eligiendo con intención quién ocupa espacio en tu vida.",flat:"Tu mapa social se mantiene. La estabilidad relacional significa que tus vínculos están sosteniendo bien tu proceso.",down:"Tus relaciones se están redefiniendo. Soltar vínculos que cumplieron su ciclo puede sentirse como pérdida — pero es diseño consciente."},
+    temporal:{up:"Tu relación con el tiempo evolucionó. No cambió el tiempo — cambió cómo lo habitas.",flat:"Tu consciencia temporal se mantiene firme. Sostener la relación con el tiempo es evidencia de que dejaste de vivir en automático.",down:"El tiempo se está recalibrando. Volverse más consciente a veces ajusta la medición — es la nueva exigencia, no un retroceso."},
+    financiera:{up:"Tu relación con lo financiero se transformó. El crecimiento aquí no es sobre dinero — es sobre la claridad emocional con la que ahora lo habitas.",flat:"Tu Riqueza Financiera se sostiene. La estabilidad emocional financiera es un activo invisible pero poderoso.",down:"Tu mapa financiero está en trabajo profundo. Los territorios emocionales del dinero son los últimos en resolverse — y los más transformadores cuando lo hacen."}
+  };
+  function rNarr(key,d){var r=RNARR[key];if(d>2)return r.up;if(d>=-2)return r.flat;return r.down;}
+
+  var sorted=RDATA.slice().sort(function(a,b){return(b.n-b.b)-(a.n-a.b)});
+  var bloomed=sorted.filter(function(r){return r.n>r.b});
+  var growing=sorted.filter(function(r){return r.n<=r.b}).reverse();
+
+  var R=82,CX=100,CY=100,CIRC=2*Math.PI*R;
+  var baseOff=CIRC*(1-D1/100),nowOff=CIRC*(1-HOY/100);
+  var h="";
+
+  // CH1: Tu Arco
+  h+='<div class="ch1"><div class="ch1-inner">';
+  h+='<div class="ch1-pretitle">El Espejo en Movimiento</div>';
+  h+='<div class="ch1-title">Tu Arco de Transformación</div>';
+  h+='<div class="ch1-ring-zone"><div class="ch1-ring">';
+  h+='<svg viewBox="0 0 200 200" width="200" height="200"><circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="12"/>';
+  h+='<circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="rgba(148,140,132,0.15)" stroke-width="12" stroke-dasharray="'+CIRC+'" stroke-dashoffset="'+baseOff+'" stroke-linecap="round" transform="rotate(-90 '+CX+' '+CY+')"/>';
+  h+='<circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="url(#espGrad)" stroke-width="12" stroke-dasharray="'+CIRC+'" stroke-dashoffset="'+CIRC+'" stroke-linecap="round" transform="rotate(-90 '+CX+' '+CY+')" class="anim-ring" style="--ring-full:'+CIRC+';--ring-target:'+nowOff+'"/>';
+  h+='<defs><linearGradient id="espGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#EAC97C"/><stop offset="100%" stop-color="#6ED49A"/></linearGradient></defs></svg>';
+  h+='<div class="ch1-ring-center"><div class="ch1-delta" style="color:'+dColor+'">'+dSign+DELTA+'%</div><div class="ch1-delta-word">evolución global</div></div></div>';
+  h+='<div class="ch1-stats"><div class="ch1-stat"><div class="ch1-stat-dot" style="background:var(--texto-3);opacity:0.4"></div><div class="ch1-stat-info"><div class="ch1-stat-val" style="color:var(--texto-3)">'+D1+'%</div><div class="ch1-stat-lbl">Día 1 · Línea Base</div></div></div>';
+  h+='<div class="ch1-stat"><div class="ch1-stat-dot" style="background:var(--oro-l)"></div><div class="ch1-stat-info"><div class="ch1-stat-val" style="color:var(--oro-l)">'+HOY+'%</div><div class="ch1-stat-lbl">'+compDayLabel+' · Ahora</div></div></div></div></div>';
+  h+='<div class="ch1-phase" style="background:'+phase.bg+';border:1px solid '+phase.border+'"><div class="ch1-phase-dot" style="background:'+phase.color+'"></div><div class="ch1-phase-text" style="color:'+phase.color+'">'+phase.name+'</div></div>';
+  h+='<p class="ch1-narr">'+gNarr+'</p></div></div>';
+
+  // CH2: 5 Riquezas
+  h+='<div class="ch2">';
+  RDATA.forEach(function(r,i){
+    var d=r.n-r.b,ds=(d>=0?"+":"")+d+"%";
+    var dc=d>0?"var(--verde)":d<0?"var(--naranja)":"var(--azul)";
+    var dbg=d>0?"rgba(77,184,122,0.12)":d<0?"rgba(224,112,64,0.12)":"rgba(122,172,240,0.12)";
+    var dbd=d>0?"rgba(77,184,122,0.3)":d<0?"rgba(224,112,64,0.3)":"rgba(122,172,240,0.3)";
+    var mr=36,mc=45,mcirc=2*Math.PI*mr,mBase=mcirc*(1-r.b/100),mNow=mcirc*(1-r.n/100);
+    h+='<div class="ch2-card" style="--riq-rgb:'+r.rgb+'">';
+    h+='<img src="'+r.ico+'" class="ch2-ico" alt="'+r.nombre+'">';
+    h+='<div class="ch2-name">'+r.nombre+'</div>';
+    h+='<div class="ch2-ring"><svg viewBox="0 0 90 90" width="90" height="90">';
+    h+='<circle cx="'+mc+'" cy="'+mc+'" r="'+mr+'" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="7"/>';
+    h+='<circle cx="'+mc+'" cy="'+mc+'" r="'+mr+'" fill="none" stroke="rgba('+r.rgb+',0.15)" stroke-width="7" stroke-dasharray="'+mcirc+'" stroke-dashoffset="'+mBase+'" stroke-linecap="round" transform="rotate(-90 '+mc+' '+mc+')"/>';
+    h+='<circle cx="'+mc+'" cy="'+mc+'" r="'+mr+'" fill="none" stroke="'+r.color+'" stroke-width="7" stroke-dasharray="'+mcirc+'" stroke-dashoffset="'+mcirc+'" stroke-linecap="round" transform="rotate(-90 '+mc+' '+mc+')" class="anim-ring-d" style="--ring-full:'+mcirc+';--ring-target:'+mNow+';animation-delay:'+(0.4+i*0.12)+'s"/>';
+    h+='</svg><div class="ch2-ring-center"><div class="ch2-ring-pct" style="color:'+r.color+'">'+r.n+'%</div><div class="ch2-ring-sub">ahora</div></div></div>';
+    h+='<div class="ch2-delta" style="color:'+dc+';background:'+dbg+';border:1px solid '+dbd+'">'+ds+'</div>';
+    h+='<div class="ch2-row"><div class="ch2-val"><div class="ch2-val-n" style="color:var(--texto-3)">'+r.b+'%</div><div class="ch2-val-l">Día 1</div></div>';
+    h+='<div class="ch2-val"><div class="ch2-val-n" style="color:'+r.color+'">'+r.n+'%</div><div class="ch2-val-l">Ahora</div></div></div>';
+    h+='<div class="ch2-narr">'+rNarr(r.key,d)+'</div>';
+    h+='<div style="position:absolute;bottom:0;left:20%;right:20%;height:2px;background:'+r.color+';opacity:0.3;border-radius:2px"></div></div>';
+  });
+  h+='</div>';
+
+  // CH3: Floreció + Territorios
+  h+='<div class="ch3"><div class="ch3-panel bloom"><div class="ch3-label"><span>✦</span> Lo que Floreció en 45 Días</div>';
+  if(bloomed.length){bloomed.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">De '+r.b+'% a '+r.n+'% — tu consciencia activa generó movimiento real.</div></div><div class="ch3-item-delta" style="color:var(--verde)">+'+d+'%</div></div>';});}
+  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Tu proceso está en fase de integración profunda — el florecimiento viene.</div>';}
+  h+='</div><div class="ch3-panel grow"><div class="ch3-label"><span>◈</span> Donde la Senda te Espera</div>';
+  if(growing.length){growing.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">Aquí es donde las próximas semanas van a hacer su trabajo más profundo contigo.</div></div><div class="ch3-item-delta" style="color:var(--oro-l)">'+d+'%</div></div>';});}
+  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Todas tus Riquezas crecieron — el programa está trabajando en cada dimensión.</div>';}
+  h+='</div></div>';
+
+  // CH4: Timeline
+  h+='<div class="ch4"><div class="ch4-label">Tu Línea de Transformación</div><div class="ch4-timeline">';
+  h+='<div class="ch4-node past"><div class="ch4-node-circle">'+D1+'%</div><div class="ch4-node-label">Día 1</div><div class="ch4-node-name">Mi Mapa Vital</div></div>';
+  h+='<div class="ch4-line done"><div class="ch4-line-fill"></div></div>';
+  h+='<div class="ch4-node active"><div class="ch4-node-circle">'+HOY+'%</div><div class="ch4-node-label">'+compDayLabel+'</div><div class="ch4-node-name">Mi Pulso · Hoy</div></div>';
+  h+='<div class="ch4-line pending"><div class="ch4-line-fill"></div></div>';
+  h+='<div class="ch4-node future"><div class="ch4-node-circle">?</div><div class="ch4-node-label">Día 90</div><div class="ch4-node-name">Mi Cosecha</div></div>';
+  h+='</div><div class="ch4-cta">"Lo que construiste hasta aquí es la base.<br>Lo que viene es donde el programa entrega su trabajo más profundo."</div></div>';
+
+  document.getElementById("espejo-container").innerHTML = h;
+})();
 // ── RADAR ──
 new Chart(document.getElementById("radarChart").getContext("2d"), {
   type: "radar",
@@ -836,13 +943,13 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
   document.getElementById("sem-frase").textContent = fr;
 })();
 
-// ── ZONA F: MEDICIONES (V7: Dynamic active state) ──
+// ── ZONA F: MEDICIONES (V7.4: Clickable navigation) ──
 (function(){
   var medGrid = document.getElementById("mediciones-grid");
   var meds = [
-    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png"},
-    {nombre:"Mi Pulso", dia:"Día 45 · Revisión Intermedia", desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.", ico:"mapa-vital.png"},
-    {nombre:"Mi Cosecha", dia:"Día 90 · Cierre del Programa", desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.", ico:"mapa-vital.png"},
+    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-b"},
+    {nombre:"Mi Pulso", dia:"Día 45 · Revisión Intermedia", desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.", ico:"mapa-vital.png", scrollTo:"zona-comp"},
+    {nombre:"Mi Cosecha", dia:"Día 90 · Cierre del Programa", desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.", ico:"mapa-vital.png", scrollTo:null},
   ];
   var activo = fc.medActivo;
   meds.forEach(function(m, i) {
@@ -850,12 +957,22 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
     var isActive = (i === activo);
     var isCompleted = (i < activo);
     var isLocked = (i > activo);
-    card.className = "med-card" + (isLocked ? " locked" : "");
-    if (isLocked) card.onclick = function(){ showLocked(); };
+    card.className = "med-card" + (isLocked ? " locked" : "") + ((isActive || isCompleted) ? " clickable" : "");
+    if (isLocked) { card.onclick = function(){ showLocked(); }; }
+    else if (isActive) { card.onclick = function(){ document.querySelector(".zona-b").scrollIntoView({behavior:"smooth"}); }; }
+    else if (isCompleted && m.scrollTo) {
+      card.onclick = (function(target){
+        return function(){
+          var el = document.getElementById(target);
+          if(el && el.style.display !== "none") { el.scrollIntoView({behavior:"smooth"}); }
+          else { document.querySelector(".zona-b").scrollIntoView({behavior:"smooth"}); }
+        };
+      })(m.scrollTo);
+    }
     var imgStyle = isLocked ? " style='opacity:0.4;filter:grayscale(1)'" : "";
     var statusHTML = "";
-    if (isActive) statusHTML = "<div class='med-activo'>● Activo ahora</div>";
-    else if (isCompleted) statusHTML = "<div class='med-completado'>✓ Completado</div>";
+    if (isActive) statusHTML = "<div class='med-activo'>● Estás aquí</div>";
+    else if (isCompleted) statusHTML = "<div class='med-completado'>✓ Ver resultados ↑</div>";
     else statusHTML = "<div class='med-lock'>🔒 Se desbloquea en " + m.dia.split(" · ")[0] + "</div>";
     card.innerHTML =
       "<img src='" + m.ico + "' class='med-icon-img' alt='" + m.nombre + "'" + imgStyle + ">" +
