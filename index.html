@@ -25,12 +25,12 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .eyebrow{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:28px;}
 .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.4),transparent);}
 .header{display:flex;align-items:center;gap:22px;padding:36px 0 0;animation:fadeUp .5s ease both;}
-.header-logo{width:200px;height:200px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
+.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
 .header-marca{font-family:"Playfair Display",serif;font-size:22px;font-weight:600;color:var(--texto);line-height:1.2;}
 .header-sub{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:6px;}
 .zona-a{padding:52px 0 0;animation:fadeUp .6s ease .08s both;}
 .mapa-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:28px;padding:10px 24px 10px 14px;margin-bottom:26px;}
-.mapa-badge-ico{width:90px;height:90px;object-fit:contain;}
+.mapa-badge-ico{width:44px;height:44px;object-fit:contain;}
 .mapa-badge-txt{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);}
 .nombre-h{font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,62px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:12px;}
 .fecha-sub{font-size:16px;color:var(--texto-3);}
@@ -169,6 +169,15 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-narrativa p{margin-bottom:18px;}
 .brujula-narrativa p:last-child{margin-bottom:0;}
 
+/* Card Continuidad — hilo evolutivo de micro-acciones semanales */
+.brujula-continuidad{background:linear-gradient(135deg,rgba(201,146,42,0.08),rgba(201,146,42,0.02));border:1px solid rgba(201,146,42,0.22);border-radius:20px;padding:28px 32px;margin:0 0 36px;position:relative;overflow:hidden;}
+.brujula-continuidad::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--oro-l),rgba(201,146,42,0.3));border-radius:4px 0 0 4px;}
+.brujula-continuidad-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.brujula-continuidad-eyebrow::before{content:"◈";font-size:12px;color:var(--oro-l);}
+.brujula-continuidad-texto{font-family:"Outfit",sans-serif;font-size:16px;line-height:1.85;color:var(--texto);font-style:italic;}
+.brujula-continuidad-texto p{margin:0 0 14px;}
+.brujula-continuidad-texto p:last-child{margin-bottom:0;}
+
 /* ── HERO CARD (Tarjeta Maestra — mayor brecha) ── */
 .brujula-hero{border-radius:22px;padding:36px 40px;margin-bottom:32px;position:relative;overflow:hidden;}
 .brujula-hero::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,var(--hero-color,var(--oro)),transparent 60%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
@@ -272,7 +281,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch2{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px;}
 .ch2-card{background:linear-gradient(180deg,var(--bg2),var(--bg3));border:1px solid var(--borde);border-radius:24px;padding:28px 16px 24px;text-align:center;position:relative;overflow:hidden;transition:border-color .3s,transform .2s;}
 .ch2-card:hover{border-color:var(--borde-l);transform:translateY(-2px);}
-.ch2-ico{width:75px;height:75px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(0 0 8px rgba(var(--riq-rgb),0.25));}
+.ch2-ico{width:40px;height:40px;object-fit:contain;margin:0 auto 10px;display:block;filter:drop-shadow(0 0 8px rgba(var(--riq-rgb),0.25));}
 .ch2-name{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--texto-3);margin-bottom:14px;}
 .ch2-ring{position:relative;width:90px;height:90px;margin:0 auto 12px;}
 .ch2-ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
@@ -295,7 +304,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch3-panel.grow .ch3-label{color:var(--oro);}
 .ch3-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--borde);}
 .ch3-item:last-child{border-bottom:none;}
-.ch3-item-ico{width:75px;height:75px;object-fit:contain;flex-shrink:0;opacity:0.8;}
+.ch3-item-ico{width:32px;height:32px;object-fit:contain;flex-shrink:0;opacity:0.8;}
 .ch3-item-name{font-size:15px;font-weight:600;margin-bottom:2px;}
 .ch3-item-desc{font-size:12px;color:var(--texto-3);line-height:1.5;}
 .ch3-item-delta{font-family:"DM Mono",monospace;font-size:14px;font-weight:700;flex-shrink:0;}
@@ -347,7 +356,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <section class="zona-a">
   <div class="mapa-badge">
-    <img src="mapa-vital.png" class="mapa-badge-ico" alt="Instrumento" id="badge-ico">
+    <img src="mapa-vital.png" class="mapa-badge-ico" alt="Instrumento">
     <span class="mapa-badge-txt" id="badge-txt">Mi Mapa Vital · Línea Base</span>
   </div>
   <div class="nombre-h" id="nombre-display">Caminante</div>
@@ -359,7 +368,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   <div class="narrativa-card">
     <div id="narrativa-body">
       <p class="narrativa-p" style="color:var(--texto-2);font-weight:300;">
-        Este es tu espejo, no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
+        Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación.
       </p>
     </div>
     <div class="narrativa-firma" id="narrativa-firma" style="display:none">
@@ -444,9 +453,9 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <section class="zona-f">
   <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
-  <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe, se profundiza.</p>
+  <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
   <div class="mediciones-grid" id="mediciones-grid"></div>
-  <div id="locked-msg">Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos, el hilo conductor nunca se pierde.</div>
+  <div id="locked-msg">Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
 </section>
 
 <footer class="footer">
@@ -469,7 +478,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 var UP = new URLSearchParams(window.location.search);
 var nv = function(k) { var v = UP.get(k); return v !== null ? parseFloat(v) : 0; };
-var sv = function(k, d) { return UP.get(k) || d; };
+var sv = function(k, d) { return UP.get(k) ? decodeURIComponent(UP.get(k)) : d; };
 
 var P = {
   nombre: sv("n","Caminante"), nivel: sv("nv","DOMINIO_INICIAL"),
@@ -492,7 +501,6 @@ var P = {
   // Baseline Día 1 (para comparativo MI_PULSO / MI_COSECHA)
   m1g:nv("m1g"), m1pfis:nv("m1pfis"), m1pmen:nv("m1pmen"), m1psoc:nv("m1psoc"), m1ptem:nv("m1ptem"), m1pfin:nv("m1pfin"),
   m1pdes:nv("m1pdes"), m1prec:nv("m1prec"), m1pcla:nv("m1pcla"),
-  mapa_url: sv("mapa_url",""),
 };
 
 // ── FASE CONFIG ──
@@ -503,7 +511,7 @@ var FC = {
     fecha: "Mi Mapa Vital · Línea Base",
     foot: "MI MAPA VITAL V7.0",
     medActivo: 0,
-    defaultNarr: "Este es tu espejo, no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación."
+    defaultNarr: "Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación."
   },
   MI_PULSO: {
     badge: "Mi Pulso · Revisión Intermedia",
@@ -511,7 +519,7 @@ var FC = {
     fecha: "Mi Pulso · Revisión Intermedia",
     foot: "MI PULSO V1.0",
     medActivo: 1,
-    defaultNarr: "Esta es tu segunda mirada, la evidencia de lo que se movió en 45 días de consciencia activa. Lo que ves aquí no es una calificación nueva: es el mapa de tu evolución."
+    defaultNarr: "Esta es tu segunda mirada — la evidencia de lo que se movió en 45 días de consciencia activa. Lo que ves aquí no es una calificación nueva: es el mapa de tu evolución."
   },
   MI_COSECHA: {
     badge: "Mi Cosecha · Cierre del Programa",
@@ -519,15 +527,13 @@ var FC = {
     fecha: "Mi Cosecha · Cierre del Programa",
     foot: "MI COSECHA V1.0",
     medActivo: 2,
-    defaultNarr: "Esta es tu cosecha, el espejo final de 90 días de transformación consciente. Lo que ves aquí es el mapa completo de quién te has convertido."
+    defaultNarr: "Esta es tu cosecha — el espejo final de 90 días de transformación consciente. Lo que ves aquí es el mapa completo de quién te has convertido."
   }
 };
 var fc = FC[P.fase] || FC.MAPA_VITAL;
 
 // ── ZONA A: Dynamic labels ──
 document.getElementById("badge-txt").textContent = fc.badge;
-  var BADGE_ICOS = {MAPA_VITAL:"mapa-vital.png", MI_PULSO:"mi-pulso.png", MI_COSECHA:"mi-cosecha.png"};
-document.getElementById("badge-ico").src = BADGE_ICOS[P.fase] || "mapa-vital.png";
 document.getElementById("nombre-display").textContent = P.nombre;
 document.getElementById("fecha-display").textContent =
   new Date().toLocaleDateString("es-MX",{year:"numeric",month:"long",day:"numeric"}) +
@@ -558,28 +564,28 @@ document.getElementById("score-num").textContent = Math.round(P.global) + "%";
 var NH = {
   EXCELENCIA:{
     l:"Excelencia",
-    d:"Tus comportamientos ya son identidad. No requieren esfuerzo consciente, fluyen de manera natural en cada una de tus 5 Riquezas.",
-    e:"Estás en el nivel más alto del proceso. Significa que los comportamientos que medimos no solo aparecen, forman parte de quién eres. La Senda Interior en este punto es de refinamiento y de transmisión: tu experiencia tiene el poder de iluminar a otros Caminantes."
+    d:"Tus comportamientos ya son identidad. No requieren esfuerzo consciente — fluyen de manera natural en cada una de tus 5 Riquezas.",
+    e:"Estás en el nivel más alto del proceso. Significa que los comportamientos que medimos no solo aparecen — forman parte de quién eres. La Senda Interior en este punto es de refinamiento y de transmisión: tu experiencia tiene el poder de iluminar a otros Caminantes."
   },
   DOMINIO_AVANZADO:{
     l:"Dominio Avanzado",
     d:"Los comportamientos forman parte de tu rutina diaria. Aparecen con consistencia y sin necesidad de recordatorios externos.",
-    e:"Este nivel significa que la mayoría de tus comportamientos ya están integrados, están operando en piloto automático positivo. La Senda Interior aquí trabaja los pocos territorios que aún están en construcción, para que toda tu arquitectura sea sólida en las 5 Riquezas."
+    e:"Este nivel significa que la mayoría de tus comportamientos ya están integrados — están operando en piloto automático positivo. La Senda Interior aquí trabaja los pocos territorios que aún están en construcción, para que toda tu arquitectura sea sólida en las 5 Riquezas."
   },
   DOMINIO_INICIAL:{
     l:"Consciencia Activa",
     d:"Los comportamientos emergen con frecuencia y se están consolidando en tu vida. Estás construyendo desde una base real.",
-    e:"Este es el nivel más común entre Caminantes que comienzan La Senda Interior y es exactamente el punto de partida correcto. No estás empezando de cero: tienes comportamientos que ya funcionan. El programa va a trabajar con lo que ya tienes para fortalecer lo que aún está en proceso."
+    e:"Este es el nivel más común entre Caminantes que comienzan La Senda Interior — y es exactamente el punto de partida correcto. No estás empezando de cero: tienes comportamientos que ya funcionan. El programa va a trabajar con lo que ya tienes para fortalecer lo que aún está en proceso."
   },
   MINIMO_ACTIVO:{
     l:"Consciencia en Inicio",
-    d:"La consciencia ya está presente. Los comportamientos aparecen en algunos momentos, el despertar ya comenzó.",
-    e:"Que estés aquí no habla de falta de capacidad, habla de que la vida te trajo a este momento preciso. El Despertar ya ocurrió: te reconociste en el Mapa. La Senda Interior empieza exactamente donde estás, con comportamientos pequeños y sostenibles que van construyendo tu nueva arquitectura de vida."
+    d:"La consciencia ya está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó.",
+    e:"Que estés aquí no habla de falta de capacidad — habla de que la vida te trajo a este momento preciso. El Despertar ya ocurrió: te reconociste en el Mapa. La Senda Interior empieza exactamente donde estás, con comportamientos pequeños y sostenibles que van construyendo tu nueva arquitectura de vida."
   },
   MINIMO_INCIPIENTE:{
     l:"Primer Umbral",
     d:"El proceso de despertar está comenzando. Este punto de partida es lo que hace posible todo lo que sigue.",
-    e:"Estar en el Primer Umbral es el inicio más honesto que existe. Significa que respondiste con verdad absoluta, sin maquillaje. Ese nivel de honestidad es exactamente la materia prima que La Senda Interior necesita para construir algo real y duradero contigo."
+    e:"Estar en el Primer Umbral es el inicio más honesto que existe. Significa que respondiste con verdad absoluta — sin maquillaje. Ese nivel de honestidad es exactamente la materia prima que La Senda Interior necesita para construir algo real y duradero contigo."
   },
 };
 
@@ -628,31 +634,31 @@ var bkFin = (P.bdfi*.25+P.brfi*.40+P.bcfi*.35) || 50;
 var TALI = {
   fisica: function(mi, gp, bk) {
     var d = mi - gp;
-    if (d > 8) return "Tu cuerpo ya recibe atención real. Los comportamientos físicos que tienes integrados son una base sólida, el programa va a profundizar en ellos para que no solo estén presentes, sino que sean fuente de energía y vitalidad sostenida durante el resto de tu recorrido.";
-    if (d < -8) return "Tu cuerpo lleva tiempo esperando ser escuchado con más atención. Este no es un diagnóstico, es una invitación. La Riqueza Física en La Senda Interior no trabaja con disciplina forzada: trabaja con reconexión. Cada semana dedicada a esta riqueza va a construir un puente entre tú y tu cuerpo, uno que dure.";
+    if (d > 8) return "Tu cuerpo ya recibe atención real. Los comportamientos físicos que tienes integrados son una base sólida — el programa va a profundizar en ellos para que no solo estén presentes, sino que sean fuente de energía y vitalidad sostenida durante el resto de tu recorrido.";
+    if (d < -8) return "Tu cuerpo lleva tiempo esperando ser escuchado con más atención. Este no es un diagnóstico — es una invitación. La Riqueza Física en La Senda Interior no trabaja con disciplina forzada: trabaja con reconexión. Cada semana dedicada a esta riqueza va a construir un puente entre tú y tu cuerpo, uno que dure.";
     return "Tu relación con tu cuerpo está en un punto de transición real. Los comportamientos físicos aparecen, pero aún no son constantes. El programa va a trabajar exactamente en ese espacio intermedio — no para exigirte más, sino para que lo que ya tienes se consolide de forma natural.";
   },
   mental: function(mi, gp, bk) {
     var d = mi - gp;
     if (d > 8) return "Tu vida interior ya tiene estructura. La capacidad de observar tus pensamientos y emociones es una de las habilidades más valiosas de la segunda mitad de la vida — y tú ya la tienes. El programa va a acompañarte a usar esa claridad mental para diseñar, no solo para procesar.";
-    if (d < -8) return "El mundo interior puede ser el territorio más desafiante de toda la transición. No porque estés fallando, sino porque nadie nos enseñó a habitarlo con consciencia. La Senda Interior tiene semanas dedicadas específicamente a este trabajo: sin juicio, sin análisis interminable, con herramientas concretas para que tu mente sea tu aliada.";
+    if (d < -8) return "El mundo interior puede ser el territorio más desafiante de toda la transición. No porque estés fallando — sino porque nadie nos enseñó a habitarlo con consciencia. La Senda Interior tiene semanas dedicadas específicamente a este trabajo: sin juicio, sin análisis interminable, con herramientas concretas para que tu mente sea tu aliada.";
     return "Tu mundo mental está en movimiento — hay consciencia, hay momentos de claridad, y también hay momentos donde el ruido interno gana terreno. El programa va a darte ritmos y herramientas para que los momentos de claridad sean cada vez más frecuentes y los de ruido, cada vez más cortos.";
   },
   social: function(mi, gp, bk) {
     var d = mi - gp;
     if (d > 8) return "Tus vínculos y relaciones ya son un activo en tu vida. La consciencia social que tienes integrada es señal de alguien que ya entendió que las relaciones no se sostienen solas — se cultivan. El programa va a acompañarte a profundizar en esos vínculos y a identificar cuáles están listos para el siguiente capítulo contigo.";
-    if (d < -8) return "Las relaciones de la segunda mitad de la vida necesitan una revisión honesta. No para juzgar el pasado, sino para elegir el futuro. La Senda Interior tiene espacio para explorar qué vínculos nutren, qué vínculos drenan y qué nuevas conexiones estás listo para construir. Este trabajo no se hace solo — se hace caminando.";
+    if (d < -8) return "Las relaciones de la segunda mitad de la vida necesitan una revisión honesta. No para juzgar el pasado — sino para elegir el futuro. La Senda Interior tiene espacio para explorar qué vínculos nutren, qué vínculos drenan y qué nuevas conexiones estás listo para construir. Este trabajo no se hace solo — se hace caminando.";
     return "Tus relaciones están en un momento de transición. Hay vínculos importantes, y también hay espacios relacionales que todavía no han encontrado su forma definitiva. El programa va a acompañarte a darle nombre a ese mapa social y a tomar decisiones conscientes sobre él.";
   },
   temporal: function(mi, gp, bk) {
     var d = mi - gp;
-    if (d > 8) return "Tu relación con el tiempo es una fortaleza real. Tienes consciencia de cómo lo habitas y eso no es menor. En la segunda mitad de la vida, el tiempo deja de ser un recurso infinito y se convierte en el material con el que construyes tu legado. Tú ya estás parado en ese entendimiento.";
-    if (d < -8) return "El tiempo en la segunda mitad de la vida tiene un peso diferente. No es urgencia, es significado. El trabajo en esta riqueza en La Senda Interior no es sobre productividad ni sobre hacer más: es sobre habitar cada semana con mayor intención, para que el tiempo que tienes sea tuyo de verdad.";
+    if (d > 8) return "Tu relación con el tiempo es una fortaleza real. Tienes consciencia de cómo lo habitas — y eso no es menor. En la segunda mitad de la vida, el tiempo deja de ser un recurso infinito y se convierte en el material con el que construyes tu legado. Tú ya estás parado en ese entendimiento.";
+    if (d < -8) return "El tiempo en la segunda mitad de la vida tiene un peso diferente. No es urgencia — es significado. El trabajo en esta riqueza en La Senda Interior no es sobre productividad ni sobre hacer más: es sobre habitar cada semana con mayor intención, para que el tiempo que tienes sea tuyo de verdad.";
     return "Tu consciencia del tiempo está despertando. Hay momentos donde lo habitas con propósito, y otros donde la inercia toma el control. El programa va a ayudarte a diseñar ritmos que le devuelvan el sentido a tu tiempo — no desde la exigencia, sino desde lo que realmente importa.";
   },
   financiera: function(mi, gp, bk) {
     var d = mi - gp;
-    if (d > 8) return "Tu relación con lo financiero ya tiene claridad y estructura. Eso es inusual y valioso la mayoría de las personas llegan a la mitad de la vida cargando el peso de decisiones no examinadas. Tú ya empezaste ese proceso. La Senda Interior va a acompañarte a convertir esa claridad en un legado financiero concreto.";
+    if (d > 8) return "Tu relación con lo financiero ya tiene claridad y estructura. Eso es inusual y valioso — la mayoría de las personas llegan a la mitad de la vida cargando el peso de decisiones no examinadas. Tú ya empezaste ese proceso. La Senda Interior va a acompañarte a convertir esa claridad en un legado financiero concreto.";
     if (d < -8) return "La Riqueza Financiera es la que más emociones carga: vergüenza, miedo, orgullo, culpa. Antes de hablar de dinero, La Senda Interior trabaja las emociones que lo rodean. Cuando eso se procesa, la claridad financiera llega de forma natural — y desde ahí se puede diseñar un legado real.";
     return "Tu mapa financiero está en proceso de construcción. Hay consciencia, pero también hay territorios sin explorar. El programa va a acompañarte a examinar tu historia financiera sin juicio, a entender los patrones que has traído hasta aquí, y a diseñar desde ese entendimiento los próximos capítulos.";
   }
@@ -690,7 +696,7 @@ var TALI = {
     fisica:{up:"Tu cuerpo está respondiendo. Cada punto de avance es un hábito que dejó de ser decisión y se convirtió en identidad.",flat:"Tu relación con el cuerpo se consolida. La estabilidad física es el terreno desde el cual se construye la vitalidad duradera.",down:"Tu cuerpo está en plena reorganización. Los descensos físicos suelen preceder a los avances más profundos — como soltar tensión antes de expandir."},
     mental:{up:"Tu claridad mental se expandió. La capacidad de observar tus pensamientos con menos reactividad es una de las señales más poderosas de evolución.",flat:"Tu mundo interior se sostiene. Mantener la claridad mental en la mitad de la vida no es inercia — es fortaleza invisible.",down:"Tu mente está haciendo trabajo profundo. Los reacomodos mentales se sienten como descenso — pero son la preparación para una claridad nueva."},
     social:{up:"Tus vínculos se fortalecieron. El crecimiento social refleja que estás eligiendo con intención quién ocupa espacio en tu vida.",flat:"Tu mapa social se mantiene. La estabilidad relacional significa que tus vínculos están sosteniendo bien tu proceso.",down:"Tus relaciones se están redefiniendo. Soltar vínculos que cumplieron su ciclo puede sentirse como pérdida — pero es diseño consciente."},
-    temporal:{up:"Tu relación con el tiempo evolucionó. No cambió el tiempo, cambió cómo lo habitas.",flat:"Tu consciencia temporal se mantiene firme. Sostener la relación con el tiempo es evidencia de que dejaste de vivir en automático.",down:"El tiempo se está recalibrando. Volverse más consciente a veces ajusta la medición — es la nueva exigencia, no un retroceso."},
+    temporal:{up:"Tu relación con el tiempo evolucionó. No cambió el tiempo — cambió cómo lo habitas.",flat:"Tu consciencia temporal se mantiene firme. Sostener la relación con el tiempo es evidencia de que dejaste de vivir en automático.",down:"El tiempo se está recalibrando. Volverse más consciente a veces ajusta la medición — es la nueva exigencia, no un retroceso."},
     financiera:{up:"Tu relación con lo financiero se transformó. El crecimiento aquí no es sobre dinero — es sobre la claridad emocional con la que ahora lo habitas.",flat:"Tu Riqueza Financiera se sostiene. La estabilidad emocional financiera es un activo invisible pero poderoso.",down:"Tu mapa financiero está en trabajo profundo. Los territorios emocionales del dinero son los últimos en resolverse — y los más transformadores cuando lo hacen."}
   };
   function rNarr(key,d){var r=RNARR[key];if(d>2)return r.up;if(d>=-2)return r.flat;return r.down;}
@@ -745,10 +751,10 @@ var TALI = {
   // CH3: Floreció + Territorios
   h+='<div class="ch3"><div class="ch3-panel bloom"><div class="ch3-label"><span>✦</span> Lo que Floreció en 45 Días</div>';
   if(bloomed.length){bloomed.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">De '+r.b+'% a '+r.n+'% — tu consciencia activa generó movimiento real.</div></div><div class="ch3-item-delta" style="color:var(--verde)">+'+d+'%</div></div>';});}
-  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Tu proceso está en fase de integración profunda, el florecimiento viene.</div>';}
+  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Tu proceso está en fase de integración profunda — el florecimiento viene.</div>';}
   h+='</div><div class="ch3-panel grow"><div class="ch3-label"><span>◈</span> Donde la Senda te Espera</div>';
   if(growing.length){growing.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">Aquí es donde las próximas semanas van a hacer su trabajo más profundo contigo.</div></div><div class="ch3-item-delta" style="color:var(--oro-l)">'+d+'%</div></div>';});}
-  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Todas tus Riquezas crecieron, el programa está trabajando en cada dimensión.</div>';}
+  else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Todas tus Riquezas crecieron — el programa está trabajando en cada dimensión.</div>';}
   h+='</div></div>';
 
   // CH4: Timeline
@@ -893,7 +899,7 @@ function toggleDrill(panelId, toggleId) {
 // ── ZONA E: SEMANA ──
 var SEMS = [null,
   {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,
-   fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy, el programa va a construir desde ahí, no contra eso. El Despertar no es un diagnóstico, es el primer acto de consciencia: reconocerte en el espejo sin juzgar lo que ves."},
+   fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa va a construir desde ahí, no contra eso. El Despertar no es un diagnóstico, es el primer acto de consciencia: reconocerte en el espejo sin juzgar lo que ves."},
   {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",
    fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio. No se trata de cambiar el cuerpo — se trata de volver a habitarlo."},
   {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",
@@ -903,13 +909,13 @@ var SEMS = [null,
   {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",
    fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura. Tu mente pasa de ser un territorio de ruido a ser un lugar donde puedes vivir con claridad."},
   {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",
-   fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre, no para terminar vínculos, sino para entender qué lugar ocupa cada persona en tu mapa de vida."},
+   fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre — no para terminar vínculos, sino para entender qué lugar ocupa cada persona en tu mapa de vida."},
   {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",
-   fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo no es accidental, es arquitectura. Esta semana la diseñas con intención."},
+   fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo no es accidental — es arquitectura. Esta semana la diseñas con intención."},
   {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",
-   fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad, es sobre lo que realmente importa. Reconciliarse con el tiempo pasado es el primer paso para habitar el presente con plenitud."},
+   fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa. Reconciliarse con el tiempo pasado es el primer paso para habitar el presente con plenitud."},
   {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",
-   fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo, cómo quieres que se sienta tu día a día cuando estás viviendo desde tu mapa, no contra él."},
+   fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo — cómo quieres que se sienta tu día a día cuando estás viviendo desde tu mapa, no contra él."},
   {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",
    fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana esas emociones se procesan antes de planear cualquier número. Sin ese paso, cualquier plan financiero es construir sobre arena."},
   {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",
@@ -936,9 +942,9 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
     if (cd) {
       var pct = Math.round(cd.pct);
       if (pct >= 60)
-        fr = "Tu Mapa muestra una base sólida en este territorio (" + pct + "%). Esta semana vas a profundizar sobre terreno real, lo que construiste hasta aquí se va a consolidar con lo que el programa tiene preparado para ti. " + fr;
+        fr = "Tu Mapa muestra una base sólida en este territorio (" + pct + "%). Esta semana vas a profundizar sobre terreno real — lo que construiste hasta aquí se va a consolidar con lo que el programa tiene preparado para ti. " + fr;
       else if (pct >= 35)
-        fr = "Tu Mapa señala este territorio en pleno desarrollo (" + pct + "%). Esta semana llega en el momento preciso, cuando hay suficiente consciencia para trabajar, y suficiente espacio para crecer. " + fr;
+        fr = "Tu Mapa señala este territorio en pleno desarrollo (" + pct + "%). Esta semana llega en el momento preciso — cuando hay suficiente consciencia para trabajar, y suficiente espacio para crecer. " + fr;
       else
         fr = "Tu Mapa revela que este es uno de tus espacios de mayor transformación posible (" + pct + "%). El trabajo de esta semana fue diseñado exactamente para este tipo de punto de partida. Lo más importante: no estás atrasado — estás en el lugar exacto donde el programa puede hacer su trabajo más profundo. " + fr;
     }
@@ -950,7 +956,7 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
 (function(){
   var medGrid = document.getElementById("mediciones-grid");
   var meds = [
-    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-comp", extUrl:P.mapa_url},
+    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-b"},
     {nombre:"Mi Pulso", dia:"Día 45 · Revisión Intermedia", desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.", ico:"mapa-vital.png", scrollTo:"zona-comp"},
     {nombre:"Mi Cosecha", dia:"Día 90 · Cierre del Programa", desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.", ico:"mapa-vital.png", scrollTo:null},
   ];
@@ -963,11 +969,6 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
     card.className = "med-card" + (isLocked ? " locked" : "") + ((isActive || isCompleted) ? " clickable" : "");
     if (isLocked) { card.onclick = function(){ showLocked(); }; }
     else if (isActive) { card.onclick = function(){ document.querySelector(".zona-b").scrollIntoView({behavior:"smooth"}); }; }
-    else if (isCompleted && m.extUrl) {
-      card.onclick = (function(url){
-        return function(){ window.open(url, "_blank"); };
-      })(m.extUrl);
-    }
     else if (isCompleted && m.scrollTo) {
       card.onclick = (function(target){
         return function(){
@@ -1071,6 +1072,17 @@ function showLocked() {
         var narrParts = latest.NARRATIVA.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 10; });
         if (!narrParts.length) narrParts = [latest.NARRATIVA];
         html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
+      }
+      
+      // ── CARD CONTINUIDAD — hilo evolutivo de micro-acciones semanales ──
+      var continuidadTexto = latest.CONTINUIDAD_NARRATIVA || "";
+      if (continuidadTexto && continuidadTexto.trim().length > 10) {
+        var contParts = continuidadTexto.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 5; });
+        if (!contParts.length) contParts = [continuidadTexto];
+        html += "<div class='brujula-continuidad'>";
+        html += "<div class='brujula-continuidad-eyebrow'>Tu Continuidad esta Semana</div>";
+        html += "<div class='brujula-continuidad-texto'>" + contParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
+        html += "</div>";
       }
       
       // ── HERO CARD (Tarjeta 1 = Mayor Brecha) ──
