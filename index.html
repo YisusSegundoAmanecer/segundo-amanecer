@@ -470,38 +470,182 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.4 — PREMIUM EVOLUTION DASHBOARD
+// COCKPIT V7.5 — PULSO CSV FETCH PATTERN
 // Conexión Vital — Segundo Amanecer
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
-// Fix: Split dinámico integrados/enfoque + event delegation CSP-safe
+//
+// CAMBIO V7.5: Mi Pulso puede leer sus datos desde Google Sheet
+// (pestaña HISTORIAL_PULSO) en vez de URL params, eliminando el
+// 414 Request-URI Too Large. Activación: llenar PULSO_GID abajo.
+// Mientras PULSO_GID esté vacío, funciona IGUAL que V7.4 (legacy).
 // ══════════════════════════════════════════
 
+// ── CONFIG: GID de la pestaña HISTORIAL_PULSO publicada como CSV ──
+// Dejar vacío ("") = modo legacy (lee todo de URL, como V7.4).
+// Llenar con el GID numérico = activa fetch desde Sheet.
+var PULSO_GID = "";
+
+var PULSO_CSV = PULSO_GID
+  ? "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=" + PULSO_GID + "&single=true&output=csv"
+  : null;
+
+// ── URL UTILS ──
 var UP = new URLSearchParams(window.location.search);
 var nv = function(k) { var v = UP.get(k); return v !== null ? parseFloat(v) : 0; };
 var sv = function(k, d) { return UP.get(k) ? decodeURIComponent(UP.get(k)) : d; };
 
-var P = {
-  nombre: sv("n","Caminante"), nivel: sv("nv","DOMINIO_INICIAL"),
-  global: nv("g"),
-  pdes: nv("pdes"), prec: nv("prec"), pcla: nv("pcla"),
-  pfis: nv("pfis"), pmen: nv("pmen"), psoc: nv("psoc"), ptem: nv("ptem"), pfin: nv("pfin"),
-  df:nv("df"),dm:nv("dm"),ds:nv("ds"),dt:nv("dt"),dfi:nv("dfi"),
-  rf:nv("rf"),rm:nv("rm"),rs:nv("rs"),rt:nv("rt"),rfi:nv("rfi"),
-  cf:nv("cf"),cm:nv("cm"),cs:nv("cs"),ct:nv("ct"),cfi:nv("cfi"),
-  gdf:nv("gdf"),gdm:nv("gdm"),gds:nv("gds"),gdt:nv("gdt"),gdfi:nv("gdfi"),
-  grf:nv("grf"),grm:nv("grm"),grs:nv("grs"),grt:nv("grt"),grfi:nv("grfi"),
-  gcf:nv("gcf"),gcm:nv("gcm"),gcs:nv("gcs"),gct:nv("gct"),gcfi:nv("gcfi"),
-  bdf:nv("bdf"),bdm:nv("bdm"),bds:nv("bds"),bdt:nv("bdt"),bdfi:nv("bdfi"),
-  brf:nv("brf"),brm:nv("brm"),brs:nv("brs"),brt:nv("brt"),brfi:nv("brfi"),
-  bcf:nv("bcf"),bcm:nv("bcm"),bcs:nv("bcs"),bct:nv("bct"),bcfi:nv("bcfi"),
-  na: sv("na",""),
-  semana: Math.min(Math.max(Math.round(nv("semana")) || 1, 1), 13),
-  fase: sv("fase", "MAPA_VITAL"),
-  em: sv("em", ""),
-  // Baseline Día 1 (para comparativo MI_PULSO / MI_COSECHA)
-  m1g:nv("m1g"), m1pfis:nv("m1pfis"), m1pmen:nv("m1pmen"), m1psoc:nv("m1psoc"), m1ptem:nv("m1ptem"), m1pfin:nv("m1pfin"),
-  m1pdes:nv("m1pdes"), m1prec:nv("m1prec"), m1pcla:nv("m1pcla"),
-};
+// ══════════════════════════════════════════
+// BUILDERS — construcción de P desde URL o desde Sheet row
+// ══════════════════════════════════════════
+
+function buildPFromURL() {
+  return {
+    nombre: sv("n","Caminante"), nivel: sv("nv","DOMINIO_INICIAL"),
+    global: nv("g"),
+    pdes: nv("pdes"), prec: nv("prec"), pcla: nv("pcla"),
+    pfis: nv("pfis"), pmen: nv("pmen"), psoc: nv("psoc"), ptem: nv("ptem"), pfin: nv("pfin"),
+    df:nv("df"),dm:nv("dm"),ds:nv("ds"),dt:nv("dt"),dfi:nv("dfi"),
+    rf:nv("rf"),rm:nv("rm"),rs:nv("rs"),rt:nv("rt"),rfi:nv("rfi"),
+    cf:nv("cf"),cm:nv("cm"),cs:nv("cs"),ct:nv("ct"),cfi:nv("cfi"),
+    gdf:nv("gdf"),gdm:nv("gdm"),gds:nv("gds"),gdt:nv("gdt"),gdfi:nv("gdfi"),
+    grf:nv("grf"),grm:nv("grm"),grs:nv("grs"),grt:nv("grt"),grfi:nv("grfi"),
+    gcf:nv("gcf"),gcm:nv("gcm"),gcs:nv("gcs"),gct:nv("gct"),gcfi:nv("gcfi"),
+    bdf:nv("bdf"),bdm:nv("bdm"),bds:nv("bds"),bdt:nv("bdt"),bdfi:nv("bdfi"),
+    brf:nv("brf"),brm:nv("brm"),brs:nv("brs"),brt:nv("brt"),brfi:nv("brfi"),
+    bcf:nv("bcf"),bcm:nv("bcm"),bcs:nv("bcs"),bct:nv("bct"),bcfi:nv("bcfi"),
+    na: sv("na",""),
+    semana: Math.min(Math.max(Math.round(nv("semana")) || 1, 1), 13),
+    fase: sv("fase", "MAPA_VITAL"),
+    em: sv("em", ""),
+    m1g:nv("m1g"), m1pfis:nv("m1pfis"), m1pmen:nv("m1pmen"), m1psoc:nv("m1psoc"), m1ptem:nv("m1ptem"), m1pfin:nv("m1pfin"),
+    m1pdes:nv("m1pdes"), m1prec:nv("m1prec"), m1pcla:nv("m1pcla"),
+  };
+}
+
+function buildPFromSheetRow(row, emailFallback) {
+  // Helpers que leen del row del CSV tratando valores vacíos como 0 / ""
+  var rn = function(k) { var v = row[k]; return (v !== undefined && v !== null && v !== "") ? parseFloat(v) : 0; };
+  var rs = function(k, d) { return (row[k] !== undefined && row[k] !== null && row[k] !== "") ? row[k] : d; };
+
+  return {
+    nombre: rs("N","Caminante"), nivel: rs("NV","DOMINIO_INICIAL"),
+    global: rn("G"),
+    pdes: rn("PDES"), prec: rn("PREC"), pcla: rn("PCLA"),
+    pfis: rn("PFIS"), pmen: rn("PMEN"), psoc: rn("PSOC"), ptem: rn("PTEM"), pfin: rn("PFIN"),
+    df:rn("DF"),dm:rn("DM"),ds:rn("DS"),dt:rn("DT"),dfi:rn("DFI"),
+    rf:rn("RF"),rm:rn("RM"),rs:rn("RS"),rt:rn("RT"),rfi:rn("RFI"),
+    cf:rn("CF"),cm:rn("CM"),cs:rn("CS"),ct:rn("CT"),cfi:rn("CFI"),
+    gdf:rn("GDF"),gdm:rn("GDM"),gds:rn("GDS"),gdt:rn("GDT"),gdfi:rn("GDFI"),
+    grf:rn("GRF"),grm:rn("GRM"),grs:rn("GRS"),grt:rn("GRT"),grfi:rn("GRFI"),
+    gcf:rn("GCF"),gcm:rn("GCM"),gcs:rn("GCS"),gct:rn("GCT"),gcfi:rn("GCFI"),
+    bdf:rn("BDF"),bdm:rn("BDM"),bds:rn("BDS"),bdt:rn("BDT"),bdfi:rn("BDFI"),
+    brf:rn("BRF"),brm:rn("BRM"),brs:rn("BRS"),brt:rn("BRT"),brfi:rn("BRFI"),
+    bcf:rn("BCF"),bcm:rn("BCM"),bcs:rn("BCS"),bct:rn("BCT"),bcfi:rn("BCFI"),
+    na: rs("NA",""),
+    semana: Math.min(Math.max(Math.round(rn("SEMANA")) || 1, 1), 13),
+    fase: "MI_PULSO",
+    em: rs("EMAIL_CAMINANTE", emailFallback || ""),
+    m1g:rn("M1G"), m1pfis:rn("M1PFIS"), m1pmen:rn("M1PMEN"), m1psoc:rn("M1PSOC"), m1ptem:rn("M1PTEM"), m1pfin:rn("M1PFIN"),
+    m1pdes:rn("M1PDES"), m1prec:rn("M1PREC"), m1pcla:rn("M1PCLA"),
+  };
+}
+
+// ══════════════════════════════════════════
+// CSV PARSER — compartido con módulo Brújula
+// ══════════════════════════════════════════
+function parseCSV(text){
+  var rows = []; var row = []; var field = ""; var inQuotes = false;
+  for (var i = 0; i < text.length; i++){
+    var c = text[i]; var next = text[i+1];
+    if (inQuotes){
+      if (c === '"' && next === '"'){ field += '"'; i++; }
+      else if (c === '"'){ inQuotes = false; }
+      else { field += c; }
+    } else {
+      if (c === '"'){ inQuotes = true; }
+      else if (c === ','){ row.push(field); field = ""; }
+      else if (c === '\n' || (c === '\r' && next === '\n')){ row.push(field); field = ""; rows.push(row); row = []; if (c === '\r') i++; }
+      else if (c === '\r'){ row.push(field); field = ""; rows.push(row); row = []; }
+      else { field += c; }
+    }
+  }
+  if (field || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+// ══════════════════════════════════════════
+// FETCHER — lee la row de Mi Pulso más reciente del Caminante
+// ══════════════════════════════════════════
+function fetchPulsoRow(email, csvUrl) {
+  return fetch(csvUrl)
+    .then(function(r){ return r.text(); })
+    .then(function(csv){
+      var rows = parseCSV(csv);
+      if (rows.length < 2) return null;
+      var headers = rows[0].map(function(h){ return h.trim(); });
+      var data = rows.slice(1).map(function(r){
+        var obj = {};
+        headers.forEach(function(h, i){ obj[h] = (r[i] || "").trim(); });
+        return obj;
+      }).filter(function(r){
+        return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase();
+      });
+      if (!data.length) return null;
+      // Más reciente primero (por TIMESTAMP si existe, sino por orden en sheet)
+      data.sort(function(a, b){ return (b.TIMESTAMP || "").localeCompare(a.TIMESTAMP || ""); });
+      return data[0];
+    });
+}
+
+// ══════════════════════════════════════════
+// GLOBAL UI HELPERS — referenciados por onclick inline y por render
+// ══════════════════════════════════════════
+function toggleDrill(panelId, toggleId) {
+  var panel = document.getElementById(panelId);
+  var toggle = document.getElementById(toggleId);
+  var isOpen = panel.classList.contains("open");
+  panel.classList.toggle("open");
+  toggle.textContent = isOpen ? "Ver detalle ▾" : "Cerrar ▴";
+}
+
+function showLocked() {
+  var el = document.getElementById("locked-msg");
+  el.style.display = "block";
+  setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
+}
+
+// ══════════════════════════════════════════
+// INIT — decide de dónde viene P y llama renderCockpit
+// ══════════════════════════════════════════
+(function() {
+  var faseInURL = UP.get("fase") || "MAPA_VITAL";
+  var emInURL = UP.get("em") ? decodeURIComponent(UP.get("em")) : "";
+  var hasNaInURL = UP.get("na") !== null && UP.get("na") !== "";
+
+  // Solo usamos fetch si: GID configurado, fase=MI_PULSO, email presente, y NO hay narrativa en URL (legacy)
+  var useSheetFetch = !!(PULSO_CSV && faseInURL === "MI_PULSO" && emInURL && !hasNaInURL);
+
+  if (useSheetFetch) {
+    fetchPulsoRow(emInURL, PULSO_CSV).then(function(row) {
+      if (row) {
+        renderCockpit(buildPFromSheetRow(row, emInURL));
+      } else {
+        console.warn("[Cockpit] Mi Pulso: row no encontrada en Sheet para", emInURL, "— fallback a URL");
+        renderCockpit(buildPFromURL());
+      }
+    }).catch(function(err) {
+      console.error("[Cockpit] Mi Pulso CSV fetch error, fallback a URL:", err);
+      renderCockpit(buildPFromURL());
+    });
+  } else {
+    renderCockpit(buildPFromURL());
+  }
+})();
+
+// ══════════════════════════════════════════
+// RENDER COCKPIT — recibe P ya construido, renderiza todo
+// ══════════════════════════════════════════
+function renderCockpit(P) {
 
 // ── FASE CONFIG ──
 var FC = {
@@ -888,14 +1032,6 @@ var RIQS = [
   });
 })();
 
-function toggleDrill(panelId, toggleId) {
-  var panel = document.getElementById(panelId);
-  var toggle = document.getElementById(toggleId);
-  var isOpen = panel.classList.contains("open");
-  panel.classList.toggle("open");
-  toggle.textContent = isOpen ? "Ver detalle ▾" : "Cerrar ▴";
-}
-
 // ── ZONA E: SEMANA ──
 var SEMS = [null,
   {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,
@@ -993,24 +1129,17 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
   });
 })();
 
-function showLocked() {
-  var el = document.getElementById("locked-msg");
-  el.style.display = "block";
-  setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
-}
-
 // ── ZONA BRÚJULA: Deepstash + Tali Sharot Experience ──
 (function(){
   var BRUJULA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=704104905&single=true&output=csv";
   var container = document.getElementById("brujula-container");
-  var loading = document.getElementById("brujula-loading");
   var email = P.em;
-  
+
   if (!email) {
     container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales.</div>";
     return;
   }
-  
+
   var RIQ_ICONS = {
     fisica: "riqueza-fisica.png", mental: "riqueza-mental.png",
     social: "riqueza-social.png", temporal: "riqueza-temporal.png",
@@ -1024,18 +1153,18 @@ function showLocked() {
     fisica: "240,96,96", mental: "122,140,240", social: "240,192,64",
     temporal: "96,212,160", financiera: "201,146,42"
   };
-  
+
   function riqKey(name) {
     return (name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
-  
+
   function intensidadBadge(raw) {
     var t = (raw || "").toUpperCase();
     if (t.indexOf("DESPERTAR") >= 0) return {cls:"badge-potencial", label:"Territorio de Descubrimiento"};
     if (t.indexOf("FORTALEZA") >= 0) return {cls:"badge-ancla", label:"Tu Fortaleza"};
     return {cls:"badge-expansion", label:"En Expansión"};
   }
-  
+
   fetch(BRUJULA_CSV)
     .then(function(r){ return r.text(); })
     .then(function(csv){
@@ -1049,31 +1178,31 @@ function showLocked() {
       }).filter(function(r){
         return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase();
       });
-      
+
       if (!data.length) { showEmpty(); return; }
-      
+
       data.sort(function(a, b){ return parseInt(b.SEM_ || b.SEMANA || 0) - parseInt(a.SEM_ || a.SEMANA || 0); });
-      
+
       var latest = data[0];
       var history = data.slice(1);
       var html = "";
-      
+
       // ═══ STASH DE LA SEMANA ═══
       html += "<div class='brujula-stash'>";
-      
+
       // Meta
       html += "<div class='brujula-meta'>";
       html += "<span class='brujula-sem'>Semana " + (latest.SEM_ || latest.SEMANA || "—") + " de 13</span>";
       html += "<span class='brujula-nivel'>" + (latest.ETAPA || "") + " · " + (latest.NOMBRE_NIVEL || "") + "</span>";
       html += "</div>";
-      
+
       // Narrativa
       if (latest.NARRATIVA) {
         var narrParts = latest.NARRATIVA.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 10; });
         if (!narrParts.length) narrParts = [latest.NARRATIVA];
         html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
       }
-      
+
       // ── CARD CONTINUIDAD — hilo evolutivo de micro-acciones semanales ──
       var continuidadTexto = latest.CONTINUIDAD_NARRATIVA || "";
       if (continuidadTexto && continuidadTexto.trim().length > 10) {
@@ -1084,7 +1213,7 @@ function showLocked() {
         html += "<div class='brujula-continuidad-texto'>" + contParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
         html += "</div>";
       }
-      
+
       // ── HERO CARD (Tarjeta 1 = Mayor Brecha) ──
       var heroRiq = latest.T1_RIQUEZA || "";
       var heroKey = riqKey(heroRiq);
@@ -1095,7 +1224,7 @@ function showLocked() {
       var heroVerdad = latest.T1_VERDAD || "";
       var heroMicro = latest.T1_MICRO || "";
       var heroInt = intensidadBadge(latest.T1_INTENSIDAD || "");
-      
+
       if (heroRiq) {
         html += "<div class='brujula-hero' style='--hero-color:" + heroColor + ";--hero-rgb:" + heroRgb + ";background:linear-gradient(135deg,rgba(" + heroRgb + ",0.06),transparent);'>";
         html += "<div class='brujula-hero-top'>";
@@ -1105,7 +1234,7 @@ function showLocked() {
         html += "<span class='brujula-hero-badge " + heroInt.cls + "'>" + heroInt.label + "</span>";
         html += "</div>";
         html += "</div>";
-        
+
         if (heroFrase) {
           html += "<div class='brujula-hero-eyebrow'>Tu Descubrimiento de esta Semana</div>";
           html += "<div class='brujula-hero-frase'>\"" + heroFrase + "\"</div>";
@@ -1121,17 +1250,17 @@ function showLocked() {
         }
         html += "</div>";
       }
-      
+
       // ── TARJETAS SATÉLITE (Tarjetas 2-5) — sin onclick inline ──
       var hasSatellites = false;
       for (var s = 2; s <= 5; s++) {
         if (latest["T" + s + "_RIQUEZA"]) { hasSatellites = true; break; }
       }
-      
+
       if (hasSatellites) {
         html += "<div class='brujula-sat-title'>Explora tus otras Riquezas</div>";
         html += "<div class='brujula-sat-grid'>";
-        
+
         for (var t = 2; t <= 5; t++) {
           var satRiq = latest["T" + t + "_RIQUEZA"] || "";
           if (!satRiq) continue;
@@ -1142,7 +1271,7 @@ function showLocked() {
           var sVerdad = latest["T" + t + "_VERDAD"] || "";
           var sMicro = latest["T" + t + "_MICRO"] || "";
           var sInt = intensidadBadge(latest["T" + t + "_INTENSIDAD"] || "");
-          
+
           html += "<div class='brujula-sat'>";
           html += "<div class='brujula-sat-header'>";
           html += "<img src='" + sIco + "' class='brujula-sat-ico' alt='" + satRiq + "'>";
@@ -1153,7 +1282,7 @@ function showLocked() {
           html += "<span class='brujula-sat-badge " + sInt.cls + "'>" + sInt.label + "</span>";
           html += "<span class='brujula-sat-toggle'>▼</span>";
           html += "</div>";
-          
+
           if (sVerdad || sMicro) {
             html += "<div class='brujula-sat-body'>";
             if (sFrase) {
@@ -1180,9 +1309,9 @@ function showLocked() {
         }
         html += "</div>";
       }
-      
+
       html += "</div>"; // close brujula-stash
-      
+
       // ═══ HISTORIAL — Biblioteca de Stashes — sin onclick inline ═══
       if (history.length > 0) {
         html += "<div class='brujula-hist-title'>Tu Biblioteca · Semanas Anteriores</div>";
@@ -1214,9 +1343,9 @@ function showLocked() {
         });
         html += "</div>";
       }
-      
+
       container.innerHTML = html;
-      
+
       // ══ DELEGACIÓN DE EVENTOS — reemplaza onclick inline (CSP-safe) ══
       container.addEventListener("click", function(e) {
         // Satélites: clic en header → toggle .open en .brujula-sat
@@ -1239,31 +1368,13 @@ function showLocked() {
       console.error("Brújula fetch error:", err);
       showEmpty();
     });
-  
+
   function showEmpty(){
     container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales. Cada lunes recibirás una nueva lectura personalizada.</div>";
   }
-  
-  function parseCSV(text){
-    var rows = []; var row = []; var field = ""; var inQuotes = false;
-    for (var i = 0; i < text.length; i++){
-      var c = text[i]; var next = text[i+1];
-      if (inQuotes){
-        if (c === '"' && next === '"'){ field += '"'; i++; }
-        else if (c === '"'){ inQuotes = false; }
-        else { field += c; }
-      } else {
-        if (c === '"'){ inQuotes = true; }
-        else if (c === ','){ row.push(field); field = ""; }
-        else if (c === '\n' || (c === '\r' && next === '\n')){ row.push(field); field = ""; rows.push(row); row = []; if (c === '\r') i++; }
-        else if (c === '\r'){ row.push(field); field = ""; rows.push(row); row = []; }
-        else { field += c; }
-      }
-    }
-    if (field || row.length) { row.push(field); rows.push(row); }
-    return rows;
-  }
 })();
+
+} // ═══ END renderCockpit(P) ═══
 </script>
 </body>
 </html>
