@@ -150,26 +150,18 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .drill-behs{grid-template-columns:1fr;}
   .radar-wrap{height:360px;}
 }
-/* ═══ ZONA BRÚJULA — Deepstash + Tali Sharot ═══ */
+/* ZONA BRUJULA */
 .zona-brujula{margin-top:68px;animation:fadeUp .6s ease .44s both;}
 .brujula-loading{text-align:center;padding:40px;color:var(--texto-3);font-size:16px;}
 .brujula-empty{text-align:center;padding:48px;color:var(--texto-3);font-size:17px;background:var(--bg2);border:1px solid var(--borde);border-radius:24px;line-height:1.8;}
-
-/* Container */
 .brujula-stash{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:28px;padding:48px 52px;margin-bottom:28px;position:relative;overflow:hidden;}
 .brujula-stash::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(201,146,42,0.5),transparent);}
-
-/* Meta header */
 .brujula-meta{display:flex;align-items:center;gap:14px;margin-bottom:28px;flex-wrap:wrap;}
 .brujula-sem{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;padding:7px 18px;border-radius:14px;background:rgba(201,146,42,0.12);color:var(--oro-l);border:1px solid rgba(201,146,42,0.3);}
 .brujula-nivel{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto-3);}
-
-/* Narrativa */
 .brujula-narrativa{font-size:19px;line-height:2;color:var(--texto-2);margin-bottom:40px;}
 .brujula-narrativa p{margin-bottom:18px;}
 .brujula-narrativa p:last-child{margin-bottom:0;}
-
-/* Card Continuidad — hilo evolutivo de micro-acciones semanales */
 .brujula-continuidad{background:linear-gradient(135deg,rgba(201,146,42,0.08),rgba(201,146,42,0.02));border:1px solid rgba(201,146,42,0.22);border-radius:20px;padding:28px 32px;margin:0 0 36px;position:relative;overflow:hidden;}
 .brujula-continuidad::before{content:"";position:absolute;top:0;left:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--oro-l),rgba(201,146,42,0.3));border-radius:4px 0 0 4px;}
 .brujula-continuidad-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
@@ -177,8 +169,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-continuidad-texto{font-family:"Outfit",sans-serif;font-size:16px;line-height:1.85;color:var(--texto);font-style:italic;}
 .brujula-continuidad-texto p{margin:0 0 14px;}
 .brujula-continuidad-texto p:last-child{margin-bottom:0;}
-
-/* ── HERO CARD (Tarjeta Maestra — mayor brecha) ── */
 .brujula-hero{border-radius:22px;padding:36px 40px;margin-bottom:32px;position:relative;overflow:hidden;}
 .brujula-hero::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,var(--hero-color,var(--oro)),transparent 60%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
 .brujula-hero-inner{background:linear-gradient(135deg,rgba(var(--hero-rgb,201,146,42),0.06),transparent);border-radius:20px;}
@@ -190,8 +180,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .badge-potencial{background:rgba(240,96,96,0.10);color:#F09070;border:1px solid rgba(240,96,96,0.25);}
 .badge-expansion{background:rgba(201,146,42,0.10);color:var(--oro-l);border:1px solid rgba(201,146,42,0.25);}
 .badge-ancla{background:rgba(77,184,122,0.10);color:#70D0A0;border:1px solid rgba(77,184,122,0.25);}
-
-/* Hero discovery */
 .brujula-hero-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:12px;}
 .brujula-hero-frase{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;font-style:italic;line-height:1.6;color:var(--texto);margin-bottom:24px;}
 .brujula-hero-verdad{font-size:17px;line-height:1.85;color:var(--texto-2);margin-bottom:28px;}
@@ -199,8 +187,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-hero-micro::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;background:var(--oro);border-radius:3px;}
 .brujula-micro-eyebrow{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--oro);margin-bottom:10px;}
 .brujula-micro-text{font-size:17px;line-height:1.75;color:var(--texto);font-weight:500;}
-
-/* ── SATELLITE CARDS (Explora tus otras Riquezas) ── */
 .brujula-sat-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin:8px 0 18px;}
 .brujula-sat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 .brujula-sat{background:var(--bg4);border:1px solid var(--borde);border-radius:18px;overflow:hidden;transition:border-color .25s,box-shadow .25s;cursor:pointer;}
@@ -222,8 +208,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-sat-section p{font-size:15px;color:var(--texto-2);line-height:1.75;}
 .brujula-sat-micro{background:rgba(201,146,42,0.06);border:1px solid rgba(201,146,42,0.15);border-radius:12px;padding:16px 18px;margin-top:10px;}
 .brujula-sat-micro p{font-size:15px;color:var(--texto);line-height:1.65;font-weight:500;}
-
-/* ── HISTORIAL (Biblioteca de Stashes) ── */
 .brujula-hist-title{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--texto-3);margin:40px 0 18px;}
 .brujula-hist-grid{display:flex;flex-direction:column;gap:12px;}
 .brujula-hist-card{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;padding:22px 26px;cursor:pointer;transition:border-color .2s;}
@@ -239,8 +223,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-hist-narrativa{font-size:15px;color:var(--texto-3);line-height:1.75;margin-bottom:16px;}
 .brujula-hist-tarjetas{display:flex;flex-wrap:wrap;gap:8px;}
 .brujula-hist-chip{font-family:"DM Mono",monospace;font-size:10px;padding:4px 12px;border-radius:8px;background:var(--bg4);border:1px solid var(--borde);color:var(--texto-3);}
-
-/* ── RESPONSIVE ── */
 @media(max-width:700px){
   .brujula-stash{padding:28px 22px;border-radius:20px;}
   .brujula-hero{padding:28px 24px;}
@@ -251,10 +233,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   .brujula-narrativa{font-size:17px;}
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-/* ═══ EL ESPEJO EN MOVIMIENTO — Comparison V3 ═══ */
 .zona-comp{margin-top:68px;animation:fadeUp .6s ease .28s both;}
-
-/* CH1: Tu Arco */
 .ch1{background:linear-gradient(160deg,var(--bg2) 0%,#0D0D1F 50%,var(--bg3) 100%);border:1px solid var(--borde-l);border-radius:32px;padding:0;position:relative;overflow:hidden;margin-bottom:24px;}
 .ch1::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 50% 35% at 50% 20%,rgba(201,146,42,0.05),transparent 70%);pointer-events:none;}
 .ch1::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent 15%,var(--oro) 50%,transparent 85%);}
@@ -276,8 +255,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch1-phase-text{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:500;}
 @keyframes phasePulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .ch1-narr{font-size:17px;color:var(--texto-2);line-height:1.85;max-width:560px;margin:0 auto;font-style:italic;}
-
-/* CH2: 5 Riquezas */
 .ch2{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px;}
 .ch2-card{background:linear-gradient(180deg,var(--bg2),var(--bg3));border:1px solid var(--borde);border-radius:24px;padding:28px 16px 24px;text-align:center;position:relative;overflow:hidden;transition:border-color .3s,transform .2s;}
 .ch2-card:hover{border-color:var(--borde-l);transform:translateY(-2px);}
@@ -292,8 +269,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch2-val-n{font-size:13px;font-weight:600;line-height:1;}
 .ch2-val-l{font-family:"DM Mono",monospace;font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--texto-3);margin-top:2px;}
 .ch2-narr{font-size:11px;color:var(--texto-3);line-height:1.55;text-align:left;font-style:italic;padding-top:12px;border-top:1px solid var(--borde);}
-
-/* CH3: Floreció + Territorios */
 .ch3{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
 .ch3-panel{background:var(--bg2);border:1px solid var(--borde);border-radius:24px;padding:32px;position:relative;overflow:hidden;}
 .ch3-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;border-radius:2px;}
@@ -308,8 +283,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch3-item-name{font-size:15px;font-weight:600;margin-bottom:2px;}
 .ch3-item-desc{font-size:12px;color:var(--texto-3);line-height:1.5;}
 .ch3-item-delta{font-family:"DM Mono",monospace;font-size:14px;font-weight:700;flex-shrink:0;}
-
-/* CH4: Timeline */
 .ch4{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--borde-l);border-radius:28px;padding:40px 48px;position:relative;overflow:hidden;}
 .ch4::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--oro),transparent);}
 .ch4-label{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-bottom:28px;text-align:center;}
@@ -328,24 +301,18 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .ch4-line.done .ch4-line-fill{background:linear-gradient(90deg,var(--texto-3),var(--oro-l));width:100%;height:100%;border-radius:2px;}
 .ch4-line.pending .ch4-line-fill{background:linear-gradient(90deg,var(--oro-l),var(--borde-l));width:30%;height:100%;opacity:0.4;}
 .ch4-cta{text-align:center;margin-top:28px;font-size:16px;color:var(--texto-2);font-style:italic;line-height:1.7;}
-
-/* Mediciones clickeables */
 .med-card.clickable{cursor:pointer;transition:border-color .2s,transform .2s;}
 .med-card.clickable:hover{border-color:var(--oro);transform:translateY(-3px);}
-
-/* Animations */
 @keyframes ringGrow{from{stroke-dashoffset:var(--ring-full)}to{stroke-dashoffset:var(--ring-target)}}
 .anim-ring{animation:ringGrow 1.2s cubic-bezier(0.4,0,0.2,1) forwards;}
 .anim-ring-d{animation:ringGrow 1s cubic-bezier(0.4,0,0.2,1) forwards;}
 .ch1{animation:fadeUp .6s ease both;}.ch2{animation:fadeUp .6s ease .15s both;}.ch3{animation:fadeUp .6s ease .25s both;}.ch4{animation:fadeUp .6s ease .35s both;}
-
 @media(max-width:900px){.ch2{grid-template-columns:repeat(3,1fr);}.ch1-ring-zone{flex-direction:column;gap:24px;}.ch1-stats{flex-direction:row;gap:28px;}}
 @media(max-width:640px){.ch2{grid-template-columns:1fr 1fr;}.ch3{grid-template-columns:1fr;}.ch1-inner{padding:40px 24px 36px;}.ch1-ring{width:160px;height:160px;}.ch1-delta{font-size:40px;}.ch4{padding:32px 20px;}.ch4-node-circle{width:48px;height:48px;font-size:16px;}}
 </style>
 </head>
 <body>
 <div class="wrap">
-
 <header class="header">
   <img src="logo-conexion-vital.png" class="header-logo" alt="Conexion Vital">
   <div>
@@ -353,7 +320,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     <div class="header-sub">La Senda Interior · 90 Días de Claridad y Vitalidad</div>
   </div>
 </header>
-
 <section class="zona-a">
   <div class="mapa-badge">
     <img src="mapa-vital.png" class="mapa-badge-ico" alt="Instrumento">
@@ -362,7 +328,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   <div class="nombre-h" id="nombre-display">Caminante</div>
   <div class="fecha-sub" id="fecha-display">Cargando...</div>
 </section>
-
 <section class="zona-b">
   <div class="eyebrow" id="eyebrow-narrativa">Tu Mapa · Lo que Revela de Ti</div>
   <div class="narrativa-card">
@@ -376,7 +341,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     </div>
   </div>
 </section>
-
 <section class="zona-c">
   <div class="eyebrow">Tu Nivel de Consciencia Activa Hoy</div>
   <div class="score-card">
@@ -410,13 +374,10 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     </div>
   </div>
 </section>
-
-<!-- EL ESPEJO EN MOVIMIENTO — solo MI_PULSO / MI_COSECHA -->
 <section class="zona-comp" id="zona-comp" style="display:none;">
   <div class="eyebrow" id="comp-eyebrow">Tu Evolución · Día 1 → Día 45</div>
   <div id="espejo-container"></div>
 </section>
-
 <section class="zona-d">
   <div class="eyebrow">Tus 5 Riquezas Vitales · Explora tu Mapa</div>
   <div class="radar-card">
@@ -427,7 +388,6 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     <div class="riqueza-grid" id="riqueza-grid"></div>
   </div>
 </section>
-
 <section class="zona-e">
   <div class="eyebrow">Tu Siguiente Paso · La Senda Interior</div>
   <div class="semana-card">
@@ -442,22 +402,18 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
     </div>
   </div>
 </section>
-
-<!-- ZONA BRUJULA -->
 <section class="zona-brujula" id="zona-brujula">
   <div class="eyebrow">Tu Brújula Semanal · Tu Guía en La Senda</div>
   <div id="brujula-container">
     <div class="brujula-loading" id="brujula-loading">Cargando tu brújula...</div>
   </div>
 </section>
-
 <section class="zona-f">
   <div class="eyebrow">Tu Camino de Medición · La Senda Completa</div>
   <p class="mediciones-intro">Cada instrumento mide los mismos comportamientos en su siguiente nivel de evolución. El hilo de tu transformación nunca se rompe — se profundiza.</p>
   <div class="mediciones-grid" id="mediciones-grid"></div>
   <div id="locked-msg">Esta medición se desbloqueará en su fecha correspondiente. Cada instrumento evoluciona los mismos comportamientos — el hilo conductor nunca se pierde.</div>
 </section>
-
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
@@ -465,38 +421,22 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   </div>
   <div class="footer-legal">© 2026 Conexión Vital · Todos los derechos reservados · Documento confidencial · Uso personal exclusivo</div>
 </footer>
-
 </div>
-
 <script>
 // ══════════════════════════════════════════
-// COCKPIT V7.5 — PULSO CSV FETCH PATTERN
-// Conexión Vital — Segundo Amanecer
+// COCKPIT V7.5 — MI PULSO via CSV FETCH (PULSO_GID activado)
+// Conexión Vital — Segundo Amanecer · 25 abril 2026
 // Soporta: MAPA_VITAL, MI_PULSO, MI_COSECHA
-//
-// CAMBIO V7.5: Mi Pulso puede leer sus datos desde Google Sheet
-// (pestaña HISTORIAL_PULSO) en vez de URL params, eliminando el
-// 414 Request-URI Too Large. Activación: llenar PULSO_GID abajo.
-// Mientras PULSO_GID esté vacío, funciona IGUAL que V7.4 (legacy).
+// PULSO_GID = "418046211" → activa fetch de HISTORIAL_PULSO
+// Retrocompat: si fase=MI_PULSO trae 'na' en URL, usa modo legacy
 // ══════════════════════════════════════════
 
-// ── CONFIG: GID de la pestaña HISTORIAL_PULSO publicada como CSV ──
-// Dejar vacío ("") = modo legacy (lee todo de URL, como V7.4).
-// Llenar con el GID numérico = activa fetch desde Sheet.
-var PULSO_GID = "";
+var PULSO_GID = "418046211";
+var PULSO_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=" + PULSO_GID + "&single=true&output=csv";
 
-var PULSO_CSV = PULSO_GID
-  ? "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=" + PULSO_GID + "&single=true&output=csv"
-  : null;
-
-// ── URL UTILS ──
 var UP = new URLSearchParams(window.location.search);
 var nv = function(k) { var v = UP.get(k); return v !== null ? parseFloat(v) : 0; };
 var sv = function(k, d) { return UP.get(k) ? decodeURIComponent(UP.get(k)) : d; };
-
-// ══════════════════════════════════════════
-// BUILDERS — construcción de P desde URL o desde Sheet row
-// ══════════════════════════════════════════
 
 function buildPFromURL() {
   return {
@@ -523,10 +463,8 @@ function buildPFromURL() {
 }
 
 function buildPFromSheetRow(row, emailFallback) {
-  // Helpers que leen del row del CSV tratando valores vacíos como 0 / ""
   var rn = function(k) { var v = row[k]; return (v !== undefined && v !== null && v !== "") ? parseFloat(v) : 0; };
   var rs = function(k, d) { return (row[k] !== undefined && row[k] !== null && row[k] !== "") ? row[k] : d; };
-
   return {
     nombre: rs("N","Caminante"), nivel: rs("NV","DOMINIO_INICIAL"),
     global: rn("G"),
@@ -550,9 +488,6 @@ function buildPFromSheetRow(row, emailFallback) {
   };
 }
 
-// ══════════════════════════════════════════
-// CSV PARSER — compartido con módulo Brújula
-// ══════════════════════════════════════════
 function parseCSV(text){
   var rows = []; var row = []; var field = ""; var inQuotes = false;
   for (var i = 0; i < text.length; i++){
@@ -573,9 +508,6 @@ function parseCSV(text){
   return rows;
 }
 
-// ══════════════════════════════════════════
-// FETCHER — lee la row de Mi Pulso más reciente del Caminante
-// ══════════════════════════════════════════
 function fetchPulsoRow(email, csvUrl) {
   return fetch(csvUrl)
     .then(function(r){ return r.text(); })
@@ -591,15 +523,11 @@ function fetchPulsoRow(email, csvUrl) {
         return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase();
       });
       if (!data.length) return null;
-      // Más reciente primero (por TIMESTAMP si existe, sino por orden en sheet)
       data.sort(function(a, b){ return (b.TIMESTAMP || "").localeCompare(a.TIMESTAMP || ""); });
       return data[0];
     });
 }
 
-// ══════════════════════════════════════════
-// GLOBAL UI HELPERS — referenciados por onclick inline y por render
-// ══════════════════════════════════════════
 function toggleDrill(panelId, toggleId) {
   var panel = document.getElementById(panelId);
   var toggle = document.getElementById(toggleId);
@@ -614,17 +542,11 @@ function showLocked() {
   setTimeout(function(){ el.scrollIntoView({behavior:"smooth",block:"nearest"}); }, 100);
 }
 
-// ══════════════════════════════════════════
-// INIT — decide de dónde viene P y llama renderCockpit
-// ══════════════════════════════════════════
 (function() {
   var faseInURL = UP.get("fase") || "MAPA_VITAL";
   var emInURL = UP.get("em") ? decodeURIComponent(UP.get("em")) : "";
   var hasNaInURL = UP.get("na") !== null && UP.get("na") !== "";
-
-  // Solo usamos fetch si: GID configurado, fase=MI_PULSO, email presente, y NO hay narrativa en URL (legacy)
   var useSheetFetch = !!(PULSO_CSV && faseInURL === "MI_PULSO" && emInURL && !hasNaInURL);
-
   if (useSheetFetch) {
     fetchPulsoRow(emInURL, PULSO_CSV).then(function(row) {
       if (row) {
@@ -642,12 +564,8 @@ function showLocked() {
   }
 })();
 
-// ══════════════════════════════════════════
-// RENDER COCKPIT — recibe P ya construido, renderiza todo
-// ══════════════════════════════════════════
 function renderCockpit(P) {
 
-// ── FASE CONFIG ──
 var FC = {
   MAPA_VITAL: {
     badge: "Mi Mapa Vital · Línea Base",
@@ -676,7 +594,6 @@ var FC = {
 };
 var fc = FC[P.fase] || FC.MAPA_VITAL;
 
-// ── ZONA A: Dynamic labels ──
 document.getElementById("badge-txt").textContent = fc.badge;
 document.getElementById("nombre-display").textContent = P.nombre;
 document.getElementById("fecha-display").textContent =
@@ -685,7 +602,6 @@ document.getElementById("fecha-display").textContent =
 document.getElementById("eyebrow-narrativa").textContent = fc.eye;
 document.getElementById("footer-version").textContent = fc.foot;
 
-// ── ZONA B: Narrativa ──
 (function(){
   if (!P.na || P.na.length < 20) {
     document.getElementById("narrativa-body").innerHTML =
@@ -702,37 +618,15 @@ document.getElementById("footer-version").textContent = fc.foot;
   document.getElementById("narrativa-firma").style.display = "block";
 })();
 
-// ── ZONA C: Score ──
 document.getElementById("score-num").textContent = Math.round(P.global) + "%";
 
 var NH = {
-  EXCELENCIA:{
-    l:"Excelencia",
-    d:"Tus comportamientos ya son identidad. No requieren esfuerzo consciente — fluyen de manera natural en cada una de tus 5 Riquezas.",
-    e:"Estás en el nivel más alto del proceso. Significa que los comportamientos que medimos no solo aparecen — forman parte de quién eres. La Senda Interior en este punto es de refinamiento y de transmisión: tu experiencia tiene el poder de iluminar a otros Caminantes."
-  },
-  DOMINIO_AVANZADO:{
-    l:"Dominio Avanzado",
-    d:"Los comportamientos forman parte de tu rutina diaria. Aparecen con consistencia y sin necesidad de recordatorios externos.",
-    e:"Este nivel significa que la mayoría de tus comportamientos ya están integrados — están operando en piloto automático positivo. La Senda Interior aquí trabaja los pocos territorios que aún están en construcción, para que toda tu arquitectura sea sólida en las 5 Riquezas."
-  },
-  DOMINIO_INICIAL:{
-    l:"Consciencia Activa",
-    d:"Los comportamientos emergen con frecuencia y se están consolidando en tu vida. Estás construyendo desde una base real.",
-    e:"Este es el nivel más común entre Caminantes que comienzan La Senda Interior — y es exactamente el punto de partida correcto. No estás empezando de cero: tienes comportamientos que ya funcionan. El programa va a trabajar con lo que ya tienes para fortalecer lo que aún está en proceso."
-  },
-  MINIMO_ACTIVO:{
-    l:"Consciencia en Inicio",
-    d:"La consciencia ya está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó.",
-    e:"Que estés aquí no habla de falta de capacidad — habla de que la vida te trajo a este momento preciso. El Despertar ya ocurrió: te reconociste en el Mapa. La Senda Interior empieza exactamente donde estás, con comportamientos pequeños y sostenibles que van construyendo tu nueva arquitectura de vida."
-  },
-  MINIMO_INCIPIENTE:{
-    l:"Primer Umbral",
-    d:"El proceso de despertar está comenzando. Este punto de partida es lo que hace posible todo lo que sigue.",
-    e:"Estar en el Primer Umbral es el inicio más honesto que existe. Significa que respondiste con verdad absoluta — sin maquillaje. Ese nivel de honestidad es exactamente la materia prima que La Senda Interior necesita para construir algo real y duradero contigo."
-  },
+  EXCELENCIA:{l:"Excelencia",d:"Tus comportamientos ya son identidad. No requieren esfuerzo consciente — fluyen de manera natural en cada una de tus 5 Riquezas.",e:"Estás en el nivel más alto del proceso. Significa que los comportamientos que medimos no solo aparecen — forman parte de quién eres. La Senda Interior en este punto es de refinamiento y de transmisión: tu experiencia tiene el poder de iluminar a otros Caminantes."},
+  DOMINIO_AVANZADO:{l:"Dominio Avanzado",d:"Los comportamientos forman parte de tu rutina diaria. Aparecen con consistencia y sin necesidad de recordatorios externos.",e:"Este nivel significa que la mayoría de tus comportamientos ya están integrados — están operando en piloto automático positivo. La Senda Interior aquí trabaja los pocos territorios que aún están en construcción, para que toda tu arquitectura sea sólida en las 5 Riquezas."},
+  DOMINIO_INICIAL:{l:"Consciencia Activa",d:"Los comportamientos emergen con frecuencia y se están consolidando en tu vida. Estás construyendo desde una base real.",e:"Este es el nivel más común entre Caminantes que comienzan La Senda Interior — y es exactamente el punto de partida correcto. No estás empezando de cero: tienes comportamientos que ya funcionan. El programa va a trabajar con lo que ya tienes para fortalecer lo que aún está en proceso."},
+  MINIMO_ACTIVO:{l:"Consciencia en Inicio",d:"La consciencia ya está presente. Los comportamientos aparecen en algunos momentos — el despertar ya comenzó.",e:"Que estés aquí no habla de falta de capacidad — habla de que la vida te trajo a este momento preciso. El Despertar ya ocurrió: te reconociste en el Mapa. La Senda Interior empieza exactamente donde estás, con comportamientos pequeños y sostenibles que van construyendo tu nueva arquitectura de vida."},
+  MINIMO_INCIPIENTE:{l:"Primer Umbral",d:"El proceso de despertar está comenzando. Este punto de partida es lo que hace posible todo lo que sigue.",e:"Estar en el Primer Umbral es el inicio más honesto que existe. Significa que respondiste con verdad absoluta — sin maquillaje. Ese nivel de honestidad es exactamente la materia prima que La Senda Interior necesita para construir algo real y duradero contigo."},
 };
-
 var nd = NH[P.nivel] || NH["DOMINIO_INICIAL"];
 var pe = document.getElementById("nivel-pill");
 pe.textContent = nd.l;
@@ -743,26 +637,24 @@ document.getElementById("pct-des").textContent = Math.round(P.pdes) + "%";
 document.getElementById("pct-rec").textContent = Math.round(P.prec) + "%";
 document.getElementById("pct-cla").textContent = Math.round(P.pcla) + "%";
 
-// ── CELDAS 15 ──
 var CELDAS = [
-  {id:"DES_FIS",e:"DES",riq:"fisica",    nombre:"Escuchas las señales de tu cuerpo",              pct:P.df, gp:P.gdf, b:P.bdf},
-  {id:"DES_MEN",e:"DES",riq:"mental",    nombre:"Observas tus pensamientos y emociones",           pct:P.dm, gp:P.gdm, b:P.bdm},
-  {id:"DES_SOC",e:"DES",riq:"social",    nombre:"Reconoces el estado de tus vínculos",              pct:P.ds, gp:P.gds, b:P.bds},
-  {id:"DES_TEM",e:"DES",riq:"temporal",  nombre:"Eres consciente de cómo usas tu tiempo",           pct:P.dt, gp:P.gdt, b:P.bdt},
-  {id:"DES_FIN",e:"DES",riq:"financiera",nombre:"Tienes claridad de tu realidad financiera",        pct:P.dfi,gp:P.gdfi,b:P.bdfi},
-  {id:"REC_FIS",e:"REC",riq:"fisica",    nombre:"Haces las paces con tu historia física",           pct:P.rf, gp:P.grf, b:P.brf},
-  {id:"REC_MEN",e:"REC",riq:"mental",    nombre:"Integras tus narrativas mentales pasadas",         pct:P.rm, gp:P.grm, b:P.brm},
-  {id:"REC_SOC",e:"REC",riq:"social",    nombre:"Sanas vínculos y liberas cargas relacionales",     pct:P.rs, gp:P.grs, b:P.brs},
-  {id:"REC_TEM",e:"REC",riq:"temporal",  nombre:"Reconcilias la vida vivida con la que tienes",     pct:P.rt, gp:P.grt, b:P.brt},
-  {id:"REC_FIN",e:"REC",riq:"financiera",nombre:"Integras tu historia financiera sin peso",          pct:P.rfi,gp:P.grfi,b:P.brfi},
-  {id:"CLA_FIS",e:"CLA",riq:"fisica",    nombre:"Diseñas tu vitalidad con intención",               pct:P.cf, gp:P.gcf, b:P.bcf},
-  {id:"CLA_MEN",e:"CLA",riq:"mental",    nombre:"Tienes claridad sobre tu mundo interior",          pct:P.cm, gp:P.gcm, b:P.bcm},
-  {id:"CLA_SOC",e:"CLA",riq:"social",    nombre:"Eliges conscientemente tus relaciones",            pct:P.cs, gp:P.gcs, b:P.bcs},
-  {id:"CLA_TEM",e:"CLA",riq:"temporal",  nombre:"Habitas tu tiempo con propósito real",             pct:P.ct, gp:P.gct, b:P.bct},
-  {id:"CLA_FIN",e:"CLA",riq:"financiera",nombre:"Diseñas tu legado financiero conscientemente",     pct:P.cfi,gp:P.gcfi,b:P.bcfi},
+  {id:"DES_FIS",e:"DES",riq:"fisica",nombre:"Escuchas las señales de tu cuerpo",pct:P.df,gp:P.gdf,b:P.bdf},
+  {id:"DES_MEN",e:"DES",riq:"mental",nombre:"Observas tus pensamientos y emociones",pct:P.dm,gp:P.gdm,b:P.bdm},
+  {id:"DES_SOC",e:"DES",riq:"social",nombre:"Reconoces el estado de tus vínculos",pct:P.ds,gp:P.gds,b:P.bds},
+  {id:"DES_TEM",e:"DES",riq:"temporal",nombre:"Eres consciente de cómo usas tu tiempo",pct:P.dt,gp:P.gdt,b:P.bdt},
+  {id:"DES_FIN",e:"DES",riq:"financiera",nombre:"Tienes claridad de tu realidad financiera",pct:P.dfi,gp:P.gdfi,b:P.bdfi},
+  {id:"REC_FIS",e:"REC",riq:"fisica",nombre:"Haces las paces con tu historia física",pct:P.rf,gp:P.grf,b:P.brf},
+  {id:"REC_MEN",e:"REC",riq:"mental",nombre:"Integras tus narrativas mentales pasadas",pct:P.rm,gp:P.grm,b:P.brm},
+  {id:"REC_SOC",e:"REC",riq:"social",nombre:"Sanas vínculos y liberas cargas relacionales",pct:P.rs,gp:P.grs,b:P.brs},
+  {id:"REC_TEM",e:"REC",riq:"temporal",nombre:"Reconcilias la vida vivida con la que tienes",pct:P.rt,gp:P.grt,b:P.brt},
+  {id:"REC_FIN",e:"REC",riq:"financiera",nombre:"Integras tu historia financiera sin peso",pct:P.rfi,gp:P.grfi,b:P.brfi},
+  {id:"CLA_FIS",e:"CLA",riq:"fisica",nombre:"Diseñas tu vitalidad con intención",pct:P.cf,gp:P.gcf,b:P.bcf},
+  {id:"CLA_MEN",e:"CLA",riq:"mental",nombre:"Tienes claridad sobre tu mundo interior",pct:P.cm,gp:P.gcm,b:P.bcm},
+  {id:"CLA_SOC",e:"CLA",riq:"social",nombre:"Eliges conscientemente tus relaciones",pct:P.cs,gp:P.gcs,b:P.bcs},
+  {id:"CLA_TEM",e:"CLA",riq:"temporal",nombre:"Habitas tu tiempo con propósito real",pct:P.ct,gp:P.gct,b:P.bct},
+  {id:"CLA_FIN",e:"CLA",riq:"financiera",nombre:"Diseñas tu legado financiero conscientemente",pct:P.cfi,gp:P.gcfi,b:P.bcfi},
 ];
 
-// ── Promedios por riqueza ──
 var gpFis = (P.gdf*.25+P.grf*.40+P.gcf*.35) || 45;
 var gpMen = (P.gdm*.25+P.grm*.40+P.gcm*.35) || 45;
 var gpSoc = (P.gds*.25+P.grs*.40+P.gcs*.35) || 44;
@@ -774,41 +666,14 @@ var bkSoc = (P.bds*.25+P.brs*.40+P.bcs*.35) || 53;
 var bkTem = (P.bdt*.25+P.brt*.40+P.bct*.35) || 52;
 var bkFin = (P.bdfi*.25+P.brfi*.40+P.bcfi*.35) || 50;
 
-// ── Textos Tali Sharot por riqueza ──
 var TALI = {
-  fisica: function(mi, gp, bk) {
-    var d = mi - gp;
-    if (d > 8) return "Tu cuerpo ya recibe atención real. Los comportamientos físicos que tienes integrados son una base sólida — el programa va a profundizar en ellos para que no solo estén presentes, sino que sean fuente de energía y vitalidad sostenida durante el resto de tu recorrido.";
-    if (d < -8) return "Tu cuerpo lleva tiempo esperando ser escuchado con más atención. Este no es un diagnóstico — es una invitación. La Riqueza Física en La Senda Interior no trabaja con disciplina forzada: trabaja con reconexión. Cada semana dedicada a esta riqueza va a construir un puente entre tú y tu cuerpo, uno que dure.";
-    return "Tu relación con tu cuerpo está en un punto de transición real. Los comportamientos físicos aparecen, pero aún no son constantes. El programa va a trabajar exactamente en ese espacio intermedio — no para exigirte más, sino para que lo que ya tienes se consolide de forma natural.";
-  },
-  mental: function(mi, gp, bk) {
-    var d = mi - gp;
-    if (d > 8) return "Tu vida interior ya tiene estructura. La capacidad de observar tus pensamientos y emociones es una de las habilidades más valiosas de la segunda mitad de la vida — y tú ya la tienes. El programa va a acompañarte a usar esa claridad mental para diseñar, no solo para procesar.";
-    if (d < -8) return "El mundo interior puede ser el territorio más desafiante de toda la transición. No porque estés fallando — sino porque nadie nos enseñó a habitarlo con consciencia. La Senda Interior tiene semanas dedicadas específicamente a este trabajo: sin juicio, sin análisis interminable, con herramientas concretas para que tu mente sea tu aliada.";
-    return "Tu mundo mental está en movimiento — hay consciencia, hay momentos de claridad, y también hay momentos donde el ruido interno gana terreno. El programa va a darte ritmos y herramientas para que los momentos de claridad sean cada vez más frecuentes y los de ruido, cada vez más cortos.";
-  },
-  social: function(mi, gp, bk) {
-    var d = mi - gp;
-    if (d > 8) return "Tus vínculos y relaciones ya son un activo en tu vida. La consciencia social que tienes integrada es señal de alguien que ya entendió que las relaciones no se sostienen solas — se cultivan. El programa va a acompañarte a profundizar en esos vínculos y a identificar cuáles están listos para el siguiente capítulo contigo.";
-    if (d < -8) return "Las relaciones de la segunda mitad de la vida necesitan una revisión honesta. No para juzgar el pasado — sino para elegir el futuro. La Senda Interior tiene espacio para explorar qué vínculos nutren, qué vínculos drenan y qué nuevas conexiones estás listo para construir. Este trabajo no se hace solo — se hace caminando.";
-    return "Tus relaciones están en un momento de transición. Hay vínculos importantes, y también hay espacios relacionales que todavía no han encontrado su forma definitiva. El programa va a acompañarte a darle nombre a ese mapa social y a tomar decisiones conscientes sobre él.";
-  },
-  temporal: function(mi, gp, bk) {
-    var d = mi - gp;
-    if (d > 8) return "Tu relación con el tiempo es una fortaleza real. Tienes consciencia de cómo lo habitas — y eso no es menor. En la segunda mitad de la vida, el tiempo deja de ser un recurso infinito y se convierte en el material con el que construyes tu legado. Tú ya estás parado en ese entendimiento.";
-    if (d < -8) return "El tiempo en la segunda mitad de la vida tiene un peso diferente. No es urgencia — es significado. El trabajo en esta riqueza en La Senda Interior no es sobre productividad ni sobre hacer más: es sobre habitar cada semana con mayor intención, para que el tiempo que tienes sea tuyo de verdad.";
-    return "Tu consciencia del tiempo está despertando. Hay momentos donde lo habitas con propósito, y otros donde la inercia toma el control. El programa va a ayudarte a diseñar ritmos que le devuelvan el sentido a tu tiempo — no desde la exigencia, sino desde lo que realmente importa.";
-  },
-  financiera: function(mi, gp, bk) {
-    var d = mi - gp;
-    if (d > 8) return "Tu relación con lo financiero ya tiene claridad y estructura. Eso es inusual y valioso — la mayoría de las personas llegan a la mitad de la vida cargando el peso de decisiones no examinadas. Tú ya empezaste ese proceso. La Senda Interior va a acompañarte a convertir esa claridad en un legado financiero concreto.";
-    if (d < -8) return "La Riqueza Financiera es la que más emociones carga: vergüenza, miedo, orgullo, culpa. Antes de hablar de dinero, La Senda Interior trabaja las emociones que lo rodean. Cuando eso se procesa, la claridad financiera llega de forma natural — y desde ahí se puede diseñar un legado real.";
-    return "Tu mapa financiero está en proceso de construcción. Hay consciencia, pero también hay territorios sin explorar. El programa va a acompañarte a examinar tu historia financiera sin juicio, a entender los patrones que has traído hasta aquí, y a diseñar desde ese entendimiento los próximos capítulos.";
-  }
+  fisica:function(mi,gp,bk){var d=mi-gp;if(d>8)return"Tu cuerpo ya recibe atención real. Los comportamientos físicos que tienes integrados son una base sólida — el programa va a profundizar en ellos para que no solo estén presentes, sino que sean fuente de energía y vitalidad sostenida durante el resto de tu recorrido.";if(d<-8)return"Tu cuerpo lleva tiempo esperando ser escuchado con más atención. Este no es un diagnóstico — es una invitación. La Riqueza Física en La Senda Interior no trabaja con disciplina forzada: trabaja con reconexión. Cada semana dedicada a esta riqueza va a construir un puente entre tú y tu cuerpo, uno que dure.";return"Tu relación con tu cuerpo está en un punto de transición real. Los comportamientos físicos aparecen, pero aún no son constantes. El programa va a trabajar exactamente en ese espacio intermedio — no para exigirte más, sino para que lo que ya tienes se consolide de forma natural.";},
+  mental:function(mi,gp,bk){var d=mi-gp;if(d>8)return"Tu vida interior ya tiene estructura. La capacidad de observar tus pensamientos y emociones es una de las habilidades más valiosas de la segunda mitad de la vida — y tú ya la tienes. El programa va a acompañarte a usar esa claridad mental para diseñar, no solo para procesar.";if(d<-8)return"El mundo interior puede ser el territorio más desafiante de toda la transición. No porque estés fallando — sino porque nadie nos enseñó a habitarlo con consciencia. La Senda Interior tiene semanas dedicadas específicamente a este trabajo: sin juicio, sin análisis interminable, con herramientas concretas para que tu mente sea tu aliada.";return"Tu mundo mental está en movimiento — hay consciencia, hay momentos de claridad, y también hay momentos donde el ruido interno gana terreno. El programa va a darte ritmos y herramientas para que los momentos de claridad sean cada vez más frecuentes y los de ruido, cada vez más cortos.";},
+  social:function(mi,gp,bk){var d=mi-gp;if(d>8)return"Tus vínculos y relaciones ya son un activo en tu vida. La consciencia social que tienes integrada es señal de alguien que ya entendió que las relaciones no se sostienen solas — se cultivan. El programa va a acompañarte a profundizar en esos vínculos y a identificar cuáles están listos para el siguiente capítulo contigo.";if(d<-8)return"Las relaciones de la segunda mitad de la vida necesitan una revisión honesta. No para juzgar el pasado — sino para elegir el futuro. La Senda Interior tiene espacio para explorar qué vínculos nutren, qué vínculos drenan y qué nuevas conexiones estás listo para construir. Este trabajo no se hace solo — se hace caminando.";return"Tus relaciones están en un momento de transición. Hay vínculos importantes, y también hay espacios relacionales que todavía no han encontrado su forma definitiva. El programa va a acompañarte a darle nombre a ese mapa social y a tomar decisiones conscientes sobre él.";},
+  temporal:function(mi,gp,bk){var d=mi-gp;if(d>8)return"Tu relación con el tiempo es una fortaleza real. Tienes consciencia de cómo lo habitas — y eso no es menor. En la segunda mitad de la vida, el tiempo deja de ser un recurso infinito y se convierte en el material con el que construyes tu legado. Tú ya estás parado en ese entendimiento.";if(d<-8)return"El tiempo en la segunda mitad de la vida tiene un peso diferente. No es urgencia — es significado. El trabajo en esta riqueza en La Senda Interior no es sobre productividad ni sobre hacer más: es sobre habitar cada semana con mayor intención, para que el tiempo que tienes sea tuyo de verdad.";return"Tu consciencia del tiempo está despertando. Hay momentos donde lo habitas con propósito, y otros donde la inercia toma el control. El programa va a ayudarte a diseñar ritmos que le devuelvan el sentido a tu tiempo — no desde la exigencia, sino desde lo que realmente importa.";},
+  financiera:function(mi,gp,bk){var d=mi-gp;if(d>8)return"Tu relación con lo financiero ya tiene claridad y estructura. Eso es inusual y valioso — la mayoría de las personas llegan a la mitad de la vida cargando el peso de decisiones no examinadas. Tú ya empezaste ese proceso. La Senda Interior va a acompañarte a convertir esa claridad en un legado financiero concreto.";if(d<-8)return"La Riqueza Financiera es la que más emociones carga: vergüenza, miedo, orgullo, culpa. Antes de hablar de dinero, La Senda Interior trabaja las emociones que lo rodean. Cuando eso se procesa, la claridad financiera llega de forma natural — y desde ahí se puede diseñar un legado real.";return"Tu mapa financiero está en proceso de construcción. Hay consciencia, pero también hay territorios sin explorar. El programa va a acompañarte a examinar tu historia financiera sin juicio, a entender los patrones que has traído hasta aquí, y a diseñar desde ese entendimiento los próximos capítulos.";}
 };
 
-// ═══ EL ESPEJO EN MOVIMIENTO — V3 Premium Evolution ═══
 (function(){
   if (P.fase === "MAPA_VITAL" || !P.m1g) return;
   document.getElementById("zona-comp").style.display = "";
@@ -817,7 +682,6 @@ var TALI = {
   var D1 = Math.round(P.m1g), HOY = Math.round(P.global), DELTA = HOY - D1;
   var dSign = DELTA >= 0 ? "+" : "";
   var dColor = DELTA > 0 ? "var(--verde)" : DELTA < 0 ? "var(--naranja)" : "var(--azul)";
-
   var RDATA = [
     {key:"fisica",nombre:"Física",ico:"riqueza-fisica.png",color:"#F06060",rgb:"240,96,96",b:Math.round(P.m1pfis),n:Math.round(P.pfis)},
     {key:"mental",nombre:"Mental",ico:"riqueza-mental.png",color:"#7A8CF0",rgb:"122,140,240",b:Math.round(P.m1pmen),n:Math.round(P.pmen)},
@@ -825,7 +689,6 @@ var TALI = {
     {key:"temporal",nombre:"Temporal",ico:"riqueza-temporal.png",color:"#60D4A0",rgb:"96,212,160",b:Math.round(P.m1ptem),n:Math.round(P.ptem)},
     {key:"financiera",nombre:"Financiera",ico:"riqueza-financiera.png",color:"#C9922A",rgb:"201,146,42",b:Math.round(P.m1pfin),n:Math.round(P.pfin)}
   ];
-
   var ups=RDATA.filter(function(r){return r.n>r.b}).length;
   var phase;
   if(DELTA>5) phase={name:"Expansión Consciente",color:"var(--verde)",bg:"rgba(77,184,122,0.10)",border:"rgba(77,184,122,0.3)"};
@@ -833,9 +696,7 @@ var TALI = {
   else if(DELTA>=0) phase={name:"Consolidación Activa",color:"var(--oro-l)",bg:"rgba(201,146,42,0.10)",border:"rgba(201,146,42,0.3)"};
   else if(DELTA>=-3&&ups>=2) phase={name:"Reorganización Profunda",color:"var(--azul)",bg:"rgba(122,172,240,0.12)",border:"rgba(122,172,240,0.3)"};
   else phase={name:"Integración Silenciosa",color:"var(--rec)",bg:"rgba(240,168,96,0.10)",border:"rgba(240,168,96,0.3)"};
-
   var gNarr=DELTA>5?"Tu evolución habla por sí misma. Lo que ves aquí no es esfuerzo — es el resultado de miles de micro-decisiones conscientes que tomaste durante 45 días. Eso no se finge, no se fuerza, y no se pierde.":DELTA>0?"El movimiento existe — sutil pero innegable. Los cambios más duraderos en la segunda mitad de la vida son los que avanzan sin prisa. Tu proceso está trabajando desde dentro hacia afuera.":DELTA===0?"Tu nivel se mantiene estable — y la estabilidad es también evolución. Consolidar lo construido es tan valioso como avanzar. Tu arquitectura de vida se está fortaleciendo desde los cimientos.":DELTA>-5?"Tu mapa se reorganizó profundamente. Cuando la consciencia se profundiza, los números a veces se ajustan antes de crecer — como un río que se ensancha antes de fluir con más fuerza.":"Tu proceso entró en una fase de deconstrucción creativa. Los cambios más significativos de la segunda mitad comienzan así: soltando para reconstruir.";
-
   var RNARR={
     fisica:{up:"Tu cuerpo está respondiendo. Cada punto de avance es un hábito que dejó de ser decisión y se convirtió en identidad.",flat:"Tu relación con el cuerpo se consolida. La estabilidad física es el terreno desde el cual se construye la vitalidad duradera.",down:"Tu cuerpo está en plena reorganización. Los descensos físicos suelen preceder a los avances más profundos — como soltar tensión antes de expandir."},
     mental:{up:"Tu claridad mental se expandió. La capacidad de observar tus pensamientos con menos reactividad es una de las señales más poderosas de evolución.",flat:"Tu mundo interior se sostiene. Mantener la claridad mental en la mitad de la vida no es inercia — es fortaleza invisible.",down:"Tu mente está haciendo trabajo profundo. Los reacomodos mentales se sienten como descenso — pero son la preparación para una claridad nueva."},
@@ -844,16 +705,12 @@ var TALI = {
     financiera:{up:"Tu relación con lo financiero se transformó. El crecimiento aquí no es sobre dinero — es sobre la claridad emocional con la que ahora lo habitas.",flat:"Tu Riqueza Financiera se sostiene. La estabilidad emocional financiera es un activo invisible pero poderoso.",down:"Tu mapa financiero está en trabajo profundo. Los territorios emocionales del dinero son los últimos en resolverse — y los más transformadores cuando lo hacen."}
   };
   function rNarr(key,d){var r=RNARR[key];if(d>2)return r.up;if(d>=-2)return r.flat;return r.down;}
-
   var sorted=RDATA.slice().sort(function(a,b){return(b.n-b.b)-(a.n-a.b)});
   var bloomed=sorted.filter(function(r){return r.n>r.b});
   var growing=sorted.filter(function(r){return r.n<=r.b}).reverse();
-
   var R=82,CX=100,CY=100,CIRC=2*Math.PI*R;
   var baseOff=CIRC*(1-D1/100),nowOff=CIRC*(1-HOY/100);
   var h="";
-
-  // CH1: Tu Arco
   h+='<div class="ch1"><div class="ch1-inner">';
   h+='<div class="ch1-pretitle">El Espejo en Movimiento</div>';
   h+='<div class="ch1-title">Tu Arco de Transformación</div>';
@@ -867,8 +724,6 @@ var TALI = {
   h+='<div class="ch1-stat"><div class="ch1-stat-dot" style="background:var(--oro-l)"></div><div class="ch1-stat-info"><div class="ch1-stat-val" style="color:var(--oro-l)">'+HOY+'%</div><div class="ch1-stat-lbl">'+compDayLabel+' · Ahora</div></div></div></div></div>';
   h+='<div class="ch1-phase" style="background:'+phase.bg+';border:1px solid '+phase.border+'"><div class="ch1-phase-dot" style="background:'+phase.color+'"></div><div class="ch1-phase-text" style="color:'+phase.color+'">'+phase.name+'</div></div>';
   h+='<p class="ch1-narr">'+gNarr+'</p></div></div>';
-
-  // CH2: 5 Riquezas
   h+='<div class="ch2">';
   RDATA.forEach(function(r,i){
     var d=r.n-r.b,ds=(d>=0?"+":"")+d+"%";
@@ -891,8 +746,6 @@ var TALI = {
     h+='<div style="position:absolute;bottom:0;left:20%;right:20%;height:2px;background:'+r.color+';opacity:0.3;border-radius:2px"></div></div>';
   });
   h+='</div>';
-
-  // CH3: Floreció + Territorios
   h+='<div class="ch3"><div class="ch3-panel bloom"><div class="ch3-label"><span>✦</span> Lo que Floreció en 45 Días</div>';
   if(bloomed.length){bloomed.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">De '+r.b+'% a '+r.n+'% — tu consciencia activa generó movimiento real.</div></div><div class="ch3-item-delta" style="color:var(--verde)">+'+d+'%</div></div>';});}
   else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Tu proceso está en fase de integración profunda — el florecimiento viene.</div>';}
@@ -900,8 +753,6 @@ var TALI = {
   if(growing.length){growing.forEach(function(r){var d=r.n-r.b;h+='<div class="ch3-item"><img src="'+r.ico+'" class="ch3-item-ico"><div class="ch3-item-info"><div class="ch3-item-name" style="color:'+r.color+'">Riqueza '+r.nombre+'</div><div class="ch3-item-desc">Aquí es donde las próximas semanas van a hacer su trabajo más profundo contigo.</div></div><div class="ch3-item-delta" style="color:var(--oro-l)">'+d+'%</div></div>';});}
   else{h+='<div style="color:var(--texto-3);font-size:14px;padding:20px 0;line-height:1.7">Todas tus Riquezas crecieron — el programa está trabajando en cada dimensión.</div>';}
   h+='</div></div>';
-
-  // CH4: Timeline
   h+='<div class="ch4"><div class="ch4-label">Tu Línea de Transformación</div><div class="ch4-timeline">';
   h+='<div class="ch4-node past"><div class="ch4-node-circle">'+D1+'%</div><div class="ch4-node-label">Día 1</div><div class="ch4-node-name">Mi Mapa Vital</div></div>';
   h+='<div class="ch4-line done"><div class="ch4-line-fill"></div></div>';
@@ -909,46 +760,32 @@ var TALI = {
   h+='<div class="ch4-line pending"><div class="ch4-line-fill"></div></div>';
   h+='<div class="ch4-node future"><div class="ch4-node-circle">?</div><div class="ch4-node-label">Día 90</div><div class="ch4-node-name">Mi Cosecha</div></div>';
   h+='</div><div class="ch4-cta">"Lo que construiste hasta aquí es la base.<br>Lo que viene es donde el programa entrega su trabajo más profundo."</div></div>';
-
   document.getElementById("espejo-container").innerHTML = h;
 })();
-// ── RADAR ──
+
 new Chart(document.getElementById("radarChart").getContext("2d"), {
   type: "radar",
   data: {
     labels: ["Física","Mental","Social","Temporal","Financiera"],
     datasets: [
-      {label:"Tú", data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],
-       fill:true, backgroundColor:"rgba(234,201,124,0.12)", borderColor:"#EAC97C",
-       pointBackgroundColor:"#EAC97C", pointBorderColor:"#08080F", pointBorderWidth:2,
-       pointRadius:8, pointHoverRadius:10, borderWidth:3},
-      {label:"Tu Grupo", data:[gpFis,gpMen,gpSoc,gpTem,gpFin],
-       fill:false, borderColor:"#5BC4F0", borderDash:[7,4], borderWidth:2.5,
-       pointRadius:6, pointBackgroundColor:"#5BC4F0", pointBorderColor:"#08080F", pointBorderWidth:2},
-      {label:"Benchmark", data:[bkFis,bkMen,bkSoc,bkTem,bkFin],
-       fill:false, borderColor:"#6ED49A", borderDash:[2,5], borderWidth:2,
-       pointRadius:5, pointBackgroundColor:"#6ED49A", pointBorderColor:"#08080F", pointBorderWidth:2}
+      {label:"Tú",data:[P.pfis,P.pmen,P.psoc,P.ptem,P.pfin],fill:true,backgroundColor:"rgba(234,201,124,0.12)",borderColor:"#EAC97C",pointBackgroundColor:"#EAC97C",pointBorderColor:"#08080F",pointBorderWidth:2,pointRadius:8,pointHoverRadius:10,borderWidth:3},
+      {label:"Tu Grupo",data:[gpFis,gpMen,gpSoc,gpTem,gpFin],fill:false,borderColor:"#5BC4F0",borderDash:[7,4],borderWidth:2.5,pointRadius:6,pointBackgroundColor:"#5BC4F0",pointBorderColor:"#08080F",pointBorderWidth:2},
+      {label:"Benchmark",data:[bkFis,bkMen,bkSoc,bkTem,bkFin],fill:false,borderColor:"#6ED49A",borderDash:[2,5],borderWidth:2,pointRadius:5,pointBackgroundColor:"#6ED49A",pointBorderColor:"#08080F",pointBorderWidth:2}
     ]
   },
   options: {
-    responsive:true, maintainAspectRatio:false,
-    scales:{r:{min:0,max:100,ticks:{display:false},
-      grid:{color:"rgba(255,255,255,0.07)"},
-      angleLines:{color:"rgba(255,255,255,0.07)"},
-      pointLabels:{color:"#F0EBE2",font:{family:"Outfit",size:15,weight:"600"}}}},
-    plugins:{legend:{position:"bottom",labels:{
-      color:"#C8C0B4",font:{family:"Outfit",size:15},
-      boxWidth:22,boxHeight:3,padding:28}}}
+    responsive:true,maintainAspectRatio:false,
+    scales:{r:{min:0,max:100,ticks:{display:false},grid:{color:"rgba(255,255,255,0.07)"},angleLines:{color:"rgba(255,255,255,0.07)"},pointLabels:{color:"#F0EBE2",font:{family:"Outfit",size:15,weight:"600"}}}},
+    plugins:{legend:{position:"bottom",labels:{color:"#C8C0B4",font:{family:"Outfit",size:15},boxWidth:22,boxHeight:3,padding:28}}}
   }
 });
 
-// ── RIQUEZAS DRILL-DOWN (V7: 3 comportamientos top + 3 bottom) ──
 var RIQS = [
-  {key:"fisica",    nombre:"Riqueza Física",     ico:"riqueza-fisica.png",    mi:P.pfis,gp:gpFis,bk:bkFis,color:"#F06060"},
-  {key:"mental",    nombre:"Riqueza Mental",     ico:"riqueza-mental.png",    mi:P.pmen,gp:gpMen,bk:bkMen,color:"#7A8CF0"},
-  {key:"social",    nombre:"Riqueza Social",     ico:"riqueza-social.png",    mi:P.psoc,gp:gpSoc,bk:bkSoc,color:"#F0C040"},
-  {key:"temporal",  nombre:"Riqueza Temporal",   ico:"riqueza-temporal.png",  mi:P.ptem,gp:gpTem,bk:bkTem,color:"#60D4A0"},
-  {key:"financiera",nombre:"Riqueza Financiera", ico:"riqueza-financiera.png",mi:P.pfin,gp:gpFin,bk:bkFin,color:"#C9922A"},
+  {key:"fisica",nombre:"Riqueza Física",ico:"riqueza-fisica.png",mi:P.pfis,gp:gpFis,bk:bkFis,color:"#F06060"},
+  {key:"mental",nombre:"Riqueza Mental",ico:"riqueza-mental.png",mi:P.pmen,gp:gpMen,bk:bkMen,color:"#7A8CF0"},
+  {key:"social",nombre:"Riqueza Social",ico:"riqueza-social.png",mi:P.psoc,gp:gpSoc,bk:bkSoc,color:"#F0C040"},
+  {key:"temporal",nombre:"Riqueza Temporal",ico:"riqueza-temporal.png",mi:P.ptem,gp:gpTem,bk:bkTem,color:"#60D4A0"},
+  {key:"financiera",nombre:"Riqueza Financiera",ico:"riqueza-financiera.png",mi:P.pfin,gp:gpFin,bk:bkFin,color:"#C9922A"},
 ];
 
 (function(){
@@ -957,24 +794,19 @@ var RIQS = [
     var celdas = CELDAS.filter(function(c){ return c.riq === r.key; });
     var conDelta = celdas.map(function(c){ return Object.assign({},c,{delta:c.pct-c.gp}); });
     var ord = conDelta.slice().sort(function(a,b){ return b.delta-a.delta; });
-    // Split limpio: >= 0 integrados (verde), < 0 enfoque (naranja)
     var integrados = ord.filter(function(c){ return c.delta >= 0; });
     var enfoque = ord.filter(function(c){ return c.delta < 0; });
     var d = Math.round(r.mi - r.gp);
     var chipTxt = d > 5 ? "↑ Por encima de tu grupo" : d < -5 ? "◦ Espacio de crecimiento" : "→ Similar al grupo";
     var chipCol = d > 5 ? "color:#6ED49A" : d < -5 ? "color:#E07040" : "color:#7AACF0";
     var taliTxt = TALI[r.key](r.mi, r.gp, r.bk);
-
-    // Generar HTML de cada panel solo si tiene datos
     var panelIzq = "";
     if (integrados.length > 0) {
       var topBehs = integrados.map(function(c){
         var val = Math.round(c.delta);
         return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>+" + val + "%</span></div>";
       }).join("");
-      panelIzq = "<div class='drill-beh-card drill-beh-alto'>" +
-        "<div class='drill-beh-tipo'>↑ Tus comportamientos más integrados</div>" +
-        topBehs + "</div>";
+      panelIzq = "<div class='drill-beh-card drill-beh-alto'><div class='drill-beh-tipo'>↑ Tus comportamientos más integrados</div>" + topBehs + "</div>";
     }
     var panelDer = "";
     if (enfoque.length > 0) {
@@ -982,15 +814,11 @@ var RIQS = [
         var val = Math.round(c.delta);
         return "<div class='drill-beh-item'><span class='drill-beh-bullet'></span><span>" + c.nombre + "</span><span class='drill-beh-delta'>" + val + "%</span></div>";
       }).join("");
-      panelDer = "<div class='drill-beh-card drill-beh-bajo'>" +
-        "<div class='drill-beh-tipo'>◦ Tus territorios de mayor enfoque</div>" +
-        botBehs + "</div>";
+      panelDer = "<div class='drill-beh-card drill-beh-bajo'><div class='drill-beh-tipo'>◦ Tus territorios de mayor enfoque</div>" + botBehs + "</div>";
     }
-    // Grid: 2 columnas si hay ambos, 1 columna si solo hay uno
     var behsGrid = (panelIzq && panelDer) ?
       "<div class='drill-behs'>" + panelIzq + panelDer + "</div>" :
       "<div class='drill-behs' style='grid-template-columns:1fr'>" + (panelIzq || panelDer) + "</div>";
-
     var row = document.createElement("div");
     row.className = "riqueza-row";
     row.innerHTML =
@@ -1006,62 +834,32 @@ var RIQS = [
       "<div class='drill-panel' id='drill-" + r.key + "'>" +
         "<div class='drill-divider'></div>" +
         "<div class='drill-barras'>" +
-          "<div class='drill-barra-row'>" +
-            "<span class='drill-barra-lbl' style='color:#EAC97C'>Tú</span>" +
-            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.mi) + "%;background:" + r.color + "'></div></div>" +
-            "<span class='drill-barra-pct' style='color:#EAC97C'>" + Math.round(r.mi) + "%</span>" +
-          "</div>" +
-          "<div class='drill-barra-row'>" +
-            "<span class='drill-barra-lbl' style='color:#5BC4F0'>Grupo</span>" +
-            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.gp) + "%;background:#5BC4F0'></div></div>" +
-            "<span class='drill-barra-pct' style='color:#5BC4F0'>" + Math.round(r.gp) + "%</span>" +
-          "</div>" +
-          "<div class='drill-barra-row'>" +
-            "<span class='drill-barra-lbl' style='color:#6ED49A'>Referencia</span>" +
-            "<div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.bk) + "%;background:#6ED49A'></div></div>" +
-            "<span class='drill-barra-pct' style='color:#6ED49A'>" + Math.round(r.bk) + "%</span>" +
-          "</div>" +
+          "<div class='drill-barra-row'><span class='drill-barra-lbl' style='color:#EAC97C'>Tú</span><div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.mi) + "%;background:" + r.color + "'></div></div><span class='drill-barra-pct' style='color:#EAC97C'>" + Math.round(r.mi) + "%</span></div>" +
+          "<div class='drill-barra-row'><span class='drill-barra-lbl' style='color:#5BC4F0'>Grupo</span><div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.gp) + "%;background:#5BC4F0'></div></div><span class='drill-barra-pct' style='color:#5BC4F0'>" + Math.round(r.gp) + "%</span></div>" +
+          "<div class='drill-barra-row'><span class='drill-barra-lbl' style='color:#6ED49A'>Referencia</span><div class='drill-barra-track'><div class='drill-barra-fill' style='width:" + Math.round(r.bk) + "%;background:#6ED49A'></div></div><span class='drill-barra-pct' style='color:#6ED49A'>" + Math.round(r.bk) + "%</span></div>" +
         "</div>" +
         behsGrid +
-        "<div class='drill-tali'>" +
-          "<p class='drill-tali-p'>" + taliTxt + "</p>" +
-          "<div class='drill-tali-firma'>Tu Caminante en La Senda Interior</div>" +
-        "</div>" +
+        "<div class='drill-tali'><p class='drill-tali-p'>" + taliTxt + "</p><div class='drill-tali-firma'>Tu Caminante en La Senda Interior</div></div>" +
       "</div>";
     grid.appendChild(row);
   });
 })();
 
-// ── ZONA E: SEMANA ──
 var SEMS = [null,
-  {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,
-   fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa va a construir desde ahí, no contra eso. El Despertar no es un diagnóstico, es el primer acto de consciencia: reconocerte en el espejo sin juzgar lo que ves."},
-  {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",
-   fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio. No se trata de cambiar el cuerpo — se trata de volver a habitarlo."},
-  {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",
-   fr:"Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella. La claridad física no es un plan de ejercicio — es saber qué tipo de vitalidad quieres vivir en la segunda mitad."},
-  {n:"Reconciliación · Riqueza Mental",f:"REC",c:"REC_MEN",
-   fr:"El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad. Esta semana no buscamos respuestas — buscamos preguntas honestas."},
-  {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",
-   fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura. Tu mente pasa de ser un territorio de ruido a ser un lugar donde puedes vivir con claridad."},
-  {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",
-   fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre — no para terminar vínculos, sino para entender qué lugar ocupa cada persona en tu mapa de vida."},
-  {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",
-   fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo no es accidental — es arquitectura. Esta semana la diseñas con intención."},
-  {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",
-   fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa. Reconciliarse con el tiempo pasado es el primer paso para habitar el presente con plenitud."},
-  {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",
-   fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo — cómo quieres que se sienta tu día a día cuando estás viviendo desde tu mapa, no contra él."},
-  {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",
-   fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana esas emociones se procesan antes de planear cualquier número. Sin ese paso, cualquier plan financiero es construir sobre arena."},
-  {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",
-   fr:"Más allá del ahorro y la inversión: diseñar un legado financiero alineado con quién estás eligiendo ser. El dinero en la segunda mitad de la vida es herramienta de legado — esta semana empieza a tomar esa forma."},
-  {n:"Repaso Integral · La Mirada Completa",f:"INT",c:null,
-   fr:"El mapa completo de tu transformación empieza a ser visible. Esta semana integras lo trabajado en las 5 Riquezas y te preparas para Mi Pulso — tu segunda fotografía. Llegas a ese momento con claridad."},
-  {n:"Integración · Comunidad y Retiro",f:"INT",c:null,
-   fr:"La Senda Interior no termina — se transforma. La comunidad de Caminantes y el primer Retiro son el siguiente capítulo de tu arquitectura de vida. Lo que construiste aquí es la base de todo lo que sigue."},
+  {n:"Despertar de las 5 Riquezas Vitales",f:"DES",c:null,fr:"Esta semana es el punto de partida. Tu Mapa ya capturó dónde vives hoy — el programa va a construir desde ahí, no contra eso. El Despertar no es un diagnóstico, es el primer acto de consciencia: reconocerte en el espejo sin juzgar lo que ves."},
+  {n:"Reconciliación · Riqueza Física",f:"REC",c:"REC_FIS",fr:"El cuerpo guarda historias que la mente no siempre quiere nombrar. Esta semana es el espacio para hacerlo con curiosidad, no con juicio. No se trata de cambiar el cuerpo — se trata de volver a habitarlo."},
+  {n:"Claridad · Riqueza Física",f:"CLA",c:"CLA_FIS",fr:"Después de reconciliarte con tu historia física, esta semana diseñas desde ella. No contra ella. La claridad física no es un plan de ejercicio — es saber qué tipo de vitalidad quieres vivir en la segunda mitad."},
+  {n:"Reconciliación · Riqueza Mental",f:"REC",c:"REC_MEN",fr:"El trabajo más profundo del programa. Las narrativas construidas durante décadas esperan ser examinadas con curiosidad. Esta semana no buscamos respuestas — buscamos preguntas honestas."},
+  {n:"Claridad · Riqueza Mental",f:"CLA",c:"CLA_MEN",fr:"Una vez que las narrativas antiguas se sueltan, hay espacio para escribir las nuevas. Esta semana es esa escritura. Tu mente pasa de ser un territorio de ruido a ser un lugar donde puedes vivir con claridad."},
+  {n:"Reconciliación · Riqueza Social",f:"REC",c:"REC_SOC",fr:"Las relaciones que pesan, las que nutren y las que ya cumplieron su ciclo. Esta semana les das nombre — no para terminar vínculos, sino para entender qué lugar ocupa cada persona en tu mapa de vida."},
+  {n:"Claridad · Riqueza Social",f:"CLA",c:"CLA_SOC",fr:"Diseñar quién quieres que esté en tu segunda mitad, cómo y en qué términos. Tu red de apoyo no es accidental — es arquitectura. Esta semana la diseñas con intención."},
+  {n:"Reconciliación · Riqueza Temporal",f:"REC",c:"REC_TEM",fr:"El tiempo que se fue y el que queda. Esta semana no es sobre productividad — es sobre lo que realmente importa. Reconciliarse con el tiempo pasado es el primer paso para habitar el presente con plenitud."},
+  {n:"Claridad · Riqueza Temporal",f:"CLA",c:"CLA_TEM",fr:"Diseñar el ritmo de tu segunda mitad. Intencional, no reactivo. Esta semana dibuja ese ritmo — cómo quieres que se sienta tu día a día cuando estás viviendo desde tu mapa, no contra él."},
+  {n:"Reconciliación · Riqueza Financiera",f:"REC",c:"REC_FIN",fr:"El dinero lleva emociones: vergüenza, miedo, orgullo, culpa. Esta semana esas emociones se procesan antes de planear cualquier número. Sin ese paso, cualquier plan financiero es construir sobre arena."},
+  {n:"Claridad · Riqueza Financiera",f:"CLA",c:"CLA_FIN",fr:"Más allá del ahorro y la inversión: diseñar un legado financiero alineado con quién estás eligiendo ser. El dinero en la segunda mitad de la vida es herramienta de legado — esta semana empieza a tomar esa forma."},
+  {n:"Repaso Integral · La Mirada Completa",f:"INT",c:null,fr:"El mapa completo de tu transformación empieza a ser visible. Esta semana integras lo trabajado en las 5 Riquezas y te preparas para Mi Pulso — tu segunda fotografía. Llegas a ese momento con claridad."},
+  {n:"Integración · Comunidad y Retiro",f:"INT",c:null,fr:"La Senda Interior no termina — se transforma. La comunidad de Caminantes y el primer Retiro son el siguiente capítulo de tu arquitectura de vida. Lo que construiste aquí es la base de todo lo que sigue."},
 ];
-
 var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración"};
 
 (function(){
@@ -1088,13 +886,12 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
   document.getElementById("sem-frase").textContent = fr;
 })();
 
-// ── ZONA F: MEDICIONES (V7.4: Clickable navigation) ──
 (function(){
   var medGrid = document.getElementById("mediciones-grid");
   var meds = [
-    {nombre:"Mi Mapa Vital", dia:"Día 1 · Línea Base", desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.", ico:"mapa-vital.png", scrollTo:"zona-b"},
-    {nombre:"Mi Pulso", dia:"Día 45 · Revisión Intermedia", desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.", ico:"mapa-vital.png", scrollTo:"zona-comp"},
-    {nombre:"Mi Cosecha", dia:"Día 90 · Cierre del Programa", desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.", ico:"mapa-vital.png", scrollTo:null},
+    {nombre:"Mi Mapa Vital",dia:"Día 1 · Línea Base",desc:"Tu punto de partida. La fotografía honesta de dónde vives hoy en las 5 Riquezas Vitales.",ico:"mapa-vital.png",scrollTo:"zona-b"},
+    {nombre:"Mi Pulso",dia:"Día 45 · Revisión Intermedia",desc:"¿Qué se está moviendo? Los mismos comportamientos medidos a la mitad del camino.",ico:"mapa-vital.png",scrollTo:"zona-comp"},
+    {nombre:"Mi Cosecha",dia:"Día 90 · Cierre del Programa",desc:"¿Qué se integró? El antes y después de tu transformación en un solo mapa.",ico:"mapa-vital.png",scrollTo:null},
   ];
   var activo = fc.medActivo;
   meds.forEach(function(m, i) {
@@ -1129,42 +926,24 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
   });
 })();
 
-// ── ZONA BRÚJULA: Deepstash + Tali Sharot Experience ──
 (function(){
   var BRUJULA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=704104905&single=true&output=csv";
   var container = document.getElementById("brujula-container");
   var email = P.em;
-
   if (!email) {
     container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales.</div>";
     return;
   }
-
-  var RIQ_ICONS = {
-    fisica: "riqueza-fisica.png", mental: "riqueza-mental.png",
-    social: "riqueza-social.png", temporal: "riqueza-temporal.png",
-    financiera: "riqueza-financiera.png"
-  };
-  var RIQ_COLORS = {
-    fisica: "#F06060", mental: "#7A8CF0", social: "#F0C040",
-    temporal: "#60D4A0", financiera: "#C9922A"
-  };
-  var RIQ_RGB = {
-    fisica: "240,96,96", mental: "122,140,240", social: "240,192,64",
-    temporal: "96,212,160", financiera: "201,146,42"
-  };
-
-  function riqKey(name) {
-    return (name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  }
-
+  var RIQ_ICONS = {fisica:"riqueza-fisica.png",mental:"riqueza-mental.png",social:"riqueza-social.png",temporal:"riqueza-temporal.png",financiera:"riqueza-financiera.png"};
+  var RIQ_COLORS = {fisica:"#F06060",mental:"#7A8CF0",social:"#F0C040",temporal:"#60D4A0",financiera:"#C9922A"};
+  var RIQ_RGB = {fisica:"240,96,96",mental:"122,140,240",social:"240,192,64",temporal:"96,212,160",financiera:"201,146,42"};
+  function riqKey(name) { return (name || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
   function intensidadBadge(raw) {
     var t = (raw || "").toUpperCase();
-    if (t.indexOf("DESPERTAR") >= 0) return {cls:"badge-potencial", label:"Territorio de Descubrimiento"};
-    if (t.indexOf("FORTALEZA") >= 0) return {cls:"badge-ancla", label:"Tu Fortaleza"};
-    return {cls:"badge-expansion", label:"En Expansión"};
+    if (t.indexOf("DESPERTAR") >= 0) return {cls:"badge-potencial",label:"Territorio de Descubrimiento"};
+    if (t.indexOf("FORTALEZA") >= 0) return {cls:"badge-ancla",label:"Tu Fortaleza"};
+    return {cls:"badge-expansion",label:"En Expansión"};
   }
-
   fetch(BRUJULA_CSV)
     .then(function(r){ return r.text(); })
     .then(function(csv){
@@ -1175,35 +954,22 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
         var obj = {};
         headers.forEach(function(h, i){ obj[h.trim()] = (row[i] || "").trim(); });
         return obj;
-      }).filter(function(r){
-        return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase();
-      });
-
+      }).filter(function(r){ return r.EMAIL_CAMINANTE && r.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase(); });
       if (!data.length) { showEmpty(); return; }
-
       data.sort(function(a, b){ return parseInt(b.SEM_ || b.SEMANA || 0) - parseInt(a.SEM_ || a.SEMANA || 0); });
-
       var latest = data[0];
       var history = data.slice(1);
       var html = "";
-
-      // ═══ STASH DE LA SEMANA ═══
       html += "<div class='brujula-stash'>";
-
-      // Meta
       html += "<div class='brujula-meta'>";
       html += "<span class='brujula-sem'>Semana " + (latest.SEM_ || latest.SEMANA || "—") + " de 13</span>";
       html += "<span class='brujula-nivel'>" + (latest.ETAPA || "") + " · " + (latest.NOMBRE_NIVEL || "") + "</span>";
       html += "</div>";
-
-      // Narrativa
       if (latest.NARRATIVA) {
         var narrParts = latest.NARRATIVA.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 10; });
         if (!narrParts.length) narrParts = [latest.NARRATIVA];
         html += "<div class='brujula-narrativa'>" + narrParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
       }
-
-      // ── CARD CONTINUIDAD — hilo evolutivo de micro-acciones semanales ──
       var continuidadTexto = latest.CONTINUIDAD_NARRATIVA || "";
       if (continuidadTexto && continuidadTexto.trim().length > 10) {
         var contParts = continuidadTexto.split(/\\n\\n|\n\n/).filter(function(p){ return p.trim().length > 5; });
@@ -1213,8 +979,6 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
         html += "<div class='brujula-continuidad-texto'>" + contParts.map(function(p){ return "<p>" + p.trim() + "</p>"; }).join("") + "</div>";
         html += "</div>";
       }
-
-      // ── HERO CARD (Tarjeta 1 = Mayor Brecha) ──
       var heroRiq = latest.T1_RIQUEZA || "";
       var heroKey = riqKey(heroRiq);
       var heroColor = RIQ_COLORS[heroKey] || "var(--oro)";
@@ -1224,7 +988,6 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
       var heroVerdad = latest.T1_VERDAD || "";
       var heroMicro = latest.T1_MICRO || "";
       var heroInt = intensidadBadge(latest.T1_INTENSIDAD || "");
-
       if (heroRiq) {
         html += "<div class='brujula-hero' style='--hero-color:" + heroColor + ";--hero-rgb:" + heroRgb + ";background:linear-gradient(135deg,rgba(" + heroRgb + ",0.06),transparent);'>";
         html += "<div class='brujula-hero-top'>";
@@ -1232,16 +995,12 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
         html += "<div class='brujula-hero-label'>";
         html += "<div class='brujula-hero-riqueza' style='color:" + heroColor + "'>Riqueza " + heroRiq + "</div>";
         html += "<span class='brujula-hero-badge " + heroInt.cls + "'>" + heroInt.label + "</span>";
-        html += "</div>";
-        html += "</div>";
-
+        html += "</div></div>";
         if (heroFrase) {
           html += "<div class='brujula-hero-eyebrow'>Tu Descubrimiento de esta Semana</div>";
           html += "<div class='brujula-hero-frase'>\"" + heroFrase + "\"</div>";
         }
-        if (heroVerdad) {
-          html += "<div class='brujula-hero-verdad'>" + heroVerdad + "</div>";
-        }
+        if (heroVerdad) html += "<div class='brujula-hero-verdad'>" + heroVerdad + "</div>";
         if (heroMicro) {
           html += "<div class='brujula-hero-micro'>";
           html += "<div class='brujula-micro-eyebrow'>Tu Micro-Acción</div>";
@@ -1250,17 +1009,11 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
         }
         html += "</div>";
       }
-
-      // ── TARJETAS SATÉLITE (Tarjetas 2-5) — sin onclick inline ──
       var hasSatellites = false;
-      for (var s = 2; s <= 5; s++) {
-        if (latest["T" + s + "_RIQUEZA"]) { hasSatellites = true; break; }
-      }
-
+      for (var s = 2; s <= 5; s++) { if (latest["T" + s + "_RIQUEZA"]) { hasSatellites = true; break; } }
       if (hasSatellites) {
         html += "<div class='brujula-sat-title'>Explora tus otras Riquezas</div>";
         html += "<div class='brujula-sat-grid'>";
-
         for (var t = 2; t <= 5; t++) {
           var satRiq = latest["T" + t + "_RIQUEZA"] || "";
           if (!satRiq) continue;
@@ -1271,7 +1024,6 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
           var sVerdad = latest["T" + t + "_VERDAD"] || "";
           var sMicro = latest["T" + t + "_MICRO"] || "";
           var sInt = intensidadBadge(latest["T" + t + "_INTENSIDAD"] || "");
-
           html += "<div class='brujula-sat'>";
           html += "<div class='brujula-sat-header'>";
           html += "<img src='" + sIco + "' class='brujula-sat-ico' alt='" + satRiq + "'>";
@@ -1282,7 +1034,6 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
           html += "<span class='brujula-sat-badge " + sInt.cls + "'>" + sInt.label + "</span>";
           html += "<span class='brujula-sat-toggle'>▼</span>";
           html += "</div>";
-
           if (sVerdad || sMicro) {
             html += "<div class='brujula-sat-body'>";
             if (sFrase) {
@@ -1309,10 +1060,7 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
         }
         html += "</div>";
       }
-
-      html += "</div>"; // close brujula-stash
-
-      // ═══ HISTORIAL — Biblioteca de Stashes — sin onclick inline ═══
+      html += "</div>";
       if (history.length > 0) {
         html += "<div class='brujula-hist-title'>Tu Biblioteca · Semanas Anteriores</div>";
         html += "<div class='brujula-hist-grid'>";
@@ -1337,25 +1085,18 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
               html += "<span class='brujula-hist-chip' style='color:" + cColor + ";border-color:" + cColor + "'>" + cRiq + "</span>";
             }
           }
-          html += "</div>";
-          html += "</div>";
-          html += "</div>";
+          html += "</div></div></div>";
         });
         html += "</div>";
       }
-
       container.innerHTML = html;
-
-      // ══ DELEGACIÓN DE EVENTOS — reemplaza onclick inline (CSP-safe) ══
       container.addEventListener("click", function(e) {
-        // Satélites: clic en header → toggle .open en .brujula-sat
         var satH = e.target.closest(".brujula-sat-header");
         if (satH) {
           var sat = satH.closest(".brujula-sat");
           if (sat) sat.classList.toggle("open");
           return;
         }
-        // Biblioteca: clic en header → toggle .open en .brujula-hist-card
         var histH = e.target.closest(".brujula-hist-header");
         if (histH) {
           var hist = histH.closest(".brujula-hist-card");
@@ -1368,13 +1109,12 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
       console.error("Brújula fetch error:", err);
       showEmpty();
     });
-
   function showEmpty(){
     container.innerHTML = "<div class='brujula-empty'>Tu Brújula se activará cuando el programa comience a enviar tus invitaciones semanales. Cada lunes recibirás una nueva lectura personalizada.</div>";
   }
 })();
 
-} // ═══ END renderCockpit(P) ═══
+}
 </script>
 </body>
 </html>
