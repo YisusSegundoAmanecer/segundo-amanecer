@@ -416,14 +416,18 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
-    <div class="footer-v" id="footer-version">Mi Mapa Vital V8.0</div>
+    <div class="footer-v" id="footer-version">Mi Mapa Vital V8.1</div>
   </div>
   <div class="footer-legal">© 2026 Conexión Vital · Todos los derechos reservados · Documento confidencial · Uso personal exclusivo</div>
 </footer>
 </div>
 <script>
 // ════════════════════════════════════════════════════════
-// COCKPIT V8.0 — CV-SA · 26 abril 2026
+// COCKPIT V8.1 — CV-SA · 26 abril 2026
+// CHANGELOG vs V8.0:
+// - Botón Mi Mapa hace fetch de URL real desde COCKPIT_DATA columna AZ
+// - Cache de URLs Mi Mapa para evitar re-fetch
+// - Loading state mientras fetch
 // CHANGELOG vs V7.5:
 // - Botón Mi Mapa abre Cockpit Mi Mapa en pestaña nueva (no scroll)
 // - Benchmarks hardcoded ponderados para 3 instrumentos
@@ -435,6 +439,57 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 
 var PULSO_GID = "418046211";
 var PULSO_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=" + PULSO_GID + "&single=true&output=csv";
+
+// ════════════════════════════════════════════════════════
+// COCKPIT_DATA · Para fetch de URL Mi Mapa (columna AZ)
+// ════════════════════════════════════════════════════════
+var COCKPIT_DATA_GID = "1349898159";
+var COCKPIT_DATA_CSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_d7mo9iy--oPKiNaNPoB6m8L8K6KBSnlPuogQxR6IYfyTqiWFOXfl8hSnHHTGPYzLLnBmxwoU9x17/pub?gid=" + COCKPIT_DATA_GID + "&single=true&output=csv";
+
+// Cache de URLs Mi Mapa por email (para evitar fetch repetido)
+var MAPA_URL_CACHE = {};
+
+// Función · obtener URL Mi Mapa de un Caminante desde COCKPIT_DATA
+function fetchMapaUrl(email) {
+  if (MAPA_URL_CACHE[email.toLowerCase()]) {
+    return Promise.resolve(MAPA_URL_CACHE[email.toLowerCase()]);
+  }
+  return fetch(COCKPIT_DATA_CSV)
+    .then(function(r){ return r.text(); })
+    .then(function(csv){
+      var rows = parseCSV(csv);
+      if (rows.length < 2) return null;
+      var headers = rows[0].map(function(h){ return h.trim(); });
+      // Busca fila del Caminante con FASE=MAPA_VITAL
+      var match = null;
+      for (var i = 1; i < rows.length; i++) {
+        var row = rows[i];
+        var obj = {};
+        headers.forEach(function(h, idx){ obj[h] = (row[idx] || "").trim(); });
+        if (obj.EMAIL_CAMINANTE && obj.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase() && obj.FASE === "MAPA_VITAL") {
+          match = obj;
+          break;
+        }
+      }
+      if (!match) return null;
+      // La columna AZ contiene la URL · busca cualquier campo que empiece con http
+      var url = null;
+      var headerKeys = Object.keys(match);
+      for (var k = 0; k < headerKeys.length; k++) {
+        var val = match[headerKeys[k]];
+        if (val && val.indexOf("http") === 0 && val.indexOf("fase=MAPA_VITAL") > -1) {
+          url = val;
+          break;
+        }
+      }
+      if (url) MAPA_URL_CACHE[email.toLowerCase()] = url;
+      return url;
+    })
+    .catch(function(err){
+      console.error("[Cockpit] Error fetch URL Mi Mapa:", err);
+      return null;
+    });
+}
 
 // ════════════════════════════════════════════════════════
 // BENCHMARKS PONDERADOS · 3 INSTRUMENTOS (hardcoded)
@@ -605,7 +660,7 @@ var FC = {
     badge: "Mi Mapa Vital · Línea Base",
     eye: "Tu Mapa · Lo que Revela de Ti",
     fecha: "Mi Mapa Vital · Línea Base",
-    foot: "MI MAPA VITAL V8.0",
+    foot: "MI MAPA VITAL V8.1",
     medActivo: 0,
     defaultNarr: "Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación."
   },
@@ -613,7 +668,7 @@ var FC = {
     badge: "Mi Pulso · Revisión Intermedia",
     eye: "Tu Pulso · Lo que se Movió",
     fecha: "Mi Pulso · Revisión Intermedia",
-    foot: "MI PULSO V8.0",
+    foot: "MI PULSO V8.1",
     medActivo: 1,
     defaultNarr: "Esta es tu segunda mirada — la evidencia de lo que se movió en 45 días de consciencia activa. Lo que ves aquí no es una calificación nueva: es el mapa de tu evolución."
   },
@@ -621,7 +676,7 @@ var FC = {
     badge: "Mi Cosecha · Cierre del Programa",
     eye: "Tu Cosecha · Lo que Integraste",
     fecha: "Mi Cosecha · Cierre del Programa",
-    foot: "MI COSECHA V8.0",
+    foot: "MI COSECHA V8.1",
     medActivo: 2,
     defaultNarr: "Esta es tu cosecha — el espejo final de 90 días de transformación consciente. Lo que ves aquí es el mapa completo de quién te has convertido."
   }
@@ -1022,19 +1077,32 @@ var FL = {DES:"Despertar",REC:"Reconciliación",CLA:"Claridad",INT:"Integración
     }
     else if (isCompleted) {
       // ════════════════════════════════════════════════════════
-      // FIX MI MAPA · Abre Cockpit Mi Mapa en NUEVA pestaña
-      // (NO scroll a zona-b del Mi Pulso/Mi Cosecha actual)
+      // FIX MI MAPA V8.1 · Lee URL real desde COCKPIT_DATA columna AZ
       // ════════════════════════════════════════════════════════
       if (i === 0 && P.fase !== "MAPA_VITAL") {
         // Card "Mi Mapa Vital" cuando estamos viendo Mi Pulso o Mi Cosecha
         card.onclick = (function(email){
           return function(){
-            if (email) {
-              var mapaUrl = COCKPIT_BASE_URL + "?fase=MAPA_VITAL&em=" + encodeURIComponent(email);
-              window.open(mapaUrl, "_blank");
-            } else {
+            if (!email) {
               alert("No se encontró el email del Caminante para abrir Mi Mapa.");
+              return;
             }
+            // Mostrar feedback de carga
+            var statusEl = card.querySelector('.med-completado');
+            var originalText = statusEl ? statusEl.innerHTML : "";
+            if (statusEl) statusEl.innerHTML = "⏳ Cargando Mi Mapa...";
+            // Fetch URL real desde COCKPIT_DATA
+            fetchMapaUrl(email).then(function(mapaUrl){
+              if (statusEl) statusEl.innerHTML = originalText;
+              if (mapaUrl) {
+                window.open(mapaUrl, "_blank");
+              } else {
+                // Fallback · construir URL básica
+                var fallbackUrl = COCKPIT_BASE_URL + "?fase=MAPA_VITAL&em=" + encodeURIComponent(email);
+                console.warn("[Cockpit] URL Mi Mapa no encontrada en COCKPIT_DATA · usando fallback");
+                window.open(fallbackUrl, "_blank");
+              }
+            });
           };
         })(P.em);
       } else if (i === 1 && P.fase === "MI_COSECHA") {
