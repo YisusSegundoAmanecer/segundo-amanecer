@@ -416,14 +416,14 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-marca">Conexión Vital · Segundo Amanecer</div>
-    <div class="footer-v" id="footer-version">Mi Mapa Vital V8.1</div>
+    <div class="footer-v" id="footer-version">Mi Mapa Vital V8.1.1</div>
   </div>
   <div class="footer-legal">© 2026 Conexión Vital · Todos los derechos reservados · Documento confidencial · Uso personal exclusivo</div>
 </footer>
 </div>
 <script>
 // ════════════════════════════════════════════════════════
-// COCKPIT V8.1 — CV-SA · 26 abril 2026
+// COCKPIT V8.1.1 — CV-SA · 26 abril 2026
 // CHANGELOG vs V8.0:
 // - Botón Mi Mapa hace fetch de URL real desde COCKPIT_DATA columna AZ
 // - Cache de URLs Mi Mapa para evitar re-fetch
@@ -467,6 +467,11 @@ function fetchMapaUrl(email) {
         var obj = {};
         headers.forEach(function(h, idx){ obj[h] = (row[idx] || "").trim(); });
         if (obj.EMAIL_CAMINANTE && obj.EMAIL_CAMINANTE.toLowerCase() === email.toLowerCase() && obj.FASE === "MAPA_VITAL") {
+          match = obj;
+          break;
+        }
+        // FALLBACK · si COCKPIT_DATA tiene header EMAIL (no EMAIL_CAMINANTE)
+        if (obj.EMAIL && obj.EMAIL.toLowerCase() === email.toLowerCase() && obj.FASE === "MAPA_VITAL") {
           match = obj;
           break;
         }
@@ -660,7 +665,7 @@ var FC = {
     badge: "Mi Mapa Vital · Línea Base",
     eye: "Tu Mapa · Lo que Revela de Ti",
     fecha: "Mi Mapa Vital · Línea Base",
-    foot: "MI MAPA VITAL V8.1",
+    foot: "MI MAPA VITAL V8.1.1",
     medActivo: 0,
     defaultNarr: "Este es tu espejo — no tu juicio. Lo que ves aquí no está bien ni mal. Es simplemente la fotografía más honesta y hermosa de dónde vives hoy en cada una de las 5 Riquezas Vitales. Tu Mapa es tu guía, no tu calificación."
   },
@@ -668,7 +673,7 @@ var FC = {
     badge: "Mi Pulso · Revisión Intermedia",
     eye: "Tu Pulso · Lo que se Movió",
     fecha: "Mi Pulso · Revisión Intermedia",
-    foot: "MI PULSO V8.1",
+    foot: "MI PULSO V8.1.1",
     medActivo: 1,
     defaultNarr: "Esta es tu segunda mirada — la evidencia de lo que se movió en 45 días de consciencia activa. Lo que ves aquí no es una calificación nueva: es el mapa de tu evolución."
   },
@@ -676,7 +681,7 @@ var FC = {
     badge: "Mi Cosecha · Cierre del Programa",
     eye: "Tu Cosecha · Lo que Integraste",
     fecha: "Mi Cosecha · Cierre del Programa",
-    foot: "MI COSECHA V8.1",
+    foot: "MI COSECHA V8.1.1",
     medActivo: 2,
     defaultNarr: "Esta es tu cosecha — el espejo final de 90 días de transformación consciente. Lo que ves aquí es el mapa completo de quién te has convertido."
   }
