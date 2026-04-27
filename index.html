@@ -25,12 +25,12 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .eyebrow{font-family:"Outfit",sans-serif;font-size:15px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--oro);display:flex;align-items:center;gap:16px;margin-bottom:28px;}
 .eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,0.4),transparent);}
 .header{display:flex;align-items:center;gap:22px;padding:36px 0 0;animation:fadeUp .5s ease both;}
-.header-logo{width:90px;height:90px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
+.header-logo{width:150px;height:150px;border-radius:50%;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 14px rgba(201,146,42,0.35));}
 .header-marca{font-family:"Playfair Display",serif;font-size:22px;font-weight:600;color:var(--texto);line-height:1.2;}
 .header-sub{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--oro);margin-top:6px;}
 .zona-a{padding:52px 0 0;animation:fadeUp .6s ease .08s both;}
 .mapa-badge{display:inline-flex;align-items:center;gap:14px;background:rgba(201,146,42,0.10);border:1px solid rgba(201,146,42,0.28);border-radius:28px;padding:10px 24px 10px 14px;margin-bottom:26px;}
-.mapa-badge-ico{width:44px;height:44px;object-fit:contain;}
+.mapa-badge-ico{width:75px;height:75px;object-fit:contain;}
 .mapa-badge-txt{font-family:"DM Mono",monospace;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--oro-l);}
 .nombre-h{font-family:"Playfair Display",serif;font-size:clamp(42px,6vw,62px);font-weight:400;line-height:1.1;color:var(--texto);margin-bottom:12px;}
 .fecha-sub{font-size:16px;color:var(--texto-3);}
@@ -60,7 +60,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .etapa-chip{background:var(--bg3);border:1px solid var(--borde);border-radius:18px;padding:24px 18px 18px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;transition:border-color .2s;}
 .etapa-chip::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 18px 18px;}
 .ec-des::after{background:var(--des);} .ec-rec::after{background:var(--rec);} .ec-cla::after{background:var(--cla);}
-.ec-icon{width:110px;height:110px;object-fit:contain;}
+.ec-icon{width:200px;height:200px;object-fit:contain;}
 .ec-pct{font-family:"Playfair Display",serif;font-size:40px;font-weight:400;line-height:1;}
 .ec-des .ec-pct{color:var(--des);} .ec-rec .ec-pct{color:var(--rec);} .ec-cla .ec-pct{color:var(--cla);}
 .ec-nombre{font-size:16px;color:var(--texto-2);font-weight:600;}
@@ -73,7 +73,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .riqueza-row{background:var(--bg3);border:1px solid var(--borde);border-radius:16px;overflow:hidden;transition:border-color .2s;}
 .riqueza-row:hover{border-color:var(--borde-l);}
 .riqueza-header{display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;}
-.riqueza-icon-big{width:86px;height:86px;object-fit:contain;flex-shrink:0;}
+.riqueza-icon-big{width:150px;height:150px;object-fit:contain;flex-shrink:0;}
 .riqueza-info{flex:1;}
 .riqueza-nombre{font-size:20px;font-weight:700;color:var(--texto);margin-bottom:4px;}
 .riqueza-chip{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
@@ -126,7 +126,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .med-card{background:var(--bg2);border:1px solid var(--borde);border-radius:18px;padding:30px 24px 24px;position:relative;overflow:hidden;}
 .med-card.locked{opacity:0.55;cursor:pointer;transition:opacity .2s;}
 .med-card.locked:hover{opacity:0.82;}
-.med-icon-img{width:70px;height:70px;object-fit:contain;margin-bottom:16px;display:block;}
+.med-icon-img{width:120px;height:120px;object-fit:contain;margin-bottom:16px;display:block;}
 .med-nombre{font-family:"Playfair Display",serif;font-size:22px;font-weight:400;color:var(--texto);margin-bottom:6px;}
 .med-dia{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:2px;color:var(--oro);text-transform:uppercase;margin-bottom:14px;}
 .med-desc{font-size:16px;color:var(--texto-2);line-height:1.65;margin-bottom:16px;}
@@ -172,7 +172,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-hero::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(135deg,var(--hero-color,var(--oro)),transparent 60%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;}
 .brujula-hero-inner{background:linear-gradient(135deg,rgba(var(--hero-rgb,201,146,42),0.06),transparent);border-radius:20px;}
 .brujula-hero-top{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
-.brujula-hero-ico{width:56px;height:56px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(var(--hero-rgb,201,146,42),0.3));}
+.brujula-hero-ico{width:120px;height:120px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 0 12px rgba(var(--hero-rgb,201,146,42),0.3));}
 .brujula-hero-label{flex:1;}
 .brujula-hero-riqueza{font-family:"Playfair Display",serif;font-size:26px;font-weight:400;line-height:1.2;}
 .brujula-hero-badge{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;margin-top:6px;display:inline-block;padding:4px 12px;border-radius:8px;}
@@ -192,7 +192,7 @@ body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .brujula-sat:hover{border-color:var(--borde-l);}
 .brujula-sat.open{border-color:rgba(201,146,42,0.3);box-shadow:0 4px 24px rgba(0,0,0,0.2);}
 .brujula-sat-header{display:flex;align-items:center;gap:14px;padding:20px 22px;}
-.brujula-sat-ico{width:40px;height:40px;object-fit:contain;flex-shrink:0;}
+.brujula-sat-ico{width:75px;height:75px;object-fit:contain;flex-shrink:0;}
 .brujula-sat-info{flex:1;min-width:0;}
 .brujula-sat-riqueza{font-size:16px;font-weight:700;margin-bottom:2px;}
 .brujula-sat-preview{font-size:13px;color:var(--texto-3);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
